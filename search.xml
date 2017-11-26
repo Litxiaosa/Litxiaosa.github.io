@@ -464,48 +464,27 @@ public void delete()throws Exception{
       <url>/2017/06/25/MAC%E4%B8%8B%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
       <content type="html"><![CDATA[<h3 id="配置JAVA环境变量"><a href="#配置JAVA环境变量" class="headerlink" title="配置JAVA环境变量"></a>配置JAVA环境变量</h3><p>大家在windows里面配置JDK环境变量很容易，但是如果要在mac里面配置JDK环境变量和windows里面有所不同,虽然Mac自带有jdk,但是版本比较低。我们讲的是自己下载的jdk。</p>
 <a id="more"></a>
-<ol>
-<li><p>jdk的下载路径， Library:就是资源库</p>
+<p>jdk的下载路径， Library:就是资源库</p>
 <pre><code>/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home  
-</code></pre></li>
-<li><p>打开配置文件 .bash_profile</p>
+</code></pre><p>打开配置文件 .bash_profile</p>
 <pre><code>open .bash_profile
-</code></pre></li>
-</ol>
-<ol>
-<li><p>如果没有 .bash_profile ,创建文件后打开</p>
+</code></pre><p>如果没有 .bash_profile ,创建文件后打开</p>
 <pre><code>touch .bash_profile
-</code></pre></li>
-<li><p>把下面的代码复制进去, <strong>注意替换成你的jdk版本</strong></p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home</span><br><span class="line"></span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line"></span><br><span class="line">export $JAVA_HOME/bin:$PATH:</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li><p>然后保存并退出 .bash_profile</p>
-</li>
-<li><p>输入 source .bash_profile 使修改生效</p>
-</li>
-<li><p>使用如下命令查看环境变量是否已经配置成功：</p>
+</code></pre><p>把下面的代码复制进去, <strong>注意替换成你的jdk版本</strong></p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home</span><br><span class="line"></span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line"></span><br><span class="line">export $JAVA_HOME/bin:$PATH:</span><br></pre></td></tr></table></figure>
+</code></pre><p>然后保存并退出 .bash_profile</p>
+<p>输入 source .bash_profile 使修改生效</p>
+<p>使用如下命令查看环境变量是否已经配置成功：</p>
 <pre><code>echo $JAVA_HOME
-</code></pre><p> 如果出现下图，说明配置成功了</p>
-<p> <img src="/2017/06/25/MAC下配置环境变量/jdk配置成功.png" alt=""></p>
-</li>
-</ol>
-<h3 id="配置maven环境变量"><a href="#配置maven环境变量" class="headerlink" title="配置maven环境变量"></a>配置maven环境变量</h3><ol>
-<li>打开终端输入 open .bash_profile</li>
-<li><p>输入Maven安装包路径, 注意替换成你的解压路径</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export M2_HOME=/Library/apache-maven-3.5.0</span><br><span class="line"></span><br><span class="line">export PATH=$PATH:$M2_HOME/bin</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li><p>保存修改并关闭 .bash_profile </p>
-</li>
-<li><p>输入 source .bash_profile 使修改生效</p>
-</li>
-<li><p>输入 mvn -v 验证Maven是否配置成功，如果显示Maven版本信息则配置成功。 </p>
-<p> <img src="/2017/06/25/MAC下配置环境变量/maven.png" alt=""></p>
-</li>
-</ol>
+</code></pre><p>如果出现下图，说明配置成功了</p>
+<pre><code>![](MAC下配置环境变量/jdk配置成功.png)
+</code></pre><h3 id="配置maven环境变量"><a href="#配置maven环境变量" class="headerlink" title="配置maven环境变量"></a>配置maven环境变量</h3><p>打开终端输入 open .bash_profile</p>
+<p>输入Maven安装包路径, 注意替换成你的解压路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export M2_HOME=/Library/apache-maven-3.5.0</span><br><span class="line"></span><br><span class="line">export PATH=$PATH:$M2_HOME/bin</span><br></pre></td></tr></table></figure>
+<p>保存修改并关闭 .bash_profile </p>
+<p>输入 source .bash_profile 使修改生效</p>
+<p>输入 mvn -v 验证Maven是否配置成功，如果显示Maven版本信息则配置成功。 </p>
+<p><img src="/2017/06/25/MAC下配置环境变量/maven.png" alt=""></p>
 ]]></content>
       
         
@@ -541,8 +520,8 @@ public void delete()throws Exception{
 <p><img src="/2017/06/24/hexo绑定域名/安装畅言.png" alt=""></p>
 <p>去 yelee/layout/_partial/comments 新建一个changyan.ejs 的文件，把上边那个代码拷贝进去，然后appid替换成你的appid， conf替换成你的appKey。保存。</p>
 <p>进入 layout/_partial/article.ejs 文件， 添加一下代码</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;% &#125; else if (theme.changyan.on) &#123; %&gt;</span><br><span class="line">    &lt;%- partial(&apos;comments/changyan&apos;) %&gt;</span><br></pre></td></tr></table></figure>
-</code></pre><p><img src="/2017/06/24/hexo绑定域名/添加代码.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;% &#125; else if (theme.changyan.on) &#123; %&gt;</span><br><span class="line">    &lt;%- partial(&apos;comments/changyan&apos;) %&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2017/06/24/hexo绑定域名/添加代码.png" alt=""></p>
 <p>进入  _config.yml根目录 添加下面的配置。</p>
 <p><img src="/2017/06/24/hexo绑定域名/添加配置.png" alt=""></p>
 <p>部署线上，就看到添加的评论系统了。</p>
@@ -646,8 +625,7 @@ hexo s
 </code></pre><p>  然后浏览器访问<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>, 此时，你应该看到你的博客了。当然了，这个博客只是本地的，别人是看不到了，你需要把它放到github上。</p>
 </li>
 </ul>
-<p>###注册github账号：</p>
-<p>如果您已有github账号，请跳过，进入github进行注册，邮箱和密码请记好。</p>
+<h3 id="注册github账号："><a href="#注册github账号：" class="headerlink" title="注册github账号："></a>注册github账号：</h3><p>如果您已有github账号，请跳过，进入github进行注册，邮箱和密码请记好。</p>
 <ul>
 <li><p>创建repository</p>
 <p>  repository就相当于一个仓库，存放你代码的地方，点击 new repository</p>
