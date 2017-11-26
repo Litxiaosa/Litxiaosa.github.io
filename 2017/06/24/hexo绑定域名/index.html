@@ -25,7 +25,12 @@
 <meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo绑定域名/域名.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo绑定域名/域名解析.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo绑定域名/域名解析确认.png">
-<meta property="og:updated_time" content="2017-11-26T04:02:36.430Z">
+<meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo绑定域名/畅言密钥.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo绑定域名/安装畅言.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo绑定域名/添加代码.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo绑定域名/添加配置.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo绑定域名/展示.png">
+<meta property="og:updated_time" content="2017-11-26T07:28:34.414Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo绑定域名">
 <meta name="twitter:description" content="前言因为Hexo个人博客是托管在github之上，每次访问都要使用githubname.github.io这么一个长串的域名来访问，会显得非常繁琐。这个时候我们可以购买一个域名，设置DNS跳转，以达到通过域名即可访问我们的个人博客。通过查阅文档发现，github pages是支持域名绑定的。">
@@ -333,6 +338,25 @@
 </blockquote>
 <h3 id="hexo-添加CNAME文件"><a href="#hexo-添加CNAME文件" class="headerlink" title="hexo 添加CNAME文件"></a>hexo 添加CNAME文件</h3><p>这些全部设置完成后，此时你并不能要申请的域名访问你的博客，接着你需要做的是在blog根目录的source文件夹里创建CNAME文件，不带任何后缀，里面添加你的域名信息，如：litxiaosa.me</p>
 <p>然后等几分钟访问一下吧。</p>
+<h3 id="安装畅言评论系统"><a href="#安装畅言评论系统" class="headerlink" title="安装畅言评论系统"></a>安装畅言评论系统</h3><p>现在你已经有了域名和备案了，那么我们就可以安装畅言评论系统了，这里是<a href="http://changyan.kuaizhan.com/" target="_blank" rel="noopener">畅言官方网站</a>。注册账号，去认证，备案，这里默认这一系列步骤都操作完成了。</p>
+<ol>
+<li><p>然后我们登陆账号，进入后台，下面有个畅言秘钥。</p>
+<p> <img src="/2017/06/24/hexo绑定域名/畅言密钥.png" alt=""></p>
+<p> <img src="/2017/06/24/hexo绑定域名/安装畅言.png" alt=""></p>
+</li>
+<li><p>去 <figure class="highlight plain"><figcaption><span>新建一个```changyan.ejs``` 的文件，把上边那个代码拷贝进去，然后appid替换成你的appid， conf替换成你的appKey。保存。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3. 进入 ```layout/_partial/article.ejs```文件， 添加一下代码</span><br></pre></td></tr></table></figure></p>
+<p>&lt;% } else if (theme.changyan.on) { %&gt;</p>
+<pre><code>&lt;%- partial(&apos;comments/changyan&apos;) %&gt;
+</code></pre><p>```</p>
+<p><img src="/2017/06/24/hexo绑定域名/添加代码.png" alt=""></p>
+</li>
+<li><p>进入 <code>_config.yml根目录</code> 添加下面的配置。</p>
+<p> <img src="/2017/06/24/hexo绑定域名/添加配置.png" alt=""></p>
+</li>
+<li><p>部署线上，就看到添加的评论系统了。</p>
+<p><img src="/2017/06/24/hexo绑定域名/展示.png" alt=""></p>
+</li>
+</ol>
 
       
     </div>
@@ -365,7 +389,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#购买域名"><span class="toc-number">2.</span> <span class="toc-text">购买域名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-添加CNAME文件"><span class="toc-number">3.</span> <span class="toc-text">hexo 添加CNAME文件</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#购买域名"><span class="toc-number">2.</span> <span class="toc-text">购买域名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-添加CNAME文件"><span class="toc-number">3.</span> <span class="toc-text">hexo 添加CNAME文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装畅言评论系统"><span class="toc-number">4.</span> <span class="toc-text">安装畅言评论系统</span></a></li></ol>
         
     </div>
     <style>
