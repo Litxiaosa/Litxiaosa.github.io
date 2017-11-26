@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="潇洒" />
+
+
+
+<meta name="description" content="前言由于个人电脑是Mac, 所以这里就以Mac OS为参考，其实Mac跟windows搭建博客差别不大，如果用windows的朋友觉得不适，请移步之嘟嘟MD的独立博客，有详细的windows平台下的教程。嗯，那我们开始吧。">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo+github搭建自己的个人博客">
+<meta property="og:url" content="http://litxiaosa.me/2017/06/24/hexo-github搭建自己的个人博客/index.html">
+<meta property="og:site_name" content="潇洒的博客">
+<meta property="og:description" content="前言由于个人电脑是Mac, 所以这里就以Mac OS为参考，其实Mac跟windows搭建博客差别不大，如果用windows的朋友觉得不适，请移步之嘟嘟MD的独立博客，有详细的windows平台下的教程。嗯，那我们开始吧。">
+<meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo-github搭建自己的个人博客/安装成功.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo-github搭建自己的个人博客/hexo目录.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo-github搭建自己的个人博客/repository.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo-github搭建自己的个人博客/config.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo-github搭建自己的个人博客/配置github.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo-github搭建自己的个人博客/获得仓库路径.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo-github搭建自己的个人博客/ssh%20keys.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo-github搭建自己的个人博客/部署报错.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo-github搭建自己的个人博客/访问链接.png">
+<meta property="og:updated_time" content="2017-11-26T04:18:20.404Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo+github搭建自己的个人博客">
+<meta name="twitter:description" content="前言由于个人电脑是Mac, 所以这里就以Mac OS为参考，其实Mac跟windows搭建博客差别不大，如果用windows的朋友觉得不适，请移步之嘟嘟MD的独立博客，有详细的windows平台下的教程。嗯，那我们开始吧。">
+<meta name="twitter:image" content="http://litxiaosa.me/2017/06/24/hexo-github搭建自己的个人博客/安装成功.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="潇洒的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/站点小图标.jpg">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>hexo+github搭建自己的个人博客 | 潇洒的博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?c519edc830f3af02ec9cc3d4c51a6583";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/头像.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">潇洒</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">隔岸无旧情，姑苏有钟声。</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/2517382891/profile?rightmod=1&wvr=6&mod=personinfo" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/Litxiaosa" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com/people/xiao-sa-43-46/activities" title="知乎"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solr/">solr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/不知所云/">不知所云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境变量/">环境变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码规范插件/">编码规范插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">喜欢看书，对吉他有点小兴趣，专注于java。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">潇洒</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/头像.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">潇洒</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">隔岸无旧情，姑苏有钟声。</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/2517382891/profile?rightmod=1&wvr=6&mod=personinfo" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/Litxiaosa" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/xiao-sa-43-46/activities" title="知乎"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-hexo-github搭建自己的个人博客" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/24/hexo-github搭建自己的个人博客/" class="article-date">
+      <time datetime="2017-06-24T02:01:03.000Z" itemprop="datePublished">2017-06-24</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hexo+github搭建自己的个人博客
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>由于个人电脑是Mac, 所以这里就以Mac OS为参考，其实Mac跟windows搭建博客差别不大，如果用windows的朋友觉得不适，请移步之<a href="http://tengj.top/2016/02/20/hexoTotal/" target="_blank" rel="noopener">嘟嘟MD的独立博客</a>，有详细的windows平台下的教程。嗯，那我们开始吧。</p>
+<a id="more"></a>
+<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>点击进入<a href="https://git-scm.com/" target="_blank" rel="noopener">git官网</a>，下载安装包，然后按步骤安装就好。可以输入下面的命令查看git是否安装成功。</p>
+<pre><code>git --version
+</code></pre><h3 id="安装-node-js"><a href="#安装-node-js" class="headerlink" title="安装 node.js"></a>安装 node.js</h3><p>点击进入 <a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js官网</a>，一个是通用版，一个是最新版，选择一个下载，然后按步骤安装。</p>
+<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><ul>
+<li><p>下载安装hexo</p>
+<p>  npm install -g hexo<br>安装好以后，在终端输入：</p>
+<p>  hexo<br>如果出现下图，则说明安装成功：</p>
+</li>
+</ul>
+<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/安装成功.png" alt=""></p>
+<ul>
+<li>初始化博客</li>
+</ul>
+<p>建立一个博客的文件夹,blog是文件夹名字，可以根据自己的喜好定义</p>
+<pre><code>hexo init blog
+</code></pre><p>然后进入该文件夹  </p>
+<pre><code>cd blog
+</code></pre><p>运行node.js 命令，根据博客默认的配置安装必要的依赖包</p>
+<pre><code>npm install
+</code></pre><p>初始化完成后，我们可以看到博客的文件夹</p>
+<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/hexo目录.png" alt=""></p>
+<p>那么基本的搭建过程就完成了，让我们看看效果吧，这里介绍几个命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  #清理缓存，如果你改动了东西，没有效果，试试这个命吧。</span><br><span class="line">hexo g   #完整命令为hexo generate,用于生成静态文件</span><br><span class="line">hexo s   #完整命令为hexo server,用于启动服务器，主要用来本地预览</span><br><span class="line">hexo d   #完整命令为hexo deploy,用于将本地文件发布到github上</span><br><span class="line">hexo n   #完整命令为hexo new,用于新建一篇文章</span><br></pre></td></tr></table></figure>
+<p>在你的终端 hexo目录下执行下面的命令</p>
+<pre><code>hexo g  
+
+hexo s
+</code></pre><p>然后浏览器访问<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>, 此时，你应该看到你的博客了。当然了，这个博客只是本地的，别人是看不到了，你需要把它放到github上。</p>
+<p>###注册github账号：</p>
+<p>如果您已有github账号，请跳过，进入github进行注册，邮箱和密码请记好。</p>
+<ul>
+<li>创建repository</li>
+</ul>
+<p>repository就相当于一个仓库，存放你代码的地方，点击 new repository</p>
+<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/repository.png" alt=""></p>
+<p>填写你的项目名字repository name, 这个名字格式要为youname.github.io, 例如我的xiaosa.github.io, 填写完以后点击下面的 creat创建。</p>
+<h3 id="部署本地项目到github上："><a href="#部署本地项目到github上：" class="headerlink" title="部署本地项目到github上："></a>部署本地项目到github上：</h3><p><img src="/2017/06/24/hexo-github搭建自己的个人博客/config.png" alt=""></p>
+<p>编辑它，在_config.yml最下方，添加如下配置(记得改成自己的。另外记得一点，hexo的配置文件中任何’:’后面都是带一个空格的)</p>
+<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/配置github.png" alt=""></p>
+<p>github是你之前创建仓库的地址，可以通过下图获得</p>
+<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/获得仓库路径.png" alt=""></p>
+<p>然后保存它，如果你是第一次使用github或者使用过但是没有配置过SSH,可能你需要配置一下，可以检查一下是否已经存在SSH Keys</p>
+<pre><code>~/.ssh/
+</code></pre><p>.ssh文件为隐藏文件，需要先设置隐藏文件可见才可以看到。 如果不存在，输入下面的命令创建。</p>
+<pre><code>ssh-keygen -t rsa -C &quot;你注册github的邮箱&quot;
+</code></pre><p>一路回车就好，这个不需要设置密码，因为这个Key仅仅用于简单的服务，完成后输入命令打开id_rsa.pub， id_rsa是私钥，id_rsa.pub是公钥，我们需要的是公钥。</p>
+<pre><code>cat ~/.ssh/id_rsa.pub
+</code></pre><p>然后你就会得到最后面含有你邮箱的公钥，复制它。去你的github下。</p>
+<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/ssh keys.png" alt=""></p>
+<p>title随便写，把复制的公钥粘贴到key里。点下面的add SSH key。好了。基本配置就完了。下面我们把我们的代码传到 github上，在终端输入</p>
+<pre><code>hexo g
+
+hexo d
+</code></pre><p>如果执行hexo d 报下面的错误<br><img src="/2017/06/24/hexo-github搭建自己的个人博客/部署报错.png" alt=""></p>
+<p>就先安装一下hexo-deployer-git,再执行hexo d</p>
+<pre><code>npm install hexo-deployer-git --save
+</code></pre><p>至此，我们的项目就部署到github上了。</p>
+<p>那么，访问博客的链接是什么呢？ 点击标注的Settings,往下拉，如果你看到的是这样的。那么点击那个 None，选择第一个，点save. 访问你博客的链接就出来了，去访问试试吧！</p>
+<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/访问链接.png" alt=""></p>
+<h3 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a>发表文章</h3><p>既然博客搭建好了，就发表一下文章看看效果吧。hexo中写文章使用的是Markdown，语法不难，看一下就会了。然后去下载一个Markdown的编辑器，很多，看个人喜好。</p>
+<p>在终端的blog路径下输入</p>
+<pre><code>hexo new &quot;my new post&quot;
+</code></pre><p>然后就会在你 folder/source/_posts下生成一个.md的文件，以后你的文章就存放到这里，你也可以直接在这里新建一个.md的文件。写完文章后，你可以使用hexo g命令生成静态文件， 然后hexo s进行本地预览。感觉没问题了，hexo d上传到github上吧。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/06/24/安装和配置主题/">
+                    安装和配置主题
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/06/24/HelloWorld/">
+                    Hello World
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Git"><span class="toc-number">2.</span> <span class="toc-text">安装Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-node-js"><span class="toc-number">3.</span> <span class="toc-text">安装 node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装hexo"><span class="toc-number">4.</span> <span class="toc-text">安装hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署本地项目到github上："><span class="toc-number">5.</span> <span class="toc-text">部署本地项目到github上：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发表文章"><span class="toc-number">6.</span> <span class="toc-text">发表文章</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-5 i,
+        .toc-level-5 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"hexo+github搭建自己的个人博客　| 潇洒的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/06/24/安装和配置主题/" title="上一篇: 安装和配置主题">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/06/24/HelloWorld/" title="下一篇: Hello World">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/10/31/姑苏有钟声/">姑苏有钟声</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/阿里巴巴Java开发规约插件/">阿里巴巴Java开发规约插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/24/solr的配置和简单应用/">solr的配置和简单应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/浮生若梦/">浮生若梦</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/30/风景旧曾谙/">风景旧曾谙</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/MAC下配置环境变量/">MAC下配置环境变量</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo绑定域名/">hexo绑定域名</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/安装和配置主题/">安装和配置主题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo-github搭建自己的个人博客/">hexo+github搭建自己的个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/HelloWorld/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i>
+                2017 潇洒
+            </div>
+            <div class="footer-right">
+                <a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action;jsessionid=jXXzJfoHmRVnh4Wtlin6joVW_3P2wkKCL0IputNLM-40wznfPW8Z!-179429638"
+                    target="_blank" title="快速、简洁且高效的博客框架"></a>
+                      浙ICP备17031501号-1
+                <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+             post: ".article-entry a[href], .copyright a[href]", 
+            
+            
+            
+            
+            
+            
+             friends: "#js-friends a", 
+            
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

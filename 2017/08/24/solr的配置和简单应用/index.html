@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="潇洒" />
+
+
+
+<meta name="description" content="前言本文基于solr-6.6 、 tomcat-9、 jdk-1.8 安装配置下载完成以后解压即可。 一：在tomcat上安装solr">
+<meta name="keywords" content="solr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="solr的配置和简单应用">
+<meta property="og:url" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/index.html">
+<meta property="og:site_name" content="潇洒的博客">
+<meta property="og:description" content="前言本文基于solr-6.6 、 tomcat-9、 jdk-1.8 安装配置下载完成以后解压即可。 一：在tomcat上安装solr">
+<meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/solrHome位置.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/solr注释的部分.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/solr.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/solr添加core.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/core1创建成功.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/ik分词器.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/solr演示1.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/solr演示2.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/managed-schema.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/product实体.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/普通域.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/目标域aim.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/复制域.png">
+<meta property="og:updated_time" content="2017-11-26T04:14:59.813Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="solr的配置和简单应用">
+<meta name="twitter:description" content="前言本文基于solr-6.6 、 tomcat-9、 jdk-1.8 安装配置下载完成以后解压即可。 一：在tomcat上安装solr">
+<meta name="twitter:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/solrHome位置.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="潇洒的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/站点小图标.jpg">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>solr的配置和简单应用 | 潇洒的博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?c519edc830f3af02ec9cc3d4c51a6583";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/头像.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">潇洒</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">隔岸无旧情，姑苏有钟声。</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/2517382891/profile?rightmod=1&wvr=6&mod=personinfo" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/Litxiaosa" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com/people/xiao-sa-43-46/activities" title="知乎"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solr/">solr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/不知所云/">不知所云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境变量/">环境变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码规范插件/">编码规范插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">喜欢看书，对吉他有点小兴趣，专注于java。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">潇洒</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/头像.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">潇洒</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">隔岸无旧情，姑苏有钟声。</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/2517382891/profile?rightmod=1&wvr=6&mod=personinfo" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/Litxiaosa" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/xiao-sa-43-46/activities" title="知乎"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-solr的配置和简单应用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/08/24/solr的配置和简单应用/" class="article-date">
+      <time datetime="2017-08-24T02:48:25.000Z" itemprop="datePublished">2017-08-24</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      solr的配置和简单应用
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/solr/">solr</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本文基于solr-6.6 、 tomcat-9、 jdk-1.8</p>
+<h4 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h4><p>下载完成以后解压即可。</p>
+<p><strong>一：在tomcat上安装solr</strong></p>
+<a id="more"></a>
+<ol>
+<li><p>把solr目录下的server/solr-webapp/webapp目录拷贝到tomcat/webapps的目录下,并且重命名为solr（任意名字）</p>
+</li>
+<li><p>将solr\server\lib\ext下的所有jar包，以及sol\server\lib下以metrics开头的jar包复制到tomcat\webapps\solr\WEB-INF\lib下</p>
+</li>
+<li><p>在tomcat\webapps\webapp\WEB-INF中，新建classes文件夹，将solr\server\resources下的log4j.properties文件拷贝到里面，修改里面的solr.log=输出日志的路径（请使用/分割，注意不要有中文，避免乱码问题）</p>
+</li>
+<li><p>将solr\server中的solr目录拷贝到任意地方，重命名为solrHome</p>
+</li>
+<li><p>修改tomcat\webapps\solr\WEB-INF中的web.xml文件</p>
+<p> <img src="/2017/08/24/solr的配置和简单应用/solrHome位置.png" alt=""></p>
+<p> 并且注释调以下代码</p>
+<p> <img src="/2017/08/24/solr的配置和简单应用/solr注释的部分.png" alt=""></p>
+</li>
+<li><p>启动tomcat 访问localhost:8080/solr/index.html  </p>
+<p> <img src="/2017/08/24/solr的配置和简单应用/solr.png" alt=""></p>
+</li>
+<li>目前solrHome目录是空的，我们在solrHome目录下创建一个空文件夹core1，这个就是我们的一个实例。</li>
+<li>把solr/server/solr下的文件复制到solrHome目录下。</li>
+<li><p>在solr的管理控制台界面，添加一个core1</p>
+<p> <img src="/2017/08/24/solr的配置和简单应用/solr添加core.png" alt=""></p>
+</li>
+<li><p>这下就创建成功了一个实例core1 ,注意，如果无法创建core,看一下是否执行了第8步，网上说这是bug</p>
+<p><img src="/2017/08/24/solr的配置和简单应用/core1创建成功.png" alt=""></p>
+</li>
+</ol>
+<p><strong>二：Ik中文分词器</strong></p>
+<p> <a href="http://download.csdn.net/download/linzhiqiang0316/9537326" target="_blank" rel="noopener">下载IK分词器</a></p>
+<ol>
+<li>将ik-analyzer-solr5-5.x.jar这个jar包放入 tomcat/webapps/solr/WEB-INF/lib里面( 千万不要复制到tomcat/lib中，这样会找不到lucene的类)</li>
+<li>将IKAnalyzer.cfg.xml，ext.dic（搜狗的扩展词库），stopword.dic放在tomcat\webapps\solr\WEB-INF\classes目录下</li>
+<li><p>打开solrHome/core1/conf/managed-schema文件 添加以下配置</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;fieldType name=&quot;text_ik&quot; class=&quot;solr.TextField&quot;&gt;</span><br><span class="line">    &lt;analyzer type=&quot;index&quot; useSmart=&quot;false&quot;</span><br><span class="line">         class=&quot;org.wltea.analyzer.lucene.IKAnalyzer&quot; /&gt;</span><br><span class="line">    &lt;analyzer type=&quot;query&quot; useSmart=&quot;true&quot;</span><br><span class="line">        class=&quot;org.wltea.analyzer.lucene.IKAnalyzer&quot; /&gt;</span><br><span class="line">&lt;/fieldType&gt;</span><br></pre></td></tr></table></figure>
+<p> <img src="/2017/08/24/solr的配置和简单应用/ik分词器.png" alt=""></p>
+</li>
+<li><p>重启tomcat，即可看到text_ik分词</p>
+</li>
+</ol>
+<p><strong>三：域</strong></p>
+<ol>
+<li><p>插入的文档必须与域相匹配</p>
+<p>  域，它在solr中有特定的含义，就类似于数据库表中的列 ，规范着写入的数据。我们先来做个例子。</p>
+<p> <img src="/2017/08/24/solr的配置和简单应用/solr演示1.png" alt=""></p>
+<p>  可以看到，这次插入的文档，有id，title。当然，在solr中，每一条记录都必须有着一个唯一的id，它就类似数据库中的主键，不可重复。这条记录的插入是成功的。<br>但是，如果我把title改成title1,这就与定义的字段不一样了，就会报错,可以看到，这里提示，未知的字段 title1.</p>
+<p><img src="/2017/08/24/solr的配置和简单应用/solr演示2.png" alt=""></p>
+</li>
+<li><p>域的定义 field</p>
+<p> 先拿出来一条配置来看一下</p>
+ <field name="id" type="string" indexed="true" stored="true" required="true" multivalued="false">
+
+<p> 首先，我们认识一下这些属性</p>
+<blockquote>
+<p>name: 域名<br>type: 域的类型，必须匹配类型，不然会报错<br>indexed: 是否要做索引<br>stored: 是否要储存<br>required: 是否必填<br>multiValued：是否多值，如果设置为多值，里面的值就会采用数组的方式储存</p>
+</blockquote>
+</field></li>
+<li><p>动态域 dynamicField</p>
+<p> 同样，我们拿出一条来看</p>
+<pre><code>&lt;dynamicField name=&quot;*_i&quot;  type=&quot;string&quot;    indexed=&quot;true&quot;  stored=&quot;true&quot; multiValued=&quot;true&quot; /&gt;
+</code></pre><p> 那么，什么是动态域呢？ 就是这个域的名称，是由表达式组成的，只要名称满足了这个表达式，就可以用这个域</p>
+<p> 同样的认识一下这些属性</p>
+<blockquote>
+<p>name: 域的名称，该域的名称是通过一个表达式来指定的，只要符合这这个规则，就可以使用这个域<br>type: 对应的值类型，相应的值必须满足这个类型，不然就会报错<br>indexed: 是否要索引<br>stored: 是否要存储<br>…其它的属性与上边的一致</p>
+</blockquote>
+</li>
+<li><p>主键域 uniqueKey</p>
+<pre><code>&lt;uniqueKey&gt;id&lt;/uniqueKey&gt;
+</code></pre><p> 指定一个唯一的主键，每一个文档中，都应该有一个唯一的主键，这个值不要随便改</p>
+</li>
+<li><p>复制域 copeField</p>
+<pre><code>&lt;copyField source=&quot;cat&quot; dest=&quot;text&quot;/&gt;
+
+&lt;field name=&quot;text&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot; multiValued=&quot;true&quot;/&gt;
+</code></pre><blockquote>
+<p>source: 源域<br>dest: 目标域</p>
+</blockquote>
+<p> 复制域，将源域的内容复制到目标域中</p>
+<p> <strong>注意：目标域必须是允许多值的，如下，multiValued必须为true，因为可能多个源域对应一个目标域，所以它需要以数组来存储</strong></p>
+</li>
+<li><p>域的类型</p>
+<p> 同样的给出一段配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;fieldType name=&quot;text_general&quot; class=&quot;solr.TextField&quot; positionIncrementGap=&quot;100&quot;&gt;</span><br><span class="line">    &lt;analyzer type=&quot;index&quot;&gt;</span><br><span class="line">        &lt;tokenizer class=&quot;solr.StandardTokenizerFactory&quot;/&gt;</span><br><span class="line">        &lt;filter class=&quot;solr.StopFilterFactory&quot; ignoreCase=&quot;true&quot; words=&quot;stopwords.txt&quot; /&gt;</span><br><span class="line">         &lt;!-- in this example, we will only use synonyms at query time</span><br><span class="line">         &lt;filter class=&quot;solr.SynonymFilterFactory&quot; synonyms=&quot;index_synonyms.txt&quot; ignoreCase=&quot;true&quot; expand=&quot;false&quot;/&gt;--&gt;</span><br><span class="line">         &lt;filter class=&quot;solr.LowerCaseFilterFactory&quot;/&gt;</span><br><span class="line">     &lt;/analyzer&gt;</span><br><span class="line">     </span><br><span class="line">     &lt;analyzer type=&quot;query&quot;&gt;</span><br><span class="line">        &lt;tokenizer class=&quot;solr.StandardTokenizerFactory&quot;/&gt;</span><br><span class="line">        &lt;filter class=&quot;solr.StopFilterFactory&quot; ignoreCase=&quot;true&quot; words=&quot;stopwords.txt&quot; /&gt;</span><br><span class="line">        &lt;filter class=&quot;solr.SynonymFilterFactory&quot; synonyms=&quot;synonyms.txt&quot; ignoreCase=&quot;true&quot;  expand=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;filter class=&quot;solr.LowerCaseFilterFactory&quot;/&gt;</span><br><span class="line">    &lt;/analyzer&gt;</span><br><span class="line">&lt;/fieldType&gt;</span><br></pre></td></tr></table></figure>
+<p> 介绍一下这些属性</p>
+<blockquote>
+<p>name: 域的名称<br>class: 指定solr的类型<br>analyzer: 分词器的配置<br>type: index(索引分词器)，query(查询分词器)<br>tokenizer: 配置分词器<br>filter: 过滤器</p>
+</blockquote>
+<p>所有上述域，都可以在solrHome/core1/conf/managed-schema文件里找到。</p>
+</li>
+</ol>
+<p><strong>四：字段的实际配置</strong></p>
+<p>首先，打开solrHome/core1/conf/managed-schema文件 </p>
+<p><img src="/2017/08/24/solr的配置和简单应用/managed-schema.png" alt=""></p>
+<ol>
+<li><p>我们用field来配置实际的业务字段</p>
+<p> 上边我们配置了中文分词器，已经配置了一个fieldType的中文分词，所 以我们现在一律用中文分词的域类型</p>
+<p><img src="/2017/08/24/solr的配置和简单应用/product实体.png" alt=""></p>
+<p>主键的id就不需要配置了，默认已经把id配置为主键了</p>
+<pre><code>&lt;field name=&quot;id&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot; required=&quot;true&quot; multiValued=&quot;false&quot; /&gt;
+</code></pre><p>商品名称(需要分词，需要存储)</p>
+<pre><code>&lt;field name=&quot;product_name&quot; type=&quot;text_ik&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;
+</code></pre><p>商品图片(不需要分词，需要存储)</p>
+<pre><code>&lt;field name=&quot;product_url&quot; type=&quot;string&quot; indexed=&quot;false&quot; stored=&quot;true&quot;/&gt;
+</code></pre><p>商品价格(不需要分词，需要存储)</p>
+<pre><code>&lt;field name=&quot;product_price&quot; type=&quot;double&quot; indexed=&quot;false&quot; stored=&quot;true&quot;/&gt;
+</code></pre><p>商品分类(不需要分词，需要存储)</p>
+<pre><code>&lt;field name=&quot;product_type&quot; type=&quot;int&quot; indexed=&quot;false&quot; stored=&quot;true&quot;/&gt;
+</code></pre><p>商品描述(需要分词，需要存储)</p>
+<pre><code>&lt;field name=&quot;product_description&quot; type=&quot;text_ik&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;    
+</code></pre><p><img src="/2017/08/24/solr的配置和简单应用/普通域.png" alt=""></p>
+</li>
+<li><p>复制域的应用</p>
+<p> 用户在搜索框搜索的时候，有可能输入的是商品名称，也有可能输入的是商品描述，也有可能输入的是一个商品类型，那么这些值的搜索，肯定在后台是对应一个域的，那么既然如此，我们就可以把这些域合并成一个，这样在后台只需要单独的对这一个域进行搜索就可以了</p>
+<p> 先定义一个目标域</p>
+<pre><code>&lt;field name=&quot;aim&quot; type=&quot;text_ik&quot; indexed=&quot;true&quot; stored=&quot;false&quot;  multiValued=&quot;true&quot;/&gt;
+</code></pre><p> <img src="/2017/08/24/solr的配置和简单应用/目标域aim.png" alt=""></p>
+<p> 复制域，把商品名称，商品描述，商品类型名称复制到上面的这个域中 </p>
+<p> <img src="/2017/08/24/solr的配置和简单应用/复制域.png" alt="">  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    &lt;copyField source=&quot;product_name&quot; dest=&quot;aim&quot;/&gt;</span><br><span class="line">    &lt;copyField source=&quot;product_type&quot; dest=&quot;aim&quot;/&gt;</span><br><span class="line">    &lt;copyField source=&quot;product_description&quot; dest=&quot;aim&quot;/&gt;</span><br><span class="line">    ```  </span><br><span class="line">    </span><br><span class="line">**五：dataimport 导入数据库数据**</span><br><span class="line"></span><br><span class="line">solr默认是没有开启dataimport这个功能的，所以我们要经过一点配置来开启它</span><br><span class="line"></span><br><span class="line">1. 首先找到solr/dist/solr-dataimporthandler-6.6.0.jar，把这个文件复制到tomcat/webapp/solr/WEB-INF/ lib/下(前面拷贝过的忽略此操作)。并且找到相应数据库的驱动包，也同样放到该目录。我这里用的是mysql 的驱动包。</span><br><span class="line"></span><br><span class="line">2. 找到solrHome/core1/conf/solrconfig.xml，并打开，在里面添加一段内容</span><br></pre></td></tr></table></figure>
+<p> <requesthandler name="/dataimport" class="solr.DataImportHandler"></requesthandler></p>
+<pre><code>&lt;lst name=&quot;defaults&quot;&gt;
+    &lt;str name=&quot;config&quot;&gt;data-config.xml&lt;/str&gt;
+&lt;/lst&gt;
+</code></pre><p> </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](solr的配置和简单应用/导入数据.png)</span><br><span class="line"></span><br><span class="line">3. 找到solr/example/example-DIH/solr/db/conf/db-data-config.xml，把其复制到solrHome/core1/conf/下，并改名为data-config.xml. 打开并编辑，修改如下</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;dataConfig&gt;
+</code></pre> <!--这是mmysql的配置-->
+<p> <datasource driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/solr" user="你的账号" password="你的密码"><br> <document></document></datasource></p>
+<pre><code>&lt;!-- name属性，就代表着一个文档，可以随便命名 --&gt;
+&lt;!-- query是一条sql，代表在数据库查找出来的数据 --&gt;
+&lt;entity name=&quot;product&quot; query=&quot;select * from product&quot;&gt;
+    &lt;!-- 每一个field映射着数据库中列与文档中的域，column是数据库列，name是solr的域(必须是在managed-schema文件中配置过的域才行) --&gt;
+    &lt;field column=&quot;id&quot; name=&quot;id&quot;/&gt;
+    &lt;field column=&quot;name&quot; name=&quot;product_name&quot;/&gt;
+    &lt;field column=&quot;url&quot; name=&quot;product_url&quot;/&gt;
+    &lt;field column=&quot;price&quot; name=&quot;product_price&quot;/&gt;
+    &lt;field column=&quot;type&quot; name=&quot;product_type&quot;/&gt;
+    &lt;field column=&quot;description&quot; name=&quot;product_description&quot;/&gt;
+&lt;/entity&gt;
+</code></pre><p> <br></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">![](solr的配置和简单应用/dataconfig.png)</span><br><span class="line">    </span><br><span class="line">4. 重启tomcat， 会看到如下页面</span><br><span class="line"></span><br><span class="line">![](solr的配置和简单应用/execute.png)</span><br><span class="line"> </span><br><span class="line">5. 点击蓝色的按钮，则开始导入，导入过程依据数量量的大小，需要的时间也不同，可以点击右边的Refresh status来刷新状态，可以查看当前导入了多少条</span><br><span class="line"></span><br><span class="line">**六： solrJ的使用**</span><br><span class="line"></span><br><span class="line">现在说一下使用solrj来维护solr的索引及操作，solrj就是一个java的客户端，是一个jar包的使用，首先引入MAVEN的依赖，solrj的版本号要对应solr的版本号</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><dependency><br>    <groupid>org.apache.solr</groupid><br>    <artifactid>solr-solrj</artifactid><br>    <version>6.6.0</version><br></dependency><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. 增加及修改</span><br><span class="line"></span><br><span class="line">    在solr中，增加与修改都是一回事，当这个id不存在时，则是添加，当这个id存在时，则是修改</span><br></pre></td></tr></table></figure></p>
+<pre><code>public class SolrController {
+
+private String serverUrl = &quot;http://10.60.20.152:8080/solr/core1&quot;;
+
+public void save() throws SolrServerException, IOException {
+    //创建
+    HttpSolrClient client = new  HttpSolrClient(serverUrl);
+    SolrInputDocument doc = new SolrInputDocument();
+
+    doc.addField(&quot;id&quot;, &quot;5008&quot;);
+    doc.addField(&quot;product_name&quot;, &quot;姓名&quot;);
+    doc.addField(&quot;product_type&quot;, &quot;1&quot;);
+    doc.addField(&quot;product_url&quot;, &quot;图片&quot;);
+    doc.addField(&quot;product_price&quot;, &quot;11&quot;);
+    doc.addField(&quot;product_description&quot;, &quot;这是一个测试例子&quot;);
+
+    client.add(doc);
+    client.commit();
+    client.close();
+  }
+</code></pre><p>   }<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. 删除索引</span><br></pre></td></tr></table></figure></p>
+<pre><code>public class SolrController {
+
+private String serverUrl = &quot;http://10.60.20.152:8080/solr/core1&quot;;
+
+public void delete()throws Exception{
+    HttpSolrClient client = new  HttpSolrClient(serverUrl);
+    //1.删除一个
+    client.deleteById(&quot;5008&quot;);
+
+    //2.删除多个
+    List&lt;String&gt; ids = new ArrayList&lt;&gt;();
+    ids.add(&quot;1&quot;);
+    ids.add(&quot;2&quot;);
+    client.deleteById(ids);
+
+    //3.根据查询条件删除数据,这里的条件只能有一个，不能以逗号相隔
+    client.deleteByQuery(&quot;id:5008&quot;);
+
+    //4.删除全部，删除不可恢复
+    client.deleteByQuery(&quot;*:*&quot;);
+
+    //一定要记得提交，否则不起作用
+    client.commit();
+    client.close();
+  }
+}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">3. 查询</span><br></pre></td></tr></table></figure>
+
+public class SolrController {
+
+private String serverUrl = &quot;http://10.60.20.152:8080/solr/core1&quot;;
+
+public void search()throws Exception{
+    HttpSolrClient client = new  HttpSolrClient(serverUrl);
+    //创建查询对象
+    SolrQuery query = new SolrQuery();
+    //q 查询字符串，如果查询所有*:*
+    query.set(&quot;q&quot;, &quot;product_name:潇洒&quot;);
+    //fq 过滤条件，过滤是基于查询结果中的过滤
+    query.set(&quot;fq&quot;, &quot;product_type:1&quot;);
+    //sort 排序，请注意，如果一个字段没有被索引，那么它是无法排序的
+    //query.set(&quot;sort&quot;, &quot;product_price desc&quot;);
+    //start row 分页信息，与mysql的limit的两个参数一致效果
+    query.setStart(0);
+    query.setRows(10);
+    //fl 查询哪些结果出来，不写的话，就查询全部、
+    // query.set(&quot;fl&quot;, &quot;&quot;);
+    //df 默认搜索的域
+    query.set(&quot;df&quot;, &quot;product_keywords&quot;);
+
+    //======高亮设置===
+    //开启高亮
+    query.setHighlight(true);
+    //高亮域
+    query.addHighlightField(&quot;product_name&quot;);
+    //前缀
+    query.setHighlightSimplePre(&quot;&lt;span style=&apos;color:red&apos;&gt;&quot;);
+    //后缀
+    query.setHighlightSimplePost(&quot;&lt;/span&gt;&quot;);
+
+    //执行搜索
+    QueryResponse queryResponse = client.query(query);
+    //搜索结果
+    SolrDocumentList results = queryResponse.getResults();
+    //查询出来的数量
+    long numFound = results.getNumFound();
+    System.out.println(&quot;总查询出:&quot; + numFound + &quot;条记录&quot;);
+
+    //遍历搜索记录
+    //获取高亮信息
+    Map&lt;String, Map&lt;String, List&lt;String&gt;&gt;&gt; highlighting = queryResponse.getHighlighting();
+    for (SolrDocument solrDocument : results) {
+        System.out.println(&quot;商品id:&quot; + solrDocument.get(&quot;id&quot;));
+        System.out.println(&quot;商品名称 :&quot; + solrDocument.get(&quot;product_name&quot;));
+        System.out.println(&quot;商品分类:&quot; + solrDocument.get(&quot;product_type&quot;));
+        System.out.println(&quot;商品价格:&quot; + solrDocument.get(&quot;product_price&quot;));
+        System.out.println(&quot;商品描述:&quot; + solrDocument.get(&quot;product_description&quot;));
+        System.out.println(&quot;商品图片:&quot; + solrDocument.get(&quot;product_url&quot;));
+
+        //输出高亮
+        Map&lt;String, List&lt;String&gt;&gt; map = highlighting.get(solrDocument.get(&quot;id&quot;));
+        List&lt;String&gt; list = map.get(&quot;product_name&quot;);
+        if(list != null &amp;&amp; list.size() &gt; 0){
+            System.out.println(list.get(0));
+        }
+    }
+    client.close();
+}
+</code></pre><p>}</p>
+<pre><code>```
+</code></pre><p><strong>七：补充</strong></p>
+<blockquote>
+<p>q - 查询字符串，如果查询所有: (id:1)<br>fq - （filter query）过虑查询，过滤条件，基于查询出来的结果<br>fl - 指定返回那些字段内容，用逗号或空格分隔多个<br>start - 分页开始<br>rows - 分页查询数据<br>sort - 排序，格式：sort=+[,+]… 。示例：（score desc, price asc）表示先 “score” 降序, 再 “price” 升序，默认是相关性降序。<br>fl表示索引显示那些field(表示所有field,如果想查询指定字段用逗号或空格隔开（如：Name,SKU,ShortDescription或Name SKU &gt;ShortDescription【注：字段是严格区分大小写的】）)<br>hl 是否高亮 ,如hl=true<br>hl.fl 高亮field ,hl.fl=Name,SKU<br>hl.simple.pre 高亮前面的格式<br>hl.simple.post 高亮后面的格式</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/10/25/阿里巴巴Java开发规约插件/">
+                    阿里巴巴Java开发规约插件
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/07/17/浮生若梦/">
+                    浮生若梦
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装配置"><span class="toc-number">1.1.</span> <span class="toc-text">安装配置</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-5 i,
+        .toc-level-5 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"solr的配置和简单应用　| 潇洒的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/10/25/阿里巴巴Java开发规约插件/" title="上一篇: 阿里巴巴Java开发规约插件">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/07/17/浮生若梦/" title="下一篇: 浮生若梦">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/10/31/姑苏有钟声/">姑苏有钟声</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/阿里巴巴Java开发规约插件/">阿里巴巴Java开发规约插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/24/solr的配置和简单应用/">solr的配置和简单应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/浮生若梦/">浮生若梦</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/30/风景旧曾谙/">风景旧曾谙</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/MAC下配置环境变量/">MAC下配置环境变量</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo绑定域名/">hexo绑定域名</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/安装和配置主题/">安装和配置主题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo-github搭建自己的个人博客/">hexo+github搭建自己的个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/HelloWorld/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i>
+                2017 潇洒
+            </div>
+            <div class="footer-right">
+                <a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action;jsessionid=jXXzJfoHmRVnh4Wtlin6joVW_3P2wkKCL0IputNLM-40wznfPW8Z!-179429638"
+                    target="_blank" title="快速、简洁且高效的博客框架"></a>
+                      浙ICP备17031501号-1
+                <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+             post: ".article-entry a[href], .copyright a[href]", 
+            
+            
+            
+            
+            
+            
+             friends: "#js-friends a", 
+            
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
