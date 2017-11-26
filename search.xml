@@ -207,29 +207,41 @@
 </code></pre><p> <img src="/2017/08/24/solr的配置和简单应用/目标域aim.png" alt=""></p>
 <p> 复制域，把商品名称，商品描述，商品类型名称复制到上面的这个域中 </p>
 <p> <img src="/2017/08/24/solr的配置和简单应用/复制域.png" alt="">  </p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    &lt;copyField source=&quot;product_name&quot; dest=&quot;aim&quot;/&gt;</span><br><span class="line">    &lt;copyField source=&quot;product_type&quot; dest=&quot;aim&quot;/&gt;</span><br><span class="line">    &lt;copyField source=&quot;product_description&quot; dest=&quot;aim&quot;/&gt;</span><br><span class="line">    </span><br><span class="line">    ``` </span><br><span class="line">    </span><br><span class="line">**五：dataimport 导入数据库数据**</span><br><span class="line"></span><br><span class="line">solr默认是没有开启dataimport这个功能的，所以我们要经过一点配置来开启它</span><br><span class="line"></span><br><span class="line">1. 首先找到solr/dist/solr-dataimporthandler-6.6.0.jar，把这个文件复制到tomcat/webapp/solr/WEB-INF/ lib/下(前面拷贝过的忽略此操作)。并且找到相应数据库的驱动包，也同样放到该目录。我这里用的是mysql 的驱动</span><br><span class="line"></span><br><span class="line">2. 找到solrHome/core1/conf/solrconfig.xml，并打开，在里面添加一段内容</span><br></pre></td></tr></table></figure>
- <requesthandler name="/dataimport" class="solr.DataImportHandler"><br>     <lst name="defaults"><br>         <str name="config">data-config.xml</str><br>     </lst><br> </requesthandler>
-
-<p> ```  </p>
-<p><img src="/2017/08/24/solr的配置和简单应用/导入数据.png" alt=""></p>
+</li>
+</ol>
+<pre><code>&lt;copyField source=&quot;product_name&quot; dest=&quot;aim&quot;/&gt;
+&lt;copyField source=&quot;product_type&quot; dest=&quot;aim&quot;/&gt;
+&lt;copyField source=&quot;product_description&quot; dest=&quot;aim&quot;/&gt;
+</code></pre><p><strong>五：dataimport 导入数据库数据</strong></p>
+<p>solr默认是没有开启dataimport这个功能的，所以我们要经过一点配置来开启它</p>
+<ol>
+<li><p>首先找到solr/dist/solr-dataimporthandler-6.6.0.jar，把这个文件复制到tomcat/webapp/solr/WEB-INF/ lib/下(前面拷贝过的忽略此操作)。并且找到相应数据库的驱动包，也同样放到该目录。我这里用的是mysql 的驱动</p>
+</li>
+<li><p>找到solrHome/core1/conf/solrconfig.xml，并打开，在里面添加一段内容</p>
+<pre><code>&lt;requestHandler name=&quot;/dataimport&quot; class=&quot;solr.DataImportHandler&quot;&gt;
+    &lt;lst name=&quot;defaults&quot;&gt;
+        &lt;str name=&quot;config&quot;&gt;data-config.xml&lt;/str&gt;
+    &lt;/lst&gt;
+&lt;/requestHandler&gt;
+</code></pre><p><img src="/2017/08/24/solr的配置和简单应用/导入数据.png" alt=""></p>
 </li>
 <li><p>找到solr/example/example-DIH/solr/db/conf/db-data-config.xml，把其复制到solrHome/core1/conf/下，并改名为data-config.xml. 打开并编辑，修改如下</p>
-<pre><code>     &lt;dataConfig&gt;
- &lt;!--这是mmysql的配置--&gt;
- &lt;dataSource driver=&quot;com.mysql.jdbc.Driver&quot; url=&quot;jdbc:mysql://localhost:3306/solr&quot; user=&quot;你的账号&quot; password=&quot;你的密码&quot;/&gt;
- &lt;document&gt;
-     &lt;!-- name属性，就代表着一个文档，可以随便命名 --&gt;
-     &lt;!-- query是一条sql，代表在数据库查找出来的数据 --&gt;
-     &lt;entity name=&quot;product&quot; query=&quot;select * from product&quot;&gt;
-         &lt;!-- 每一个field映射着数据库中列与文档中的域，column是数据库列，name是solr的域(必须是在managed-schema文件中配置过的域才行) --&gt;
-         &lt;field column=&quot;id&quot; name=&quot;id&quot;/&gt;
-         &lt;field column=&quot;name&quot; name=&quot;product_name&quot;/&gt;
-         &lt;field column=&quot;url&quot; name=&quot;product_url&quot;/&gt;
-         &lt;field column=&quot;price&quot; name=&quot;product_price&quot;/&gt;
-         &lt;field column=&quot;type&quot; name=&quot;product_type&quot;/&gt;
-         &lt;field column=&quot;description&quot; name=&quot;product_description&quot;/&gt;
-     &lt;/entity&gt;
- &lt;/document&gt;
+<pre><code>&lt;dataConfig&gt;
+    &lt;!--这是mmysql的配置--&gt;
+    &lt;dataSource driver=&quot;com.mysql.jdbc.Driver&quot; url=&quot;jdbc:mysql://localhost:3306/solr&quot; user=&quot;你的账号&quot; password=&quot;你的密码&quot;/&gt;
+    &lt;document&gt;
+        &lt;!-- name属性，就代表着一个文档，可以随便命名 --&gt;
+        &lt;!-- query是一条sql，代表在数据库查找出来的数据 --&gt;
+        &lt;entity name=&quot;product&quot; query=&quot;select * from product&quot;&gt;
+            &lt;!-- 每一个field映射着数据库中列与文档中的域，column是数据库列，name是solr的域(必须是在managed-schema文件中配置过的域才行) --&gt;
+            &lt;field column=&quot;id&quot; name=&quot;id&quot;/&gt;
+            &lt;field column=&quot;name&quot; name=&quot;product_name&quot;/&gt;
+            &lt;field column=&quot;url&quot; name=&quot;product_url&quot;/&gt;
+            &lt;field column=&quot;price&quot; name=&quot;product_price&quot;/&gt;
+            &lt;field column=&quot;type&quot; name=&quot;product_type&quot;/&gt;
+            &lt;field column=&quot;description&quot; name=&quot;product_description&quot;/&gt;
+        &lt;/entity&gt;
+    &lt;/document&gt;
 &lt;/dataConfig&gt;
 </code></pre><p><img src="/2017/08/24/solr的配置和简单应用/dataconfig.png" alt=""></p>
 </li>
@@ -249,8 +261,6 @@
 </code></pre><ol>
 <li><p>增加及修改</p>
 <p> 在solr中，增加与修改都是一回事，当这个id不存在时，则是添加，当这个id存在时，则是修改</p>
-</li>
-</ol>
 <pre><code> public class SolrController {
 
  private String serverUrl = &quot;http://10.60.20.152:8080/solr/core1&quot;;
@@ -272,9 +282,8 @@
      client.close();
    }
 }
-</code></pre><ol>
-<li>删除索引</li>
-</ol>
+</code></pre></li>
+<li><p>删除索引</p>
 <pre><code>public class SolrController {
 
 private String serverUrl = &quot;http://10.60.20.152:8080/solr/core1&quot;;
@@ -301,71 +310,72 @@ public void delete()throws Exception{
     client.close();
   }
 }
-</code></pre><ol>
-<li>查询</li>
-</ol>
-<pre><code>    public class SolrController {
+</code></pre></li>
+<li><p>查询</p>
+<pre><code> public class SolrController {
 
-    private String serverUrl = &quot;http://10.60.20.152:8080/solr/core1&quot;;
+ private String serverUrl = &quot;http://10.60.20.152:8080/solr/core1&quot;;
 
-    public void search()throws Exception{
-        HttpSolrClient client = new  HttpSolrClient(serverUrl);
-        //创建查询对象
-        SolrQuery query = new SolrQuery();
-        //q 查询字符串，如果查询所有*:*
-        query.set(&quot;q&quot;, &quot;product_name:潇洒&quot;);
-        //fq 过滤条件，过滤是基于查询结果中的过滤
-        query.set(&quot;fq&quot;, &quot;product_type:1&quot;);
-        //sort 排序，请注意，如果一个字段没有被索引，那么它是无法排序的
-        //query.set(&quot;sort&quot;, &quot;product_price desc&quot;);
-        //start row 分页信息，与mysql的limit的两个参数一致效果
-        query.setStart(0);
-        query.setRows(10);
-        //fl 查询哪些结果出来，不写的话，就查询全部、
-        // query.set(&quot;fl&quot;, &quot;&quot;);
-        //df 默认搜索的域
-        query.set(&quot;df&quot;, &quot;product_keywords&quot;);
+ public void search()throws Exception{
+     HttpSolrClient client = new  HttpSolrClient(serverUrl);
+     //创建查询对象
+     SolrQuery query = new SolrQuery();
+     //q 查询字符串，如果查询所有*:*
+     query.set(&quot;q&quot;, &quot;product_name:潇洒&quot;);
+     //fq 过滤条件，过滤是基于查询结果中的过滤
+     query.set(&quot;fq&quot;, &quot;product_type:1&quot;);
+     //sort 排序，请注意，如果一个字段没有被索引，那么它是无法排序的
+     //query.set(&quot;sort&quot;, &quot;product_price desc&quot;);
+     //start row 分页信息，与mysql的limit的两个参数一致效果
+     query.setStart(0);
+     query.setRows(10);
+     //fl 查询哪些结果出来，不写的话，就查询全部、
+     // query.set(&quot;fl&quot;, &quot;&quot;);
+     //df 默认搜索的域
+     query.set(&quot;df&quot;, &quot;product_keywords&quot;);
 
-        //======高亮设置===
-        //开启高亮
-        query.setHighlight(true);
-        //高亮域
-        query.addHighlightField(&quot;product_name&quot;);
-        //前缀
-        query.setHighlightSimplePre(&quot;&lt;span style=&apos;color:red&apos;&gt;&quot;);
-        //后缀
-        query.setHighlightSimplePost(&quot;&lt;/span&gt;&quot;);
+     //高亮设置
+     //开启高亮
+     query.setHighlight(true);
+     //高亮域
+     query.addHighlightField(&quot;product_name&quot;);
+     //前缀
+     query.setHighlightSimplePre(&quot;&lt;span style=&apos;color:red&apos;&gt;&quot;);
+     //后缀
+     query.setHighlightSimplePost(&quot;&lt;/span&gt;&quot;);
 
-        //执行搜索
-        QueryResponse queryResponse = client.query(query);
-        //搜索结果
-        SolrDocumentList results = queryResponse.getResults();
-        //查询出来的数量
-        long numFound = results.getNumFound();
-        System.out.println(&quot;总查询出:&quot; + numFound + &quot;条记录&quot;);
+     //执行搜索
+     QueryResponse queryResponse = client.query(query);
+     //搜索结果
+     SolrDocumentList results = queryResponse.getResults();
+     //查询出来的数量
+     long numFound = results.getNumFound();
+     System.out.println(&quot;总查询出:&quot; + numFound + &quot;条记录&quot;);
 
-        //遍历搜索记录
-        //获取高亮信息
-        Map&lt;String, Map&lt;String, List&lt;String&gt;&gt;&gt; highlighting = queryResponse.getHighlighting();
-        for (SolrDocument solrDocument : results) {
-            System.out.println(&quot;商品id:&quot; + solrDocument.get(&quot;id&quot;));
-            System.out.println(&quot;商品名称 :&quot; + solrDocument.get(&quot;product_name&quot;));
-            System.out.println(&quot;商品分类:&quot; + solrDocument.get(&quot;product_type&quot;));
-            System.out.println(&quot;商品价格:&quot; + solrDocument.get(&quot;product_price&quot;));
-            System.out.println(&quot;商品描述:&quot; + solrDocument.get(&quot;product_description&quot;));
-            System.out.println(&quot;商品图片:&quot; + solrDocument.get(&quot;product_url&quot;));
+     //遍历搜索记录
+     //获取高亮信息
+     Map&lt;String, Map&lt;String, List&lt;String&gt;&gt;&gt; highlighting = queryResponse.getHighlighting();
+     for (SolrDocument solrDocument : results) {
+         System.out.println(&quot;商品id:&quot; + solrDocument.get(&quot;id&quot;));
+         System.out.println(&quot;商品名称 :&quot; + solrDocument.get(&quot;product_name&quot;));
+         System.out.println(&quot;商品分类:&quot; + solrDocument.get(&quot;product_type&quot;));
+         System.out.println(&quot;商品价格:&quot; + solrDocument.get(&quot;product_price&quot;));
+         System.out.println(&quot;商品描述:&quot; + solrDocument.get(&quot;product_description&quot;));
+         System.out.println(&quot;商品图片:&quot; + solrDocument.get(&quot;product_url&quot;));
 
-            //输出高亮
-            Map&lt;String, List&lt;String&gt;&gt; map = highlighting.get(solrDocument.get(&quot;id&quot;));
-            List&lt;String&gt; list = map.get(&quot;product_name&quot;);
-            if(list != null &amp;&amp; list.size() &gt; 0){
-                System.out.println(list.get(0));
-            }
-        }
-        client.close();
-    }
+         //输出高亮
+         Map&lt;String, List&lt;String&gt;&gt; map = highlighting.get(solrDocument.get(&quot;id&quot;));
+         List&lt;String&gt; list = map.get(&quot;product_name&quot;);
+         if(list != null &amp;&amp; list.size() &gt; 0){
+             System.out.println(list.get(0));
+         }
+     }
+     client.close();
+ }
 }
-</code></pre><p><strong>七：补充</strong></p>
+</code></pre></li>
+</ol>
+<p><strong>七：补充</strong></p>
 <blockquote>
 <p>q - 查询字符串，如果查询所有: (id:1)<br>fq - （filter query）过虑查询，过滤条件，基于查询出来的结果<br>fl - 指定返回那些字段内容，用逗号或空格分隔多个<br>start - 分页开始<br>rows - 分页查询数据<br>sort - 排序，格式：sort=+[,+]… 。示例：（score desc, price asc）表示先 “score” 降序, 再 “price” 升序，默认是相关性降序。<br>fl表示索引显示那些field(表示所有field,如果想查询指定字段用逗号或空格隔开（如：Name,SKU,ShortDescription或Name SKU &gt;ShortDescription【注：字段是严格区分大小写的】）)<br>hl 是否高亮 ,如hl=true<br>hl.fl 高亮field ,hl.fl=Name,SKU<br>hl.simple.pre 高亮前面的格式<br>hl.simple.post 高亮后面的格式</p>
 </blockquote>
@@ -471,14 +481,16 @@ public void delete()throws Exception{
 </li>
 </ol>
 <ol>
-<li>然后保存并退出 .bash_profile</li>
-<li>输入 source .bash_profile 使修改生效</li>
+<li><p>然后保存并退出 .bash_profile</p>
+</li>
+<li><p>输入 source .bash_profile 使修改生效</p>
+</li>
 <li><p>使用如下命令查看环境变量是否已经配置成功：</p>
 <pre><code>echo $JAVA_HOME
 </code></pre><p> 如果出现下图，说明配置成功了</p>
+<p> <img src="/2017/06/25/MAC下配置环境变量/jdk配置成功.png" alt=""></p>
 </li>
 </ol>
-<p><img src="/2017/06/25/MAC下配置环境变量/jdk配置成功.png" alt=""></p>
 <h3 id="配置maven环境变量"><a href="#配置maven环境变量" class="headerlink" title="配置maven环境变量"></a>配置maven环境变量</h3><ol>
 <li>打开终端输入 open .bash_profile</li>
 <li><p>输入Maven安装包路径, 注意替换成你的解压路径</p>
@@ -486,11 +498,14 @@ public void delete()throws Exception{
 </li>
 </ol>
 <ol>
-<li>保存修改并关闭 .bash_profile </li>
-<li>输入 source .bash_profile 使修改生效</li>
-<li>输入 mvn -v 验证Maven是否配置成功，如果显示Maven版本信息则配置成功。 </li>
+<li><p>保存修改并关闭 .bash_profile </p>
+</li>
+<li><p>输入 source .bash_profile 使修改生效</p>
+</li>
+<li><p>输入 mvn -v 验证Maven是否配置成功，如果显示Maven版本信息则配置成功。 </p>
+<p> <img src="/2017/06/25/MAC下配置环境变量/maven.png" alt=""></p>
+</li>
 </ol>
-<p><img src="/2017/06/25/MAC下配置环境变量/maven.png" alt=""></p>
 ]]></content>
       
         
