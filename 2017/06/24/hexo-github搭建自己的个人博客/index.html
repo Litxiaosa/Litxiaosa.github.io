@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo-github搭建自己的个人博客/ssh%20keys.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo-github搭建自己的个人博客/部署报错.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo-github搭建自己的个人博客/访问链接.png">
-<meta property="og:updated_time" content="2017-11-26T04:18:20.404Z">
+<meta property="og:updated_time" content="2017-11-26T05:27:22.739Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo+github搭建自己的个人博客">
 <meta name="twitter:description" content="前言由于个人电脑是Mac, 所以这里就以Mac OS为参考，其实Mac跟windows搭建博客差别不大，如果用windows的朋友觉得不适，请移步之嘟嘟MD的独立博客，有详细的windows平台下的教程。嗯，那我们开始吧。">
@@ -331,37 +331,39 @@
 </code></pre><h3 id="安装-node-js"><a href="#安装-node-js" class="headerlink" title="安装 node.js"></a>安装 node.js</h3><p>点击进入 <a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js官网</a>，一个是通用版，一个是最新版，选择一个下载，然后按步骤安装。</p>
 <h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><ul>
 <li><p>下载安装hexo</p>
-<p>  npm install -g hexo<br>安装好以后，在终端输入：</p>
-<p>  hexo<br>如果出现下图，则说明安装成功：</p>
+<pre><code>npm install -g hexo
+</code></pre><p>安装好以后，在终端输入：</p>
+<pre><code>hexo
+</code></pre><p>如果出现下图，则说明安装成功：</p>
+<p>  <img src="/2017/06/24/hexo-github搭建自己的个人博客/安装成功.png" alt=""></p>
 </li>
-</ul>
-<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/安装成功.png" alt=""></p>
-<ul>
-<li>初始化博客</li>
-</ul>
-<p>建立一个博客的文件夹,blog是文件夹名字，可以根据自己的喜好定义</p>
+<li><p>初始化博客</p>
+<p>  建立一个博客的文件夹,blog是文件夹名字，可以根据自己的喜好定义</p>
 <pre><code>hexo init blog
-</code></pre><p>然后进入该文件夹  </p>
+</code></pre><p>  然后进入该文件夹  </p>
 <pre><code>cd blog
-</code></pre><p>运行node.js 命令，根据博客默认的配置安装必要的依赖包</p>
+</code></pre><p>  运行node.js 命令，根据博客默认的配置安装必要的依赖包</p>
 <pre><code>npm install
-</code></pre><p>初始化完成后，我们可以看到博客的文件夹</p>
-<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/hexo目录.png" alt=""></p>
-<p>那么基本的搭建过程就完成了，让我们看看效果吧，这里介绍几个命令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  #清理缓存，如果你改动了东西，没有效果，试试这个命吧。</span><br><span class="line">hexo g   #完整命令为hexo generate,用于生成静态文件</span><br><span class="line">hexo s   #完整命令为hexo server,用于启动服务器，主要用来本地预览</span><br><span class="line">hexo d   #完整命令为hexo deploy,用于将本地文件发布到github上</span><br><span class="line">hexo n   #完整命令为hexo new,用于新建一篇文章</span><br></pre></td></tr></table></figure>
-<p>在你的终端 hexo目录下执行下面的命令</p>
+</code></pre><p>  初始化完成后，我们可以看到博客的文件夹</p>
+<p>  <img src="/2017/06/24/hexo-github搭建自己的个人博客/hexo目录.png" alt=""></p>
+<p>  那么基本的搭建过程就完成了，让我们看看效果吧，这里介绍几个命令。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  #清理缓存，如果你改动了东西，没有效果，试试这个命吧。</span><br><span class="line">hexo g   #完整命令为hexo generate,用于生成静态文件</span><br><span class="line">hexo s   #完整命令为hexo server,用于启动服务器，主要用来本地预览</span><br><span class="line">hexo d   #完整命令为hexo deploy,用于将本地文件发布到github上</span><br><span class="line">hexo n   #完整命令为hexo new,用于新建一篇文章</span><br></pre></td></tr></table></figure>
+<p>  在你的终端 hexo目录下执行下面的命令</p>
 <pre><code>hexo g  
 
 hexo s
-</code></pre><p>然后浏览器访问<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>, 此时，你应该看到你的博客了。当然了，这个博客只是本地的，别人是看不到了，你需要把它放到github上。</p>
+</code></pre><p>  然后浏览器访问<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>, 此时，你应该看到你的博客了。当然了，这个博客只是本地的，别人是看不到了，你需要把它放到github上。</p>
+</li>
+</ul>
 <p>###注册github账号：</p>
 <p>如果您已有github账号，请跳过，进入github进行注册，邮箱和密码请记好。</p>
 <ul>
-<li>创建repository</li>
+<li><p>创建repository</p>
+<p>  repository就相当于一个仓库，存放你代码的地方，点击 new repository</p>
+<p>  <img src="/2017/06/24/hexo-github搭建自己的个人博客/repository.png" alt=""></p>
+<p>  填写你的项目名字repository name, 这个名字格式要为youname.github.io, 例如我的xiaosa.github.io, 填写完以后点击下面的 creat创建。</p>
+</li>
 </ul>
-<p>repository就相当于一个仓库，存放你代码的地方，点击 new repository</p>
-<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/repository.png" alt=""></p>
-<p>填写你的项目名字repository name, 这个名字格式要为youname.github.io, 例如我的xiaosa.github.io, 填写完以后点击下面的 creat创建。</p>
 <h3 id="部署本地项目到github上："><a href="#部署本地项目到github上：" class="headerlink" title="部署本地项目到github上："></a>部署本地项目到github上：</h3><p><img src="/2017/06/24/hexo-github搭建自己的个人博客/config.png" alt=""></p>
 <p>编辑它，在_config.yml最下方，添加如下配置(记得改成自己的。另外记得一点，hexo的配置文件中任何’:’后面都是带一个空格的)</p>
 <p><img src="/2017/06/24/hexo-github搭建自己的个人博客/配置github.png" alt=""></p>
