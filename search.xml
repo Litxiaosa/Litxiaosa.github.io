@@ -494,13 +494,15 @@ public void search()throws Exception{
 </li>
 </ol>
 <ol>
-<li><p>去<figure class="highlight plain"><figcaption><span>的文件，把上边那个代码拷贝进去，然后appid替换成你的appid， conf替换成你的appKey。保存。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 进入```layout/_partial/article.ejs```文件， 添加一下代码</span><br></pre></td></tr></table></figure></p>
-<p>&lt;% } else if (theme.changyan.on) { %&gt;</p>
-<pre><code>&lt;%- partial(&apos;comments/changyan&apos;) %&gt;
-</code></pre><p>```</p>
-<p><img src="/2017/06/24/hexo绑定域名/添加代码.png" alt=""></p>
+<li><p>去 yelee/layout/_partial/comments 新建一个changyan.ejs 的文件，把上边那个代码拷贝进去，然后appid替换成你的appid， conf替换成你的appKey。保存。</p>
 </li>
-<li><p>进入 <code>_config.yml根目录</code> 添加下面的配置。</p>
+<li><p>进入 layout/_partial/article.ejs 文件， 添加一下代码</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;% &#125; else if (theme.changyan.on) &#123; %&gt;</span><br><span class="line">    &lt;%- partial(&apos;comments/changyan&apos;) %&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<pre><code>![](hexo绑定域名/添加代码.png)
+</code></pre><ol>
+<li><p>进入  _config.yml根目录 添加下面的配置。</p>
 <p> <img src="/2017/06/24/hexo绑定域名/添加配置.png" alt=""></p>
 </li>
 <li><p>部署线上，就看到添加的评论系统了。</p>
