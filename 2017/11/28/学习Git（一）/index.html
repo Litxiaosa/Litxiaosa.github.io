@@ -15,16 +15,27 @@
 
 
 
-<meta name="description" content="喜欢看书，对吉他有点小兴趣，专注JAVA。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://litxiaosa.me/tags/index.html">
+<meta name="description" content="前言本系列文章基于Mac系统 之前自己搭建博客的时候使用到GitHub，需要使用git进行版本控制，现在很多公司也在使用Git，发现Git很棒，于是学习了解一下Git。这只是我自己的学习笔记，如果你是大神，请你不吝赐教，如果你也是小白，希望这系列文章能帮到你。">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习Git（一）">
+<meta property="og:url" content="http://litxiaosa.me/2017/11/28/学习Git（一）/index.html">
 <meta property="og:site_name" content="潇洒的博客">
-<meta property="og:description" content="喜欢看书，对吉他有点小兴趣，专注JAVA。">
-<meta property="og:updated_time" content="2017-11-25T09:58:54.524Z">
+<meta property="og:description" content="前言本系列文章基于Mac系统 之前自己搭建博客的时候使用到GitHub，需要使用git进行版本控制，现在很多公司也在使用Git，发现Git很棒，于是学习了解一下Git。这只是我自己的学习笔记，如果你是大神，请你不吝赐教，如果你也是小白，希望这系列文章能帮到你。">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）/创建仓库.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）/提交.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）/修改.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）/查看.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）/历史记录.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）/过滤.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）/回退1.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）/回退2.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）/回退3.png">
+<meta property="og:updated_time" content="2017-11-28T08:19:38.999Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="喜欢看书，对吉他有点小兴趣，专注JAVA。">
+<meta name="twitter:title" content="学习Git（一）">
+<meta name="twitter:description" content="前言本系列文章基于Mac系统 之前自己搭建博客的时候使用到GitHub，需要使用git进行版本控制，现在很多公司也在使用Git，发现Git很棒，于是学习了解一下Git。这只是我自己的学习笔记，如果你是大神，请你不吝赐教，如果你也是小白，希望这系列文章能帮到你。">
+<meta name="twitter:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）/创建仓库.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +67,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>tags | 潇洒的博客</title>
+<title>学习Git（一） | 潇洒的博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -66,7 +77,7 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -273,11 +284,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="tags-" class="article article-type-tags" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-学习Git（一）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-      <time datetime="2017-11-25T09:59:02.899Z" itemprop="datePublished">2017-11-25</time>
+      <a href="/2017/11/28/学习Git（一）/" class="article-date">
+      <time datetime="2017-11-28T06:14:43.000Z" itemprop="datePublished">2017-11-28</time>
 </a>
 
 
@@ -292,7 +303,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      学习Git（一）
     </h1>
   
 
@@ -302,6 +313,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -309,86 +324,86 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta { display: none; }
-    #container .article .article-title { padding-right: 0; }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover { border-left: none; }
-    .article-title { font-size: 1.6em }
-    .article-entry hr { margin: 0;}
-    .article-meta,
-    #container .article-info-post.article-info { display: none;}
-    #container .article .article-title { padding: 0; }
-</style>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><strong>本系列文章基于Mac系统</strong></p>
+<p>之前自己搭建博客的时候使用到GitHub，需要使用git进行版本控制，现在很多公司也在使用Git，发现Git很棒，于是学习了解一下Git。这只是我自己的学习笔记，如果你是大神，请你不吝赐教，如果你也是小白，希望这系列文章能帮到你。</p>
+<a id="more"></a>
+<h3 id="安装并配置Git"><a href="#安装并配置Git" class="headerlink" title="安装并配置Git"></a>安装并配置Git</h3><ol>
+<li><p>要使用Git，第一步当然是安装Git了。</p>
+<p>首先，打开终端输入一下命令，看你是否安装了Git</p>
+<pre><code>git --version
+</code></pre><p>如果没有安装，那么请下载安装 <a href="https://git-scm.com/download" target="_blank" rel="noopener">Git客户端</a>， 选择你自己的系统下载安装即可。</p>
+</li>
+<li><p>当安装完Git应该做的第一件事就是设置你的用户名称与邮件地址。 这样做很重要，因为每一个Git的提交都会使用这些信息，并且它会写入到你的每一次提交中，不可更改：</p>
+<pre><code>git config --global user.name &quot;你的名字&quot;
+git config --global user.email 你的邮箱
+</code></pre><p> 如果使用了 –global 选项，那么该命令只需要运行一次，因为之后无论你在该系统上做任何事情， Git 都会使用这些信息。 当你想针对特定项目使用不同的用户名称与邮件地址时，可以在那个项目目录下运行不使用 –global 选项的命令来配置。</p>
+</li>
+<li><p>检查配置信息<br> 如果你不确定你的信息是不是配置成功了，可以输入一下命令查看</p>
+<pre><code>git config --list
+</code></pre><p> 如果你觉得返回的信息太多，也可以输入<code>git config &lt;key&gt;：</code><br> 查询制定的配置，例如:</p>
+<pre><code>git config user.name
 
+git config user.email
+</code></pre></li>
+</ol>
+<h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><p>什么是版本库呢？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。    </p>
+<p>创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目录，直接新建文件夹即可，然后cd 到该文件夹下，执行下面的命令</p>
+<pre><code>git init
+</code></pre><p> <img src="/2017/11/28/学习Git（一）/创建仓库.png" alt="">       </p>
+<p>瞬间Git就把仓库建好了，而且告诉你是一个空的仓库（empty Git repository），细心的读者可以发现当前目录下多了一个.git的目录，这个目录是Git来跟踪管理版本库的，没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。</p>
+<p>如果你没有看到.git目录，那是因为这个目录默认是隐藏的，用ls -ah命令就可以看见。</p>
+<h3 id="提交文件到版本库"><a href="#提交文件到版本库" class="headerlink" title="提交文件到版本库"></a>提交文件到版本库</h3><p>上面把git仓库搭建好了，现在就来试试添加文件到版本库里面。</p>
+<p>创建一个txt文档起名叫做demo.txt，往里面添加一点内容 Hello Git</p>
+<p><strong>注意:这里需要文件是UTF-8格式的。</strong></p>
+<p>一定要放到GitRepository目录下（子目录也行），因为这是一个Git仓库，放到其他地方Git再厉害也找不到这个文件。</p>
+<p>第一步，用命令git add告诉Git，把文件添加到仓库：</p>
+<pre><code>git add demo.txt
+</code></pre><p> 执行上面的命令，没有任何显示，这就对了，Unix的哲学是“没有消息就是好消息”，说明添加成功。</p>
+<p>第二步，用命令git commit告诉Git，把文件提交到仓库：</p>
+<pre><code>git commit -m &quot;first commit&quot;
+</code></pre><p>-m 参数是用来注释你提交的信息的，这样以后才知道这次提交更改了什么</p>
+<p><img src="/2017/11/28/学习Git（一）/提交.png" alt="">   </p>
+<h3 id="查看当前新增或者修改的文件"><a href="#查看当前新增或者修改的文件" class="headerlink" title="查看当前新增或者修改的文件"></a>查看当前新增或者修改的文件</h3><p>实际使用中你不止提交一个文件，或新增或修改多个文件，可能时间一久就忘了有多少文件需要提交。</p>
+<p>这里模拟一下，首先新建一个hello.txt的文件，然后修改demo.txt内容，添加一句come on</p>
+<p>这样就有2个文件需要提交了。</p>
+<p>我们使用git status命令来查看当前状态,是否有未提交的文件</p>
+<pre><code>git status
+</code></pre><p><img src="/2017/11/28/学习Git（一）/修改.png" alt=""> </p>
+<p>如图，可以看到一个demo.txt被修改过了，但还没有准备提交的修改，另外一个是Untracked files: hello.txt，表示新增的文件。</p>
+<p>这时候准备把上面2个文件都提交，使用命令:</p>
+<pre><code>git add demo.txt
+git add hello.txt
+</code></pre><p>或者你嫌弃文件太多，一次次add感觉很麻烦，那么可以试试使用git add . 提交，.表示提交当前目录所有文件</p>
+<pre><code>git add .
+git commit -m &quot;second commit&quot;
+</code></pre><p>提交后再使用git status命令查看下</p>
+<p><img src="/2017/11/28/学习Git（一）/查看.png" alt=""></p>
+<p>如图，可以看到文件提交到仓库了，并且git status后提示nothing to commit, working directory clean，说明当前没有需要提交的修改，工作目录是干净。</p>
+<h3 id="查看历史提交记录"><a href="#查看历史提交记录" class="headerlink" title="查看历史提交记录"></a>查看历史提交记录</h3><p>有时候你想看看之前提交的历史纪录~那么就需要使用到下面的命令：</p>
+<pre><code>git log
+</code></pre><p><img src="/2017/11/28/学习Git（一）/历史记录.png" alt=""></p>
+<p>如图，可以看到我们提交的2次历史，first commit和second commit。历史纪录是根据时间倒叙排列的。</p>
+<p>如果觉得代码太多了，加点过滤就行</p>
+<pre><code>git log --pretty=oneline
+</code></pre><p><img src="/2017/11/28/学习Git（一）/过滤.png" alt=""></p>
+<h3 id="回退版本"><a href="#回退版本" class="headerlink" title="回退版本"></a>回退版本</h3><p>现在我们准备把demo.txt回退到上一个版本，也就是“first commit”的那个版本，怎么做呢？</p>
+<p>首先，Git必须知道当前版本是哪个版本，在Git中，用HEAD表示当前版本，也就是最新的提交2c49a55···9a9a13c（注意我的提交ID和你的肯定不一样）， 就是上图中那一大长串字符，上一个版本就是 <code>HEAD^</code>，上上一个版本就是 <code>HEAD ^^</code>，当然往上100个版本写 <code>100个^</code> 比较容易数不过来，所以写成HEAD~100。</p>
+<p>现在，我们要把当前版本“second commit”回退到上一个版本“first commit”，就可以使用git reset命令：</p>
+<pre><code>git reset --hard HEAD^
+</code></pre><p><img src="/2017/11/28/学习Git（一）/回退1.png" alt=""></p>
+<p>看看第二次提交的helllo.txt 是不是不见了，demo.txt里面的内容是不是也变了？ 好比你从21世纪坐时光穿梭机来到了19世纪，想再回去已经回不去了，肿么办？</p>
+<p>办法其实还是有的，只要上面的命令行窗口还没有被关掉，你就可以顺着往上找啊找啊，找到那个second commit的commit id是2c49a55···9a9a13c，于是就可以指定回到未来的某个版本：</p>
+<pre><code>git reset --hard 2c49a5503041f562e8dfbf
+</code></pre><p>版本号没必要写全，前几位就可以了，Git会自动去找。当然也不能只写前一两位，因为Git可能会找到多个版本号，就无法确定是哪一个了。</p>
+<p><img src="/2017/11/28/学习Git（一）/回退2.png" alt=""></p>
+<p>果然， 老子又回来了！</p>
+<p>现在，你回退到了某个版本，关掉了电脑，第二天早上就后悔了，想恢复到新版本怎么办？找不到新版本的commit id怎么办？</p>
+<p>Git提供了一个命令git reflog用来记录你的每一次命令：</p>
+<pre><code>git reflog
+</code></pre><p><img src="/2017/11/28/学习Git（一）/回退3.png" alt=""> </p>
+<p>（注：我没有再次做回退操作） commit id 又出来了，现在，你又可以到未来了。就问你厉不厉害！</p>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>好了，这一篇，我们学了Git的安装和一些基本命令操作，差不多算入门了，接下去就是继续深入学习了。</p>
 
-    <!-- Tag Cloud Page -->
-    <hr>
-<br>
-
-
-<p class="count"></p>
-
-<div class="tags">
-    <a href="/tags/Git/" style="font-size: 16px; color: #808080">Git</a> <a href="/tags/hexo/" style="font-size: 35px; color: #000">hexo</a> <a href="/tags/solr/" style="font-size: 16px; color: #808080">solr</a> <a href="/tags/不知所云/" style="font-size: 35px; color: #000">不知所云</a> <a href="/tags/环境变量/" style="font-size: 16px; color: #808080">环境变量</a> <a href="/tags/编码规范插件/" style="font-size: 16px; color: #808080">编码规范插件</a> <a href="/tags/随笔/" style="font-size: 16px; color: #808080">随笔</a>
-</div>
-<style>
-    .category-list li{
-        display: inline-block;
-        margin: 0 1em .5em 0;
-        padding: 4px;
-        border: 1px solid lightgray;
-        font-size: 1.2rem;
-    }
-    .category-list a { color: gray; }
-    .category-list-item:hover a {
-        color: gray;
-        text-decoration: none;
-    }
-    .category-list-count {
-        margin-left: 2px;
-        font-size: .9rem;
-    }
-    .article-entry ul li:before{ display: none; }
-    .article-inner { text-align: center; }
-    .tags {
-        max-width: 42em;
-        margin: 2em auto;
-        margin-top: 0em;
-    }
-    .tags a {
-        margin-right: 1em;
-        line-height: 65px;
-        border-bottom: 1px solid gray;
-        white-space: nowrap;
-        transition: border-bottom .5s;
-    }
-    .tags a:hover {
-        border-bottom: 3px dotted gray;
-        text-decoration: none;
-    }
-    #count > span {
-        margin: auto .2em;
-        font-weight: bold;
-    }
-</style>
-
-<!-- Count tags and categories -->
-<p id="count">
-        已有<span><script>document.write($(".category-list-item").length)</script></span>个分类，
-        共计<span><script>document.write($(".tags > a").length)</script></span>个标签
-</p>
-<script>
-    $('#count').appendTo('.count');
-</script>
-
-          
-        
       
     </div>
     
@@ -397,8 +412,42 @@
     
 
 
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/10/31/姑苏有钟声/">
+                    姑苏有钟声
+                </a>
+            </div>
+        
+    </nav>
+
   
 </article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装并配置Git"><span class="toc-number">2.</span> <span class="toc-text">安装并配置Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建版本库"><span class="toc-number">3.</span> <span class="toc-text">创建版本库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提交文件到版本库"><span class="toc-number">4.</span> <span class="toc-text">提交文件到版本库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看当前新增或者修改的文件"><span class="toc-number">5.</span> <span class="toc-text">查看当前新增或者修改的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看历史提交记录"><span class="toc-number">6.</span> <span class="toc-text">查看历史提交记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回退版本"><span class="toc-number">7.</span> <span class="toc-text">回退版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结束语"><span class="toc-number">8.</span> <span class="toc-text">结束语</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-5 i,
+        .toc-level-5 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
 
@@ -415,7 +464,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"tags　| 潇洒的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"学习Git（一）　| 潇洒的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -438,6 +487,24 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/10/31/姑苏有钟声/" title="下一篇: 姑苏有钟声">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（一）/">学习Git（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/31/姑苏有钟声/">姑苏有钟声</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/阿里巴巴Java开发规约插件/">阿里巴巴Java开发规约插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/24/solr的配置和简单应用/">solr的配置和简单应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/浮生若梦/">浮生若梦</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/30/风景旧曾谙/">风景旧曾谙</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/MAC下配置环境变量/">MAC下配置环境变量</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo绑定域名/">hexo绑定域名</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/安装和配置主题/">安装和配置主题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo-github搭建自己的个人博客/">hexo+github搭建自己的个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/HelloWorld/">Hello World</a></li></ul>
 
 
 
