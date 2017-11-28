@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/导入数据.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/dataconfig.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/08/24/solr的配置和简单应用/execute.png">
-<meta property="og:updated_time" content="2017-11-28T08:30:11.649Z">
+<meta property="og:updated_time" content="2017-11-28T08:38:59.263Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="solr的配置和简单应用">
 <meta name="twitter:description" content="前言本文基于solr-6.6 、 tomcat-9、 jdk-1.8 安装配置下载完成以后解压即可。 在tomcat上安装solr">
@@ -331,8 +331,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文基于solr-6.6 、 tomcat-9、 jdk-1.8</p>
-<h2 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h2><p>下载完成以后解压即可。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文基于solr-6.6 、 tomcat-9、 jdk-1.8</p>
+<h1 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h1><p>下载完成以后解压即可。</p>
 <h2 id="在tomcat上安装solr"><a href="#在tomcat上安装solr" class="headerlink" title="在tomcat上安装solr"></a>在tomcat上安装solr</h2><a id="more"></a>
 <ol>
 <li><p>把solr目录下的server/solr-webapp/webapp目录拷贝到tomcat/webapps的目录下,并且重命名为solr（任意名字）</p>
@@ -452,7 +452,7 @@
 <pre><code>&lt;copyField source=&quot;product_name&quot; dest=&quot;aim&quot;/&gt;
 &lt;copyField source=&quot;product_type&quot; dest=&quot;aim&quot;/&gt;
 &lt;copyField source=&quot;product_description&quot; dest=&quot;aim&quot;/&gt;
-</code></pre><h2 id="dataimport-导入数据库数据"><a href="#dataimport-导入数据库数据" class="headerlink" title="dataimport 导入数据库数据"></a>dataimport 导入数据库数据</h2><p>solr默认是没有开启dataimport这个功能的，所以我们要经过一点配置来开启它</p>
+</code></pre><h1 id="dataimport-导入数据库数据"><a href="#dataimport-导入数据库数据" class="headerlink" title="dataimport 导入数据库数据"></a>dataimport 导入数据库数据</h1><p>solr默认是没有开启dataimport这个功能的，所以我们要经过一点配置来开启它</p>
 <ol>
 <li><p>首先找到solr/dist/solr-dataimporthandler-6.6.0.jar，把这个文件复制到tomcat/webapp/solr/WEB-INF/ lib/下(前面拷贝过的忽略此操作)。并且找到相应数据库的驱动包，也同样放到该目录。我这里用的是mysql 的驱动</p>
 </li>
@@ -490,7 +490,7 @@
 <li><p>点击蓝色的按钮，则开始导入，导入过程依据数量量的大小，需要的时间也不同，可以点击右边的Refresh status来刷新状态，可以查看当前导入了多少条</p>
 </li>
 </ol>
-<h2 id="solrJ的使用"><a href="#solrJ的使用" class="headerlink" title="solrJ的使用"></a>solrJ的使用</h2><p>现在说一下使用solrj来维护solr的索引及操作，solrj就是一个java的客户端，是一个jar包的使用，首先引入MAVEN的依赖，solrj的版本号要对应solr的版本号</p>
+<h1 id="solrJ的使用"><a href="#solrJ的使用" class="headerlink" title="solrJ的使用"></a>solrJ的使用</h1><p>现在说一下使用solrj来维护solr的索引及操作，solrj就是一个java的客户端，是一个jar包的使用，首先引入MAVEN的依赖，solrj的版本号要对应solr的版本号</p>
 <pre><code>&lt;dependency&gt;
     &lt;groupId&gt;org.apache.solr&lt;/groupId&gt;
     &lt;artifactId&gt;solr-solrj&lt;/artifactId&gt;
@@ -613,7 +613,7 @@ public void delete()throws Exception{
 }
 </code></pre></li>
 </ol>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><blockquote>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><blockquote>
 <p>q - 查询字符串，如果查询所有: (id:1)<br>fq - （filter query）过虑查询，过滤条件，基于查询出来的结果<br>fl - 指定返回那些字段内容，用逗号或空格分隔多个<br>start - 分页开始<br>rows - 分页查询数据<br>sort - 排序，格式：sort=+[,+]… 。示例：（score desc, price asc）表示先 “score” 降序, 再 “price” 升序，默认是相关性降序。<br>fl表示索引显示那些field(表示所有field,如果想查询指定字段用逗号或空格隔开（如：Name,SKU,ShortDescription或Name SKU &gt;ShortDescription【注：字段是严格区分大小写的】）)<br>hl 是否高亮 ,如hl=true<br>hl.fl 高亮field ,hl.fl=Name,SKU<br>hl.simple.pre 高亮前面的格式<br>hl.simple.post 高亮后面的格式</p>
 </blockquote>
 
@@ -648,7 +648,7 @@ public void delete()throws Exception{
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装配置"><span class="toc-number">2.</span> <span class="toc-text">安装配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在tomcat上安装solr"><span class="toc-number">3.</span> <span class="toc-text">在tomcat上安装solr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ik中文分词器"><span class="toc-number">4.</span> <span class="toc-text">Ik中文分词器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域"><span class="toc-number">5.</span> <span class="toc-text">域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字段的实际配置"><span class="toc-number">6.</span> <span class="toc-text">字段的实际配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dataimport-导入数据库数据"><span class="toc-number">7.</span> <span class="toc-text">dataimport 导入数据库数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#solrJ的使用"><span class="toc-number">8.</span> <span class="toc-text">solrJ的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充"><span class="toc-number">9.</span> <span class="toc-text">补充</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装配置"><span class="toc-number">2.</span> <span class="toc-text">安装配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#在tomcat上安装solr"><span class="toc-number">2.1.</span> <span class="toc-text">在tomcat上安装solr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ik中文分词器"><span class="toc-number">2.2.</span> <span class="toc-text">Ik中文分词器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域"><span class="toc-number">2.3.</span> <span class="toc-text">域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字段的实际配置"><span class="toc-number">2.4.</span> <span class="toc-text">字段的实际配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#dataimport-导入数据库数据"><span class="toc-number">3.</span> <span class="toc-text">dataimport 导入数据库数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#solrJ的使用"><span class="toc-number">4.</span> <span class="toc-text">solrJ的使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#补充"><span class="toc-number">5.</span> <span class="toc-text">补充</span></a></li></ol>
         
     </div>
     <style>
