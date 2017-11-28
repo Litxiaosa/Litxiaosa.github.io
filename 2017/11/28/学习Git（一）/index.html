@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）/回退1.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）/回退2.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）/回退3.png">
-<meta property="og:updated_time" content="2017-11-28T08:19:38.999Z">
+<meta property="og:updated_time" content="2017-11-28T08:23:20.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习Git（一）">
 <meta name="twitter:description" content="前言本系列文章基于Mac系统 之前自己搭建博客的时候使用到GitHub，需要使用git进行版本控制，现在很多公司也在使用Git，发现Git很棒，于是学习了解一下Git。这只是我自己的学习笔记，如果你是大神，请你不吝赐教，如果你也是小白，希望这系列文章能帮到你。">
@@ -324,10 +324,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><strong>本系列文章基于Mac系统</strong></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>本系列文章基于Mac系统</strong></p>
 <p>之前自己搭建博客的时候使用到GitHub，需要使用git进行版本控制，现在很多公司也在使用Git，发现Git很棒，于是学习了解一下Git。这只是我自己的学习笔记，如果你是大神，请你不吝赐教，如果你也是小白，希望这系列文章能帮到你。</p>
 <a id="more"></a>
-<h3 id="安装并配置Git"><a href="#安装并配置Git" class="headerlink" title="安装并配置Git"></a>安装并配置Git</h3><ol>
+<h2 id="安装并配置Git"><a href="#安装并配置Git" class="headerlink" title="安装并配置Git"></a>安装并配置Git</h2><ol>
 <li><p>要使用Git，第一步当然是安装Git了。</p>
 <p>首先，打开终端输入一下命令，看你是否安装了Git</p>
 <pre><code>git --version
@@ -346,13 +346,13 @@ git config --global user.email 你的邮箱
 git config user.email
 </code></pre></li>
 </ol>
-<h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><p>什么是版本库呢？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。    </p>
+<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><p>什么是版本库呢？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。    </p>
 <p>创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目录，直接新建文件夹即可，然后cd 到该文件夹下，执行下面的命令</p>
 <pre><code>git init
 </code></pre><p> <img src="/2017/11/28/学习Git（一）/创建仓库.png" alt="">       </p>
 <p>瞬间Git就把仓库建好了，而且告诉你是一个空的仓库（empty Git repository），细心的读者可以发现当前目录下多了一个.git的目录，这个目录是Git来跟踪管理版本库的，没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。</p>
 <p>如果你没有看到.git目录，那是因为这个目录默认是隐藏的，用ls -ah命令就可以看见。</p>
-<h3 id="提交文件到版本库"><a href="#提交文件到版本库" class="headerlink" title="提交文件到版本库"></a>提交文件到版本库</h3><p>上面把git仓库搭建好了，现在就来试试添加文件到版本库里面。</p>
+<h2 id="提交文件到版本库"><a href="#提交文件到版本库" class="headerlink" title="提交文件到版本库"></a>提交文件到版本库</h2><p>上面把git仓库搭建好了，现在就来试试添加文件到版本库里面。</p>
 <p>创建一个txt文档起名叫做demo.txt，往里面添加一点内容 Hello Git</p>
 <p><strong>注意:这里需要文件是UTF-8格式的。</strong></p>
 <p>一定要放到GitRepository目录下（子目录也行），因为这是一个Git仓库，放到其他地方Git再厉害也找不到这个文件。</p>
@@ -363,7 +363,7 @@ git config user.email
 <pre><code>git commit -m &quot;first commit&quot;
 </code></pre><p>-m 参数是用来注释你提交的信息的，这样以后才知道这次提交更改了什么</p>
 <p><img src="/2017/11/28/学习Git（一）/提交.png" alt="">   </p>
-<h3 id="查看当前新增或者修改的文件"><a href="#查看当前新增或者修改的文件" class="headerlink" title="查看当前新增或者修改的文件"></a>查看当前新增或者修改的文件</h3><p>实际使用中你不止提交一个文件，或新增或修改多个文件，可能时间一久就忘了有多少文件需要提交。</p>
+<h2 id="查看当前新增或者修改的文件"><a href="#查看当前新增或者修改的文件" class="headerlink" title="查看当前新增或者修改的文件"></a>查看当前新增或者修改的文件</h2><p>实际使用中你不止提交一个文件，或新增或修改多个文件，可能时间一久就忘了有多少文件需要提交。</p>
 <p>这里模拟一下，首先新建一个hello.txt的文件，然后修改demo.txt内容，添加一句come on</p>
 <p>这样就有2个文件需要提交了。</p>
 <p>我们使用git status命令来查看当前状态,是否有未提交的文件</p>
@@ -379,14 +379,14 @@ git commit -m &quot;second commit&quot;
 </code></pre><p>提交后再使用git status命令查看下</p>
 <p><img src="/2017/11/28/学习Git（一）/查看.png" alt=""></p>
 <p>如图，可以看到文件提交到仓库了，并且git status后提示nothing to commit, working directory clean，说明当前没有需要提交的修改，工作目录是干净。</p>
-<h3 id="查看历史提交记录"><a href="#查看历史提交记录" class="headerlink" title="查看历史提交记录"></a>查看历史提交记录</h3><p>有时候你想看看之前提交的历史纪录~那么就需要使用到下面的命令：</p>
+<h2 id="查看历史提交记录"><a href="#查看历史提交记录" class="headerlink" title="查看历史提交记录"></a>查看历史提交记录</h2><p>有时候你想看看之前提交的历史纪录~那么就需要使用到下面的命令：</p>
 <pre><code>git log
 </code></pre><p><img src="/2017/11/28/学习Git（一）/历史记录.png" alt=""></p>
 <p>如图，可以看到我们提交的2次历史，first commit和second commit。历史纪录是根据时间倒叙排列的。</p>
 <p>如果觉得代码太多了，加点过滤就行</p>
 <pre><code>git log --pretty=oneline
 </code></pre><p><img src="/2017/11/28/学习Git（一）/过滤.png" alt=""></p>
-<h3 id="回退版本"><a href="#回退版本" class="headerlink" title="回退版本"></a>回退版本</h3><p>现在我们准备把demo.txt回退到上一个版本，也就是“first commit”的那个版本，怎么做呢？</p>
+<h2 id="回退版本"><a href="#回退版本" class="headerlink" title="回退版本"></a>回退版本</h2><p>现在我们准备把demo.txt回退到上一个版本，也就是“first commit”的那个版本，怎么做呢？</p>
 <p>首先，Git必须知道当前版本是哪个版本，在Git中，用HEAD表示当前版本，也就是最新的提交2c49a55···9a9a13c（注意我的提交ID和你的肯定不一样）， 就是上图中那一大长串字符，上一个版本就是 <code>HEAD^</code>，上上一个版本就是 <code>HEAD ^^</code>，当然往上100个版本写 <code>100个^</code> 比较容易数不过来，所以写成HEAD~100。</p>
 <p>现在，我们要把当前版本“second commit”回退到上一个版本“first commit”，就可以使用git reset命令：</p>
 <pre><code>git reset --hard HEAD^
@@ -402,7 +402,7 @@ git commit -m &quot;second commit&quot;
 <pre><code>git reflog
 </code></pre><p><img src="/2017/11/28/学习Git（一）/回退3.png" alt=""> </p>
 <p>（注：我没有再次做回退操作） commit id 又出来了，现在，你又可以到未来了。就问你厉不厉害！</p>
-<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>好了，这一篇，我们学了Git的安装和一些基本命令操作，差不多算入门了，接下去就是继续深入学习了。</p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>好了，这一篇，我们学了Git的安装和一些基本命令操作，差不多算入门了，接下去就是继续深入学习了。</p>
 
       
     </div>
@@ -429,7 +429,7 @@ git commit -m &quot;second commit&quot;
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装并配置Git"><span class="toc-number">2.</span> <span class="toc-text">安装并配置Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建版本库"><span class="toc-number">3.</span> <span class="toc-text">创建版本库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提交文件到版本库"><span class="toc-number">4.</span> <span class="toc-text">提交文件到版本库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看当前新增或者修改的文件"><span class="toc-number">5.</span> <span class="toc-text">查看当前新增或者修改的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看历史提交记录"><span class="toc-number">6.</span> <span class="toc-text">查看历史提交记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回退版本"><span class="toc-number">7.</span> <span class="toc-text">回退版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结束语"><span class="toc-number">8.</span> <span class="toc-text">结束语</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装并配置Git"><span class="toc-number">2.</span> <span class="toc-text">安装并配置Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建版本库"><span class="toc-number">3.</span> <span class="toc-text">创建版本库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提交文件到版本库"><span class="toc-number">4.</span> <span class="toc-text">提交文件到版本库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看当前新增或者修改的文件"><span class="toc-number">5.</span> <span class="toc-text">查看当前新增或者修改的文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看历史提交记录"><span class="toc-number">6.</span> <span class="toc-text">查看历史提交记录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回退版本"><span class="toc-number">7.</span> <span class="toc-text">回退版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结束语"><span class="toc-number">8.</span> <span class="toc-text">结束语</span></a></li></ol>
         
     </div>
     <style>
