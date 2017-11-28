@@ -24,7 +24,7 @@
 <meta property="og:description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。 先来看名词解释。 工作区（Working Directory）就是你在电脑里能看到的目录，比如我的GitRepository文件夹就是一个工作区：">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（二）/工作区.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（二）/Repository.jpeg">
-<meta property="og:updated_time" content="2017-11-28T09:52:06.046Z">
+<meta property="og:updated_time" content="2017-11-28T13:01:13.872Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习Git（二）">
 <meta name="twitter:description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。 先来看名词解释。 工作区（Working Directory）就是你在电脑里能看到的目录，比如我的GitRepository文件夹就是一个工作区：">
@@ -317,12 +317,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h3><p>Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。</p>
+        <h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p>Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。</p>
 <p>先来看名词解释。</p>
-<h4 id="工作区（Working-Directory）"><a href="#工作区（Working-Directory）" class="headerlink" title="工作区（Working Directory）"></a><strong>工作区（Working Directory）</strong></h4><p>就是你在电脑里能看到的目录，比如我的GitRepository文件夹就是一个工作区：</p>
+<h3 id="工作区（Working-Directory）"><a href="#工作区（Working-Directory）" class="headerlink" title="工作区（Working Directory）"></a><strong>工作区（Working Directory）</strong></h3><p>就是你在电脑里能看到的目录，比如我的GitRepository文件夹就是一个工作区：</p>
 <a id="more"></a>
 <p><img src="/2017/11/28/学习Git（二）/工作区.png" alt=""></p>
-<h4 id="版本库（Repository）"><a href="#版本库（Repository）" class="headerlink" title="版本库（Repository）"></a><strong>版本库（Repository）</strong></h4><p>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</p>
+<h3 id="版本库（Repository）"><a href="#版本库（Repository）" class="headerlink" title="版本库（Repository）"></a><strong>版本库（Repository）</strong></h3><p>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</p>
 <p>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。</p>
 <p><img src="/2017/11/28/学习Git（二）/Repository.jpeg" alt=""> </p>
 <p>前面说了我们把文件往Git版本库里添加的时候，是分两步执行的：</p>
@@ -331,7 +331,7 @@
 <p>因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。</p>
 <p>你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。</p>
 <p>所以，git add命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行git commit就可以一次性把暂存区的所有修改提交到分支。</p>
-<h3 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h3><ol>
+<h2 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h2><ol>
 <li><p>如果你文件只是在工作区修改了，但是还没提交到暂存区的时候，你可以用下面的命令来撤销。</p>
 <pre><code>git checkout -- [file]
 </code></pre><p> 比如，你有一个文件叫demo.txt, 里面的内容为：Today is Tuesday。 并且这句话已经提交到暂存区。 此时，你又在工作区修改了demo.txt 这个文件， 内容增加了一句：I don’t know what to say </p>
@@ -348,7 +348,7 @@
 <li><p>现在，假设你不但改错了东西，还从暂存区提交到了版本库，怎么办呢？还记得版本回退吗？可以回退到上一个版本。不过，这是有条件的，就是你还没有把自己的本地版本库推送到远程。</p>
 </li>
 </ol>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p> 场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p> 场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file</p>
 <p> 场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。</p>
 <p> 场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退，不过前提是没有推送到远程库。</p>
 
@@ -383,7 +383,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#工作区和暂存区"><span class="toc-number">1.</span> <span class="toc-text">工作区和暂存区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#工作区（Working-Directory）"><span class="toc-number">1.1.</span> <span class="toc-text">工作区（Working Directory）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#版本库（Repository）"><span class="toc-number">1.2.</span> <span class="toc-text">版本库（Repository）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#撤销操作"><span class="toc-number">2.</span> <span class="toc-text">撤销操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工作区和暂存区"><span class="toc-number">1.</span> <span class="toc-text">工作区和暂存区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#工作区（Working-Directory）"><span class="toc-number">1.1.</span> <span class="toc-text">工作区（Working Directory）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#版本库（Repository）"><span class="toc-number">1.2.</span> <span class="toc-text">版本库（Repository）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销操作"><span class="toc-number">2.</span> <span class="toc-text">撤销操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li></ol>
         
     </div>
     <style>
