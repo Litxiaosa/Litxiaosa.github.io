@@ -24,7 +24,7 @@
 <meta property="og:description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。 先来看名词解释。 工作区（Working Directory）就是你在电脑里能看到的目录，比如我的GitRepository文件夹就是一个工作区：">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（二）/工作区.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（二）/Repository.jpeg">
-<meta property="og:updated_time" content="2017-11-28T09:47:17.173Z">
+<meta property="og:updated_time" content="2017-11-28T09:50:54.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习Git（二）">
 <meta name="twitter:description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。 先来看名词解释。 工作区（Working Directory）就是你在电脑里能看到的目录，比如我的GitRepository文件夹就是一个工作区：">
@@ -333,8 +333,8 @@
 <p>所以，git add命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行git commit就可以一次性把暂存区的所有修改提交到分支。</p>
 <h3 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h3><ol>
 <li><p>如果你文件只是在工作区修改了，但是还没提交到暂存区的时候，你可以用下面的命令来撤销。</p>
-<p> git checkout – [file]</p>
-<p> 比如，你有一个文件叫demo.txt, 里面的内容为：Today is Tuesday。 并且这句话已经提交到暂存区。 此时，你又在工作区修改了demo.txt 这个文件， 内容增加了一句：I don’t know what to say </p>
+<pre><code>git checkout -- [file]
+</code></pre><p> 比如，你有一个文件叫demo.txt, 里面的内容为：Today is Tuesday。 并且这句话已经提交到暂存区。 此时，你又在工作区修改了demo.txt 这个文件， 内容增加了一句：I don’t know what to say </p>
 <p> 然后执行git checkout – demo.txt命令,你会发现demo.txt内容又变成Today is Tuesday了。</p>
 <pre><code>git checkout -- demo.txt
 </code></pre><p> git checkout – file命令中的–很重要，没有–，就变成了“切换到另一个分支”的命令。</p>
