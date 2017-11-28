@@ -6,8 +6,8 @@
       <title><![CDATA[学习Git（三）]]></title>
       <url>/2017/11/28/%E5%AD%A6%E4%B9%A0Git%EF%BC%88%E4%B8%89%EF%BC%89/</url>
       <content type="html"><![CDATA[<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a><strong>远程仓库</strong></h2><p>Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding。这里我以GitHub为例子介绍如何操作远程仓库。</p>
-<p>现在的情景是，你已经在本地创建了一个Git仓库，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作。</p>
 <a id="more"></a>
+<p>现在的情景是，你已经在本地创建了一个Git仓库，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作。</p>
 <h3 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h3><ol>
 <li><p>首先，登陆GitHub，然后，在右上角找到“new repository”按钮，创建一个新的仓库：</p>
 <p> <img src="/2017/11/28/学习Git（三）/创建仓库.png" alt=""></p>
@@ -73,9 +73,9 @@
       <title><![CDATA[学习Git（二）]]></title>
       <url>/2017/11/28/%E5%AD%A6%E4%B9%A0Git%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
       <content type="html"><![CDATA[<h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p>Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。</p>
+<a id="more"></a>
 <p>先来看名词解释。</p>
 <h3 id="工作区（Working-Directory）"><a href="#工作区（Working-Directory）" class="headerlink" title="工作区（Working Directory）"></a><strong>工作区（Working Directory）</strong></h3><p>就是你在电脑里能看到的目录，比如我的GitRepository文件夹就是一个工作区：</p>
-<a id="more"></a>
 <p><img src="/2017/11/28/学习Git（二）/工作区.png" alt=""></p>
 <h3 id="版本库（Repository）"><a href="#版本库（Repository）" class="headerlink" title="版本库（Repository）"></a><strong>版本库（Repository）</strong></h3><p>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</p>
 <p>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。</p>
@@ -217,10 +217,10 @@ git commit -m &quot;second commit&quot;
 <blockquote>
 <p>如果你听歌可眼红，何以待她好偏不懂。</p>
 </blockquote>
+<a id="more"></a>
 <p>她不会像白富美那样偶尔流露出一丝惹人厌的高傲，更不会像女屌丝那样做派发指 长相抱歉。</p>
 <p>她在自己生活的圈子里优雅的生活，不会默默无闻。</p>
 <p>她长得不算差，打扮得干干净净，或许不会穿的跟颁奖礼一般，但绝对会扬长避短穿出别有一番韵味。她更绝不会不自量力搭配没品。</p>
-<a id="more"></a>
 <p>她或许温婉，或许贤良，或许天真，或许任性，但这都不重要，重要的是，她很温暖，很安心。</p>
 <p>可能她是你的同学，又或者是校友，又或者是陌生人，反正就在那个电光火石般的一瞬，你像一朵青春萌动的少年，看见让自己眼前一亮的女生，一种莫名的冲动，发自内心，倚仗着荷尔蒙喷薄而出。</p>
 <p>你像一般电视剧演的那样，像一个侦探一样，调动了一切手段渠道，用此处略去七十八个字儿的方法彻底地认识了她。</p>
@@ -296,9 +296,9 @@ git commit -m &quot;second commit&quot;
       <title><![CDATA[solr的配置和简单应用]]></title>
       <url>/2017/08/24/solr%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h1><p>本文基于solr-6.6 、 tomcat-9、 jdk-1.8</p>
+<a id="more"></a>
 <h1 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a><strong>安装配置</strong></h1><p>下载完成以后解压即可。</p>
-<h2 id="在tomcat上安装solr"><a href="#在tomcat上安装solr" class="headerlink" title="在tomcat上安装solr"></a>在tomcat上安装solr</h2><a id="more"></a>
-<ol>
+<h2 id="在tomcat上安装solr"><a href="#在tomcat上安装solr" class="headerlink" title="在tomcat上安装solr"></a>在tomcat上安装solr</h2><ol>
 <li><p>把solr目录下的server/solr-webapp/webapp目录拷贝到tomcat/webapps的目录下,并且重命名为solr（任意名字）</p>
 </li>
 <li><p>将solr\server\lib\ext下的所有jar包，以及sol\server\lib下以metrics开头的jar包复制到tomcat\webapps\solr\WEB-INF\lib下</p>
@@ -599,8 +599,8 @@ public void delete()throws Exception{
 <p>浮生若梦,若梦非梦,浮生何如,如梦之梦 ——— 庄子《如梦之梦》</p>
 </blockquote>
 <p>你现在二十五六岁，大学毕业两三年，或者差不多研究生刚毕业。你有着一份还算凑合的工作，天天宅在冷气十足的办公室里，每个月拿到手的钱，交了房租吃了饭，所剩无几。</p>
-<p>每天晚上六点半，当时钟跳过员工手册上写着的下班时间，你从来不会有任何的反应。</p>
 <a id="more"></a>
+<p>每天晚上六点半，当时钟跳过员工手册上写着的下班时间，你从来不会有任何的反应。</p>
 <p>离开校园上班不过两三年，你已经写成了一套属于自己的作息节奏：</p>
 <p>你每天晚上七点下楼，去楼下的小餐馆来一碗重庆小面吸嗦满嘴是油；七点半你上楼继续坐在办公桌前干活；你心里想着，妈蛋怎么都没有人下班，真是一群神经病；殊不知你也可能一不留神成为另一个人心中的神经病；九点半，你终于收拾东西，回到你的出租房。</p>
 <p>你躺在床上，辗转反侧，寂寞难眠，你总觉的你一天什么事情都没干，青春不是应该释放激情与梦想吗？怎么看起来那么颓废。你盘算着明天就辞职，然后去自驾游，去看海，去隐居，但想到银行卡的余额，你呵呵呵呵呵笑起来，还是算了吧！</p>

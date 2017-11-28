@@ -15,19 +15,19 @@
 
 
 
-<meta name="description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。 先来看名词解释。 工作区（Working Directory）就是你在电脑里能看到的目录，比如我的GitRepository文件夹就是一个工作区：">
+<meta name="description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习Git（二）">
 <meta property="og:url" content="http://litxiaosa.me/2017/11/28/学习Git（二）/index.html">
 <meta property="og:site_name" content="潇洒的博客">
-<meta property="og:description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。 先来看名词解释。 工作区（Working Directory）就是你在电脑里能看到的目录，比如我的GitRepository文件夹就是一个工作区：">
+<meta property="og:description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（二）/工作区.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（二）/Repository.jpeg">
-<meta property="og:updated_time" content="2017-11-28T13:01:13.872Z">
+<meta property="og:updated_time" content="2017-11-28T13:17:08.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习Git（二）">
-<meta name="twitter:description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。 先来看名词解释。 工作区（Working Directory）就是你在电脑里能看到的目录，比如我的GitRepository文件夹就是一个工作区：">
+<meta name="twitter:description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。">
 <meta name="twitter:image" content="http://litxiaosa.me/2017/11/28/学习Git（二）/工作区.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -318,9 +318,9 @@
       
           
         <h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p>Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。</p>
+<a id="more"></a>
 <p>先来看名词解释。</p>
 <h3 id="工作区（Working-Directory）"><a href="#工作区（Working-Directory）" class="headerlink" title="工作区（Working Directory）"></a><strong>工作区（Working Directory）</strong></h3><p>就是你在电脑里能看到的目录，比如我的GitRepository文件夹就是一个工作区：</p>
-<a id="more"></a>
 <p><img src="/2017/11/28/学习Git（二）/工作区.png" alt=""></p>
 <h3 id="版本库（Repository）"><a href="#版本库（Repository）" class="headerlink" title="版本库（Repository）"></a><strong>版本库（Repository）</strong></h3><p>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</p>
 <p>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。</p>
