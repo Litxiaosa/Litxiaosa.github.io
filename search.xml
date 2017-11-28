@@ -3,6 +3,59 @@
   
     
     <entry>
+      <title><![CDATA[学习Git（二）]]></title>
+      <url>/2017/11/28/%E5%AD%A6%E4%B9%A0Git%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+      <content type="html"><![CDATA[<h3 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h3><p>Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。</p>
+<p>先来看名词解释。</p>
+<h4 id="工作区（Working-Directory）"><a href="#工作区（Working-Directory）" class="headerlink" title="工作区（Working Directory）"></a><strong>工作区（Working Directory）</strong></h4><p>就是你在电脑里能看到的目录，比如我的GitRepository文件夹就是一个工作区：</p>
+<a id="more"></a>
+<p><img src="/2017/11/28/学习Git（二）/工作区.png" alt=""></p>
+<h4 id="版本库（Repository）"><a href="#版本库（Repository）" class="headerlink" title="版本库（Repository）"></a><strong>版本库（Repository）</strong></h4><p>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</p>
+<p>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。</p>
+<p><img src="/2017/11/28/学习Git（二）/Repository.jpeg" alt=""> </p>
+<p>前面说了我们把文件往Git版本库里添加的时候，是分两步执行的：</p>
+<p>第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；</p>
+<p>第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
+<p>因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。</p>
+<p>你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。</p>
+<p>所以，git add命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行git commit就可以一次性把暂存区的所有修改提交到分支。</p>
+<h3 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h3><ol>
+<li><p>如果你文件只是在工作区修改了，但是还没提交到暂存区的时候，你可以用下面的命令来撤销。</p>
+<p> git checkout – [file]</p>
+<p> 比如，你有一个文件叫demo.txt, 里面的内容为：Today is Tuesday。 并且这句话已经提交到暂存区。 此时，你又在工作区修改了demo.txt 这个文件， 内容增加了一句：I don’t know what to say </p>
+<p> 然后执行git checkout – demo.txt命令,你会发现demo.txt内容又变成Today is Tuesday了。</p>
+<pre><code>git checkout -- demo.txt
+</code></pre><p> git checkout – file命令中的–很重要，没有–，就变成了“切换到另一个分支”的命令。</p>
+</li>
+<li><p>假如你文件在工作区修改了,并且也执行 <code>git add</code> 命令提交给暂存区了，但是，还没有执行commit操作。那么执行上面的 <code>git checkout -- [file]</code> 已经无效了，因为工作区跟暂存区已经一样了，再怎么覆盖内容也一样，这时候就应该使用 <code>git reset HEAD</code> 命令来撤销。</p>
+<pre><code>git reset HEAD demo.txt
+</code></pre><p> 还记得如何丢弃工作区的修改吗？</p>
+<pre><code>git checkout -- demo.txt
+</code></pre><p> 回头看看添加的内容是不是又回滚了？</p>
+</li>
+<li><p>现在，假设你不但改错了东西，还从暂存区提交到了版本库，怎么办呢？还记得版本回退吗？可以回退到上一个版本。不过，这是有条件的，就是你还没有把自己的本地版本库推送到远程。</p>
+</li>
+</ol>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ol>
+<li><p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file</p>
+</li>
+<li><p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。</p>
+</li>
+<li><p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退，不过前提是没有推送到远程库。</p>
+</li>
+</ol>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Git </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[学习Git（一）]]></title>
       <url>/2017/11/28/%E5%AD%A6%E4%B9%A0Git%EF%BC%88%E4%B8%80%EF%BC%89/</url>
       <content type="html"><![CDATA[<p><strong>本系列文章基于Mac系统</strong></p>
