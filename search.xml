@@ -5,10 +5,10 @@
     <entry>
       <title><![CDATA[学习Git（三）]]></title>
       <url>/2017/11/28/%E5%AD%A6%E4%B9%A0Git%EF%BC%88%E4%B8%89%EF%BC%89/</url>
-      <content type="html"><![CDATA[<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a><strong>远程仓库</strong></h2><p>Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding。这里我以GitHub为例子介绍如何操作远程仓库。</p>
+      <content type="html"><![CDATA[<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a><strong>远程仓库</strong></h1><p>Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding。这里我以GitHub为例子介绍如何操作远程仓库。</p>
 <a id="more"></a>
 <p>现在的情景是，你已经在本地创建了一个Git仓库，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作。</p>
-<h3 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h3><ol>
+<h2 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h2><ol>
 <li><p>首先，登陆GitHub，然后，在右上角找到“new repository”按钮，创建一个新的仓库：</p>
 <p> <img src="/2017/11/28/学习Git（三）/创建仓库.png" alt=""></p>
 </li>
@@ -33,10 +33,10 @@
 </li>
 <li><p>从现在起，只要本地作了提交，就可以通过命令</p>
 <pre><code>git push origin master
-</code></pre></li>
+</code></pre><p>把本地master分支的最新修改推送至GitHub，现在，你就拥有了真正的分布式版本库！</p>
+</li>
 </ol>
-<p>把本地master分支的最新修改推送至GitHub，现在，你就拥有了真正的分布式版本库！</p>
-<h3 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a>从远程库克隆</h3><p>我们讲了先有本地库，后有远程库的时候，如何关联远程库。现在，假设我们从零开发，那么最好的方式是先创建远程库，然后，从远程库克隆。</p>
+<h2 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a>从远程库克隆</h2><p>我们讲了先有本地库，后有远程库的时候，如何关联远程库。现在，假设我们从零开发，那么最好的方式是先创建远程库，然后，从远程库克隆。</p>
 <ol>
 <li><p>首先，登陆GitHub，创建一个新的仓库，名字叫gitskills：</p>
 <p> <img src="/2017/11/28/学习Git（三）/创建远程仓库2.png" alt=""></p>
@@ -50,7 +50,7 @@
 <p>如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。</p>
 </li>
 </ol>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h2><ol>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h1><ol>
 <li><p>要关联一个远程库，使用命令 <code>git remote add origin git@server-name:path/repo-name.git</code></p>
 </li>
 <li><p>关联后，使用命令 <code>git push -u origin master</code> 第一次推送master分支的所有内容</p>
@@ -136,7 +136,7 @@ git config --global user.email 你的邮箱
 </li>
 <li><p>检查配置信息<br> 如果你不确定你的信息是不是配置成功了，可以输入一下命令查看</p>
 <pre><code>git config --list
-</code></pre><p> 如果你觉得返回的信息太多，也可以输入<code>git config &lt;key&gt;：</code><br> 查询制定的配置，例如:</p>
+</code></pre><p> 如果你觉得返回的信息太多，也可以输入<code>git config &lt;key&gt;：</code><br> 查询指定的配置，例如:</p>
 <pre><code>git config user.name
 
 git config user.email
@@ -197,7 +197,7 @@ git commit -m &quot;second commit&quot;
 <p>Git提供了一个命令git reflog用来记录你的每一次命令：</p>
 <pre><code>git reflog
 </code></pre><p><img src="/2017/11/28/学习Git（一）/回退3.png" alt=""> </p>
-<p>（注：我没有再次做回退操作） commit id 又出来了，现在，你又可以到未来了。就问你厉不厉害！</p>
+<p>（注：我没有再次做回滚操作） commit id 又出来了，现在，你又可以到未来了。就问你厉不厉害！</p>
 <h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>好了，这一篇，我们学了Git的安装和一些基本命令操作，差不多算入门了，接下去就是继续深入学习了。</p>
 ]]></content>
       

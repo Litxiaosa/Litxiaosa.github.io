@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）/创建远程仓库2.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）/README.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）/克隆成功2.png">
-<meta property="og:updated_time" content="2017-11-28T13:16:19.248Z">
+<meta property="og:updated_time" content="2017-11-28T14:34:10.476Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习Git（三）">
 <meta name="twitter:description" content="远程仓库Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding">
@@ -323,10 +323,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a><strong>远程仓库</strong></h2><p>Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding。这里我以GitHub为例子介绍如何操作远程仓库。</p>
+        <h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a><strong>远程仓库</strong></h1><p>Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding。这里我以GitHub为例子介绍如何操作远程仓库。</p>
 <a id="more"></a>
 <p>现在的情景是，你已经在本地创建了一个Git仓库，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作。</p>
-<h3 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h3><ol>
+<h2 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h2><ol>
 <li><p>首先，登陆GitHub，然后，在右上角找到“new repository”按钮，创建一个新的仓库：</p>
 <p> <img src="/2017/11/28/学习Git（三）/创建仓库.png" alt=""></p>
 </li>
@@ -351,10 +351,10 @@
 </li>
 <li><p>从现在起，只要本地作了提交，就可以通过命令</p>
 <pre><code>git push origin master
-</code></pre></li>
+</code></pre><p>把本地master分支的最新修改推送至GitHub，现在，你就拥有了真正的分布式版本库！</p>
+</li>
 </ol>
-<p>把本地master分支的最新修改推送至GitHub，现在，你就拥有了真正的分布式版本库！</p>
-<h3 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a>从远程库克隆</h3><p>我们讲了先有本地库，后有远程库的时候，如何关联远程库。现在，假设我们从零开发，那么最好的方式是先创建远程库，然后，从远程库克隆。</p>
+<h2 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a>从远程库克隆</h2><p>我们讲了先有本地库，后有远程库的时候，如何关联远程库。现在，假设我们从零开发，那么最好的方式是先创建远程库，然后，从远程库克隆。</p>
 <ol>
 <li><p>首先，登陆GitHub，创建一个新的仓库，名字叫gitskills：</p>
 <p> <img src="/2017/11/28/学习Git（三）/创建远程仓库2.png" alt=""></p>
@@ -368,7 +368,7 @@
 <p>如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。</p>
 </li>
 </ol>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h2><ol>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h1><ol>
 <li><p>要关联一个远程库，使用命令 <code>git remote add origin git@server-name:path/repo-name.git</code></p>
 </li>
 <li><p>关联后，使用命令 <code>git push -u origin master</code> 第一次推送master分支的所有内容</p>
@@ -402,7 +402,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#远程仓库"><span class="toc-number">1.</span> <span class="toc-text">远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加远程仓库"><span class="toc-number">1.1.</span> <span class="toc-text">添加远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从远程库克隆"><span class="toc-number">1.2.</span> <span class="toc-text">从远程库克隆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">2.</span> <span class="toc-text">小结</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#远程仓库"><span class="toc-number">1.</span> <span class="toc-text">远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加远程仓库"><span class="toc-number">1.1.</span> <span class="toc-text">添加远程仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从远程库克隆"><span class="toc-number">1.2.</span> <span class="toc-text">从远程库克隆</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#小结"><span class="toc-number">2.</span> <span class="toc-text">小结</span></a></li></ol>
         
     </div>
     <style>
