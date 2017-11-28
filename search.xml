@@ -19,8 +19,8 @@
 <p> <img src="/2017/11/28/学习Git（三）/创建仓库成功.png" alt=""></p>
 </li>
 <li><p>现在，我们根据GitHub的提示，在本地的GitRepository仓库下运行命令：</p>
-<p> git remote add origin git@github.com:Litxiaosa/learnGit.git</p>
-<p> 请千万注意，把上面的Litxiaosa替换成你自己的GitHub账户名，否则，你在本地关联的就是我的远程库，关联没有问题，但是你以后推送是推不上去的，因为你的SSH Key公钥不在我的账户列表中。</p>
+<pre><code>git remote add origin git@github.com:Litxiaosa/learnGit.git
+</code></pre><p> 请千万注意，把上面的Litxiaosa替换成你自己的GitHub账户名，否则，你在本地关联的就是我的远程库，关联没有问题，但是你以后推送是推不上去的，因为你的SSH Key公钥不在我的账户列表中。</p>
 </li>
 <li><p>添加后，远程库的名字就是origin，这是Git默认的叫法，也可以改成别的，但是origin这个名字一看就知道是远程库。</p>
 </li>
@@ -28,13 +28,9 @@
 <pre><code>git push -u origin master
 </code></pre><p>  <img src="/2017/11/28/学习Git（三）/推送.png" alt=""></p>
 <p>  可以看到，你本地的代码就推送到远程仓库了推送成功后</p>
-<p> 由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。</p>
+<p> 由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。可以立刻在GitHub页面中看到远程库的内容已经和本地一模一样：</p>
+<p> <img src="/2017/11/28/学习Git（三）/推送成功.png" alt=""></p>
 </li>
-</ol>
-<pre><code>可以立刻在GitHub页面中看到远程库的内容已经和本地一模一样：
-
-![](学习Git（三）/推送成功.png)
-</code></pre><ol>
 <li><p>从现在起，只要本地作了提交，就可以通过命令</p>
 <pre><code>git push origin master
 </code></pre></li>
@@ -50,12 +46,11 @@
 <li><p>现在，远程库已经准备好了，下一步是用命令git clone克隆一个本地库</p>
 <pre><code>sudo git clone https://github.com/Litxiaosa/gitskills.git
 </code></pre><p> <img src="/2017/11/28/学习Git（三）/克隆成功2.png" alt=""></p>
+<p>注意把Git库的地址换成你自己的，然后进入gitskills目录看看，已经有<br>README.md文件了。</p>
+<p>如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。</p>
 </li>
 </ol>
-<pre><code>注意把Git库的地址换成你自己的，然后进入gitskills目录看看，已经有
-</code></pre><p>README.md文件了。</p>
-<pre><code>如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。
-</code></pre><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h2><ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h2><ol>
 <li><p>要关联一个远程库，使用命令 <code>git remote add origin git@server-name:path/repo-name.git</code></p>
 </li>
 <li><p>关联后，使用命令 <code>git push -u origin master</code> 第一次推送master分支的所有内容</p>
