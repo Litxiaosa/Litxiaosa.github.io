@@ -15,20 +15,27 @@
 
 
 
-<meta name="description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。">
+<meta name="description" content="本系列文章基于Mac系统 之前自己搭建博客的时候使用到GitHub，需要使用git进行版本控制，现在很多公司也在使用Git，发现Git很棒，于是学习了解一下Git。这只是我自己的学习笔记，如果你是大神，请你不吝赐教，如果你也是小白，希望这系列文章能帮到你。">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习Git（二）">
-<meta property="og:url" content="http://litxiaosa.me/2017/11/28/学习Git（二）/index.html">
+<meta property="og:title" content="学习Git（一）之 入门">
+<meta property="og:url" content="http://litxiaosa.me/2017/11/28/学习Git（一）之 入门/index.html">
 <meta property="og:site_name" content="潇洒的博客">
-<meta property="og:description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。">
-<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（二）/工作区.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（二）/Repository.jpeg">
-<meta property="og:updated_time" content="2017-11-28T13:17:08.109Z">
+<meta property="og:description" content="本系列文章基于Mac系统 之前自己搭建博客的时候使用到GitHub，需要使用git进行版本控制，现在很多公司也在使用Git，发现Git很棒，于是学习了解一下Git。这只是我自己的学习笔记，如果你是大神，请你不吝赐教，如果你也是小白，希望这系列文章能帮到你。">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）之%20入门/创建仓库.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）之%20入门/提交.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）之%20入门/修改.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）之%20入门/查看.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）之%20入门/历史记录.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）之%20入门/过滤.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）之%20入门/回退1.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）之%20入门/回退2.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）之%20入门/回退3.png">
+<meta property="og:updated_time" content="2017-11-29T01:37:46.202Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="学习Git（二）">
-<meta name="twitter:description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。">
-<meta name="twitter:image" content="http://litxiaosa.me/2017/11/28/学习Git（二）/工作区.png">
+<meta name="twitter:title" content="学习Git（一）之 入门">
+<meta name="twitter:description" content="本系列文章基于Mac系统 之前自己搭建博客的时候使用到GitHub，需要使用git进行版本控制，现在很多公司也在使用Git，发现Git很棒，于是学习了解一下Git。这只是我自己的学习笔记，如果你是大神，请你不吝赐教，如果你也是小白，希望这系列文章能帮到你。">
+<meta name="twitter:image" content="http://litxiaosa.me/2017/11/28/学习Git（一）之%20入门/创建仓库.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -60,7 +67,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>学习Git（二） | 潇洒的博客</title>
+<title>学习Git（一）之 入门 | 潇洒的博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -277,11 +284,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-学习Git（二）" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-学习Git（一）之 入门" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/11/28/学习Git（二）/" class="article-date">
-      <time datetime="2017-11-28T08:55:30.000Z" itemprop="datePublished">2017-11-28</time>
+      <a href="/2017/11/28/学习Git（一）之 入门/" class="article-date">
+      <time datetime="2017-11-28T06:14:43.000Z" itemprop="datePublished">2017-11-28</time>
 </a>
 
 
@@ -296,7 +303,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      学习Git（二）
+      学习Git（一）之 入门
     </h1>
   
 
@@ -317,40 +324,85 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p>Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。</p>
+        <p><strong>本系列文章基于Mac系统</strong></p>
+<p>之前自己搭建博客的时候使用到GitHub，需要使用git进行版本控制，现在很多公司也在使用Git，发现Git很棒，于是学习了解一下Git。这只是我自己的学习笔记，如果你是大神，请你不吝赐教，如果你也是小白，希望这系列文章能帮到你。</p>
 <a id="more"></a>
-<p>先来看名词解释。</p>
-<h3 id="工作区（Working-Directory）"><a href="#工作区（Working-Directory）" class="headerlink" title="工作区（Working Directory）"></a><strong>工作区（Working Directory）</strong></h3><p>就是你在电脑里能看到的目录，比如我的GitRepository文件夹就是一个工作区：</p>
-<p><img src="/2017/11/28/学习Git（二）/工作区.png" alt=""></p>
-<h3 id="版本库（Repository）"><a href="#版本库（Repository）" class="headerlink" title="版本库（Repository）"></a><strong>版本库（Repository）</strong></h3><p>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</p>
-<p>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。</p>
-<p><img src="/2017/11/28/学习Git（二）/Repository.jpeg" alt=""> </p>
-<p>前面说了我们把文件往Git版本库里添加的时候，是分两步执行的：</p>
-<p>第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；</p>
-<p>第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
-<p>因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。</p>
-<p>你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。</p>
-<p>所以，git add命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行git commit就可以一次性把暂存区的所有修改提交到分支。</p>
-<h2 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h2><ol>
-<li><p>如果你文件只是在工作区修改了，但是还没提交到暂存区的时候，你可以用下面的命令来撤销。</p>
-<pre><code>git checkout -- [file]
-</code></pre><p> 比如，你有一个文件叫demo.txt, 里面的内容为：Today is Tuesday。 并且这句话已经提交到暂存区。 此时，你又在工作区修改了demo.txt 这个文件， 内容增加了一句：I don’t know what to say </p>
-<p> 然后执行git checkout – demo.txt命令,你会发现demo.txt内容又变成Today is Tuesday了。</p>
-<pre><code>git checkout -- demo.txt
-</code></pre><p> git checkout – file命令中的–很重要，没有–，就变成了“切换到另一个分支”的命令。</p>
+<h2 id="安装并配置Git"><a href="#安装并配置Git" class="headerlink" title="安装并配置Git"></a>安装并配置Git</h2><ol>
+<li><p>要使用Git，第一步当然是安装Git了。</p>
+<p>首先，打开终端输入一下命令，看你是否安装了Git</p>
+<pre><code>git --version
+</code></pre><p>如果没有安装，那么请下载安装 <a href="https://git-scm.com/download" target="_blank" rel="noopener">Git客户端</a>， 选择你自己的系统下载安装即可。</p>
 </li>
-<li><p>假如你文件在工作区修改了,并且也执行 <code>git add</code> 命令提交给暂存区了，但是，还没有执行commit操作。那么执行上面的 <code>git checkout -- [file]</code> 已经无效了，因为工作区跟暂存区已经一样了，再怎么覆盖内容也一样，这时候就应该使用 <code>git reset HEAD</code> 命令来撤销。</p>
-<pre><code>git reset HEAD demo.txt
-</code></pre><p> 还记得如何丢弃工作区的修改吗？</p>
-<pre><code>git checkout -- demo.txt
-</code></pre><p> 回头看看添加的内容是不是又回滚了？</p>
+<li><p>当安装完Git应该做的第一件事就是设置你的用户名称与邮件地址。 这样做很重要，因为每一个Git的提交都会使用这些信息，并且它会写入到你的每一次提交中，不可更改：</p>
+<pre><code>git config --global user.name &quot;你的名字&quot;
+git config --global user.email 你的邮箱
+</code></pre><p> 如果使用了 –global 选项，那么该命令只需要运行一次，因为之后无论你在该系统上做任何事情， Git 都会使用这些信息。 当你想针对特定项目使用不同的用户名称与邮件地址时，可以在那个项目目录下运行不使用 –global 选项的命令来配置。</p>
 </li>
-<li><p>现在，假设你不但改错了东西，还从暂存区提交到了版本库，怎么办呢？还记得版本回退吗？可以回退到上一个版本。不过，这是有条件的，就是你还没有把自己的本地版本库推送到远程。</p>
-</li>
+<li><p>检查配置信息<br> 如果你不确定你的信息是不是配置成功了，可以输入一下命令查看</p>
+<pre><code>git config --list
+</code></pre><p> 如果你觉得返回的信息太多，也可以输入<code>git config &lt;key&gt;：</code><br> 查询指定的配置，例如:</p>
+<pre><code>git config user.name
+
+git config user.email
+</code></pre></li>
 </ol>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p> 场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file</p>
-<p> 场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。</p>
-<p> 场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退，不过前提是没有推送到远程库。</p>
+<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><p>什么是版本库呢？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。    </p>
+<p>创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目录，直接新建文件夹即可，然后cd 到该文件夹下，执行下面的命令</p>
+<pre><code>git init
+</code></pre><p> <img src="/2017/11/28/学习Git（一）之 入门/创建仓库.png" alt="">       </p>
+<p>瞬间Git就把仓库建好了，而且告诉你是一个空的仓库（empty Git repository），细心的读者可以发现当前目录下多了一个.git的目录，这个目录是Git来跟踪管理版本库的，没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。</p>
+<p>如果你没有看到.git目录，那是因为这个目录默认是隐藏的，用ls -ah命令就可以看见。</p>
+<h2 id="提交文件到版本库"><a href="#提交文件到版本库" class="headerlink" title="提交文件到版本库"></a>提交文件到版本库</h2><p>上面把git仓库搭建好了，现在就来试试添加文件到版本库里面。</p>
+<p>创建一个txt文档起名叫做demo.txt，往里面添加一点内容 Hello Git</p>
+<p><strong>注意:这里需要文件是UTF-8格式的。</strong></p>
+<p>一定要放到GitRepository目录下（子目录也行），因为这是一个Git仓库，放到其他地方Git再厉害也找不到这个文件。</p>
+<p>第一步，用命令git add告诉Git，把文件添加到仓库：</p>
+<pre><code>git add demo.txt
+</code></pre><p> 执行上面的命令，没有任何显示，这就对了，Unix的哲学是“没有消息就是好消息”，说明添加成功。</p>
+<p>第二步，用命令git commit告诉Git，把文件提交到仓库：</p>
+<pre><code>git commit -m &quot;first commit&quot;
+</code></pre><p>-m 参数是用来注释你提交的信息的，这样以后才知道这次提交更改了什么</p>
+<p><img src="/2017/11/28/学习Git（一）之 入门/提交.png" alt="">   </p>
+<h2 id="查看当前新增或者修改的文件"><a href="#查看当前新增或者修改的文件" class="headerlink" title="查看当前新增或者修改的文件"></a>查看当前新增或者修改的文件</h2><p>实际使用中你不止提交一个文件，或新增或修改多个文件，可能时间一久就忘了有多少文件需要提交。</p>
+<p>这里模拟一下，首先新建一个hello.txt的文件，然后修改demo.txt内容，添加一句come on</p>
+<p>这样就有2个文件需要提交了。</p>
+<p>我们使用git status命令来查看当前状态,是否有未提交的文件</p>
+<pre><code>git status
+</code></pre><p><img src="/2017/11/28/学习Git（一）之 入门/修改.png" alt=""> </p>
+<p>如图，可以看到一个demo.txt被修改过了，但还没有准备提交的修改，另外一个是Untracked files: hello.txt，表示新增的文件。</p>
+<p>这时候准备把上面2个文件都提交，使用命令:</p>
+<pre><code>git add demo.txt
+git add hello.txt
+</code></pre><p>或者你嫌弃文件太多，一次次add感觉很麻烦，那么可以试试使用git add . 提交，.表示提交当前目录所有文件</p>
+<pre><code>git add .
+git commit -m &quot;second commit&quot;
+</code></pre><p>提交后再使用git status命令查看下</p>
+<p><img src="/2017/11/28/学习Git（一）之 入门/查看.png" alt=""></p>
+<p>如图，可以看到文件提交到仓库了，并且git status后提示nothing to commit, working directory clean，说明当前没有需要提交的修改，工作目录是干净。</p>
+<h2 id="查看历史提交记录"><a href="#查看历史提交记录" class="headerlink" title="查看历史提交记录"></a>查看历史提交记录</h2><p>有时候你想看看之前提交的历史纪录~那么就需要使用到下面的命令：</p>
+<pre><code>git log
+</code></pre><p><img src="/2017/11/28/学习Git（一）之 入门/历史记录.png" alt=""></p>
+<p>如图，可以看到我们提交的2次历史，first commit和second commit。历史纪录是根据时间倒叙排列的。</p>
+<p>如果觉得代码太多了，加点过滤就行</p>
+<pre><code>git log --pretty=oneline
+</code></pre><p><img src="/2017/11/28/学习Git（一）之 入门/过滤.png" alt=""></p>
+<h2 id="回滚版本"><a href="#回滚版本" class="headerlink" title="回滚版本"></a>回滚版本</h2><p>现在我们准备把demo.txt回退到上一个版本，也就是“first commit”的那个版本，怎么做呢？</p>
+<p>首先，Git必须知道当前版本是哪个版本，在Git中，用HEAD表示当前版本，也就是最新的提交2c49a55···9a9a13c（注意我的提交ID和你的肯定不一样）， 就是上图中那一大长串字符，上一个版本就是 <code>HEAD^</code>，上上一个版本就是 <code>HEAD ^^</code>，当然往上100个版本写 <code>100个^</code> 比较容易数不过来，所以写成HEAD~100。</p>
+<p>现在，我们要把当前版本“second commit”回退到上一个版本“first commit”，就可以使用git reset命令：</p>
+<pre><code>git reset --hard HEAD^
+</code></pre><p><img src="/2017/11/28/学习Git（一）之 入门/回退1.png" alt=""></p>
+<p>看看第二次提交的helllo.txt 是不是不见了，demo.txt里面的内容是不是也变了？ 好比你从21世纪坐时光穿梭机来到了19世纪，想再回去已经回不去了，肿么办？</p>
+<p>办法其实还是有的，只要上面的命令行窗口还没有被关掉，你就可以顺着往上找啊找啊，找到那个second commit的commit id是2c49a55···9a9a13c，于是就可以指定回到未来的某个版本：</p>
+<pre><code>git reset --hard 2c49a5503041f562e8dfbf
+</code></pre><p>版本号没必要写全，前几位就可以了，Git会自动去找。当然也不能只写前一两位，因为Git可能会找到多个版本号，就无法确定是哪一个了。</p>
+<p><img src="/2017/11/28/学习Git（一）之 入门/回退2.png" alt=""></p>
+<p>果然， 老子又回来了！</p>
+<p>现在，你回退到了某个版本，关掉了电脑，第二天早上就后悔了，想恢复到新版本怎么办？找不到新版本的commit id怎么办？</p>
+<p>Git提供了一个命令git reflog用来记录你的每一次命令：</p>
+<pre><code>git reflog
+</code></pre><p><img src="/2017/11/28/学习Git（一）之 入门/回退3.png" alt=""> </p>
+<p>（注：我没有再次做回滚操作） commit id 又出来了，现在，你又可以到未来了。就问你厉不厉害！</p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>好了，这一篇，我们学了Git的安装和一些基本命令操作，差不多算入门了，接下去就是继续深入学习了。</p>
 
       
     </div>
@@ -363,15 +415,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/11/28/学习Git（三）/">
-                    学习Git（三）
+                <a href="/2017/11/28/学习Git（二）之 暂存区/">
+                    学习Git（二）之 暂存区
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/11/28/学习Git（一）/">
-                    学习Git（一）
+                <a href="/2017/10/31/姑苏有钟声/">
+                    姑苏有钟声
                 </a>
             </div>
         
@@ -383,7 +435,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工作区和暂存区"><span class="toc-number">1.</span> <span class="toc-text">工作区和暂存区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#工作区（Working-Directory）"><span class="toc-number">1.1.</span> <span class="toc-text">工作区（Working Directory）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#版本库（Repository）"><span class="toc-number">1.2.</span> <span class="toc-text">版本库（Repository）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销操作"><span class="toc-number">2.</span> <span class="toc-text">撤销操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装并配置Git"><span class="toc-number">1.</span> <span class="toc-text">安装并配置Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建版本库"><span class="toc-number">2.</span> <span class="toc-text">创建版本库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提交文件到版本库"><span class="toc-number">3.</span> <span class="toc-text">提交文件到版本库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看当前新增或者修改的文件"><span class="toc-number">4.</span> <span class="toc-text">查看当前新增或者修改的文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看历史提交记录"><span class="toc-number">5.</span> <span class="toc-text">查看历史提交记录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回滚版本"><span class="toc-number">6.</span> <span class="toc-text">回滚版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结束语"><span class="toc-number">7.</span> <span class="toc-text">结束语</span></a></li></ol>
         
     </div>
     <style>
@@ -418,7 +470,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"学习Git（二）　| 潇洒的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"学习Git（一）之 入门　| 潇洒的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -446,7 +498,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/11/28/学习Git（三）/" title="上一篇: 学习Git（三）">
+            <a href="/2017/11/28/学习Git（二）之 暂存区/" title="上一篇: 学习Git（二）之 暂存区">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -454,13 +506,13 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/11/28/学习Git（一）/" title="下一篇: 学习Git（一）">
+            <a href="/2017/10/31/姑苏有钟声/" title="下一篇: 姑苏有钟声">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（三）/">学习Git（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（二）/">学习Git（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（一）/">学习Git（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/31/姑苏有钟声/">姑苏有钟声</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/阿里巴巴Java开发规约插件/">阿里巴巴Java开发规约插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/24/solr的配置和简单应用/">solr的配置和简单应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/浮生若梦/">浮生若梦</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/30/风景旧曾谙/">风景旧曾谙</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/MAC下配置环境变量/">MAC下配置环境变量</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo绑定域名/">hexo绑定域名</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/安装和配置主题/">安装和配置主题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo-github搭建自己的个人博客/">hexo+github搭建自己的个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/HelloWorld/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（三） 之 远程仓库/">学习Git（三） 之 远程仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（二）之 暂存区/">学习Git（二）之 暂存区</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（一）之 入门/">学习Git（一）之 入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/31/姑苏有钟声/">姑苏有钟声</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/阿里巴巴Java开发规约插件/">阿里巴巴Java开发规约插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/24/solr的配置和简单应用/">solr的配置和简单应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/浮生若梦/">浮生若梦</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/30/风景旧曾谙/">风景旧曾谙</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/MAC下配置环境变量/">MAC下配置环境变量</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo绑定域名/">hexo绑定域名</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/安装和配置主题/">安装和配置主题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo-github搭建自己的个人博客/">hexo+github搭建自己的个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/HelloWorld/">Hello World</a></li></ul>
 
 
 

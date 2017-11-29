@@ -15,26 +15,20 @@
 
 
 
-<meta name="description" content="远程仓库Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出">
+<meta name="description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习Git（三）">
-<meta property="og:url" content="http://litxiaosa.me/2017/11/28/学习Git（三）/index.html">
+<meta property="og:title" content="学习Git（二）之 暂存区">
+<meta property="og:url" content="http://litxiaosa.me/2017/11/28/学习Git（二）之 暂存区/index.html">
 <meta property="og:site_name" content="潇洒的博客">
-<meta property="og:description" content="远程仓库Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding">
-<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）/创建仓库.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）/leanGit.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）/创建仓库成功.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）/推送.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）/推送成功.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）/创建远程仓库2.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）/README.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）/克隆成功2.png">
-<meta property="og:updated_time" content="2017-11-28T14:34:10.476Z">
+<meta property="og:description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（二）之%20暂存区/工作区.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（二）之%20暂存区/Repository.jpeg">
+<meta property="og:updated_time" content="2017-11-29T01:39:28.033Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="学习Git（三）">
-<meta name="twitter:description" content="远程仓库Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding">
-<meta name="twitter:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）/创建仓库.png">
+<meta name="twitter:title" content="学习Git（二）之 暂存区">
+<meta name="twitter:description" content="工作区和暂存区Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。">
+<meta name="twitter:image" content="http://litxiaosa.me/2017/11/28/学习Git（二）之%20暂存区/工作区.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -66,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>学习Git（三） | 潇洒的博客</title>
+<title>学习Git（二）之 暂存区 | 潇洒的博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -283,11 +277,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-学习Git（三）" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-学习Git（二）之 暂存区" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/11/28/学习Git（三）/" class="article-date">
-      <time datetime="2017-11-28T09:58:43.000Z" itemprop="datePublished">2017-11-28</time>
+      <a href="/2017/11/28/学习Git（二）之 暂存区/" class="article-date">
+      <time datetime="2017-11-28T08:55:30.000Z" itemprop="datePublished">2017-11-28</time>
 </a>
 
 
@@ -302,7 +296,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      学习Git（三）
+      学习Git（二）之 暂存区
     </h1>
   
 
@@ -323,59 +317,40 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a><strong>远程仓库</strong></h1><p>Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding。这里我以GitHub为例子介绍如何操作远程仓库。</p>
+        <h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p>Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。</p>
 <a id="more"></a>
-<p>现在的情景是，你已经在本地创建了一个Git仓库，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作。</p>
-<h2 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h2><ol>
-<li><p>首先，登陆GitHub，然后，在右上角找到“new repository”按钮，创建一个新的仓库：</p>
-<p> <img src="/2017/11/28/学习Git（三）/创建仓库.png" alt=""></p>
+<p>先来看名词解释。</p>
+<h3 id="工作区（Working-Directory）"><a href="#工作区（Working-Directory）" class="headerlink" title="工作区（Working Directory）"></a><strong>工作区（Working Directory）</strong></h3><p>就是你在电脑里能看到的目录，比如我的GitRepository文件夹就是一个工作区：</p>
+<p><img src="/2017/11/28/学习Git（二）之 暂存区/工作区.png" alt=""></p>
+<h3 id="版本库（Repository）"><a href="#版本库（Repository）" class="headerlink" title="版本库（Repository）"></a><strong>版本库（Repository）</strong></h3><p>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</p>
+<p>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。</p>
+<p><img src="/2017/11/28/学习Git（二）之 暂存区/Repository.jpeg" alt=""> </p>
+<p>前面说了我们把文件往Git版本库里添加的时候，是分两步执行的：</p>
+<p>第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；</p>
+<p>第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
+<p>因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。</p>
+<p>你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。</p>
+<p>所以，git add命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行git commit就可以一次性把暂存区的所有修改提交到分支。</p>
+<h2 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h2><ol>
+<li><p>如果你文件只是在工作区修改了，但是还没提交到暂存区的时候，你可以用下面的命令来撤销。</p>
+<pre><code>git checkout -- [file]
+</code></pre><p> 比如，你有一个文件叫demo.txt, 里面的内容为：Today is Tuesday。 并且这句话已经提交到暂存区。 此时，你又在工作区修改了demo.txt 这个文件， 内容增加了一句：I don’t know what to say </p>
+<p> 然后执行git checkout – demo.txt命令,你会发现demo.txt内容又变成Today is Tuesday了。</p>
+<pre><code>git checkout -- demo.txt
+</code></pre><p> git checkout – file命令中的–很重要，没有–，就变成了“切换到另一个分支”的命令。</p>
 </li>
-<li><p>在Repository name填入learnGit，其他保持默认设置，点击“Create repository”按钮，就成功地创建了一个新的Git仓库：</p>
-<p> <img src="/2017/11/28/学习Git（三）/leanGit.png" alt=""></p>
+<li><p>假如你文件在工作区修改了,并且也执行 <code>git add</code> 命令提交给暂存区了，但是，还没有执行commit操作。那么执行上面的 <code>git checkout -- [file]</code> 已经无效了，因为工作区跟暂存区已经一样了，再怎么覆盖内容也一样，这时候就应该使用 <code>git reset HEAD</code> 命令来撤销。</p>
+<pre><code>git reset HEAD demo.txt
+</code></pre><p> 还记得如何丢弃工作区的修改吗？</p>
+<pre><code>git checkout -- demo.txt
+</code></pre><p> 回头看看添加的内容是不是又回滚了？</p>
 </li>
-<li><p>目前，在GitHub上的这个learnGit仓库还是空的，GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。</p>
-<p> <img src="/2017/11/28/学习Git（三）/创建仓库成功.png" alt=""></p>
-</li>
-<li><p>现在，我们根据GitHub的提示，在本地的GitRepository仓库下运行命令：</p>
-<pre><code>git remote add origin git@github.com:Litxiaosa/learnGit.git
-</code></pre><p> 请千万注意，把上面的Litxiaosa替换成你自己的GitHub账户名，否则，你在本地关联的就是我的远程库，关联没有问题，但是你以后推送是推不上去的，因为你的SSH Key公钥不在我的账户列表中。</p>
-</li>
-<li><p>添加后，远程库的名字就是origin，这是Git默认的叫法，也可以改成别的，但是origin这个名字一看就知道是远程库。</p>
-</li>
-<li><p>下一步，就可以把本地库的所有内容推送到远程库上</p>
-<pre><code>git push -u origin master
-</code></pre><p>  <img src="/2017/11/28/学习Git（三）/推送.png" alt=""></p>
-<p>  可以看到，你本地的代码就推送到远程仓库了推送成功后</p>
-<p> 由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。可以立刻在GitHub页面中看到远程库的内容已经和本地一模一样：</p>
-<p> <img src="/2017/11/28/学习Git（三）/推送成功.png" alt=""></p>
-</li>
-<li><p>从现在起，只要本地作了提交，就可以通过命令</p>
-<pre><code>git push origin master
-</code></pre><p>把本地master分支的最新修改推送至GitHub，现在，你就拥有了真正的分布式版本库！</p>
-</li>
-</ol>
-<h2 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a>从远程库克隆</h2><p>我们讲了先有本地库，后有远程库的时候，如何关联远程库。现在，假设我们从零开发，那么最好的方式是先创建远程库，然后，从远程库克隆。</p>
-<ol>
-<li><p>首先，登陆GitHub，创建一个新的仓库，名字叫gitskills：</p>
-<p> <img src="/2017/11/28/学习Git（三）/创建远程仓库2.png" alt=""></p>
-<p> 我们勾选Initialize this repository with a README，这样GitHub会自动为我们创建一个README.md文件。创建完毕后，可以看到README.md文件：</p>
-<p> <img src="/2017/11/28/学习Git（三）/README.png" alt=""></p>
-</li>
-<li><p>现在，远程库已经准备好了，下一步是用命令git clone克隆一个本地库</p>
-<pre><code>sudo git clone https://github.com/Litxiaosa/gitskills.git
-</code></pre><p> <img src="/2017/11/28/学习Git（三）/克隆成功2.png" alt=""></p>
-<p>注意把Git库的地址换成你自己的，然后进入gitskills目录看看，已经有<br>README.md文件了。</p>
-<p>如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。</p>
+<li><p>现在，假设你不但改错了东西，还从暂存区提交到了版本库，怎么办呢？还记得版本回退吗？可以回退到上一个版本。不过，这是有条件的，就是你还没有把自己的本地版本库推送到远程。</p>
 </li>
 </ol>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h1><ol>
-<li><p>要关联一个远程库，使用命令 <code>git remote add origin git@server-name:path/repo-name.git</code></p>
-</li>
-<li><p>关联后，使用命令 <code>git push -u origin master</code> 第一次推送master分支的所有内容</p>
-</li>
-<li><p>此后，每次本地提交后，只要有必要，就可以使用命令 <code>git push origin master</code> 推送最新修改</p>
-</li>
-</ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p> 场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file</p>
+<p> 场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。</p>
+<p> 场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退，不过前提是没有推送到远程库。</p>
 
       
     </div>
@@ -387,10 +362,16 @@
 
     <nav id="article-nav">
         
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/11/28/学习Git（三） 之 远程仓库/">
+                    学习Git（三） 之 远程仓库
+                </a>
+            </div>
+        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/11/28/学习Git（二）/">
-                    学习Git（二）
+                <a href="/2017/11/28/学习Git（一）之 入门/">
+                    学习Git（一）之 入门
                 </a>
             </div>
         
@@ -402,7 +383,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#远程仓库"><span class="toc-number">1.</span> <span class="toc-text">远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加远程仓库"><span class="toc-number">1.1.</span> <span class="toc-text">添加远程仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从远程库克隆"><span class="toc-number">1.2.</span> <span class="toc-text">从远程库克隆</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#小结"><span class="toc-number">2.</span> <span class="toc-text">小结</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工作区和暂存区"><span class="toc-number">1.</span> <span class="toc-text">工作区和暂存区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#工作区（Working-Directory）"><span class="toc-number">1.1.</span> <span class="toc-text">工作区（Working Directory）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#版本库（Repository）"><span class="toc-number">1.2.</span> <span class="toc-text">版本库（Repository）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销操作"><span class="toc-number">2.</span> <span class="toc-text">撤销操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li></ol>
         
     </div>
     <style>
@@ -437,7 +418,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"学习Git（三）　| 潇洒的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"学习Git（二）之 暂存区　| 潇洒的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -465,19 +446,21 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/11/28/学习Git（三） 之 远程仓库/" title="上一篇: 学习Git（三） 之 远程仓库">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/11/28/学习Git（二）/" title="下一篇: 学习Git（二）">
+            <a href="/2017/11/28/学习Git（一）之 入门/" title="下一篇: 学习Git（一）之 入门">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（三）/">学习Git（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（二）/">学习Git（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（一）/">学习Git（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/31/姑苏有钟声/">姑苏有钟声</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/阿里巴巴Java开发规约插件/">阿里巴巴Java开发规约插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/24/solr的配置和简单应用/">solr的配置和简单应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/浮生若梦/">浮生若梦</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/30/风景旧曾谙/">风景旧曾谙</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/MAC下配置环境变量/">MAC下配置环境变量</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo绑定域名/">hexo绑定域名</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/安装和配置主题/">安装和配置主题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo-github搭建自己的个人博客/">hexo+github搭建自己的个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/HelloWorld/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（三） 之 远程仓库/">学习Git（三） 之 远程仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（二）之 暂存区/">学习Git（二）之 暂存区</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（一）之 入门/">学习Git（一）之 入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/31/姑苏有钟声/">姑苏有钟声</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/阿里巴巴Java开发规约插件/">阿里巴巴Java开发规约插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/24/solr的配置和简单应用/">solr的配置和简单应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/浮生若梦/">浮生若梦</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/30/风景旧曾谙/">风景旧曾谙</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/MAC下配置环境变量/">MAC下配置环境变量</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo绑定域名/">hexo绑定域名</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/安装和配置主题/">安装和配置主题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo-github搭建自己的个人博客/">hexo+github搭建自己的个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/HelloWorld/">Hello World</a></li></ul>
 
 
 
