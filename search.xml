@@ -25,98 +25,70 @@
 <p>所以Git合并分支也很快！就改改指针，工作区内容也不变！</p>
 <p>合并完分支后，甚至可以删除dev分支。删除dev分支就是把dev指针给删掉，删掉后，我们就剩下了一条master分支：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/6.png" alt=""></p>
-<h3 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h3><ul>
-<li><p>首先，我们创建dev分支，然后切换到dev分支, 当然了，要在你本地的仓库目录下：</p>
+<h3 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h3><p>首先，我们创建dev分支，然后切换到dev分支, 当然了，要在你本地的仓库目录下：</p>
 <pre><code>git checkout -b dev
-</code></pre><p>  <img src="/2017/11/29/学习Git（四） 之 分支管理/7.png" alt=""></p>
-<p>  <code>git checkout</code> 命令加上-b参数表示创建并切换，相当于以下两条命令：</p>
+</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/7.png" alt=""></p>
+<p><code>git checkout</code> 命令加上-b参数表示创建并切换，相当于以下两条命令：</p>
 <pre><code>git branch dev
 git checkout dev
-</code></pre></li>
-<li><p>然后，用git branch命令查看当前分支：</p>
+</code></pre><p>然后，用git branch命令查看当前分支：</p>
 <pre><code>git branch
 </code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/8.png" alt=""></p>
 <p><code>git branch</code> 命令会列出所有分支，当前分支前面会标一个*号。</p>
-</li>
-<li><p>然后，我们就可以在dev分支上正常提交，比如对demo.txt做个修改，加上 haha</p>
-</li>
-<li><p>然后提交</p>
+<p>然后，我们就可以在dev分支上正常提交，比如对demo.txt做个修改，加上 haha</p>
+<p>然后提交</p>
 <pre><code>git add demo.txt
 git commit -m &quot;branch test&quot;
 </code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/9.png" alt=""></p>
-</li>
-<li><p>现在，dev分支的工作完成，我们就可以切换回master分支：</p>
+<p>现在，dev分支的工作完成，我们就可以切换回master分支：</p>
 <pre><code>git checkout master
-</code></pre></li>
-<li><p>切换回master分支后，再查看一个demo.txt文件，刚才添加的内容不见了！因为那个提交是在dev分支上，而master分支此刻的提交点并没有变：</p>
+</code></pre><p>切换回master分支后，再查看一个demo.txt文件，刚才添加的内容不见了！因为那个提交是在dev分支上，而master分支此刻的提交点并没有变：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/10.png" alt=""></p>
-</li>
-<li><p>现在，我们把dev分支的工作成果合并到master分支上：</p>
+<p>现在，我们把dev分支的工作成果合并到master分支上：</p>
 <pre><code>git merge dev
 </code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/11.png" alt=""></p>
-</li>
-<li><p>合并完成后，就可以放心地删除dev分支了：</p>
+<p>合并完成后，就可以放心地删除dev分支了：</p>
 <pre><code>git branch -D dev
 </code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/12.png" alt=""></p>
-</li>
-<li><p>删除后，查看branch，就只剩下master分支了：</p>
+<p>删除后，查看branch，就只剩下master分支了：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/13.png" alt=""></p>
-</li>
-</ul>
 <p>因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。</p>
 <h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><p>人生不如意之事十之八九，合并分支往往也不是一帆风顺的</p>
-<ul>
-<li><p>准备新的feature1分支，继续我们的新分支开发：</p>
+<p>准备新的feature1分支，继续我们的新分支开发：</p>
 <pre><code>git checkout -b feature1
-</code></pre></li>
-<li><p>再次修改demo.txt, 增加： </p>
+</code></pre><p>再次修改demo.txt, 增加： </p>
 <pre><code>Creating a new branch is quick AND simple.
-</code></pre></li>
-<li><p>在feature1分支上提交：</p>
+</code></pre><p>在feature1分支上提交：</p>
 <pre><code>git add demo.txt
 git commit -m &quot;AND simple&quot;
-</code></pre></li>
-<li><p>切换到master分支：</p>
+</code></pre><p>切换到master分支：</p>
 <pre><code>git checkout master
-</code></pre><p>  Git还会自动提示我们当前master分支比远程的master分支要超前1个提交。</p>
+</code></pre><p>Git还会自动提示我们当前master分支比远程的master分支要超前1个提交。</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/14.png" alt=""></p>
-</li>
-<li><p>在master分支上把demo.txt文件的最后一行替换为:</p>
+<p>在master分支上把demo.txt文件的最后一行替换为:</p>
 <pre><code>Creating a new branch is quick &amp; simple
-</code></pre></li>
-<li><p>提交</p>
+</code></pre><p>提交</p>
 <pre><code>git add demo.txt 
 git commit -m &quot;&amp; simple&quot;
-</code></pre></li>
-<li><p>现在，master分支和feature1分支各自都分别有新的提交，变成了这样：</p>
+</code></pre><p>现在，master分支和feature1分支各自都分别有新的提交，变成了这样：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/15.png" alt=""></p>
-</li>
-</ul>
-<ul>
-<li><p>这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突，我们试试看：</p>
+<p>这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突，我们试试看：</p>
 <pre><code>git merge feature1
 </code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/16.png" alt=""></p>
-</li>
-<li><p>果然冲突了！Git告诉我们，demo.txt文件存在冲突，必须手动解决冲突后再提交。我们可以直接查看demo.txt的内容：</p>
-<p>  <img src="/2017/11/29/学习Git（四） 之 分支管理/17.png" alt=""></p>
-</li>
-<li><p>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，我们修改如下后保存：<br>  <img src="/2017/11/29/学习Git（四） 之 分支管理/18.png" alt=""></p>
-</li>
-<li><p>再提交：</p>
+<p>果然冲突了！Git告诉我们，demo.txt文件存在冲突，必须手动解决冲突后再提交。我们可以直接查看demo.txt的内容：</p>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/17.png" alt=""></p>
+<p>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，我们修改如下后保存：</p>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/18.png" alt=""></p>
+<p>再提交：</p>
 <pre><code>git add demo.txt
 git commit -m &quot;conflict fixed&quot;
-</code></pre></li>
-<li><p>现在，master分支和feature1分支变成了下图所示：</p>
+</code></pre><p>现在，master分支和feature1分支变成了下图所示：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/19.png" alt=""></p>
-</li>
-<li><p>用带参数的git log也可以看到分支的合并情况：</p>
+<p>用带参数的git log也可以看到分支的合并情况：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/20.png" alt="">    </p>
-</li>
-<li><p>最后，删除feature1分支：</p>
+<p>最后，删除feature1分支：</p>
 <pre><code>git branch -D feature1    
-</code></pre></li>
-</ul>
-<p>工作完成。</p>
+</code></pre><p>工作完成。</p>
 <h3 id="分支策略"><a href="#分支策略" class="headerlink" title="分支策略"></a>分支策略</h3><p>在实际开发中，我们应该按照几个基本原则进行分支管理：</p>
 <p>首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；</p>
 <p>那在哪干活呢？干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；</p>
@@ -167,16 +139,10 @@ git push origin dev
 </code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/29.png" alt=""></p>
 <p>git pull成功，但是合并有冲突，需要手动解决，解决的方法和分支管理中的解决冲突完全一样。解决后，提交，再push。</p>
 <p>因此，多人协作的工作模式通常是这样：</p>
-<ul>
-<li><p>首先，可以试图用 <code>git push origin branch-name</code> 推送自己的修改；</p>
-</li>
-<li><p>如果推送失败，则因为远程分支比你的本地更新，需要先用 <code>git pull</code> 试图合并；</p>
-</li>
-<li><p>如果合并有冲突，则解决冲突，并在本地提交；</p>
-</li>
-<li><p>没有冲突或者解决掉冲突后，再用 <code>git push origin branch-name</code> 推送就能成功！</p>
-</li>
-</ul>
+<p>首先，可以试图用 <code>git push origin branch-name</code> 推送自己的修改；</p>
+<p>如果推送失败，则因为远程分支比你的本地更新，需要先用 <code>git pull</code> 试图合并；</p>
+<p>如果合并有冲突，则解决冲突，并在本地提交；</p>
+<p>没有冲突或者解决掉冲突后，再用 <code>git push origin branch-name</code> 推送就能成功！</p>
 <p>这就是多人协作的工作模式，一旦熟悉了，就非常简单。</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h2><blockquote>
 <ul>
