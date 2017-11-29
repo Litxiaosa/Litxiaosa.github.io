@@ -141,8 +141,7 @@ git commit -m &quot;conflict fixed&quot;
 <li>dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</li>
 </ul>
 <p>总之，就是在Git中，分支完全可以在本地自己藏着玩，是否推送，视你的心情而定！</p>
-<p>####<strong>抓取分支</strong></p>
-<p>多人协作时，大家都会往master和dev分支上推送各自的修改。</p>
+<h4 id="抓取分支"><a href="#抓取分支" class="headerlink" title="抓取分支"></a><strong>抓取分支</strong></h4><p>多人协作时，大家都会往master和dev分支上推送各自的修改。</p>
 <p>现在，模拟一个你的小伙伴，可以在另一台电脑（注意要把SSH Key添加到GitHub）或者同一台电脑的另一个目录下克隆：</p>
 <pre><code>git clone https://github.com/Litxiaosa/learnGit.git
 </code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/24.png" alt=""></p>
