@@ -28,8 +28,8 @@
 <h3 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h3><ul>
 <li><p>首先，我们创建dev分支，然后切换到dev分支, 当然了，要在你本地的仓库目录下：</p>
 <pre><code>git checkout -b dev
-</code></pre><p> <img src="/2017/11/29/学习Git（四） 之 分支管理/7.png" alt=""></p>
-<p> <code>git checkout</code> 命令加上-b参数表示创建并切换，相当于以下两条命令：</p>
+</code></pre><p>  <img src="/2017/11/29/学习Git（四） 之 分支管理/7.png" alt=""></p>
+<p>  <code>git checkout</code> 命令加上-b参数表示创建并切换，相当于以下两条命令：</p>
 <pre><code>git branch dev
 git checkout dev
 </code></pre></li>
@@ -78,7 +78,7 @@ git commit -m &quot;AND simple&quot;
 </code></pre></li>
 <li><p>切换到master分支：</p>
 <pre><code>git checkout master
-</code></pre><p> Git还会自动提示我们当前master分支比远程的master分支要超前1个提交。</p>
+</code></pre><p>  Git还会自动提示我们当前master分支比远程的master分支要超前1个提交。</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/14.png" alt=""></p>
 </li>
 <li><p>在master分支上把demo.txt文件的最后一行替换为:</p>
