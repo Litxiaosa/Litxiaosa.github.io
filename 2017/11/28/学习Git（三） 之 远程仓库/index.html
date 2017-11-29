@@ -15,13 +15,13 @@
 
 
 
-<meta name="description" content="远程仓库Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出">
+<meta name="description" content="Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习Git（三） 之 远程仓库">
 <meta property="og:url" content="http://litxiaosa.me/2017/11/28/学习Git（三） 之 远程仓库/index.html">
 <meta property="og:site_name" content="潇洒的博客">
-<meta property="og:description" content="远程仓库Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding">
+<meta property="og:description" content="Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding。这里我">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）%20之%20远程仓库/创建仓库.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）%20之%20远程仓库/leanGit.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）%20之%20远程仓库/创建仓库成功.png">
@@ -30,10 +30,10 @@
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）%20之%20远程仓库/创建远程仓库2.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）%20之%20远程仓库/README.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）%20之%20远程仓库/克隆成功2.png">
-<meta property="og:updated_time" content="2017-11-29T01:40:53.691Z">
+<meta property="og:updated_time" content="2017-11-29T01:43:34.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习Git（三） 之 远程仓库">
-<meta name="twitter:description" content="远程仓库Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding">
+<meta name="twitter:description" content="Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding。这里我">
 <meta name="twitter:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）%20之%20远程仓库/创建仓库.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -323,7 +323,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a><strong>远程仓库</strong></h1><p>Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding。这里我以GitHub为例子介绍如何操作远程仓库。</p>
+        <p>Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding。这里我以GitHub为例子介绍如何操作远程仓库。</p>
 <a id="more"></a>
 <p>现在的情景是，你已经在本地创建了一个Git仓库，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作。</p>
 <h2 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h2><ol>
@@ -402,7 +402,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#远程仓库"><span class="toc-number">1.</span> <span class="toc-text">远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加远程仓库"><span class="toc-number">1.1.</span> <span class="toc-text">添加远程仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从远程库克隆"><span class="toc-number">1.2.</span> <span class="toc-text">从远程库克隆</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#小结"><span class="toc-number">2.</span> <span class="toc-text">小结</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加远程仓库"><span class="toc-number">1.</span> <span class="toc-text">添加远程仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从远程库克隆"><span class="toc-number">2.</span> <span class="toc-text">从远程库克隆</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#小结"><span class="toc-number"></span> <span class="toc-text">小结</span></a>
         
     </div>
     <style>
