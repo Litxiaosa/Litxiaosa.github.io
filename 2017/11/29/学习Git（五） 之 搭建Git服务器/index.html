@@ -14,19 +14,22 @@
 <meta name="author" content="潇洒" />
 
 
-    
-    
 
-
-<meta name="description" content="喜欢看书，对吉他有点小兴趣，专注JAVA。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="潇洒的博客">
-<meta property="og:url" content="http://litxiaosa.me/index.html">
+<meta name="description" content="在之前的学习中，我们讲了远程仓库实际上和本地仓库没啥不同，纯粹为了7x24小时开机并交换大家的修改。 GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。 搭建Git服务器需要准备一">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习Git（五）之 搭建Git服务器">
+<meta property="og:url" content="http://litxiaosa.me/2017/11/29/学习Git（五） 之 搭建Git服务器/index.html">
 <meta property="og:site_name" content="潇洒的博客">
-<meta property="og:description" content="喜欢看书，对吉他有点小兴趣，专注JAVA。">
+<meta property="og:description" content="在之前的学习中，我们讲了远程仓库实际上和本地仓库没啥不同，纯粹为了7x24小时开机并交换大家的修改。 GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。 搭建Git服务器需要准备一台运行Linux的机器。我是在VMware虚拟机上装了一个CentOS 如果你装">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（五）%20之%20搭建Git服务器/1.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（五）%20之%20搭建Git服务器/2.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（五）%20之%20搭建Git服务器/3.png">
+<meta property="og:updated_time" content="2017-11-30T07:07:37.471Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="潇洒的博客">
-<meta name="twitter:description" content="喜欢看书，对吉他有点小兴趣，专注JAVA。">
+<meta name="twitter:title" content="学习Git（五）之 搭建Git服务器">
+<meta name="twitter:description" content="在之前的学习中，我们讲了远程仓库实际上和本地仓库没啥不同，纯粹为了7x24小时开机并交换大家的修改。 GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。 搭建Git服务器需要准备一台运行Linux的机器。我是在VMware虚拟机上装了一个CentOS 如果你装">
+<meta name="twitter:image" content="http://litxiaosa.me/2017/11/29/学习Git（五）%20之%20搭建Git服务器/1.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -54,13 +57,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>潇洒的博客</title>
+<title>学习Git（五）之 搭建Git服务器 | 潇洒的博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -69,8 +70,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -277,9 +278,7 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-学习Git（五） 之 搭建Git服务器" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-学习Git（五） 之 搭建Git服务器" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2017/11/29/学习Git（五） 之 搭建Git服务器/" class="article-date">
@@ -297,12 +296,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/29/学习Git（五） 之 搭建Git服务器/">学习Git（五）之 搭建Git服务器</a>
+    <h1 class="article-title" itemprop="name">
+      学习Git（五）之 搭建Git服务器
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -346,638 +356,112 @@ mkdir .ssh
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-学习Git（四） 之 分支管理" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/11/29/学习Git（四） 之 分支管理/" class="article-date">
-      <time datetime="2017-11-29T02:22:33.000Z" itemprop="datePublished">2017-11-29</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+
+
+    <nav id="article-nav">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/29/学习Git（四） 之 分支管理/">学习Git（四） 之 分支管理</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习Git的时候，另一个你正在另一个平行宇宙里努力学习SVN。</p>
-<p>如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果，你既学会了Git又学会了SVN！</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/11/29/学习Git（四） 之 分支管理/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-学习Git（三） 之 远程仓库" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/11/28/学习Git（三） 之 远程仓库/" class="article-date">
-      <time datetime="2017-11-28T09:58:43.000Z" itemprop="datePublished">2017-11-28</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/28/学习Git（三） 之 远程仓库/">学习Git（三） 之 远程仓库</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding。这里我以GitHub为例子介绍如何操作远程仓库。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/11/28/学习Git（三） 之 远程仓库/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-学习Git（二）之 暂存区" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/11/28/学习Git（二）之 暂存区/" class="article-date">
-      <time datetime="2017-11-28T08:55:30.000Z" itemprop="datePublished">2017-11-28</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/11/29/学习Git（四） 之 分支管理/">
+                    学习Git（四） 之 分支管理
+                </a>
+            </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/28/学习Git（二）之 暂存区/">学习Git（二）之 暂存区</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h2><p>Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/11/28/学习Git（二）之 暂存区/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-学习Git（一）之 入门" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/11/28/学习Git（一）之 入门/" class="article-date">
-      <time datetime="2017-11-28T06:14:43.000Z" itemprop="datePublished">2017-11-28</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/28/学习Git（一）之 入门/">学习Git（一）之 入门</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><strong>本系列文章基于Mac系统</strong></p>
-<p>之前自己搭建博客的时候使用到GitHub，需要使用git进行版本控制，现在很多公司也在使用Git，发现Git很棒，于是学习了解一下Git。这只是我自己的学习笔记，如果你是大神，请你不吝赐教，如果你也是小白，希望这系列文章能帮到你。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/11/28/学习Git（一）之 入门/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-姑苏有钟声" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/10/31/姑苏有钟声/" class="article-date">
-      <time datetime="2017-10-31T03:51:28.000Z" itemprop="datePublished">2017-10-31</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/31/姑苏有钟声/">姑苏有钟声</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><img src="/2017/10/31/姑苏有钟声/钟.jpg" alt=""></p>
-<blockquote>
-<p>如果你听歌可眼红，何以待她好偏不懂。</p>
-</blockquote>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/不知所云/">不知所云</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/10/31/姑苏有钟声/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-阿里巴巴Java开发规约插件" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/10/25/阿里巴巴Java开发规约插件/" class="article-date">
-      <time datetime="2017-10-25T03:44:41.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/阿里巴巴Java开发规约插件/">阿里巴巴Java开发规约插件</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="阿里巴巴Java开发手册"><a href="#阿里巴巴Java开发手册" class="headerlink" title="阿里巴巴Java开发手册"></a>阿里巴巴Java开发手册</h2><p>在介绍这款插件之前，先说一下《阿里巴巴Java开发手册》。2017年初，阿里巴巴官方首次公开Java代码规范标准手册，这套Java统一规范标准将有助于提高行业编码规范化水平，帮助行业人员提高开发质量和效率、大大降低代码维护成本，我第二时间（刚公开时我不知道。我也很无奈啊）下载来看。对我个人而言帮助挺大的，渐渐改掉了我好多编码的坏习惯。这个手册的愿景是这样的：</p>
-<blockquote>
-<p>“统一规范标准将有助于提高行业编码规范化水平，帮助行业人员提高开发质量和效率、大大降低代码维护成本”。</p>
-</blockquote>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码规范插件/">编码规范插件</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/10/25/阿里巴巴Java开发规约插件/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-solr的配置和简单应用" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/08/24/solr的配置和简单应用/" class="article-date">
-      <time datetime="2017-08-24T02:48:25.000Z" itemprop="datePublished">2017-08-24</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/24/solr的配置和简单应用/">solr的配置和简单应用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h1><p>本文基于solr-6.6 、 tomcat-9、 jdk-1.8</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/solr/">solr</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/08/24/solr的配置和简单应用/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-浮生若梦" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/07/17/浮生若梦/" class="article-date">
-      <time datetime="2017-07-17T02:44:52.000Z" itemprop="datePublished">2017-07-17</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/17/浮生若梦/">浮生若梦</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p> <img src="/2017/07/17/浮生若梦/梦.jpg" alt=""></p>
-<blockquote>
-<p>浮生若梦,若梦非梦,浮生何如,如梦之梦 ——— 庄子《如梦之梦》</p>
-</blockquote>
-<p>你现在二十五六岁，大学毕业两三年，或者差不多研究生刚毕业。你有着一份还算凑合的工作，天天宅在冷气十足的办公室里，每个月拿到手的钱，交了房租吃了饭，所剩无几。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/不知所云/">不知所云</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/07/17/浮生若梦/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-风景旧曾谙" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/30/风景旧曾谙/" class="article-date">
-      <time datetime="2017-06-30T02:41:15.000Z" itemprop="datePublished">2017-06-30</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/30/风景旧曾谙/">风景旧曾谙</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><img src="/2017/06/30/风景旧曾谙/江南.png" alt=""></p>
-<p>七月将至， 天气慢慢炎热而躁动。来杭州已九月有余。</p>
-<p>初来杭州，怀着美好的憧憬一心想去走走，看许仙和白娘子相遇的断桥，看充满神话色彩的雷峰塔。看济公修行之地灵隐寺等等。</p>
-<p>然而始终未曾迈出一步。一来公司996累成狗，二来无人同行，感觉会少很多乐趣。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/不知所云/">不知所云</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/06/30/风景旧曾谙/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
+
   
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-5 i,
+        .toc-level-5 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"学习Git（五）之 搭建Git服务器　| 潇洒的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+    
+        <div id="SOHUCS" sid="<{sid}>" ></div>
+<script type="text/javascript">
+(function(){
+var appid = 'cyt89XC6v';
+var conf = '05f02c05c1850e9dc85891de397ebfe0';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/11/29/学习Git（四） 之 分支管理/" title="下一篇: 学习Git（四） 之 分支管理">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/11/29/学习Git（五） 之 搭建Git服务器/">学习Git（五）之 搭建Git服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/29/学习Git（四） 之 分支管理/">学习Git（四） 之 分支管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（三） 之 远程仓库/">学习Git（三） 之 远程仓库</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（二）之 暂存区/">学习Git（二）之 暂存区</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/28/学习Git（一）之 入门/">学习Git（一）之 入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/31/姑苏有钟声/">姑苏有钟声</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/25/阿里巴巴Java开发规约插件/">阿里巴巴Java开发规约插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/24/solr的配置和简单应用/">solr的配置和简单应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/浮生若梦/">浮生若梦</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/30/风景旧曾谙/">风景旧曾谙</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/MAC下配置环境变量/">MAC下配置环境变量</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo绑定域名/">hexo绑定域名</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/安装和配置主题/">安装和配置主题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/hexo-github搭建自己的个人博客/">hexo+github搭建自己的个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/24/HelloWorld/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
 </div>
       <footer id="footer">
     <div class="outer">
