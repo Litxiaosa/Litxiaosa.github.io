@@ -512,9 +512,9 @@ git commit -m &quot;second commit&quot;
     <entry>
       <title><![CDATA[solr的配置和简单应用]]></title>
       <url>/2017/08/24/solr%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/</url>
-      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h1><p>本文基于solr-6.6 、 tomcat-9、 jdk-1.8</p>
+      <content type="html"><![CDATA[<p>本文基于solr-6.6 、 tomcat-9、 jdk-1.8</p>
+<p>solr下载完成以后解压即可。</p>
 <a id="more"></a>
-<h1 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a><strong>安装配置</strong></h1><p>下载完成以后解压即可。</p>
 <h2 id="在tomcat上安装solr"><a href="#在tomcat上安装solr" class="headerlink" title="在tomcat上安装solr"></a>在tomcat上安装solr</h2><ol>
 <li><p>把solr目录下的server/solr-webapp/webapp目录拷贝到tomcat/webapps的目录下,并且重命名为solr（任意名字）</p>
 </li>
