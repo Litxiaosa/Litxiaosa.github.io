@@ -15,20 +15,20 @@
 
 
 
-<meta name="description" content="在之前的学习中，我们讲了远程仓库实际上和本地仓库没啥不同，纯粹为了7x24小时开机并交换大家的修改。 GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。 搭建Git服务器需要准备一">
+<meta name="description" content="在之前的学习中，我们讲了远程仓库实际上和本地仓库没啥不同，纯粹为了7x24小时开机并交换大家的修改。 GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习Git（五）之 搭建Git服务器">
 <meta property="og:url" content="http://litxiaosa.me/2017/11/29/学习Git（五） 之 搭建Git服务器/index.html">
 <meta property="og:site_name" content="潇洒的博客">
-<meta property="og:description" content="在之前的学习中，我们讲了远程仓库实际上和本地仓库没啥不同，纯粹为了7x24小时开机并交换大家的修改。 GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。 搭建Git服务器需要准备一台运行Linux的机器。我是在VMware虚拟机上装了一个CentOS 如果你装">
+<meta property="og:description" content="在之前的学习中，我们讲了远程仓库实际上和本地仓库没啥不同，纯粹为了7x24小时开机并交换大家的修改。 GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（五）%20之%20搭建Git服务器/1.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（五）%20之%20搭建Git服务器/2.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（五）%20之%20搭建Git服务器/3.png">
-<meta property="og:updated_time" content="2017-11-30T07:07:37.471Z">
+<meta property="og:updated_time" content="2017-11-30T07:12:57.127Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习Git（五）之 搭建Git服务器">
-<meta name="twitter:description" content="在之前的学习中，我们讲了远程仓库实际上和本地仓库没啥不同，纯粹为了7x24小时开机并交换大家的修改。 GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。 搭建Git服务器需要准备一台运行Linux的机器。我是在VMware虚拟机上装了一个CentOS 如果你装">
+<meta name="twitter:description" content="在之前的学习中，我们讲了远程仓库实际上和本地仓库没啥不同，纯粹为了7x24小时开机并交换大家的修改。 GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。">
 <meta name="twitter:image" content="http://litxiaosa.me/2017/11/29/学习Git（五）%20之%20搭建Git服务器/1.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -320,6 +320,7 @@
           
         <p>在之前的学习中，我们讲了远程仓库实际上和本地仓库没啥不同，纯粹为了7x24小时开机并交换大家的修改。</p>
 <p>GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。</p>
+<a id="more"></a>
 <p>搭建Git服务器需要准备一台运行Linux的机器。我是在VMware虚拟机上装了一个CentOS 如果你装的是Ubuntu或者其他的，安装命令可能会不同。这个要注意一下。</p>
 <p>假设你已经有sudo权限的用户账号，下面，正式开始安装。</p>
 <p>第一步，安装git：</p>
