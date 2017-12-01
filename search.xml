@@ -1019,14 +1019,14 @@ title: tags
 <pre><code>git --version
 </code></pre><h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2><p>点击进入 <a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js官网</a>，一个是通用版，一个是最新版，选择一个下载，然后按步骤安装。</p>
 <h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><ul>
-<li><p>下载安装hexo</p>
+<li><p><strong>下载安装hexo</strong></p>
 <pre><code>npm install -g hexo
 </code></pre><p>安装好以后，在终端输入：</p>
 <pre><code>hexo
 </code></pre><p>如果出现下图，则说明安装成功：</p>
-<p>  <img src="/2017/06/24/hexo-github搭建自己的个人博客/安装成功.png" alt=""></p>
+<p>  <img src="/2017/06/24/hexo-github搭建自己的个人博客/1.png" alt=""></p>
 </li>
-<li><p>初始化博客</p>
+<li><p><strong>初始化博客</strong></p>
 <p>  建立一个博客的文件夹,blog是文件夹名字，可以根据自己的喜好定义</p>
 <pre><code>hexo init blog
 </code></pre><p>  然后进入该文件夹  </p>
@@ -1034,51 +1034,43 @@ title: tags
 </code></pre><p>  运行node.js 命令，根据博客默认的配置安装必要的依赖包</p>
 <pre><code>npm install
 </code></pre><p>  初始化完成后，我们可以看到博客的文件夹</p>
-<p>  <img src="/2017/06/24/hexo-github搭建自己的个人博客/hexo目录.png" alt=""></p>
-<p>  那么基本的搭建过程就完成了，让我们看看效果吧，这里介绍几个命令。</p>
+<p>  <img src="/2017/06/24/hexo-github搭建自己的个人博客/2.png" alt=""></p>
+</li>
+<li><p>那么基本的搭建过程就完成了，让我们看看效果吧，这里介绍几个命令。</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  #清理缓存，如果你改动了东西，没有效果，试试这个命吧。</span><br><span class="line">hexo g   #完整命令为hexo generate,用于生成静态文件</span><br><span class="line">hexo s   #完整命令为hexo server,用于启动服务器，主要用来本地预览</span><br><span class="line">hexo d   #完整命令为hexo deploy,用于将本地文件发布到github上</span><br><span class="line">hexo n   #完整命令为hexo new,用于新建一篇文章</span><br></pre></td></tr></table></figure>
-<p>  在你的终端 hexo目录下执行下面的命令</p>
-<pre><code>hexo g  
-
-hexo s
-</code></pre><p>  然后浏览器访问<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>, 此时，你应该看到你的博客了。当然了，这个博客只是本地的，别人是看不到了，你需要把它放到github上。</p>
 </li>
 </ul>
+<pre><code>在你的终端 hexo目录下执行下面的命令
+
+    hexo g  
+    hexo s
+</code></pre><p>然后浏览器访问<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>, 此时，你应该看到你的博客了。当然了，这个博客只是本地的，别人是看不到了，你需要把它放到github上。</p>
 <h2 id="注册github账号"><a href="#注册github账号" class="headerlink" title="注册github账号"></a>注册github账号</h2><p>如果您已有github账号，请跳过，进入github进行注册，邮箱和密码请记好。</p>
 <ul>
-<li><p>创建repository</p>
+<li><p><strong>创建repository</strong></p>
 <p>  repository就相当于一个仓库，存放你代码的地方，点击 new repository</p>
-<p>  <img src="/2017/06/24/hexo-github搭建自己的个人博客/repository.png" alt=""></p>
+<p>  <img src="/2017/06/24/hexo-github搭建自己的个人博客/3.png" alt=""></p>
 <p>  填写你的项目名字repository name, 这个名字格式要为youname.github.io, 例如我的xiaosa.github.io, 填写完以后点击下面的 creat创建。</p>
 </li>
 </ul>
-<h2 id="部署本地项目到github上"><a href="#部署本地项目到github上" class="headerlink" title="部署本地项目到github上"></a>部署本地项目到github上</h2><p><img src="/2017/06/24/hexo-github搭建自己的个人博客/config.png" alt=""></p>
-<p>编辑它，在_config.yml最下方，添加如下配置(记得改成自己的。另外记得一点，hexo的配置文件中任何’:’后面都是带一个空格的)</p>
-<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/配置github.png" alt=""></p>
+<h2 id="部署本地项目到github上"><a href="#部署本地项目到github上" class="headerlink" title="部署本地项目到github上"></a>部署本地项目到github上</h2><p><img src="/2017/06/24/hexo-github搭建自己的个人博客/4.png" alt=""></p>
+<p>编辑它，在_config.yml最下方，添加如下配置(记得改成自己的。另外记得一点，<strong>hexo的配置文件中任何’:’后面都是带一个空格的</strong>)</p>
+<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/5.png" alt=""></p>
 <p>github是你之前创建仓库的地址，可以通过下图获得</p>
-<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/获得仓库路径.png" alt=""></p>
+<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/6.png" alt=""></p>
 <p>然后保存它，如果你是第一次使用github或者使用过但是没有配置过SSH,可能你需要配置一下，可以检查一下是否已经存在SSH Keys</p>
 <pre><code>~/.ssh/
 </code></pre><p>.ssh文件为隐藏文件，需要先设置隐藏文件可见才可以看到。 如果不存在，输入下面的命令创建。</p>
 <pre><code>ssh-keygen -t rsa -C &quot;你注册github的邮箱&quot;
-</code></pre><p>一路回车就好，这个不需要设置密码，因为这个Key仅仅用于简单的服务，完成后输入命令打开id_rsa.pub， id_rsa是私钥，id_rsa.pub是公钥，我们需要的是公钥。</p>
-<pre><code>cat ~/.ssh/id_rsa.pub
-</code></pre><p>然后你就会得到最后面含有你邮箱的公钥，复制它。去你的github下。</p>
-<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/ssh keys.png" alt=""></p>
-<p>title随便写，把复制的公钥粘贴到key里。点下面的add SSH key。好了。基本配置就完了。下面我们把我们的代码传到 github上，在终端输入</p>
-<pre><code>hexo g
-
-hexo d
-</code></pre><p>如果执行hexo d 报下面的错误<br><img src="/2017/06/24/hexo-github搭建自己的个人博客/部署报错.png" alt=""></p>
-<p>就先安装一下hexo-deployer-git,再执行hexo d</p>
+</code></pre><p>一路回车就好，这个不需要设置密码，因为这个Key仅仅用于简单的服务，完成后输入命令打开 <figure class="highlight plain"><figcaption><span>```id_rsa``` 是私钥，```id_rsa.pub``` 是公钥，我们需要的是公钥。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">    cat ~/.ssh/id_rsa.pub</span><br><span class="line">    </span><br><span class="line">然后你就会得到最后面含有你邮箱的公钥，复制它。去你的github下。</span><br><span class="line"></span><br><span class="line">![](hexo-github搭建自己的个人博客/7.png)</span><br><span class="line"></span><br><span class="line">title随便写，把复制的公钥粘贴到key里。点下面的add SSH key。好了。基本配置就完了。下面我们把我们的代码传到 github上，在终端输入</span><br><span class="line"></span><br><span class="line">    hexo g</span><br><span class="line">    hexo d</span><br><span class="line">    </span><br><span class="line">如果执行hexo d 报下面的错误</span><br><span class="line"></span><br><span class="line">![](hexo-github搭建自己的个人博客/8.png)</span><br><span class="line"></span><br><span class="line">就先安装一下 ```hexo-deployer-git```,再执行 ```hexo d</span><br></pre></td></tr></table></figure></p>
 <pre><code>npm install hexo-deployer-git --save
 </code></pre><p>至此，我们的项目就部署到github上了。</p>
 <p>那么，访问博客的链接是什么呢？ 点击标注的Settings,往下拉，如果你看到的是这样的。那么点击那个 None，选择第一个，点save. 访问你博客的链接就出来了，去访问试试吧！</p>
-<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/访问链接.png" alt=""></p>
+<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/9.png" alt=""></p>
 <h2 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a>发表文章</h2><p>既然博客搭建好了，就发表一下文章看看效果吧。hexo中写文章使用的是Markdown，语法不难，看一下就会了。然后去下载一个Markdown的编辑器，很多，看个人喜好。</p>
 <p>在终端的blog路径下输入</p>
 <pre><code>hexo new &quot;my new post&quot;
-</code></pre><p>然后就会在你 folder/source/_posts下生成一个.md的文件，以后你的文章就存放到这里，你也可以直接在这里新建一个.md的文件。写完文章后，你可以使用hexo g命令生成静态文件， 然后hexo s进行本地预览。感觉没问题了，hexo d上传到github上吧。</p>
+</code></pre><p>然后就会在你 <code>blog/source/_posts</code> 下生成一个 <code>.md</code> 的文件，以后你的文章就存放到这里，你也可以直接在这里新建一个 <code>.md</code> 的文件。写完文章后，你可以使用 <code>hexo g</code> 命令生成静态文件， 然后<code>hexo s</code> 进行本地预览。感觉没问题了，<code>hexo d</code> 上传到github上吧。</p>
 ]]></content>
       
         
@@ -1095,7 +1087,7 @@ hexo d
       <url>/2017/06/24/HelloWorld/</url>
       <content type="html"><![CDATA[<p>在<a href="http://tengj.top/" target="_blank" rel="noopener">嘟嘟MD</a>技术博客的帮助下，属于我自己的博客终于搭建起来了！</p>
 <p>折腾了好几天，在github page上看到自己的博客加载下来时，油然而生的成就感，兴奋了半上午。期间也踩了不少的坑，再一次感谢嘟嘟MD的指导。是的，它不是QQ空间，不是微博，也不是贴吧，它是属于自己的一个块小小的领地，所以我满足于这种归属感。</p>
-<p>学编程时输入的第一个词语就是hello world！它更想是象征。那第一篇文章就献给你吧。</p>
+<p>学编程时输入的第一个词语就是hello world！它更是一种象征。那第一篇文章就献给你吧。</p>
 ]]></content>
       
         
