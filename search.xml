@@ -1061,7 +1061,16 @@ hexo s
 <pre><code>~/.ssh/
 </code></pre><p>.ssh文件为隐藏文件，需要先设置隐藏文件可见才可以看到。 如果不存在，输入下面的命令创建。</p>
 <pre><code>ssh-keygen -t rsa -C &quot;你注册github的邮箱&quot;
-</code></pre><p>一路回车就好，这个不需要设置密码，因为这个Key仅仅用于简单的服务，完成后输入命令打开 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">    cat ~/.ssh/id_rsa.pub</span><br><span class="line">    </span><br><span class="line">然后你就会得到最后面含有你邮箱的公钥，复制它。去你的github下。</span><br><span class="line"></span><br><span class="line">![](hexo-github搭建自己的个人博客/7.png)</span><br><span class="line"></span><br><span class="line">title随便写，把复制的公钥粘贴到key里。点下面的add SSH key。好了。基本配置就完了。下面我们把我们的代码传到 github上，在终端输入</span><br><span class="line"></span><br><span class="line">    hexo g</span><br><span class="line">    hexo d</span><br><span class="line">    </span><br><span class="line">如果执行hexo d 报下面的错误</span><br><span class="line"></span><br><span class="line">![](hexo-github搭建自己的个人博客/8.png)</span><br><span class="line"></span><br><span class="line">就先安装一下 ```hexo-deployer-git```,再执行 ```hexo d</span><br></pre></td></tr></table></figure></p>
+</code></pre><p>一路回车就好，这个不需要设置密码，因为这个Key仅仅用于简单的服务，完成后输入命令打开 id_rsa.pub </p>
+<pre><code>cat ~/.ssh/id_rsa.pub
+</code></pre><p>然后你就会得到最后面含有你邮箱的公钥，复制它。去你的github下。</p>
+<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/7.png" alt=""></p>
+<p>title随便写，把复制的公钥粘贴到key里。点下面的add SSH key。好了。基本配置就完了。下面我们把我们的代码传到 github上，在终端输入</p>
+<pre><code>hexo g
+hexo d
+</code></pre><p>如果执行hexo d 报下面的错误</p>
+<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/8.png" alt=""></p>
+<p>就先安装一下 <code>hexo-deployer-git</code>,再执行 <code>hexo d</code></p>
 <pre><code>npm install hexo-deployer-git --save
 </code></pre><p>至此，我们的项目就部署到github上了。</p>
 <p>那么，访问博客的链接是什么呢？ 点击标注的Settings,往下拉，如果你看到的是这样的。那么点击那个 None，选择第一个，点save. 访问你博客的链接就出来了，去访问试试吧！</p>
