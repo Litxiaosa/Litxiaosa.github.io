@@ -1024,7 +1024,7 @@ title: tags
 </code></pre><p>安装好以后，在终端输入：</p>
 <pre><code>hexo
 </code></pre><p>如果出现下图，则说明安装成功：</p>
-<p>  <img src="/2017/06/24/hexo-github搭建自己的个人博客/1.png" alt=""></p>
+<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/1.png" alt=""></p>
 </li>
 <li><p><strong>初始化博客</strong></p>
 <p>  建立一个博客的文件夹,blog是文件夹名字，可以根据自己的喜好定义</p>
@@ -1040,10 +1040,9 @@ title: tags
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  #清理缓存，如果你改动了东西，没有效果，试试这个命吧。</span><br><span class="line">hexo g   #完整命令为hexo generate,用于生成静态文件</span><br><span class="line">hexo s   #完整命令为hexo server,用于启动服务器，主要用来本地预览</span><br><span class="line">hexo d   #完整命令为hexo deploy,用于将本地文件发布到github上</span><br><span class="line">hexo n   #完整命令为hexo new,用于新建一篇文章</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<pre><code>在你的终端 hexo目录下执行下面的命令
-
-    hexo g  
-    hexo s
+<p> 在你的终端 hexo目录下执行下面的命令</p>
+<pre><code>hexo g  
+hexo s
 </code></pre><p>然后浏览器访问<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>, 此时，你应该看到你的博客了。当然了，这个博客只是本地的，别人是看不到了，你需要把它放到github上。</p>
 <h2 id="注册github账号"><a href="#注册github账号" class="headerlink" title="注册github账号"></a>注册github账号</h2><p>如果您已有github账号，请跳过，进入github进行注册，邮箱和密码请记好。</p>
 <ul>
@@ -1062,7 +1061,7 @@ title: tags
 <pre><code>~/.ssh/
 </code></pre><p>.ssh文件为隐藏文件，需要先设置隐藏文件可见才可以看到。 如果不存在，输入下面的命令创建。</p>
 <pre><code>ssh-keygen -t rsa -C &quot;你注册github的邮箱&quot;
-</code></pre><p>一路回车就好，这个不需要设置密码，因为这个Key仅仅用于简单的服务，完成后输入命令打开 <figure class="highlight plain"><figcaption><span>```id_rsa``` 是私钥，```id_rsa.pub``` 是公钥，我们需要的是公钥。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">    cat ~/.ssh/id_rsa.pub</span><br><span class="line">    </span><br><span class="line">然后你就会得到最后面含有你邮箱的公钥，复制它。去你的github下。</span><br><span class="line"></span><br><span class="line">![](hexo-github搭建自己的个人博客/7.png)</span><br><span class="line"></span><br><span class="line">title随便写，把复制的公钥粘贴到key里。点下面的add SSH key。好了。基本配置就完了。下面我们把我们的代码传到 github上，在终端输入</span><br><span class="line"></span><br><span class="line">    hexo g</span><br><span class="line">    hexo d</span><br><span class="line">    </span><br><span class="line">如果执行hexo d 报下面的错误</span><br><span class="line"></span><br><span class="line">![](hexo-github搭建自己的个人博客/8.png)</span><br><span class="line"></span><br><span class="line">就先安装一下 ```hexo-deployer-git```,再执行 ```hexo d</span><br></pre></td></tr></table></figure></p>
+</code></pre><p>一路回车就好，这个不需要设置密码，因为这个Key仅仅用于简单的服务，完成后输入命令打开 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">    cat ~/.ssh/id_rsa.pub</span><br><span class="line">    </span><br><span class="line">然后你就会得到最后面含有你邮箱的公钥，复制它。去你的github下。</span><br><span class="line"></span><br><span class="line">![](hexo-github搭建自己的个人博客/7.png)</span><br><span class="line"></span><br><span class="line">title随便写，把复制的公钥粘贴到key里。点下面的add SSH key。好了。基本配置就完了。下面我们把我们的代码传到 github上，在终端输入</span><br><span class="line"></span><br><span class="line">    hexo g</span><br><span class="line">    hexo d</span><br><span class="line">    </span><br><span class="line">如果执行hexo d 报下面的错误</span><br><span class="line"></span><br><span class="line">![](hexo-github搭建自己的个人博客/8.png)</span><br><span class="line"></span><br><span class="line">就先安装一下 ```hexo-deployer-git```,再执行 ```hexo d</span><br></pre></td></tr></table></figure></p>
 <pre><code>npm install hexo-deployer-git --save
 </code></pre><p>至此，我们的项目就部署到github上了。</p>
 <p>那么，访问博客的链接是什么呢？ 点击标注的Settings,往下拉，如果你看到的是这样的。那么点击那个 None，选择第一个，点save. 访问你博客的链接就出来了，去访问试试吧！</p>
