@@ -180,8 +180,6 @@
                     <nav class="header-menu">
                         <ul>
                         
-                            <li><a href="/">主页</a></li>
-                        
                             <li><a href="/archives/">所有文章</a></li>
                         
                             <li><a href="/tags/">标签云</a></li>
@@ -193,9 +191,13 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
+                                <a class="fa Email" href="mailto:416082509@qq.com" title="Email"></a>
+                            
                                 <a class="fa 新浪微博" href="https://weibo.com/2517382891/profile?rightmod=1&wvr=6&mod=personinfo" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" href="https://github.com/Litxiaosa" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
                             
                                 <a class="fa 知乎" href="https://www.zhihu.com/people/xiao-sa-43-46/activities" title="知乎"></a>
                             
@@ -206,7 +208,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solr/">solr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/不知所云/">不知所云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境变量/">环境变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码规范插件/">编码规范插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solr/">solr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/不知所云/">不知所云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境变量/">环境变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码规范插件/">编码规范插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
                     </div>
                 </section>
                 
@@ -251,8 +253,6 @@
             <nav class="header-menu">
                 <ul>
                 
-                    <li><a href="/">主页</a></li>
-                
                     <li><a href="/archives/">所有文章</a></li>
                 
                     <li><a href="/tags/">标签云</a></li>
@@ -265,9 +265,13 @@
             <nav class="header-nav">
                         <ul class="social">
                             
+                                <a class="fa Email" target="_blank" href="mailto:416082509@qq.com" title="Email"></a>
+                            
                                 <a class="fa 新浪微博" target="_blank" href="https://weibo.com/2517382891/profile?rightmod=1&wvr=6&mod=personinfo" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="https://github.com/Litxiaosa" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
                             
                                 <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/xiao-sa-43-46/activities" title="知乎"></a>
                             
@@ -278,6 +282,167 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-SpringBoot(一) 之 快速入门" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/12/01/SpringBoot(一) 之 快速入门/" class="article-date">
+      <time datetime="2017-12-01T01:54:26.000Z" itemprop="datePublished">2017-12-01</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/01/SpringBoot(一) 之 快速入门/">SpringBoot(一) 之 快速入门</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="使用Intellij中的Spring-Initializr来快速构建Spring-Boot工程"><a href="#使用Intellij中的Spring-Initializr来快速构建Spring-Boot工程" class="headerlink" title="使用Intellij中的Spring Initializr来快速构建Spring Boot工程"></a>使用Intellij中的Spring Initializr来快速构建Spring Boot工程</h3><p><img src="/2017/12/01/SpringBoot(一) 之 快速入门/SpringBoot(一" alt=""> 之 快速入门/1.png)</p>
+<ul>
+<li><p>点击Create New Project，我们可以看到如下图所示的创建功能窗口。其中Initial Service Url指向的地址就是Spring官方提供的Spring Initializr工具地址，所以这里创建的工程实际上也是基于它的Web工具来实现的。</p>
+<p><img src="/2017/12/01/SpringBoot(一) 之 快速入门/SpringBoot(一" alt=""> 之 快速入门/2.png)</p>
+</li>
+</ul>
+<ul>
+<li><p>点击Next，等待片刻后，我们可以看到如下图所示的工程信息窗口，在这里我们可以编辑我们想要创建的工程信息。其中，</p>
+<blockquote>
+<p>Group 一般是公司名字的反写，也可以自己随意<br>Artifact: 你这个项目叫什么<br>Type可以改变我们要构建的工程类型，比如：Maven、Gradle；<br>Language可以选择：Java、Groovy、Kotlin。</p>
+</blockquote>
+<p><img src="/2017/12/01/SpringBoot(一) 之 快速入门/SpringBoot(一" alt=""> 之 快速入门/3.png)</p>
+</li>
+<li><p>点击Next，进入选择Spring Boot版本和依赖管理的窗口。在这里值的我们关注的是，它不仅包含了Spring Boot Starter POMs中的各个依赖，还包含了Spring Cloud的各种依赖。 我们还可以选择SpringBoot的版本。</p>
+<p><img src="/2017/12/01/SpringBoot(一) 之 快速入门/SpringBoot(一" alt=""> 之 快速入门/4.png)</p>
+</li>
+<li><p>这个我们勾选了web，你也可以根据自己的需求勾选。点击Next，进入最后关于工程物理存储的一些细节。最后，点击Finish就能完成工程的构建了。   </p>
+<p><img src="/2017/12/01/SpringBoot(一) 之 快速入门/SpringBoot(一" alt=""> 之 快速入门/5.png)</p>
+</li>
+</ul>
+<h3 id="Spring-Boot属性配置文件详解"><a href="#Spring-Boot属性配置文件详解" class="headerlink" title="Spring Boot属性配置文件详解"></a>Spring Boot属性配置文件详解</h3><p>我们在Spring Boot使用过程中，最直观的感受就是没有了原来自己整合Spring应用时繁多的XML配置内容，替代它的是在 <code>pom.xml</code> 中引入模块化的Starter POMs，其中各个模块都有自己的默认配置，所以如果不是特殊应用场景，就只需要在 <code>application.properties</code> 中完成一些属性配置就能开启各模块的应用。</p>
+<h4 id="1-自定义属性与加载"><a href="#1-自定义属性与加载" class="headerlink" title="1. 自定义属性与加载"></a><strong>1. 自定义属性与加载</strong></h4><p>我们在使用Spring Boot的时候，通常也需要定义一些自己使用的属性，我们可以如下方式直接定义：</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-SpringBoot 大纲" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/12/01/SpringBoot 大纲/" class="article-date">
+      <time datetime="2017-12-01T01:32:17.000Z" itemprop="datePublished">2017-12-01</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/01/SpringBoot 大纲/">SpringBoot 大纲</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>这里整理出来一个我自己学习SpringBoot的大纲，权当索引用吧</p>
+<ul>
+<li><p><a href="">SpringBoot(一) 之 快速入门</a></p>
+</li>
+<li><p><a href="">SpringBoot(二) 之 Web开发</a></p>
+</li>
+<li><p><a href="">SpringBoot(三) 之 安全管理</a></p>
+</li>
+<li><p><a href="">SpringBoot(三) 之 事务管理</a></p>
+</li>
+<li><p><a href="">SpringBoot(三) 之 缓存支持</a></p>
+</li>
+<li><p><a href="">SpringBoot(三) 之 日志管理</a></p>
+</li>
+<li><p><a href="">SpringBoot(三) 之 消息服务</a></p>
+</li>
+<li><p><a href="">SpringBoot(三) 之 监控管理</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
   
     <article id="post-学习Git（五） 之 搭建Git服务器" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -790,143 +955,6 @@
       
         <p class="article-more-link">
           <a href="/2017/08/24/solr的配置和简单应用/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-浮生若梦" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/07/17/浮生若梦/" class="article-date">
-      <time datetime="2017-07-17T02:44:52.000Z" itemprop="datePublished">2017-07-17</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/17/浮生若梦/">浮生若梦</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p> <img src="/2017/07/17/浮生若梦/梦.jpg" alt=""></p>
-<blockquote>
-<p>浮生若梦,若梦非梦,浮生何如,如梦之梦 ——— 庄子《如梦之梦》</p>
-</blockquote>
-<p>你现在二十五六岁，大学毕业两三年，或者差不多研究生刚毕业。你有着一份还算凑合的工作，天天宅在冷气十足的办公室里，每个月拿到手的钱，交了房租吃了饭，所剩无几。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/不知所云/">不知所云</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/07/17/浮生若梦/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-风景旧曾谙" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/30/风景旧曾谙/" class="article-date">
-      <time datetime="2017-06-30T02:41:15.000Z" itemprop="datePublished">2017-06-30</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/30/风景旧曾谙/">风景旧曾谙</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><img src="/2017/06/30/风景旧曾谙/江南.png" alt=""></p>
-<p>七月将至， 天气慢慢炎热而躁动。来杭州已九月有余。</p>
-<p>初来杭州，怀着美好的憧憬一心想去走走，看许仙和白娘子相遇的断桥，看充满神话色彩的雷峰塔。看济公修行之地灵隐寺等等。</p>
-<p>然而始终未曾迈出一步。一来公司996累成狗，二来无人同行，感觉会少很多乐趣。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/不知所云/">不知所云</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/06/30/风景旧曾谙/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
