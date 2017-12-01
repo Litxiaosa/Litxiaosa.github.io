@@ -42,6 +42,12 @@ mkdir .ssh
 <p>剩下的推送就简单了。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> Git </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -210,6 +216,12 @@ git push origin dev
 </blockquote>
 ]]></content>
       
+        <categories>
+            
+            <category> Git </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -277,6 +289,12 @@ git push origin dev
 </ol>
 ]]></content>
       
+        <categories>
+            
+            <category> Git </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -325,6 +343,12 @@ git push origin dev
 <p> 场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退，不过前提是没有推送到远程库。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> Git </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -418,6 +442,12 @@ git commit -m &quot;second commit&quot;
 <h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>好了，这一篇，我们学了Git的安装和一些基本命令操作，差不多算入门了，接下去就是继续深入学习了。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> Git </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -469,6 +499,12 @@ git commit -m &quot;second commit&quot;
 <p>只是她身上的温暖蛊惑了你，让你误以为那就是爱情。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 不知所云 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -500,6 +536,12 @@ git commit -m &quot;second commit&quot;
 <p>多说一句，该插件所用的是阿里巴巴公司的开发规范，肯定会与其他的规范有出入。如果觉得不适合公司或者自己的开发习惯，那就没必要用了。适合自己的最好。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 编码规范插件 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -799,6 +841,12 @@ public void delete()throws Exception{
 </blockquote>
 ]]></content>
       
+        <categories>
+            
+            <category> solr </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -837,6 +885,12 @@ public void delete()throws Exception{
 <p>人生如戏，或者是孤独地像条狗，或者是假装合群扮小丑，都是你自己的选择。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 不知所云 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -868,6 +922,12 @@ public void delete()throws Exception{
 <p><img src="/2017/06/30/风景旧曾谙/鸟.jpg" alt=""></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 不知所云 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -905,6 +965,12 @@ public void delete()throws Exception{
 <p><img src="/2017/06/25/MAC下配置环境变量/maven.png" alt=""></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 环境变量 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -1007,6 +1073,12 @@ title: tags
 </blockquote>
 ]]></content>
       
+        <categories>
+            
+            <category> hexo </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -1087,6 +1159,12 @@ hexo d
 </code></pre><p>然后就会在你 folder/source/_posts下生成一个.md的文件，以后你的文章就存放到这里，你也可以直接在这里新建一个.md的文件。写完文章后，你可以使用hexo g命令生成静态文件， 然后hexo s进行本地预览。感觉没问题了，hexo d上传到github上吧。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> hexo </category>
+            
+        </categories>
+        
         
         <tags>
             
