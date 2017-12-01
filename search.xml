@@ -1015,10 +1015,10 @@ title: tags
       <url>/2017/06/24/hexo-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
       <content type="html"><![CDATA[<p>由于个人电脑是Mac, 所以这里就以Mac OS为参考，其实Mac跟windows搭建博客差别不大，如果用windows的朋友觉得不适，请移步之<a href="http://tengj.top/2016/02/20/hexoTotal/" target="_blank" rel="noopener">嘟嘟MD的独立博客</a>，有详细的windows平台下的教程。嗯，那我们开始吧。</p>
 <a id="more"></a>
-<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>点击进入<a href="https://git-scm.com/" target="_blank" rel="noopener">git官网</a>，下载安装包，然后按步骤安装就好。可以输入下面的命令查看git是否安装成功。</p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a><strong>安装Git</strong></h2><p>点击进入<a href="https://git-scm.com/" target="_blank" rel="noopener">git官网</a>，下载安装包，然后按步骤安装就好。可以输入下面的命令查看git是否安装成功。</p>
 <pre><code>git --version
-</code></pre><h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2><p>点击进入 <a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js官网</a>，一个是通用版，一个是最新版，选择一个下载，然后按步骤安装。</p>
-<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><ul>
+</code></pre><h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a><strong>安装 Node.js</strong></h2><p>点击进入 <a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js官网</a>，一个是通用版，一个是最新版，选择一个下载，然后按步骤安装。</p>
+<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a><strong>安装hexo</strong></h2><ul>
 <li><p><strong>下载安装hexo</strong></p>
 <pre><code>npm install -g hexo
 </code></pre><p>安装好以后，在终端输入：</p>
@@ -1042,9 +1042,9 @@ title: tags
 </ul>
 <p> 在你的终端 hexo目录下执行下面的命令</p>
 <pre><code>hexo g  
-hexo s
+ hexo s
 </code></pre><p>然后浏览器访问<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>, 此时，你应该看到你的博客了。当然了，这个博客只是本地的，别人是看不到了，你需要把它放到github上。</p>
-<h2 id="注册github账号"><a href="#注册github账号" class="headerlink" title="注册github账号"></a>注册github账号</h2><p>如果您已有github账号，请跳过，进入github进行注册，邮箱和密码请记好。</p>
+<h2 id="注册github账号"><a href="#注册github账号" class="headerlink" title="注册github账号"></a><strong>注册github账号</strong></h2><p>如果您已有github账号，请跳过，进入github进行注册，邮箱和密码请记好。</p>
 <ul>
 <li><p><strong>创建repository</strong></p>
 <p>  repository就相当于一个仓库，存放你代码的地方，点击 new repository</p>
@@ -1052,7 +1052,7 @@ hexo s
 <p>  填写你的项目名字repository name, 这个名字格式要为youname.github.io, 例如我的xiaosa.github.io, 填写完以后点击下面的 creat创建。</p>
 </li>
 </ul>
-<h2 id="部署本地项目到github上"><a href="#部署本地项目到github上" class="headerlink" title="部署本地项目到github上"></a>部署本地项目到github上</h2><p><img src="/2017/06/24/hexo-github搭建自己的个人博客/4.png" alt=""></p>
+<h2 id="部署本地项目到github上"><a href="#部署本地项目到github上" class="headerlink" title="部署本地项目到github上"></a><strong>部署本地项目到github上</strong></h2><p><img src="/2017/06/24/hexo-github搭建自己的个人博客/4.png" alt=""></p>
 <p>编辑它，在_config.yml最下方，添加如下配置(记得改成自己的。另外记得一点，<strong>hexo的配置文件中任何’:’后面都是带一个空格的</strong>)</p>
 <p><img src="/2017/06/24/hexo-github搭建自己的个人博客/5.png" alt=""></p>
 <p>github是你之前创建仓库的地址，可以通过下图获得</p>
@@ -1067,7 +1067,7 @@ hexo s
 <p><img src="/2017/06/24/hexo-github搭建自己的个人博客/7.png" alt=""></p>
 <p>title随便写，把复制的公钥粘贴到key里。点下面的add SSH key。好了。基本配置就完了。下面我们把我们的代码传到 github上，在终端输入</p>
 <pre><code>hexo g
-hexo d
+ hexo d
 </code></pre><p>如果执行hexo d 报下面的错误</p>
 <p><img src="/2017/06/24/hexo-github搭建自己的个人博客/8.png" alt=""></p>
 <p>就先安装一下 <code>hexo-deployer-git</code>,再执行 <code>hexo d</code></p>
@@ -1075,7 +1075,7 @@ hexo d
 </code></pre><p>至此，我们的项目就部署到github上了。</p>
 <p>那么，访问博客的链接是什么呢？ 点击标注的Settings,往下拉，如果你看到的是这样的。那么点击那个 None，选择第一个，点save. 访问你博客的链接就出来了，去访问试试吧！</p>
 <p><img src="/2017/06/24/hexo-github搭建自己的个人博客/9.png" alt=""></p>
-<h2 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a>发表文章</h2><p>既然博客搭建好了，就发表一下文章看看效果吧。hexo中写文章使用的是Markdown，语法不难，看一下就会了。然后去下载一个Markdown的编辑器，很多，看个人喜好。</p>
+<h2 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a><strong>发表文章</strong></h2><p>既然博客搭建好了，就发表一下文章看看效果吧。hexo中写文章使用的是Markdown，语法不难，看一下就会了。然后去下载一个Markdown的编辑器，很多，看个人喜好。</p>
 <p>在终端的blog路径下输入</p>
 <pre><code>hexo new &quot;my new post&quot;
 </code></pre><p>然后就会在你 <code>blog/source/_posts</code> 下生成一个 <code>.md</code> 的文件，以后你的文章就存放到这里，你也可以直接在这里新建一个 <code>.md</code> 的文件。写完文章后，你可以使用 <code>hexo g</code> 命令生成静态文件， 然后<code>hexo s</code> 进行本地预览。感觉没问题了，<code>hexo d</code> 上传到github上吧。</p>
