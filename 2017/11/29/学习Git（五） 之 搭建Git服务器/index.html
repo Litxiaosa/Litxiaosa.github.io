@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（五）%20之%20搭建Git服务器/1.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（五）%20之%20搭建Git服务器/2.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（五）%20之%20搭建Git服务器/3.png">
-<meta property="og:updated_time" content="2017-12-01T14:00:58.247Z">
+<meta property="og:updated_time" content="2017-12-01T17:50:13.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习Git（五）之 搭建Git服务器">
 <meta name="twitter:description" content="在之前的学习中，我们讲了远程仓库实际上和本地仓库没啥不同，纯粹为了7x24小时开机并交换大家的修改。 GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。">
@@ -262,8 +262,8 @@ var _hmt = _hmt || [];
 <p>看一下标红的是不是no,如果是,该为yes。再执行上边那个操作就可以了。</p>
 <p><img src="/2017/11/29/学习Git（五） 之 搭建Git服务器/2.png" alt=""></p>
 <p>第二步，创建证书：</p>
-<p>收集所有需要登录的用户的公钥，就是他们自己的id_rsa.pub文件，把所有公钥导入到 <code>/home/git/.ssh/authorized_keys</code> 文件里，一行一个。</p>
-<p><code>git   和 .ssh/keys</code>  是自己手动创建的，我的创建在了root目录下。</p>
+<p>收集所有需要登录的用户的公钥，就是他们自己的<code>id_rsa.pub</code>文件，把所有公钥导入到 <code>/home/git/.ssh/authorized_keys</code> 文件里，一行一个。</p>
+<p><code>git</code>和 <code>.ssh/keys</code>是自己手动创建的，我的创建在了root目录下。</p>
 <p>创建命令是：</p>
 <pre><code>mkdir git
 mkdir .ssh  
