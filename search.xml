@@ -947,6 +947,12 @@ public void delete()throws Exception{
 <p><img src="/2017/06/24/hexo绑定域名/展示.png" alt=""></p>
 ]]></content>
       
+        <categories>
+            
+            <category> hexo </category>
+            
+        </categories>
+        
         
         <tags>
             
