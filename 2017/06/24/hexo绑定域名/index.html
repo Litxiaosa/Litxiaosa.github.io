@@ -18,10 +18,11 @@
 <meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo绑定域名/3.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo绑定域名/4.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo绑定域名/5.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo绑定域名/6.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo绑定域名/7.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo绑定域名/8.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/06/24/hexo绑定域名/9.png">
-<meta property="og:updated_time" content="2017-12-01T15:55:59.795Z">
+<meta property="og:updated_time" content="2017-12-01T16:04:05.677Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo绑定域名">
 <meta name="twitter:description" content="因为Hexo个人博客是托管在github之上，每次访问都要使用githubyourname.github.io这么一个长串的域名来访问，会显得非常繁琐。这个时候我们可以购买一个域名，设置DNS跳转，以达到通过域名即可访问我们的个人博客。通过查阅文档发现，github pages是支持域名绑定的。">
@@ -274,9 +275,10 @@ var _hmt = _hmt || [];
 <p>然后我们登陆账号，进入后台，下面有个畅言秘钥。</p>
 <p><img src="/2017/06/24/hexo绑定域名/4.png" alt=""></p>
 <p><img src="/2017/06/24/hexo绑定域名/5.png" alt=""></p>
-<p>由于该主题没有集成畅言评论，所以我们得自己配置，<figure class="highlight plain"><figcaption><span>```changyan.ejs```  的文件，把上边那个代码拷贝进去，然后appid替换成你的appid， conf替换成你的appKey。添加 红色框住的代码。保存。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](hexo绑定域名/6.png)</span><br><span class="line"></span><br><span class="line">进入 layout/_partial/article.ejs 文件， 添加一下代码</span><br></pre></td></tr></table></figure></p>
-<p>&lt;% } else if (theme.changyan.on) { %&gt;<br>    &lt;%- partial(‘comments/changyan’) %&gt;</p>
-<p>```</p>
+<p>由于该主题没有集成畅言评论，所以我们得自己配置,在<code>_yelee/layout/_partial/comments</code> 文件夹中新建一个 <code>changyan.ejs</code> 的文件，把上边那个代码拷贝进去，然后appid替换成你的appid， conf替换成你的appKey。添加 红色框住的代码。保存。</p>
+<p><img src="/2017/06/24/hexo绑定域名/6.png" alt=""></p>
+<p>进入 <code>layout/_partial/article.ejs</code> 文件， 添加一下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;% &#125; else if (theme.changyan.on) &#123; %&gt;</span><br><span class="line">    &lt;%- partial(&apos;comments/changyan&apos;) %&gt;</span><br></pre></td></tr></table></figure>
 <p><img src="/2017/06/24/hexo绑定域名/7.png" alt=""></p>
 <p>进入 <code>_config.yml</code> 根目录 添加下面的配置。</p>
 <p><img src="/2017/06/24/hexo绑定域名/8.png" alt=""></p>
