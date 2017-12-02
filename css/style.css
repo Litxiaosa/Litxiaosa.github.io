@@ -668,12 +668,13 @@ code {
   text-align: center;
 }
 #profile .inner .base-info #name {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 600;
+  margin: 30px auto 10px;
 }
 #profile .inner .base-info #location {
   font-size: 12px;
-  margin-top: 5px;
+  margin-top: 15px;
   color: #9a9ea3;
 }
 #profile .inner .base-info #location .fa {
@@ -684,7 +685,7 @@ code {
   width: 150px;
   height: 40px;
   display: block;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 40px;
   text-align: center;
   margin: 20px auto 10px;
@@ -820,7 +821,7 @@ code {
 }
 .article-title {
   font-size: 2em;
-  color: #565a5f;
+  color: #009688;
   text-decoration: none;
   line-height: 1.3em;
 }
