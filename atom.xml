@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://litxiaosa.me/"/>
-  <updated>2017-12-02T12:07:07.435Z</updated>
+  <updated>2017-12-02T07:52:18.501Z</updated>
   <id>http://litxiaosa.me/</id>
   
   <author>
@@ -15,27 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>SpringBoot(一) 之 快速入门</title>
-    <link href="http://litxiaosa.me/2017/12/01/SpringBoot(%E4%B8%80)%20%E4%B9%8B%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/"/>
-    <id>http://litxiaosa.me/2017/12/01/SpringBoot(一) 之 快速入门/</id>
-    <published>2017-12-01T01:54:26.000Z</published>
-    <updated>2017-12-02T12:07:07.435Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="使用Intellij中的Spring-Initializr来快速构建Spring-Boot工程"><a href="#使用Intellij中的Spring-Initializr来快速构建Spring-Boot工程" class="headerlink" title="使用Intellij中的Spring Initializr来快速构建Spring Boot工程"></a>使用Intellij中的Spring Initializr来快速构建Spring Boot工程</h2><ul><li><p>点击Create New Project，我们可以看到如下图所示的创建功能窗口。其中Initial Service Url指向的地址就是Spring官方提供的Spring Initializr工具地址，所以这里创建的工程实际上也是基于它的Web工具来实现的。</p><a id="more"></a><p><img src="/2017/12/01/SpringBoot(一) 之 快速入门/SpringBoot(一" alt=""> 之 快速入门/2.png)</p></li></ul><ul><li><p>点击Next，等待片刻后，我们可以看到如下图所示的工程信息窗口，在这里我们可以编辑我们想要创建的工程信息。其中，</p><blockquote><p>Group 一般是公司名字的反写，也可以自己随意<br>Artifact: 你这个项目叫什么<br>Type可以改变我们要构建的工程类型，比如：Maven、Gradle；<br>Language可以选择：Java、Groovy、Kotlin。</p></blockquote><p><img src="/2017/12/01/SpringBoot(一) 之 快速入门/SpringBoot(一" alt=""> 之 快速入门/3.png)</p></li><li><p>点击Next，进入选择Spring Boot版本和依赖管理的窗口。在这里值的我们关注的是，它不仅包含了Spring Boot Starter POMs中的各个依赖，还包含了Spring Cloud的各种依赖。 我们还可以选择SpringBoot的版本。</p><p><img src="/2017/12/01/SpringBoot(一) 之 快速入门/SpringBoot(一" alt=""> 之 快速入门/4.png)</p></li><li><p>这个我们勾选了web，你也可以根据自己的需求勾选。点击Next，进入最后关于工程物理存储的一些细节。最后，点击Finish就能完成工程的构建了。   </p><p><img src="/2017/12/01/SpringBoot(一) 之 快速入门/SpringBoot(一" alt=""> 之 快速入门/5.png)</p></li></ul><h2 id="Spring-Boot属性配置文件详解"><a href="#Spring-Boot属性配置文件详解" class="headerlink" title="Spring Boot属性配置文件详解"></a>Spring Boot属性配置文件详解</h2><p>我们在Spring Boot使用过程中，最直观的感受就是没有了原来自己整合Spring应用时繁多的XML配置内容，替代它的是在 <code>pom.xml</code> 中引入模块化的Starter POMs，其中各个模块都有自己的默认配置，所以如果不是特殊应用场景，就只需要在 <code>application.properties</code> 中完成一些属性配置就能开启各模块的应用。</p><h3 id="1-自定义属性与加载"><a href="#1-自定义属性与加载" class="headerlink" title="1. 自定义属性与加载"></a><strong>1. 自定义属性与加载</strong></h3><p>我们在使用Spring Boot的时候，通常也需要定义一些自己使用的属性，我们可以如下方式直接定义：</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;使用Intellij中的Spring-Initializr来快速构建Spring-Boot工程&quot;&gt;&lt;a href=&quot;#使用Intellij中的Spring-Initializr来快速构建Spring-Boot工程&quot; class=&quot;headerlink&quot; title=&quot;使用Intellij中的Spring Initializr来快速构建Spring Boot工程&quot;&gt;&lt;/a&gt;使用Intellij中的Spring Initializr来快速构建Spring Boot工程&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;点击Create New Project，我们可以看到如下图所示的创建功能窗口。其中Initial Service Url指向的地址就是Spring官方提供的Spring Initializr工具地址，所以这里创建的工程实际上也是基于它的Web工具来实现的。&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="SpringBoot" scheme="http://litxiaosa.me/tags/SpringBoot/"/>
-    
-  </entry>
   
   <entry>
     <title>学习Git（五）之 搭建Git服务器</title>
