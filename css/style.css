@@ -1515,7 +1515,7 @@ ol.toc {
 }
 .layout-wrap-inner.list-categories ul li a,
 .layout-wrap-inner.list-categories ul .category-list-child a {
-  color: #777;
+  color: #009688;
 }
 .layout-wrap-inner.list-categories ul ul,
 .layout-wrap-inner.list-categories ul ol {
@@ -1773,7 +1773,7 @@ ol.toc {
   padding: 15px 5px;
 }
 .widget a {
-  color: #777;
+  color: #009688;
   text-decoration: none;
 }
 .widget a:hover {
@@ -1807,7 +1807,7 @@ ol.toc {
 .widget ol li a,
 .widget ul .category-list-child a,
 .widget ol .category-list-child a {
-  color: #777;
+  color: #009688;
 }
 .widget ul ul,
 .widget ol ul,
