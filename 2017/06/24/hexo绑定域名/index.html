@@ -278,7 +278,7 @@ var _hmt = _hmt || [];
 <p>由于该主题没有集成畅言评论，所以我们得自己配置,在<code>_yelee/layout/_partial/comments</code> 文件夹中新建一个 <code>changyan.ejs</code> 的文件，把上边那个代码拷贝进去，然后appid替换成你的appid， conf替换成你的appKey。添加 红色框住的代码。保存。</p>
 <p><img src="/2017/06/24/hexo绑定域名/6.png" alt=""></p>
 <p>进入 <code>layout/_partial/article.ejs</code> 文件， 添加一下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;% &#125; else if (theme.changyan.on) &#123; %&gt;</span><br><span class="line">    &lt;%- partial(&apos;comments/changyan&apos;) %&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> &#125; <span class="keyword">else</span> <span class="keyword">if</span> (theme.changyan.on) &#123; </span><span class="xml"><span class="tag">%&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">%-</span></span></span><span class="ruby"> partial(<span class="string">'comments/changyan'</span>) </span><span class="xml"><span class="tag">%&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p><img src="/2017/06/24/hexo绑定域名/7.png" alt=""></p>
 <p>进入 <code>_config.yml</code> 根目录 添加下面的配置。</p>
 <p><img src="/2017/06/24/hexo绑定域名/8.png" alt=""></p>

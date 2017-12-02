@@ -258,7 +258,7 @@ var _hmt = _hmt || [];
 </code></pre><p>如果没有 <code>.bash_profile</code> 创建文件后打开</p>
 <pre><code>touch .bash_profile
 </code></pre><p>把下面的代码复制进去, <strong>注意替换成你的jdk版本</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home</span><br><span class="line"></span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line"></span><br><span class="line">export $JAVA_HOME/bin:$PATH:</span><br></pre></td></tr></table></figure>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=<span class="regexp">/Library/</span>Java/JavaVirtualMachines/jdk1.<span class="number">8.0_131</span>.jdk/Contents/Home</span><br><span class="line"></span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/<span class="class"><span class="keyword">lib</span>/<span class="title">dt</span>.<span class="title">jar</span>:$<span class="title">JAVA_HOME</span>/<span class="title">lib</span>/<span class="title">tools</span>.<span class="title">jar</span></span></span><br><span class="line"></span><br><span class="line">export $JAVA_HOME/<span class="symbol">bin:</span>$<span class="symbol">PATH:</span></span><br></pre></td></tr></table></figure>
 <p>然后保存并退出 <code>.bash_profile</code></p>
 <p>输入下面的命令使修改生效</p>
 <pre><code>source .bash_profile
@@ -269,7 +269,7 @@ var _hmt = _hmt || [];
 <h2 id="配置maven环境变量"><a href="#配置maven环境变量" class="headerlink" title="配置maven环境变量"></a><strong>配置maven环境变量</strong></h2><p>打开终端,输入</p>
 <pre><code>open .bash_profile
 </code></pre><p>输入Maven安装包路径, 注意替换成你的解压路径</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export M2_HOME=/Library/apache-maven-3.5.0</span><br><span class="line"></span><br><span class="line">export PATH=$PATH:$M2_HOME/bin</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">M2_HOME</span>=/Library/apache-maven-3.5.0</span><br><span class="line"></span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$M2_HOME/bin</span><br></pre></td></tr></table></figure>
 <p>保存修改并关闭 <code>.bash_profile</code> </p>
 <p>输入 <code>source .bash_profile</code> 使修改生效</p>
 <p>输入 <code>mvn -v</code> 验证Maven是否配置成功，如果显示Maven版本信息则配置成功。 </p>
