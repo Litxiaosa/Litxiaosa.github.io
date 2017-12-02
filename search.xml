@@ -561,25 +561,19 @@ git commit -m &quot;second commit&quot;
 <p><img src="/2017/08/24/solr的配置和简单应用/7.png" alt=""></p>
 </li>
 <li><p><strong>域的定义 field</strong></p>
-<p>  先拿出来一条配置来看一下</p>
+<p> 先拿出来一条配置来看一下</p>
  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">type</span>=<span class="string">"string"</span> <span class="attr">indexed</span>=<span class="string">"true"</span> <span class="attr">stored</span>=<span class="string">"true"</span> <span class="attr">required</span>=<span class="string">"true"</span> <span class="attr">multiValued</span>=<span class="string">"false"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p> 首先，我们认识一下这些属性</p>
+<blockquote>
+<p>name: 域名<br>type: 域的类型，必须匹配类型，不然会报错<br>indexed: 是否要做索引<br>stored: 是否要储存<br>required: 是否必填<br>multiValued：是否多值，如果设置为多值，里面的值就会采用数组的方式储存</p>
+</blockquote>
 </li>
-</ol>
-<pre><code>首先，我们认识一下这些属性
-
- &gt;name: 域名
- &gt;type: 域的类型，必须匹配类型，不然会报错
- &gt;indexed: 是否要做索引
- &gt;stored: 是否要储存
- &gt;required: 是否必填
- &gt;multiValued：是否多值，如果设置为多值，里面的值就会采用数组的方式储存
-</code></pre><ol>
 <li><p><strong>动态域 dynamicField</strong></p>
 <p> 同样，我们拿出一条来看</p>
  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dynamicField</span> <span class="attr">name</span>=<span class="string">"*_i"</span>  <span class="attr">type</span>=<span class="string">"string"</span>    <span class="attr">indexed</span>=<span class="string">"true"</span>  <span class="attr">stored</span>=<span class="string">"true"</span> <span class="attr">multiValued</span>=<span class="string">"true"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<pre><code>那么，什么是动态域呢？ 就是这个域的名称，是由表达式组成的，只要名称满足了这个表达式，就可以用这个域
+<pre><code>那么，什么是动态域呢？就是这个域的名称，是由表达式组成的，只要名称满足了这个表达式，就可以用这个域
 
 同样的认识一下这些属性
 
@@ -603,7 +597,7 @@ git commit -m &quot;second commit&quot;
 </li>
 <li><p><strong>域的类型</strong></p>
 <p> 同样的给出一段配置</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fieldType</span> <span class="attr">name</span>=<span class="string">"text_general"</span> <span class="attr">class</span>=<span class="string">"solr.TextField"</span> <span class="attr">positionIncrementGap</span>=<span class="string">"100"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">analyzer</span> <span class="attr">type</span>=<span class="string">"index"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tokenizer</span> <span class="attr">class</span>=<span class="string">"solr.StandardTokenizerFactory"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">"solr.StopFilterFactory"</span> <span class="attr">ignoreCase</span>=<span class="string">"true"</span> <span class="attr">words</span>=<span class="string">"stopwords.txt"</span> /&gt;</span></span><br><span class="line">         <span class="comment">&lt;!-- in this example, we will only use synonyms at query time</span></span><br><span class="line"><span class="comment">         &lt;filter class="solr.SynonymFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/&gt;--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">"solr.LowerCaseFilterFactory"</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">analyzer</span>&gt;</span></span><br><span class="line">     </span><br><span class="line">     <span class="tag">&lt;<span class="name">analyzer</span> <span class="attr">type</span>=<span class="string">"query"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tokenizer</span> <span class="attr">class</span>=<span class="string">"solr.StandardTokenizerFactory"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">"solr.StopFilterFactory"</span> <span class="attr">ignoreCase</span>=<span class="string">"true"</span> <span class="attr">words</span>=<span class="string">"stopwords.txt"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">"solr.SynonymFilterFactory"</span> <span class="attr">synonyms</span>=<span class="string">"synonyms.txt"</span> <span class="attr">ignoreCase</span>=<span class="string">"true"</span>  <span class="attr">expand</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">"solr.LowerCaseFilterFactory"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">analyzer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">fieldType</span>&gt;</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fieldType</span> <span class="attr">name</span>=<span class="string">"text_general"</span> <span class="attr">class</span>=<span class="string">"solr.TextField"</span> <span class="attr">positionIncrementGap</span>=<span class="string">"100"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">analyzer</span> <span class="attr">type</span>=<span class="string">"index"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tokenizer</span> <span class="attr">class</span>=<span class="string">"solr.StandardTokenizerFactory"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">"solr.StopFilterFactory"</span> <span class="attr">ignoreCase</span>=<span class="string">"true"</span> <span class="attr">words</span>=<span class="string">"stopwords.txt"</span> /&gt;</span></span><br><span class="line">         <span class="comment">&lt;!-- in this example, we will only use synonyms at query time</span></span><br><span class="line"><span class="comment">         &lt;filter class="solr.SynonymFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/&gt;--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">"solr.LowerCaseFilterFactory"</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">analyzer</span>&gt;</span></span><br><span class="line">     </span><br><span class="line">     <span class="tag">&lt;<span class="name">analyzer</span> <span class="attr">type</span>=<span class="string">"query"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tokenizer</span> <span class="attr">class</span>=<span class="string">"solr.StandardTokenizerFactory"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">"solr.StopFilterFactory"</span> <span class="attr">ignoreCase</span>=<span class="string">"true"</span> <span class="attr">words</span>=<span class="string">"stopwords.txt"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">"solr.SynonymFilterFactory"</span> <span class="attr">synonyms</span>=<span class="string">"synonyms.txt"</span> <span class="attr">ignoreCase</span>=<span class="string">"true"</span>  <span class="attr">expand</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">"solr.LowerCaseFilterFactory"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">analyzer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">fieldType</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>介绍一下这些属性</p>
 <blockquote>
 <p>name: 域的名称<br>class: 指定solr的类型<br>analyzer: 分词器的配置<br>type: index(索引分词器)，query(查询分词器)<br>tokenizer: 配置分词器<br>filter: 过滤器</p>
@@ -658,26 +652,29 @@ git commit -m &quot;second commit&quot;
 <p><img src="/2017/08/24/solr的配置和简单应用/12.png" alt=""></p>
 </li>
 <li><p>找到<code>solr/example/example-DIH/solr/db/conf/db-data-config.xml</code>，把其复制到<code>solrHome/core1/conf/</code>下，并改名为<code>data-config.xml</code>, 打开并编辑，修改如下</p>
-<pre><code class="xml"><span class="tag">&lt;<span class="name">dataConfig</span>&gt;</span>
-    <span class="comment">&lt;!--这是mmysql的配置--&gt;</span>
-    <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">driver</span>=<span class="string">"com.mysql.jdbc.Driver"</span> <span class="attr">url</span>=<span class="string">"jdbc:mysql://localhost:3306/solr"</span> <span class="attr">user</span>=<span class="string">"你的账号"</span> <span class="attr">password</span>=<span class="string">"你的密码"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">document</span>&gt;</span>
-        <span class="comment">&lt;!-- name属性，就代表着一个文档，可以随便命名 --&gt;</span>
-        <span class="comment">&lt;!-- query是一条sql，代表在数据库查找出来的数据 --&gt;</span>
-        <span class="tag">&lt;<span class="name">entity</span> <span class="attr">name</span>=<span class="string">"product"</span> <span class="attr">query</span>=<span class="string">"select * from product"</span>&gt;</span>
-            <span class="comment">&lt;!-- 每一个field映射着数据库中列与文档中的域，column是数据库列，name是solr的域(必须是在managed-schema文件中配置过的域才行) --&gt;</span>
-            <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"id"</span> <span class="attr">name</span>=<span class="string">"id"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"name"</span> <span class="attr">name</span>=<span class="string">"product_name"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"url"</span> <span class="attr">name</span>=<span class="string">"product_url"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"price"</span> <span class="attr">name</span>=<span class="string">"product_price"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"type"</span> <span class="attr">name</span>=<span class="string">"product_type"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"description"</span> <span class="attr">name</span>=<span class="string">"product_description"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="name">entity</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">document</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">dataConfig</span>&gt;</span>
-</code></pre>
-<p><img src="/2017/08/24/solr的配置和简单应用/13.png" alt=""></p>
 </li>
+</ol>
+<pre><code>```xml   
+&lt;dataConfig&gt;
+    &lt;!--这是mmysql的配置--&gt;
+    &lt;dataSource driver=&quot;com.mysql.jdbc.Driver&quot; url=&quot;jdbc:mysql://localhost:3306/solr&quot; user=&quot;你的账号&quot; password=&quot;你的密码&quot;/&gt;
+    &lt;document&gt;
+        &lt;!-- name属性，就代表着一个文档，可以随便命名 --&gt;
+        &lt;!-- query是一条sql，代表在数据库查找出来的数据 --&gt;
+        &lt;entity name=&quot;product&quot; query=&quot;select * from product&quot;&gt;
+            &lt;!-- 每一个field映射着数据库中列与文档中的域，column是数据库列，name是solr的域(必须是在managed-schema文件中配置过的域才行) --&gt;
+            &lt;field column=&quot;id&quot; name=&quot;id&quot;/&gt;
+            &lt;field column=&quot;name&quot; name=&quot;product_name&quot;/&gt;
+            &lt;field column=&quot;url&quot; name=&quot;product_url&quot;/&gt;
+            &lt;field column=&quot;price&quot; name=&quot;product_price&quot;/&gt;
+            &lt;field column=&quot;type&quot; name=&quot;product_type&quot;/&gt;
+            &lt;field column=&quot;description&quot; name=&quot;product_description&quot;/&gt;
+        &lt;/entity&gt;
+    &lt;/document&gt;
+&lt;/dataConfig&gt;
+``` 
+</code></pre><p> <img src="/2017/08/24/solr的配置和简单应用/13.png" alt=""></p>
+<ol>
 <li><p>重启tomcat， 会看到如下页面</p>
 <p><img src="/2017/08/24/solr的配置和简单应用/14.png" alt=""></p>
 </li>
