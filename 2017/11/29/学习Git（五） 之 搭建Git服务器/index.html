@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（五）%20之%20搭建Git服务器/1.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（五）%20之%20搭建Git服务器/2.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（五）%20之%20搭建Git服务器/3.png">
-<meta property="og:updated_time" content="2017-12-04T02:34:03.725Z">
+<meta property="og:updated_time" content="2017-12-04T03:06:22.665Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习Git（五）之 搭建Git服务器">
 <meta name="twitter:description" content="在之前的学习中，我们讲了远程仓库实际上和本地仓库没啥不同，纯粹为了7x24小时开机并交换大家的修改。 GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。">
@@ -254,9 +254,9 @@ var _hmt = _hmt || [];
 <a id="more"></a>
 <p>搭建Git服务器需要准备一台运行Linux的机器。我是在VMware虚拟机上装了一个CentOS 如果你装的是Ubuntu或者其他的，安装命令可能会不同。这个要注意一下。</p>
 <p>假设你已经有sudo权限的用户账号，下面，正式开始安装。</p>
-<p>第一步，安装git：</p>
-<pre><code>sudo yum install git
-</code></pre><p>如果安装不上可能是网络没配好，找到这个下面这个文件</p>
+<p>第一步，安装git:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum <span class="keyword">install</span> git</span><br></pre></td></tr></table></figure>
+<p>如果安装不上可能是网络没配好，找到这个下面这个文件</p>
 <p><img src="/2017/11/29/学习Git（五） 之 搭建Git服务器/1.png" alt=""></p>
 <p>看一下标红的是不是no,如果是,该为yes。再执行上边那个操作就可以了。</p>
 <p><img src="/2017/11/29/学习Git（五） 之 搭建Git服务器/2.png" alt=""></p>
@@ -264,23 +264,22 @@ var _hmt = _hmt || [];
 <p>收集所有需要登录的用户的公钥，就是他们自己的<code>id_rsa.pub</code>文件，把所有公钥导入到 <code>/home/git/.ssh/authorized_keys</code> 文件里，一行一个。</p>
 <p><code>git</code>和 <code>.ssh/keys</code>是自己手动创建的，我的创建在了root目录下。</p>
 <p>创建命令是：</p>
-<pre><code>mkdir git
-mkdir .ssh  
-</code></pre><p>然后给这个目录对应的权限：</p>
-<pre><code>chmod 700 .ssh/
-</code></pre><p>再<code>cd .ssh</code> 创建 keys 文件：</p>
-<pre><code>touch keys
-</code></pre><p> 然后给这个文件对应的权限</p>
-<pre><code>chmod 600 keys
-</code></pre><p>接着就是把所有的公钥导入了。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> git</span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br></pre></td></tr></table></figure>
+<p>然后给这个目录对应的权限：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 700 <span class="string">.ssh/</span></span><br></pre></td></tr></table></figure>
+<p>再<code>cd .ssh</code> 创建 keys 文件：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">touch keys</span></span><br></pre></td></tr></table></figure>
+<p>然后给这个文件对应的权限</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">chmod</span> <span class="number">600</span> <span class="keyword">keys</span></span><br></pre></td></tr></table></figure>
+<p>接着就是把所有的公钥导入了。</p>
 <p>第三步，初始化Git仓库：</p>
 <p>先选定一个目录作为Git仓库，假定是/root/lean.git，在/root目录下输入命令：</p>
-<pre><code>sudo git init --bare lean.git
-</code></pre><p><img src="/2017/11/29/学习Git（五） 之 搭建Git服务器/3.png" alt=""></p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo git init <span class="comment">--bare lean.git</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（五） 之 搭建Git服务器/3.png" alt=""></p>
 <p>第四步，克隆远程仓库：</p>
 <p>现在，可以通过git clone命令克隆远程仓库了，在各自的电脑上运行：</p>
-<pre><code>git clone git@server:/root/lean.git
-</code></pre><blockquote>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git<span class="variable">@server</span><span class="symbol">:/root/lean</span>.git</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p>@server: 对应你们git服务器的ip地址。 </p>
 </blockquote>
 <p>剩下的推送就简单了。</p>

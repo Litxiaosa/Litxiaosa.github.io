@@ -10,9 +10,9 @@
 <a id="more"></a>
 <p>搭建Git服务器需要准备一台运行Linux的机器。我是在VMware虚拟机上装了一个CentOS 如果你装的是Ubuntu或者其他的，安装命令可能会不同。这个要注意一下。</p>
 <p>假设你已经有sudo权限的用户账号，下面，正式开始安装。</p>
-<p>第一步，安装git：</p>
-<pre><code>sudo yum install git
-</code></pre><p>如果安装不上可能是网络没配好，找到这个下面这个文件</p>
+<p>第一步，安装git:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum <span class="keyword">install</span> git</span><br></pre></td></tr></table></figure>
+<p>如果安装不上可能是网络没配好，找到这个下面这个文件</p>
 <p><img src="/2017/11/29/学习Git（五） 之 搭建Git服务器/1.png" alt=""></p>
 <p>看一下标红的是不是no,如果是,该为yes。再执行上边那个操作就可以了。</p>
 <p><img src="/2017/11/29/学习Git（五） 之 搭建Git服务器/2.png" alt=""></p>
@@ -20,23 +20,22 @@
 <p>收集所有需要登录的用户的公钥，就是他们自己的<code>id_rsa.pub</code>文件，把所有公钥导入到 <code>/home/git/.ssh/authorized_keys</code> 文件里，一行一个。</p>
 <p><code>git</code>和 <code>.ssh/keys</code>是自己手动创建的，我的创建在了root目录下。</p>
 <p>创建命令是：</p>
-<pre><code>mkdir git
-mkdir .ssh  
-</code></pre><p>然后给这个目录对应的权限：</p>
-<pre><code>chmod 700 .ssh/
-</code></pre><p>再<code>cd .ssh</code> 创建 keys 文件：</p>
-<pre><code>touch keys
-</code></pre><p> 然后给这个文件对应的权限</p>
-<pre><code>chmod 600 keys
-</code></pre><p>接着就是把所有的公钥导入了。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> git</span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br></pre></td></tr></table></figure>
+<p>然后给这个目录对应的权限：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 700 <span class="string">.ssh/</span></span><br></pre></td></tr></table></figure>
+<p>再<code>cd .ssh</code> 创建 keys 文件：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">touch keys</span></span><br></pre></td></tr></table></figure>
+<p>然后给这个文件对应的权限</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">chmod</span> <span class="number">600</span> <span class="keyword">keys</span></span><br></pre></td></tr></table></figure>
+<p>接着就是把所有的公钥导入了。</p>
 <p>第三步，初始化Git仓库：</p>
 <p>先选定一个目录作为Git仓库，假定是/root/lean.git，在/root目录下输入命令：</p>
-<pre><code>sudo git init --bare lean.git
-</code></pre><p><img src="/2017/11/29/学习Git（五） 之 搭建Git服务器/3.png" alt=""></p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo git init <span class="comment">--bare lean.git</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（五） 之 搭建Git服务器/3.png" alt=""></p>
 <p>第四步，克隆远程仓库：</p>
 <p>现在，可以通过git clone命令克隆远程仓库了，在各自的电脑上运行：</p>
-<pre><code>git clone git@server:/root/lean.git
-</code></pre><blockquote>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git<span class="variable">@server</span><span class="symbol">:/root/lean</span>.git</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p>@server: 对应你们git服务器的ip地址。 </p>
 </blockquote>
 <p>剩下的推送就简单了。</p>
@@ -81,69 +80,64 @@ mkdir .ssh
 <p>合并完分支后，甚至可以删除<code>dev</code>分支。删除<code>dev</code>分支就是把<code>dev</code>指针给删掉，删掉后，我们就剩下了一条<code>master</code>分支：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/6.png" alt=""></p>
 <h3 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a><strong>创建与合并分支</strong></h3><p>首先，我们创建<code>dev</code>分支，然后切换到<code>dev</code>分支, 当然了，要在你本地的仓库目录下：</p>
-<pre><code>git checkout -b dev
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/7.png" alt=""></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -<span class="selector-tag">b</span> dev</span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/7.png" alt=""></p>
 <p><code>git checkout</code> 命令加上-b参数表示创建并切换，相当于以下两条命令：</p>
-<pre><code>git branch dev
-git checkout dev
-</code></pre><p>然后，用<code>git branch</code>命令查看当前分支：</p>
-<pre><code>git branch
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/8.png" alt=""></p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="built_in">dev</span></span><br><span class="line">git checkout <span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<p>然后，用<code>git branch</code>命令查看当前分支：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git branch</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/8.png" alt=""></p>
 <p><code>git branch</code> 命令会列出所有分支，当前分支前面会标一个*号。</p>
 <p>然后，我们就可以在<code>dev</code>分支上正常提交，比如对<code>demo.txt</code>做个修改，加上 <code>haha</code></p>
 <p>然后提交</p>
-<pre><code>git add demo.txt
-git commit -m &quot;branch test&quot;
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/9.png" alt=""></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> demo.txt</span></span><br><span class="line"><span class="bash">git commit -m <span class="string">"branch test"</span></span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/9.png" alt=""></p>
 <p>现在，<code>dev</code>分支的工作完成，我们就可以切换回<code>master</code>分支：</p>
-<pre><code>git checkout master
-</code></pre><p>切换回<code>master</code>分支后，再查看一个<code>demo.txt</code>文件，刚才添加的内容不见了！因为那个提交是在<code>dev</code>分支上，而<code>master</code>分支此刻的提交点并没有变：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="literal">master</span></span><br></pre></td></tr></table></figure>
+<p>切换回<code>master</code>分支后，再查看一个<code>demo.txt</code>文件，刚才添加的内容不见了！因为那个提交是在<code>dev</code>分支上，而<code>master</code>分支此刻的提交点并没有变：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/10.png" alt=""></p>
 <p>现在，我们把<code>dev</code>分支的工作成果合并到<code>master</code>分支上：</p>
-<pre><code>git merge dev
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/11.png" alt=""></p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">merge</span> dev</span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/11.png" alt=""></p>
 <p>合并完成后，就可以放心地删除<code>dev</code>分支了：</p>
-<pre><code>git branch -D dev
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/12.png" alt=""></p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">git</span> <span class="keyword">branch </span>-D dev</span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/12.png" alt=""></p>
 <p>删除后，查看<code>branch</code>，就只剩下<code>master</code>分支了：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/13.png" alt=""></p>
 <p>因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在<code>master</code>分支上工作效果是一样的，但过程更安全。</p>
 <h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a><strong>解决冲突</strong></h3><p>人生不如意之事十之八九，合并分支往往也不是一帆风顺的</p>
 <p>准备新的<code>feature1</code>分支，继续我们的新分支开发：</p>
-<pre><code>git checkout -b feature1
-</code></pre><p>再次修改<code>demo.txt</code>, 增加： </p>
-<pre><code>Creating a new branch is quick AND simple.
-</code></pre><p>在<code>feature1</code>分支上提交：</p>
-<pre><code>git add demo.txt
-git commit -m &quot;AND simple&quot;
-</code></pre><p>切换到<code>master</code>分支：</p>
-<pre><code>git checkout master
-</code></pre><p>Git还会自动提示我们当前<code>master</code>分支比远程的<code>master</code>分支要超前1个提交。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -<span class="selector-tag">b</span> feature1</span><br></pre></td></tr></table></figure>
+<p>再次修改<code>demo.txt</code>, 增加： </p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Creating a <span class="keyword">new</span> branch <span class="keyword">is</span> quick <span class="keyword">AND</span> simple.</span><br></pre></td></tr></table></figure>
+<p>在<code>feature1</code>分支上提交：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> demo.txt</span></span><br><span class="line"><span class="bash">git commit -m <span class="string">"AND simple"</span></span></span><br></pre></td></tr></table></figure>
+<p>切换到<code>master</code>分支：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="literal">master</span></span><br></pre></td></tr></table></figure>
+<p>Git还会自动提示我们当前<code>master</code>分支比远程的<code>master</code>分支要超前1个提交。</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/14.png" alt=""></p>
 <p>在<code>master</code>分支上把<code>demo.txt</code>文件的最后一行替换为:</p>
-<pre><code>Creating a new branch is quick &amp; simple
-</code></pre><p>提交</p>
-<pre><code>git add demo.txt 
-git commit -m &quot;&amp; simple&quot;
-</code></pre><p>现在，<code>master</code>分支和<code>feature1</code>分支各自都分别有新的提交，变成了这样：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Creating a <span class="keyword">new</span> branch <span class="keyword">is</span> quick &amp; simple</span><br></pre></td></tr></table></figure>
+<p>提交</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> demo.txt </span></span><br><span class="line"><span class="bash">git commit -m <span class="string">"&amp; simple"</span></span></span><br></pre></td></tr></table></figure>
+<p>现在，<code>master</code>分支和<code>feature1</code>分支各自都分别有新的提交，变成了这样：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/15.png" alt=""></p>
 <p>这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突，我们试试看：</p>
-<pre><code>git merge feature1
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/16.png" alt=""></p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">merge</span> feature1</span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/16.png" alt=""></p>
 <p>果然冲突了！Git告诉我们，<code>demo.txt</code>文件存在冲突，必须手动解决冲突后再提交。我们可以直接查看<code>demo.txt</code>的内容：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/17.png" alt=""></p>
 <p>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，我们修改如下后保存：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/18.png" alt=""></p>
 <p>再提交：</p>
-<pre><code>git add demo.txt
-git commit -m &quot;conflict fixed&quot;
-</code></pre><p>现在，<code>master</code>分支和<code>feature1</code>分支变成了下图所示：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> demo.txt</span></span><br><span class="line"><span class="bash">git commit -m <span class="string">"conflict fixed"</span></span></span><br></pre></td></tr></table></figure>
+<p>现在，<code>master</code>分支和<code>feature1</code>分支变成了下图所示：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/19.png" alt=""></p>
 <p>用带参数的<code>git log</code>也可以看到分支的合并情况：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/20.png" alt="">    </p>
 <p>最后，删除<code>feature1</code>分支：</p>
-<pre><code>git branch -D feature1    
-</code></pre><p>工作完成。</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">git</span> <span class="keyword">branch </span>-D feature1</span><br></pre></td></tr></table></figure>
+<p>工作完成。</p>
 <h3 id="分支策略"><a href="#分支策略" class="headerlink" title="分支策略"></a><strong>分支策略</strong></h3><p>在实际开发中，我们应该按照几个基本原则进行分支管理：</p>
 <p>首先，<code>master</code>分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；</p>
 <p>那在哪干活呢？干活都在<code>dev</code>分支上，也就是说，<code>dev</code>分支是不稳定的，到某个时候，比如1.0版本发布时，再把<code>dev</code>分支合并到<code>master</code>上，在``master分支发布1.0版本；</p>
@@ -152,17 +146,17 @@ git commit -m &quot;conflict fixed&quot;
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/21.png" alt=""></p>
 <h3 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a><strong>多人协作</strong></h3><p>当你从远程仓库克隆时，实际上Git自动把本地的<code>master</code>分支和远程的<code>master</code>分支对应起来了，并且，远程仓库的默认名称是<code>origin</code>。</p>
 <p>要查看远程库的信息，用<code>git remote</code>：</p>
-<pre><code>git remote
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/22.png" alt=""></p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git remote</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/22.png" alt=""></p>
 <p>或者，用<code>git remote -v</code>显示更详细的信息</p>
-<pre><code>git remote -v
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/23.png" alt=""></p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git remote -v</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/23.png" alt=""></p>
 <p>上面显示了可以抓取和推送的<code>origin</code>的地址。如果没有推送权限，就看不到push的地址。</p>
 <h4 id="推送分支"><a href="#推送分支" class="headerlink" title="推送分支"></a><strong>推送分支</strong></h4><p>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：</p>
-<pre><code>git push origin master
-</code></pre><p>如果要推送其他分支，比如dev，就改成：</p>
-<pre><code>git push origin dev
-</code></pre><p>但是，并不是一定要把本地分支往远程推送，那么，哪些分支需要推送，哪些不需要呢？</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> master</span><br></pre></td></tr></table></figure>
+<p>如果要推送其他分支，比如dev，就改成：</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> dev</span><br></pre></td></tr></table></figure>
+<p>但是，并不是一定要把本地分支往远程推送，那么，哪些分支需要推送，哪些不需要呢？</p>
 <ul>
 <li><code>master</code>分支是主分支，因此要时刻与远程同步；</li>
 <li><code>dev</code>分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</li>
@@ -170,28 +164,24 @@ git commit -m &quot;conflict fixed&quot;
 <p>总之，就是在Git中，分支完全可以在本地自己藏着玩，是否推送，视你的心情而定！</p>
 <h4 id="抓取分支"><a href="#抓取分支" class="headerlink" title="抓取分支"></a><strong>抓取分支</strong></h4><p>多人协作时，大家都会往<code>master</code>和<code>dev</code>分支上推送各自的修改。</p>
 <p>现在，模拟一个你的小伙伴，可以在另一台电脑（注意要把SSH Key添加到GitHub）或者同一台电脑的另一个目录下克隆：</p>
-<pre><code>git clone https://github.com/Litxiaosa/learnGit.git
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/24.png" alt=""></p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/Litxiaosa/learnGit.git</span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/24.png" alt=""></p>
 <p>当你的小伙伴从远程库clone时，默认情况下，你的小伙伴只能看到本地的<code>master</code>分支。不信可以用<code>git branch</code>命令看看：</p>
-<pre><code>git branch
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/25.png" alt=""></p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git branch</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/25.png" alt=""></p>
 <p>现在，你的小伙伴要在dev分支上开发，就必须创建远程<code>origin</code>的<code>dev</code>分支到本地，于是他用这个命令创建本地<code>dev</code>分支：</p>
-<pre><code>git checkout -b dev origin/dev
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/26.png" alt=""></p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b <span class="built_in">dev</span> origin/<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/26.png" alt=""></p>
 <p>现在，他就可以在<code>dev</code>上继续修改，(我们在里面添加了<code>hello world</code>)然后，时不时地把<code>dev</code>分支push到远程：</p>
-<pre><code>git add demo.txt
-git commit -m &quot;add hello world&quot;
-git push origin dev
-</code></pre><p> 可能让你输入你的GitHub的用户名和密码 </p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> demo.txt</span></span><br><span class="line"><span class="bash">git commit -m <span class="string">"add hello world"</span></span></span><br><span class="line"><span class="bash">git push origin dev</span></span><br></pre></td></tr></table></figure>
+<p>可能让你输入你的GitHub的用户名和密码 </p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/27.png" alt=""></p>
 <p>你的小伙伴已经向<code>origin/dev</code>分支推送了他的提交，而碰巧你也对同样的文件作了修改，并试图推送,我们添加了一句：<code>hello git</code></p>
-<pre><code>git add demo.txt
-git commit -m &quot;add hello git&quot;
-git push origin dev
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/28.png" alt=""></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> demo.txt</span></span><br><span class="line"><span class="bash">git commit -m <span class="string">"add hello git"</span></span></span><br><span class="line"><span class="bash">git push origin dev</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/28.png" alt=""></p>
 <p>推送失败，因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单，Git已经提示我们，先用git pull把最新的提交从<code>origin/dev</code>抓下来，然后，在本地合并，解决冲突，再推送：</p>
-<pre><code>git pull origin dev
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/29.png" alt=""></p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git pull origin dev</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/29.png" alt=""></p>
 <p><code>git pull</code>成功，但是合并有冲突，需要手动解决，解决的方法和分支管理中的解决冲突完全一样。解决后，提交，再push。</p>
 <p>因此，多人协作的工作模式通常是这样：</p>
 <p>首先，可以试图用 <code>git push origin branch-name</code> 推送自己的修改；</p>
@@ -232,7 +222,7 @@ git push origin dev
     </entry>
     
     <entry>
-      <title><![CDATA[学习Git（三）之 远程仓库]]></title>
+      <title><![CDATA[学习Git（三） 之 远程仓库]]></title>
       <url>/2017/11/28/%E5%AD%A6%E4%B9%A0Git%EF%BC%88%E4%B8%89%EF%BC%89%20%E4%B9%8B%20%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/</url>
       <content type="html"><![CDATA[<p>Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding。这里我以GitHub为例子介绍如何操作远程仓库。</p>
 <a id="more"></a>
@@ -248,21 +238,21 @@ git push origin dev
 <p> <img src="/2017/11/28/学习Git（三） 之 远程仓库/3.png" alt=""></p>
 </li>
 <li><p>现在，我们根据GitHub的提示，在本地的<code>GitRepository</code>仓库下运行命令：</p>
-<pre><code>git remote add origin git@github.com:Litxiaosa/learnGit.git
-</code></pre><p> <strong>请千万注意，把上面的<code>Litxiaosa</code>替换成你自己的GitHub账户名，否则，你在本地关联的就是我的远程库，关联没有问题，但是你以后推送是推不上去的，因为你的SSH Key公钥不在我的账户列表中</strong>。</p>
+ <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span><span class="bash"> origin git@github.com:Litxiaosa/learnGit.git</span></span><br></pre></td></tr></table></figure>
+<p> <strong>请千万注意，把上面的<code>Litxiaosa</code>替换成你自己的GitHub账户名，否则，你在本地关联的就是我的远程库，关联没有问题，但是你以后推送是推不上去的，因为你的SSH Key公钥不在我的账户列表中</strong></p>
 </li>
 <li><p>添加后，远程库的名字就是<code>origin</code>，这是Git默认的叫法，也可以改成别的，但是<code>origin</code>这个名字一看就知道是远程库。</p>
 </li>
 <li><p>下一步，就可以把本地库的所有内容推送到远程库上</p>
-<pre><code>git push -u origin master
-</code></pre><p>  <img src="/2017/11/28/学习Git（三） 之 远程仓库/4.png" alt=""></p>
-<p>  可以看到，你本地的代码就推送到远程仓库了推送成功后</p>
+ <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> -u <span class="built_in">origin</span> master</span><br></pre></td></tr></table></figure>
+<p> <img src="/2017/11/28/学习Git（三） 之 远程仓库/4.png" alt=""></p>
+<p> 可以看到，你本地的代码就推送到远程仓库了推送成功后</p>
 <p> 由于远程库是空的，我们第一次推送<code>master</code>分支时，加上了<code>-u</code>参数，Git不但会把本地的<code>master</code>分支内容推送的远程新的<code>master</code>分支，还会把本地的<code>master</code>分支和远程的<code>master</code>分支关联起来，在以后的推送或者拉取时就可以简化命令。可以立刻在GitHub页面中看到远程库的内容已经和本地一模一样：</p>
 <p> <img src="/2017/11/28/学习Git（三） 之 远程仓库/5.png" alt=""></p>
 </li>
 <li><p>从现在起，只要本地作了提交，就可以通过命令</p>
-<pre><code>git push origin master
-</code></pre><p>把本地<code>master</code>分支的最新修改推送至GitHub，现在，你就拥有了真正的分布式版本库！</p>
+ <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> master</span><br></pre></td></tr></table></figure>
+<p> 把本地<code>master</code>分支的最新修改推送至GitHub，现在，你就拥有了真正的分布式版本库！</p>
 </li>
 </ol>
 <h2 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a><strong>从远程库克隆</strong></h2><p>我们讲了先有本地库，后有远程库的时候，如何关联远程库。现在，假设我们从零开发，那么最好的方式是先创建远程库，然后，从远程库克隆。</p>
@@ -273,8 +263,8 @@ git push origin dev
 <p> <img src="/2017/11/28/学习Git（三） 之 远程仓库/7.png" alt=""></p>
 </li>
 <li><p>现在，远程库已经准备好了，下一步是用命令<code>git clone</code>克隆一个本地库</p>
-<pre><code>sudo git clone https://github.com/Litxiaosa/gitskills.git
-</code></pre><p> <img src="/2017/11/28/学习Git（三） 之 远程仓库/8.png" alt=""></p>
+  <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo git <span class="keyword">clone</span> <span class="title">https</span>://github.com/Litxiaosa/gitskills.git</span><br></pre></td></tr></table></figure>
+<p> <img src="/2017/11/28/学习Git（三） 之 远程仓库/8.png" alt=""></p>
 <p><strong>注意把Git库的地址换成你自己的</strong>，然后进入<code>gitskills</code>目录看看，已经有<br><code>README.md</code>文件了。</p>
 <p>如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。</p>
 </li>
@@ -323,17 +313,17 @@ git push origin dev
 <p>所以，<code>git add</code>命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行<code>git commit</code>就可以一次性把暂存区的所有修改提交到分支。</p>
 <h2 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a><strong>撤销操作</strong></h2><ol>
 <li><p>如果你文件只是在工作区修改了，但是还没提交到暂存区的时候，你可以用下面的命令来撤销。</p>
-<pre><code>git checkout -- [file]
-</code></pre><p> 比如，你有一个文件叫<code>demo.txt</code>, 里面的内容为：<code>Today is Tuesday</code>。 并且这句话已经提交到暂存区。 此时，你又在工作区修改了<code>demo.txt</code> 这个文件， 内容增加了一句：<code>I don&#39;t know what to say</code> </p>
+ <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- <span class="string">[file]</span></span><br></pre></td></tr></table></figure>
+<p> 比如，你有一个文件叫<code>demo.txt</code>, 里面的内容为：<code>Today is Tuesday</code>。 并且这句话已经提交到暂存区。 此时，你又在工作区修改了<code>demo.txt</code> 这个文件， 内容增加了一句：<code>I don&#39;t know what to say</code> </p>
 <p> 然后执行<code>git checkout -- demo.txt</code>命令,你会发现<code>demo.txt</code>内容又变成<code>Today is Tuesday</code>了。</p>
-<pre><code>git checkout -- demo.txt
-</code></pre><p> <code>git checkout -- file</code>命令中的–很重要，没有–，就变成了“切换到另一个分支”的命令。</p>
+ <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="comment">-- demo.txt</span></span><br></pre></td></tr></table></figure>
+<p> <code>git checkout -- file</code>命令中的–很重要，没有–，就变成了“切换到另一个分支”的命令。</p>
 </li>
 <li><p>假如你文件在工作区修改了,并且也执行 <code>git add</code> 命令提交给暂存区了，但是，还没有执行<code>commit</code>操作。那么执行上面的 <code>git checkout -- [file]</code> 已经无效了，因为工作区跟暂存区已经一样了，再怎么覆盖内容也一样，这时候就应该使用 <code>git reset HEAD</code> 命令来撤销。</p>
-<pre><code>git reset HEAD demo.txt
-</code></pre><p> 还记得如何丢弃工作区的修改吗？</p>
-<pre><code>git checkout -- demo.txt
-</code></pre><p> 回头看看添加的内容是不是又回滚了？</p>
+ <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">reset</span> HEAD <span class="built_in">demo</span>.txt</span><br></pre></td></tr></table></figure>
+<p> 还记得如何丢弃工作区的修改吗？</p>
+ <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="comment">-- demo.txt</span></span><br></pre></td></tr></table></figure>
+<p> 回头看看添加的内容是不是又回滚了？</p>
 </li>
 <li><p>现在，假设你不但改错了东西，还从暂存区提交到了版本库，怎么办呢？还记得版本回退吗？可以回退到上一个版本。不过，这是有条件的，就是你还没有把自己的本地版本库推送到远程。</p>
 </li>
@@ -367,27 +357,24 @@ git push origin dev
 <h2 id="安装并配置Git"><a href="#安装并配置Git" class="headerlink" title="安装并配置Git"></a><strong>安装并配置Git</strong></h2><ol>
 <li><p>要使用Git，第一步当然是安装Git了。</p>
 <p>首先，打开终端输入一下命令，看你是否安装了Git</p>
-<pre><code>git --version
-</code></pre><p>如果没有安装，那么请下载安装 <a href="https://git-scm.com/download" target="_blank" rel="noopener">Git客户端</a>， 选择你自己的系统下载安装即可。</p>
+ <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="comment">--version</span></span><br></pre></td></tr></table></figure>
+<p>如果没有安装，那么请下载安装 <a href="https://git-scm.com/download" target="_blank" rel="noopener">Git客户端</a>， 选择你自己的系统下载安装即可。</p>
 </li>
 <li><p>当安装完Git应该做的第一件事就是设置你的用户名称与邮件地址。 这样做很重要，因为每一个Git的提交都会使用这些信息，并且它会写入到你的每一次提交中，不可更改：</p>
-<pre><code>git config --global user.name &quot;你的名字&quot;
-git config --global user.email 你的邮箱
-</code></pre><p> 如果使用了 <code>--global</code> 选项，那么该命令只需要运行一次，因为之后无论你在该系统上做任何事情， Git 都会使用这些信息。 当你想针对特定项目使用不同的用户名称与邮件地址时，可以在那个项目目录下运行不使用 <code>--global</code> 选项的命令来配置。</p>
+ <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--global user.name 你的名字</span><br><span class="line">git<span class="built_in"> config </span>--global user.email 你的邮箱</span><br></pre></td></tr></table></figure>
+<p> 如果使用了 <code>--global</code> 选项，那么该命令只需要运行一次，因为之后无论你在该系统上做任何事情， Git 都会使用这些信息。 当你想针对特定项目使用不同的用户名称与邮件地址时，可以在那个项目目录下运行不使用 <code>--global</code> 选项的命令来配置。</p>
 </li>
 <li><p>检查配置信息</p>
 <p> 如果你不确定你的信息是不是配置成功了，可以输入一下命令查看</p>
-<pre><code>git config --list
-</code></pre><p> 如果你觉得返回的信息太多，也可以输入<code>git config &lt;key&gt;：</code><br> 查询指定的配置，例如:</p>
-<pre><code>git config user.name
-
-git config user.email
-</code></pre></li>
+ <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--list</span><br></pre></td></tr></table></figure>
+<p> 如果你觉得返回的信息太多，也可以输入<code>git config &lt;key&gt;：</code><br> 查询指定的配置，例如:</p>
+ <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git<span class="built_in"> config </span>user.name  </span><br><span class="line">git<span class="built_in"> config </span>user.email</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a><strong>创建版本库</strong></h2><p>什么是版本库呢？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。    </p>
 <p>创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目录，直接新建文件夹即可（我的起名字叫：GitRepository），然后cd 到该文件夹下，执行下面的命令</p>
-<pre><code>git init
-</code></pre><p> <img src="/2017/11/28/学习Git（一）之 入门/1.png" alt="">       </p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git init</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/28/学习Git（一）之 入门/1.png" alt="">       </p>
 <p>瞬间Git就把仓库建好了，而且告诉你是一个空的仓库（empty Git repository），细心的读者可以发现当前目录下多了一个.git的目录，这个目录是Git来跟踪管理版本库的，没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。</p>
 <p>如果你没有看到<code>.git</code>目录，那是因为这个目录默认是隐藏的，用<code>ls -ah</code>命令就可以看见。</p>
 <h2 id="提交文件到版本库"><a href="#提交文件到版本库" class="headerlink" title="提交文件到版本库"></a><strong>提交文件到版本库</strong></h2><p>上面把git仓库搭建好了，现在就来试试添加文件到版本库里面。</p>
@@ -395,50 +382,48 @@ git config user.email
 <p><strong>注意:这里需要文件是UTF-8格式的。</strong></p>
 <p>一定要放到<code>GitRepository</code>目录下（子目录也行），因为这是一个Git仓库，放到其他地方Git再厉害也找不到这个文件。</p>
 <p>第一步，用命令git add告诉Git，把文件添加到仓库：</p>
-<pre><code>git add demo.txt
-</code></pre><p> 执行上面的命令，没有任何显示，这就对了，Unix的哲学是“没有消息就是好消息”，说明添加成功。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> demo.txt</span></span><br></pre></td></tr></table></figure>
+<p> 执行上面的命令，没有任何显示，这就对了，Unix的哲学是“没有消息就是好消息”，说明添加成功。</p>
 <p>第二步，用命令git commit告诉Git，把文件提交到仓库：</p>
-<pre><code>git commit -m &quot;first commit&quot;
-</code></pre><p>-m 参数是用来注释你提交的信息的，这样以后才知道这次提交更改了什么</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git</span> commit -m <span class="string">"first commit"</span></span><br></pre></td></tr></table></figure>
+<p>-m 参数是用来注释你提交的信息的，这样以后才知道这次提交更改了什么</p>
 <p><img src="/2017/11/28/学习Git（一）之 入门/2.png" alt="">   </p>
 <h2 id="查看当前新增或者修改的文件"><a href="#查看当前新增或者修改的文件" class="headerlink" title="查看当前新增或者修改的文件"></a><strong>查看当前新增或者修改的文件</strong></h2><p>实际使用中你不止提交一个文件，或新增或修改多个文件，可能时间一久就忘了有多少文件需要提交。</p>
 <p>这里模拟一下，首先新建一个<code>hello.txt</code>的文件，然后修改<code>demo.txt</code>内容，添加一句<code>come on</code></p>
 <p>这样就有2个文件需要提交了。</p>
 <p>我们使用<code>git status</code>命令来查看当前状态,是否有未提交的文件</p>
-<pre><code>git status
-</code></pre><p><img src="/2017/11/28/学习Git（一）之 入门/3.png" alt=""> </p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git status</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/28/学习Git（一）之 入门/3.png" alt=""> </p>
 <p>如图，可以看到一个<code>demo.txt</code>被修改过了，但还没有准备提交的修改，另外一个是<code>Untracked files: hello.txt</code>，表示新增的文件。</p>
 <p>这时候准备把上面2个文件都提交，使用命令:</p>
-<pre><code>git add demo.txt
-git add hello.txt
-</code></pre><p>或者你嫌弃文件太多，一次次add感觉很麻烦，那么可以试试使用`git add .`` 提交，.表示提交当前目录所有文件</p>
-<pre><code>git add .
-git commit -m &quot;second commit&quot;
-</code></pre><p>提交后再使用<code>git status</code>命令查看下</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> demo.txt</span></span><br><span class="line"><span class="bash">git add hello.txt</span></span><br></pre></td></tr></table></figure>
+<p>或者你嫌弃文件太多，一次次add感觉很麻烦，那么可以试试使用`git add .`` 提交，.表示提交当前目录所有文件</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> .</span></span><br><span class="line"><span class="bash">git commit -m <span class="string">"second commit"</span></span></span><br></pre></td></tr></table></figure>
+<p>提交后再使用<code>git status</code>命令查看下</p>
 <p><img src="/2017/11/28/学习Git（一）之 入门/4.png" alt=""></p>
 <p>如图，可以看到文件提交到仓库了，并且<code>git status</code>后提示<code>nothing to commit, working directory clean</code>，说明当前没有需要提交的修改，工作目录是干净。</p>
 <h2 id="查看历史提交记录"><a href="#查看历史提交记录" class="headerlink" title="查看历史提交记录"></a><strong>查看历史提交记录</strong></h2><p>有时候你想看看之前提交的历史纪录~那么就需要使用到下面的命令：</p>
-<pre><code>git log
-</code></pre><p><img src="/2017/11/28/学习Git（一）之 入门/5.png" alt=""></p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/28/学习Git（一）之 入门/5.png" alt=""></p>
 <p>如图，可以看到我们提交的2次历史，<code>first commit</code>和 <code>second commit</code>。历史纪录是根据时间倒叙排列的。</p>
 <p>如果觉得代码太多了，加点过滤就行</p>
-<pre><code>git log --pretty=oneline
-</code></pre><p><img src="/2017/11/28/学习Git（一）之 入门/6.png" alt=""></p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> <span class="comment">--pretty=oneline</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/28/学习Git（一）之 入门/6.png" alt=""></p>
 <h2 id="回滚版本"><a href="#回滚版本" class="headerlink" title="回滚版本"></a>回滚版本</h2><p>现在我们准备把<code>demo.txt</code>回退到上一个版本，也就是“<code>first commit</code>”的那个版本，怎么做呢？</p>
 <p>首先，Git必须知道当前版本是哪个版本，在Git中，用HEAD表示当前版本，也就是最新的提交<code>2c49a55···9a9a13c</code>（注意我的提交ID和你的肯定不一样）， 就是上图中那一大长串字符，上一个版本就是 <code>HEAD^</code>，上上一个版本就是 <code>HEAD ^^</code>，当然往上100个版本写 <code>100个^</code> 比较容易数不过来，所以写成<code>HEAD~100</code>。</p>
 <p>现在，我们要把当前版本“<code>second commit</code>”回退到上一个版本“<code>first commit</code>”，就可以使用<code>git reset</code>命令：</p>
-<pre><code>git reset --hard HEAD^
-</code></pre><p><img src="/2017/11/28/学习Git（一）之 入门/7.png" alt=""></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard HEAD^</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/28/学习Git（一）之 入门/7.png" alt=""></p>
 <p>看看第二次提交的 <code>helllo.txt</code> 是不是不见了，<code>demo.txt</code> 里面的内容是不是也变了？ 好比你从21世纪坐时光穿梭机来到了19世纪，想再回去已经回不去了，肿么办？</p>
 <p>办法其实还是有的，只要上面的命令行窗口还没有被关掉，你就可以顺着往上找啊找啊，找到那个<code>second commit</code>的<code>commit id</code>是<code>2c49a55···9a9a13c</code>，于是就可以指定回到未来的某个版本：</p>
-<pre><code>git reset --hard 2c49a5503041f562e8dfbf
-</code></pre><p>版本号没必要写全，前几位就可以了，Git会自动去找。当然也不能只写前一两位，因为Git可能会找到多个版本号，就无法确定是哪一个了。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard 2c49a5503041f562e8dfbf</span></span><br></pre></td></tr></table></figure>
+<p>版本号没必要写全，前几位就可以了，Git会自动去找。当然也不能只写前一两位，因为Git可能会找到多个版本号，就无法确定是哪一个了。</p>
 <p><img src="/2017/11/28/学习Git（一）之 入门/8.png" alt=""></p>
 <p>果然， 老子又回来了！</p>
 <p>现在，你回退到了某个版本，关掉了电脑，第二天早上就后悔了，想恢复到新版本怎么办？找不到新版本的<code>commit id</code>怎么办？</p>
 <p>Git提供了一个命令<code>git reflog</code>用来记录你的每一次命令：</p>
-<pre><code>git reflog
-</code></pre><p><img src="/2017/11/28/学习Git（一）之 入门/9.png" alt=""> </p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git reflog</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/28/学习Git（一）之 入门/9.png" alt=""> </p>
 <p>（注：我没有再次做回滚操作） <code>commit id</code> 又出来了，现在，你又可以到未来了。就问你厉不厉害！</p>
 <h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>好了，这一篇，我们学了Git的安装和一些基本命令操作，差不多算入门了，接下去就是继续深入学习了。</p>
 ]]></content>
@@ -624,11 +609,11 @@ git commit -m &quot;second commit&quot;
 </blockquote>
 </li>
 <li><p><strong>主键域 uniqueKey</strong></p>
-<pre><code>&lt;uniqueKey&gt;id&lt;/uniqueKey&gt;
-</code></pre><p> 指定一个唯一的主键，每一个文档中，都应该有一个唯一的主键，这个值不要随便改</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uniqueKey</span>&gt;</span>id<span class="tag">&lt;/<span class="name">uniqueKey</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> 指定一个唯一的主键，每一个文档中，都应该有一个唯一的主键，这个值不要随便改</p>
 </li>
 <li><p><strong>复制域 copeField</strong></p>
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">copyField</span> <span class="attr">source</span>=<span class="string">"cat"</span> <span class="attr">dest</span>=<span class="string">"text"</span>/&gt;</span>    </span><br><span class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"text"</span> <span class="attr">type</span>=<span class="string">"string"</span> <span class="attr">indexed</span>=<span class="string">"true"</span>  <span class="attr">stored</span>=<span class="string">"true"</span> <span class="attr">multiValued</span>=<span class="string">"true"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;copyField <span class="attribute">source</span>=<span class="string">"cat"</span> <span class="attribute">dest</span>=<span class="string">"text"</span>/&gt;    </span><br><span class="line">&lt;field <span class="attribute">name</span>=<span class="string">"text"</span> <span class="attribute">type</span>=<span class="string">"string"</span> <span class="attribute">indexed</span>=<span class="string">"true"</span>  <span class="attribute">stored</span>=<span class="string">"true"</span> <span class="attribute">multiValued</span>=<span class="string">"true"</span>/&gt;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>source: 源域<br>dest: 目标域</p>
 </blockquote>
@@ -666,27 +651,21 @@ git commit -m &quot;second commit&quot;
 <p><strong>复制域的应用</strong></p>
 <p>用户在搜索框搜索的时候，有可能输入的是商品名称，也有可能输入的是商品描述，也有可能输入的是一个商品类型，那么这些值的搜索，肯定在后台是对应一个域的，那么既然如此，我们就可以把这些域合并成一个，这样在后台只需要单独的对这一个域进行搜索就可以了。</p>
 <p>先定义一个目标域：</p>
-<pre><code>&lt;field name=&quot;aim&quot; type=&quot;text_ik&quot; indexed=&quot;true&quot;  stored=&quot;false&quot;  multiValued=&quot;true&quot;/&gt;
-</code></pre><p><img src="/2017/08/24/solr的配置和简单应用/10.png" alt=""></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;field <span class="attribute">name</span>=<span class="string">"aim"</span> <span class="attribute">type</span>=<span class="string">"text_ik"</span> <span class="attribute">indexed</span>=<span class="string">"true"</span>  <span class="attribute">stored</span>=<span class="string">"false"</span>  <span class="attribute">multiValued</span>=<span class="string">"true"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2017/08/24/solr的配置和简单应用/10.png" alt=""></p>
 <p>复制域，把商品名称，商品描述，商品类型名称复制到上面的这个域中 </p>
 <p><img src="/2017/08/24/solr的配置和简单应用/11.png" alt="">  </p>
-<pre><code>&lt;copyField source=&quot;product_name&quot; dest=&quot;aim&quot;/&gt;
-&lt;copyField source=&quot;product_type&quot; dest=&quot;aim&quot;/&gt;
-&lt;copyField source=&quot;product_description&quot; dest=&quot;aim&quot;/&gt;
-</code></pre><h2 id="dataimport-导入数据库数据"><a href="#dataimport-导入数据库数据" class="headerlink" title="dataimport 导入数据库数据"></a><strong>dataimport 导入数据库数据</strong></h2><p>solr默认是没有开启dataimport这个功能的，所以我们要经过一点配置来开启它</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;copyField <span class="attribute">source</span>=<span class="string">"product_name"</span> <span class="attribute">dest</span>=<span class="string">"aim"</span>/&gt;</span><br><span class="line">&lt;copyField <span class="attribute">source</span>=<span class="string">"product_type"</span> <span class="attribute">dest</span>=<span class="string">"aim"</span>/&gt;</span><br><span class="line">&lt;copyField <span class="attribute">source</span>=<span class="string">"product_description"</span> <span class="attribute">dest</span>=<span class="string">"aim"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="dataimport-导入数据库数据"><a href="#dataimport-导入数据库数据" class="headerlink" title="dataimport 导入数据库数据"></a><strong>dataimport 导入数据库数据</strong></h2><p>solr默认是没有开启dataimport这个功能的，所以我们要经过一点配置来开启它</p>
 <ol>
 <li><p>首先找到<code>solr/dist/solr-dataimporthandler-6.6.0.jar</code>，把这个文件复制到<code>tomcat/webapp/solr/WEB-INF/lib/</code>下(前面拷贝过的忽略此操作)。并且找到相应数据库的驱动包，也同样放到该目录。我这里用的是mysql 的驱动</p>
 </li>
 <li><p>找到<code>solrHome/core1/conf/solrconfig.xml</code>，并打开，在里面添加一段内容</p>
-<pre><code>&lt;requestHandler name=&quot;/dataimport&quot;  class=&quot;solr.DataImportHandler&quot;&gt;
-    &lt;lst name=&quot;defaults&quot;&gt;
-        &lt;str name=&quot;config&quot;&gt;data-config.xml&lt;/str&gt;
-    &lt;/lst&gt;
-&lt;/requestHandler&gt;  
-</code></pre><p> <img src="/2017/08/24/solr的配置和简单应用/12.png" alt=""></p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;requestHandler name=<span class="string">"/dataimport"</span>  <span class="class"><span class="keyword">class</span></span>=<span class="string">"solr.DataImportHandler"</span>&gt;</span><br><span class="line">    &lt;lst name=<span class="string">"defaults"</span>&gt;</span><br><span class="line">        &lt;str name=<span class="string">"config"</span>&gt;data-config.xml&lt;<span class="regexp">/str&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>lst&gt;</span><br><span class="line">&lt;<span class="regexp">/requestHandler&gt;</span></span><br></pre></td></tr></table></figure>
+<p> <img src="/2017/08/24/solr的配置和简单应用/12.png" alt=""></p>
 </li>
 <li><p>找到<code>solr/example/example-DIH/solr/db/conf/db-dataconfig.xml</code>，把其复制到<code>solrHome/core1/conf/</code>下，并改名为<code>data-config.xml</code>, 打开并编辑，修改如下</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dataConfig</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--这是mmysql的配置--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">driver</span>=<span class="string">"com.mysql.jdbc.Driver"</span> <span class="attr">url</span>=<span class="string">"jdbc:mysql://localhost:3306/solr"</span> <span class="attr">user</span>=<span class="string">"你的账号"</span> <span class="attr">password</span>=<span class="string">"你的密码"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">document</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- name属性，就代表着一个文档，可以随便命名 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- query是一条sql，代表在数据库查找出来的数据 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">entity</span> <span class="attr">name</span>=<span class="string">"product"</span> <span class="attr">query</span>=<span class="string">"select * from product"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 每一个field映射着数据库中列与文档中的域，column是数据库列，name是solr的域(必须是在managed-schema文件中配置过的域才行) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"id"</span> <span class="attr">name</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"name"</span> <span class="attr">name</span>=<span class="string">"product_name"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"url"</span> <span class="attr">name</span>=<span class="string">"product_url"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"price"</span> <span class="attr">name</span>=<span class="string">"product_price"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"type"</span> <span class="attr">name</span>=<span class="string">"product_type"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"description"</span> <span class="attr">name</span>=<span class="string">"product_description"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">entity</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">document</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dataConfig</span>&gt;</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dataConfig</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--这是mmysql的配置--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">driver</span>=<span class="string">"com.mysql.jdbc.Driver"</span> <span class="attr">url</span>=<span class="string">"jdbc:mysql://localhost:3306/solr"</span> <span class="attr">user</span>=<span class="string">"你的账号"</span> <span class="attr">password</span>=<span class="string">"你的密码"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">document</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- name属性，就代表着一个文档，可以随便命名 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- query是一条sql，代表在数据库查找出来的数据 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">entity</span> <span class="attr">name</span>=<span class="string">"product"</span> <span class="attr">query</span>=<span class="string">"select * from product"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 每一个field映射着数据库中列与文档中的域，column是数据库列，name是solr的域(必须是在managed-schema文件中配置过的域才行) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"id"</span> <span class="attr">name</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"name"</span> <span class="attr">name</span>=<span class="string">"product_name"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"url"</span> <span class="attr">name</span>=<span class="string">"product_url"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"price"</span> <span class="attr">name</span>=<span class="string">"product_price"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"type"</span> <span class="attr">name</span>=<span class="string">"product_type"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">column</span>=<span class="string">"description"</span> <span class="attr">name</span>=<span class="string">"product_description"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">entity</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">document</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dataConfig</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p> <img src="/2017/08/24/solr的配置和简单应用/13.png" alt=""></p>
 </li>
 <li><p>重启tomcat， 会看到如下页面</p>
@@ -696,12 +675,8 @@ git commit -m &quot;second commit&quot;
 </li>
 </ol>
 <h2 id="solrJ的使用"><a href="#solrJ的使用" class="headerlink" title="solrJ的使用"></a><strong>solrJ的使用</strong></h2><p>现在说一下使用solrj来维护solr的索引及操作，solrj就是一个java的客户端，是一个jar包的使用，首先引入MAVEN的依赖，solrj的版本号要对应solr的版本号</p>
-<pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apache.solr&lt;/groupId&gt;
-    &lt;artifactId&gt;solr-solrj&lt;/artifactId&gt;
-    &lt;version&gt;6.6.0&lt;/version&gt;
-&lt;/dependency&gt; 
-</code></pre><p><strong>增加及修改</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.solr<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>solr-solrj<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>6.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>增加及修改</strong></p>
 <p>在solr中，增加与修改都是一回事，当这个id不存在时，则是添加，当这个id存在时，则是修改</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SolrController</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">private</span> String serverUrl = <span class="string">"http://10.60.20.152:8080/solr/core1"</span>;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">()</span> <span class="keyword">throws</span> SolrServerException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">//创建</span></span><br><span class="line">    HttpSolrClient client = <span class="keyword">new</span>  HttpSolrClient(serverUrl);</span><br><span class="line">    SolrInputDocument doc = <span class="keyword">new</span> SolrInputDocument();</span><br><span class="line">    </span><br><span class="line">    doc.addField(<span class="string">"id"</span>, <span class="string">"5008"</span>);</span><br><span class="line">    doc.addField(<span class="string">"product_name"</span>, <span class="string">"姓名"</span>);</span><br><span class="line">    doc.addField(<span class="string">"product_type"</span>, <span class="string">"1"</span>);</span><br><span class="line">    doc.addField(<span class="string">"product_url"</span>, <span class="string">"图片"</span>);</span><br><span class="line">    doc.addField(<span class="string">"product_price"</span>, <span class="string">"11"</span>);</span><br><span class="line">    doc.addField(<span class="string">"product_description"</span>, <span class="string">"这是一个测试例子"</span>);</span><br><span class="line">    </span><br><span class="line">    client.add(doc);</span><br><span class="line">    client.commit();</span><br><span class="line">    client.close();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>删除索引</strong></p>
@@ -814,24 +789,24 @@ git commit -m &quot;second commit&quot;
       <url>/2017/06/25/MAC%E4%B8%8B%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
       <content type="html"><![CDATA[<h2 id="配置JAVA环境变量"><a href="#配置JAVA环境变量" class="headerlink" title="配置JAVA环境变量"></a><strong>配置JAVA环境变量</strong></h2><p>大家在windows里面配置JDK环境变量很容易，但是如果要在mac里面配置JDK环境变量和windows里面有所不同,虽然Mac自带有jdk,但是版本比较低。我们讲的是自己下载的jdk。</p>
 <p>jdk的下载路径， Library:就是资源库</p>
-<pre><code>/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home  
-</code></pre><a id="more"></a>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/Library/</span>Java<span class="regexp">/JavaVirtualMachines/</span>jdk1.<span class="number">8.0</span>_101.jdk<span class="regexp">/Contents/</span>Home</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>打开配置文件 <code>.bash_profile</code></p>
-<pre><code>open .bash_profile
-</code></pre><p>如果没有 <code>.bash_profile</code> 创建文件后打开</p>
-<pre><code>touch .bash_profile
-</code></pre><p>把下面的代码复制进去, <strong>注意替换成你的jdk版本</strong></p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">open</span> .bash_profile</span><br></pre></td></tr></table></figure>
+<p>如果没有 <code>.bash_profile</code> 创建文件后打开</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">touch</span> <span class="selector-class">.bash_profile</span></span><br></pre></td></tr></table></figure>
+<p>把下面的代码复制进去, <strong>注意替换成你的jdk版本</strong></p>
 <figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=<span class="regexp">/Library/</span>Java/JavaVirtualMachines/jdk1.<span class="number">8.0_131</span>.jdk/Contents/Home</span><br><span class="line"></span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/<span class="class"><span class="keyword">lib</span>/<span class="title">dt</span>.<span class="title">jar</span>:$<span class="title">JAVA_HOME</span>/<span class="title">lib</span>/<span class="title">tools</span>.<span class="title">jar</span></span></span><br><span class="line"></span><br><span class="line">export $JAVA_HOME/<span class="symbol">bin:</span>$<span class="symbol">PATH:</span></span><br></pre></td></tr></table></figure>
 <p>然后保存并退出 <code>.bash_profile</code></p>
 <p>输入下面的命令使修改生效</p>
-<pre><code>source .bash_profile
-</code></pre><p>使用如下命令查看环境变量是否已经配置成功：</p>
-<pre><code>echo $JAVA_HOME
-</code></pre><p>如果出现下图，说明配置成功了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> .bash_profile</span><br></pre></td></tr></table></figure>
+<p>使用如下命令查看环境变量是否已经配置成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br></pre></td></tr></table></figure>
+<p>如果出现下图，说明配置成功了</p>
 <p><img src="/2017/06/25/MAC下配置环境变量/1.png" alt=""></p>
 <h2 id="配置maven环境变量"><a href="#配置maven环境变量" class="headerlink" title="配置maven环境变量"></a><strong>配置maven环境变量</strong></h2><p>打开终端,输入</p>
-<pre><code>open .bash_profile
-</code></pre><p>输入Maven安装包路径, 注意替换成你的解压路径</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">open</span> .bash_profile</span><br></pre></td></tr></table></figure>
+<p>输入Maven安装包路径, 注意替换成你的解压路径</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">M2_HOME</span>=/Library/apache-maven-3.5.0</span><br><span class="line"></span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$M2_HOME/bin</span><br></pre></td></tr></table></figure>
 <p>保存修改并关闭 <code>.bash_profile</code> </p>
 <p>输入 <code>source .bash_profile</code> 使修改生效</p>
@@ -906,8 +881,8 @@ git commit -m &quot;second commit&quot;
       <title><![CDATA[安装和配置主题]]></title>
       <url>/2017/06/24/%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E4%B8%BB%E9%A2%98/</url>
       <content type="html"><![CDATA[<h2 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a><strong>安装主题</strong></h2><p>hexo 自带的主题略显简单了，这里我们介绍安装yelee主题，你也可以选择<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="noopener">其他主题</a>，只是把路径改成你想安装主题的路径就好了，进入你之前创建的文件夹下，执行下面的命令</p>
-<pre><code>git clone https://github.com/MOxFIVE/hexo-theme-yelee.git themes/yelee
-</code></pre><p>等它克隆好了以后，你就会看到你的文件夹下<code>/themes</code>多了一个<code>yelee</code>文件夹</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/MOxFIVE/hexo-theme-yelee.git themes/yelee</span><br></pre></td></tr></table></figure>
+<p>等它克隆好了以后，你就会看到你的文件夹下<code>/themes</code>多了一个<code>yelee</code>文件夹</p>
 <a id="more"></a>
 <p><img src="/2017/06/24/安装和配置主题/1.png" alt=""></p>
 <h2 id="切换主题"><a href="#切换主题" class="headerlink" title="切换主题"></a><strong>切换主题</strong></h2><p>修改根目blog根目录下的 <code>_config.yml</code></p>
@@ -926,20 +901,15 @@ git commit -m &quot;second commit&quot;
 <h2 id="文章摘要"><a href="#文章摘要" class="headerlink" title="文章摘要"></a><strong>文章摘要</strong></h2><p>如果你写的文章过长，全部展示是很难看的，所以在文章里你想折叠的地方可以写</p>
 <pre><code>&lt;!-- more --&gt;   
 </code></pre><h2 id="标签云页面"><a href="#标签云页面" class="headerlink" title="标签云页面"></a><strong>标签云页面</strong></h2><p>如果你想开启标签云，在 <code>blog/source</code> 文件夹下新建一个 <code>tags</code> 文件夹 ，里面新建一个 <code>index.md</code> 的文件，然后把下面的内容拷进去</p>
-<pre><code>layout: tags
-title: tags 
-
----
-</code></pre><h2 id="本地站内搜索"><a href="#本地站内搜索" class="headerlink" title="本地站内搜索"></a><strong>本地站内搜索</strong></h2><p>使用搜索需先安装对应插件，用于生成索引数据,执行下面的命令</p>
-<pre><code>npm install hexo-generator-search --save
-</code></pre><p>然后，在你的主题 <code>_config.ymd</code> 文件里, 改为 on: true即为启用搜索</p>
-<pre><code>search: 
-     on: true
-     onload: false
-</code></pre><p> onload: true : 索引数据 search.xml 随页面一起加载 [效率优先]<br> onload: false : 当激活搜索框时再下载索引数据 [按需加载]</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">layout</span>: tags</span><br><span class="line"><span class="attribute">title</span>: tags </span><br><span class="line"></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h2 id="本地站内搜索"><a href="#本地站内搜索" class="headerlink" title="本地站内搜索"></a><strong>本地站内搜索</strong></h2><p>使用搜索需先安装对应插件，用于生成索引数据,执行下面的命令</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-generator-<span class="keyword">search</span> <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+<p>然后，在你的主题 <code>_config.ymd</code> 文件里, 改为 on: true即为启用搜索</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search:</span> </span><br><span class="line"><span class="attr">    on:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    onload:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p> onload: true : 索引数据 search.xml 随页面一起加载 [效率优先]<br> onload: false : 当激活搜索框时再下载索引数据 [按需加载]</p>
 <h2 id="站点小图标"><a href="#站点小图标" class="headerlink" title="站点小图标"></a><strong>站点小图标</strong></h2><p>若将图标存储 <code>yelee/source/favicon.png</code>,则配置中对应填写 <code>/favicon.png</code>，另外填网络图片的地址也可</p>
-<pre><code>favicon: /favicon.png
-</code></pre><p>结果如下：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">favicon:</span> /favicon.png</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
 <p><img src="/2017/06/24/安装和配置主题/3.png" alt=""></p>
 <h2 id="网页背景图"><a href="#网页背景图" class="headerlink" title="网页背景图"></a><strong>网页背景图</strong></h2><p>背景图文件所在路径:</p>
 <blockquote>
@@ -969,34 +939,33 @@ title: tags
       <content type="html"><![CDATA[<p>由于个人电脑是Mac, 所以这里就以Mac OS为参考，其实Mac跟windows搭建博客差别不大，如果用windows的朋友觉得不适，请移步之<a href="http://tengj.top/2016/02/20/hexoTotal/" target="_blank" rel="noopener">嘟嘟MD的独立博客</a>，有详细的windows平台下的教程。嗯，那我们开始吧。</p>
 <a id="more"></a>
 <h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a><strong>安装Git</strong></h2><p>点击进入<a href="https://git-scm.com/" target="_blank" rel="noopener">git官网</a>，下载安装包，然后按步骤安装就好。可以输入下面的命令查看git是否安装成功。</p>
-<pre><code>git --version
-</code></pre><h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a><strong>安装 Node.js</strong></h2><p>点击进入 <a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js官网</a>，一个是通用版，一个是最新版，选择一个下载，然后按步骤安装。</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="comment">--version</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a><strong>安装 Node.js</strong></h2><p>点击进入 <a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js官网</a>，一个是通用版，一个是最新版，选择一个下载，然后按步骤安装。</p>
 <h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a><strong>安装hexo</strong></h2><ul>
 <li><p><strong>下载安装hexo</strong></p>
-<pre><code>npm install -g hexo
-</code></pre><p>安装好以后，在终端输入：</p>
-<pre><code>hexo
-</code></pre><p>如果出现下图，则说明安装成功：</p>
-<p><img src="/2017/06/24/hexo-github搭建自己的个人博客/1.png" alt=""></p>
+  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> -g hexo</span><br></pre></td></tr></table></figure>
+<p>  安装好以后，在终端输入：</p>
+  <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo</span></span><br></pre></td></tr></table></figure>
+<p>  如果出现下图，则说明安装成功：</p>
+<p>  <img src="/2017/06/24/hexo-github搭建自己的个人博客/1.png" alt=""></p>
 </li>
 <li><p><strong>初始化博客</strong></p>
 <p>  建立一个博客的文件夹,blog是文件夹名字，可以根据自己的喜好定义</p>
-<pre><code>hexo init blog
-</code></pre><p>  然后进入该文件夹  </p>
-<pre><code>cd blog
-</code></pre><p>  运行node.js 命令，根据博客默认的配置安装必要的依赖包</p>
-<pre><code>npm install
-</code></pre><p>  初始化完成后，我们可以看到博客的文件夹</p>
+  <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo init blog</span></span><br></pre></td></tr></table></figure>
+<p>  然后进入该文件夹  </p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> blog</span><br></pre></td></tr></table></figure>
+<p>  运行node.js 命令，根据博客默认的配置安装必要的依赖包</p>
+  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
+<p>  初始化完成后，我们可以看到博客的文件夹</p>
 <p>  <img src="/2017/06/24/hexo-github搭建自己的个人博客/2.png" alt=""></p>
 </li>
 <li><p>那么基本的搭建过程就完成了，让我们看看效果吧，这里介绍几个命令。</p>
   <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo</span> clean  <span class="comment">#清理缓存，如果你改动了东西，没有效果，试试这个命吧。</span></span><br><span class="line">hexo g   <span class="comment">#完整命令为hexo generate,用于生成静态文件</span></span><br><span class="line">hexo s   <span class="comment">#完整命令为hexo server,用于启动服务器，主要用来本地预览</span></span><br><span class="line">hexo d   <span class="comment">#完整命令为hexo deploy,用于将本地文件发布到github上</span></span><br><span class="line">hexo n   <span class="comment">#完整命令为hexo new,用于新建一篇文章</span></span><br></pre></td></tr></table></figure>
+<p>  在你的终端 hexo目录下执行下面的命令</p>
+  <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo g</span>  </span><br><span class="line"><span class="attribute">hexo s</span></span><br></pre></td></tr></table></figure>
+<p>  然后浏览器访问<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>, 此时，你应该看到你的博客了。当然了，这个博客只是本地的，别人是看不到了，你需要把它放到github上。</p>
 </li>
 </ul>
-<p> 在你的终端 hexo目录下执行下面的命令</p>
-<pre><code>hexo g  
-hexo s
-</code></pre><p>然后浏览器访问<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>, 此时，你应该看到你的博客了。当然了，这个博客只是本地的，别人是看不到了，你需要把它放到github上。</p>
 <h2 id="注册github账号"><a href="#注册github账号" class="headerlink" title="注册github账号"></a><strong>注册github账号</strong></h2><p>如果您已有github账号，请跳过，进入github进行注册，邮箱和密码请记好。</p>
 <ul>
 <li><p><strong>创建repository</strong></p>
@@ -1011,27 +980,26 @@ hexo s
 <p>github是你之前创建仓库的地址，可以通过下图获得</p>
 <p><img src="/2017/06/24/hexo-github搭建自己的个人博客/6.png" alt=""></p>
 <p>然后保存它，如果你是第一次使用github或者使用过但是没有配置过SSH,可能你需要配置一下，可以检查一下是否已经存在SSH Keys</p>
-<pre><code>~/.ssh/
-</code></pre><p><code>.ssh</code>文件为隐藏文件，需要先设置隐藏文件可见才可以看到。 如果不存在，输入下面的命令创建。</p>
-<pre><code>ssh-keygen -t rsa -C &quot;你注册github的邮箱&quot;
-</code></pre><p>一路回车就好，这个不需要设置密码，因为这个Key仅仅用于简单的服务，完成后输入命令打开 <code>id_rsa.pub</code> </p>
-<pre><code>cat ~/.ssh/id_rsa.pub
-</code></pre><p>然后你就会得到最后面含有你邮箱的公钥，复制它。去你的github下。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~<span class="regexp">/.ssh/</span></span><br></pre></td></tr></table></figure>
+<p><code>.ssh</code>文件为隐藏文件，需要先设置隐藏文件可见才可以看到。 如果不存在，输入下面的命令创建。</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -<span class="built_in">t</span> rsa -C <span class="string">"你注册github的邮箱"</span></span><br></pre></td></tr></table></figure>
+<p>一路回车就好，这个不需要设置密码，因为这个Key仅仅用于简单的服务，完成后输入命令打开 <code>id_rsa.pub</code> </p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~<span class="regexp">/.ssh/i</span>d_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>然后你就会得到最后面含有你邮箱的公钥，复制它。去你的github下。</p>
 <p><img src="/2017/06/24/hexo-github搭建自己的个人博客/7.png" alt=""></p>
 <p>title随便写，把复制的公钥粘贴到key里。点下面的add SSH key。好了。基本配置就完了。下面我们把我们的代码传到 github上，在终端输入</p>
-<pre><code>hexo g
-hexo d
-</code></pre><p>如果执行hexo d 报下面的错误</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo g</span></span><br><span class="line"><span class="attribute">hexo d</span></span><br></pre></td></tr></table></figure>
+<p>如果执行hexo d 报下面的错误</p>
 <p><img src="/2017/06/24/hexo-github搭建自己的个人博客/8.png" alt=""></p>
 <p>就先安装一下<code>hexo-deployer-git</code>,再执行 <code>hexo d</code></p>
-<pre><code>npm install hexo-deployer-git --save
-</code></pre><p>至此，我们的项目就部署到github上了。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+<p>至此，我们的项目就部署到github上了。</p>
 <p>那么，访问博客的链接是什么呢？ 点击标注的Settings,往下拉，如果你看到的是这样的。那么点击那个 None，选择第一个，点save. 访问你博客的链接就出来了，去访问试试吧！</p>
 <p><img src="/2017/06/24/hexo-github搭建自己的个人博客/9.png" alt=""></p>
 <h2 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a><strong>发表文章</strong></h2><p>既然博客搭建好了，就发表一下文章看看效果吧。hexo中写文章使用的是Markdown，语法不难，看一下就会了。然后去下载一个Markdown的编辑器，很多，看个人喜好。</p>
 <p>在终端的blog路径下输入</p>
-<pre><code>hexo new &quot;my new post&quot;
-</code></pre><p>然后就会在你 <code>blog/source/_posts</code> 下生成一个 <code>.md</code> 的文件，以后你的文章就存放到这里，你也可以直接在这里新建一个 <code>.md</code> 的文件。写完文章后，你可以使用 <code>hexo g</code> 命令生成静态文件， 然后<code>hexo s</code> 进行本地预览。感觉没问题了，<code>hexo d</code> 上传到github上吧。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="type"></span>"my <span class="keyword">new</span> <span class="type">post</span>"</span><br></pre></td></tr></table></figure>
+<p>然后就会在你 <code>blog/source/_posts</code> 下生成一个 <code>.md</code> 的文件，以后你的文章就存放到这里，你也可以直接在这里新建一个 <code>.md</code> 的文件。写完文章后，你可以使用 <code>hexo g</code> 命令生成静态文件， 然后<code>hexo s</code> 进行本地预览。感觉没问题了，<code>hexo d</code> 上传到github上吧。</p>
 ]]></content>
       
         <categories>

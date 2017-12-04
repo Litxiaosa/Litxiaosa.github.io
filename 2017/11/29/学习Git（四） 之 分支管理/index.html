@@ -42,7 +42,7 @@
 <meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/27.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/28.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/29.png">
-<meta property="og:updated_time" content="2017-12-04T02:25:25.067Z">
+<meta property="og:updated_time" content="2017-12-04T03:14:52.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习Git（四）之 分支管理">
 <meta name="twitter:description" content="分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习Git的时候，另一个你正在另一个平行宇宙里努力学习SVN。 如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果，你既学会了Git又学会了SVN！">
@@ -296,69 +296,64 @@ var _hmt = _hmt || [];
 <p>合并完分支后，甚至可以删除<code>dev</code>分支。删除<code>dev</code>分支就是把<code>dev</code>指针给删掉，删掉后，我们就剩下了一条<code>master</code>分支：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/6.png" alt=""></p>
 <h3 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a><strong>创建与合并分支</strong></h3><p>首先，我们创建<code>dev</code>分支，然后切换到<code>dev</code>分支, 当然了，要在你本地的仓库目录下：</p>
-<pre><code>git checkout -b dev
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/7.png" alt=""></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -<span class="selector-tag">b</span> dev</span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/7.png" alt=""></p>
 <p><code>git checkout</code> 命令加上-b参数表示创建并切换，相当于以下两条命令：</p>
-<pre><code>git branch dev
-git checkout dev
-</code></pre><p>然后，用<code>git branch</code>命令查看当前分支：</p>
-<pre><code>git branch
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/8.png" alt=""></p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="built_in">dev</span></span><br><span class="line">git checkout <span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<p>然后，用<code>git branch</code>命令查看当前分支：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git branch</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/8.png" alt=""></p>
 <p><code>git branch</code> 命令会列出所有分支，当前分支前面会标一个*号。</p>
 <p>然后，我们就可以在<code>dev</code>分支上正常提交，比如对<code>demo.txt</code>做个修改，加上 <code>haha</code></p>
 <p>然后提交</p>
-<pre><code>git add demo.txt
-git commit -m &quot;branch test&quot;
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/9.png" alt=""></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> demo.txt</span></span><br><span class="line"><span class="bash">git commit -m <span class="string">"branch test"</span></span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/9.png" alt=""></p>
 <p>现在，<code>dev</code>分支的工作完成，我们就可以切换回<code>master</code>分支：</p>
-<pre><code>git checkout master
-</code></pre><p>切换回<code>master</code>分支后，再查看一个<code>demo.txt</code>文件，刚才添加的内容不见了！因为那个提交是在<code>dev</code>分支上，而<code>master</code>分支此刻的提交点并没有变：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="literal">master</span></span><br></pre></td></tr></table></figure>
+<p>切换回<code>master</code>分支后，再查看一个<code>demo.txt</code>文件，刚才添加的内容不见了！因为那个提交是在<code>dev</code>分支上，而<code>master</code>分支此刻的提交点并没有变：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/10.png" alt=""></p>
 <p>现在，我们把<code>dev</code>分支的工作成果合并到<code>master</code>分支上：</p>
-<pre><code>git merge dev
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/11.png" alt=""></p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">merge</span> dev</span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/11.png" alt=""></p>
 <p>合并完成后，就可以放心地删除<code>dev</code>分支了：</p>
-<pre><code>git branch -D dev
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/12.png" alt=""></p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">git</span> <span class="keyword">branch </span>-D dev</span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/12.png" alt=""></p>
 <p>删除后，查看<code>branch</code>，就只剩下<code>master</code>分支了：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/13.png" alt=""></p>
 <p>因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在<code>master</code>分支上工作效果是一样的，但过程更安全。</p>
 <h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a><strong>解决冲突</strong></h3><p>人生不如意之事十之八九，合并分支往往也不是一帆风顺的</p>
 <p>准备新的<code>feature1</code>分支，继续我们的新分支开发：</p>
-<pre><code>git checkout -b feature1
-</code></pre><p>再次修改<code>demo.txt</code>, 增加： </p>
-<pre><code>Creating a new branch is quick AND simple.
-</code></pre><p>在<code>feature1</code>分支上提交：</p>
-<pre><code>git add demo.txt
-git commit -m &quot;AND simple&quot;
-</code></pre><p>切换到<code>master</code>分支：</p>
-<pre><code>git checkout master
-</code></pre><p>Git还会自动提示我们当前<code>master</code>分支比远程的<code>master</code>分支要超前1个提交。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -<span class="selector-tag">b</span> feature1</span><br></pre></td></tr></table></figure>
+<p>再次修改<code>demo.txt</code>, 增加： </p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Creating a <span class="keyword">new</span> branch <span class="keyword">is</span> quick <span class="keyword">AND</span> simple.</span><br></pre></td></tr></table></figure>
+<p>在<code>feature1</code>分支上提交：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> demo.txt</span></span><br><span class="line"><span class="bash">git commit -m <span class="string">"AND simple"</span></span></span><br></pre></td></tr></table></figure>
+<p>切换到<code>master</code>分支：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="literal">master</span></span><br></pre></td></tr></table></figure>
+<p>Git还会自动提示我们当前<code>master</code>分支比远程的<code>master</code>分支要超前1个提交。</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/14.png" alt=""></p>
 <p>在<code>master</code>分支上把<code>demo.txt</code>文件的最后一行替换为:</p>
-<pre><code>Creating a new branch is quick &amp; simple
-</code></pre><p>提交</p>
-<pre><code>git add demo.txt 
-git commit -m &quot;&amp; simple&quot;
-</code></pre><p>现在，<code>master</code>分支和<code>feature1</code>分支各自都分别有新的提交，变成了这样：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Creating a <span class="keyword">new</span> branch <span class="keyword">is</span> quick &amp; simple</span><br></pre></td></tr></table></figure>
+<p>提交</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> demo.txt </span></span><br><span class="line"><span class="bash">git commit -m <span class="string">"&amp; simple"</span></span></span><br></pre></td></tr></table></figure>
+<p>现在，<code>master</code>分支和<code>feature1</code>分支各自都分别有新的提交，变成了这样：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/15.png" alt=""></p>
 <p>这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突，我们试试看：</p>
-<pre><code>git merge feature1
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/16.png" alt=""></p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">merge</span> feature1</span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/16.png" alt=""></p>
 <p>果然冲突了！Git告诉我们，<code>demo.txt</code>文件存在冲突，必须手动解决冲突后再提交。我们可以直接查看<code>demo.txt</code>的内容：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/17.png" alt=""></p>
 <p>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，我们修改如下后保存：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/18.png" alt=""></p>
 <p>再提交：</p>
-<pre><code>git add demo.txt
-git commit -m &quot;conflict fixed&quot;
-</code></pre><p>现在，<code>master</code>分支和<code>feature1</code>分支变成了下图所示：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> demo.txt</span></span><br><span class="line"><span class="bash">git commit -m <span class="string">"conflict fixed"</span></span></span><br></pre></td></tr></table></figure>
+<p>现在，<code>master</code>分支和<code>feature1</code>分支变成了下图所示：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/19.png" alt=""></p>
 <p>用带参数的<code>git log</code>也可以看到分支的合并情况：</p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/20.png" alt="">    </p>
 <p>最后，删除<code>feature1</code>分支：</p>
-<pre><code>git branch -D feature1    
-</code></pre><p>工作完成。</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">git</span> <span class="keyword">branch </span>-D feature1</span><br></pre></td></tr></table></figure>
+<p>工作完成。</p>
 <h3 id="分支策略"><a href="#分支策略" class="headerlink" title="分支策略"></a><strong>分支策略</strong></h3><p>在实际开发中，我们应该按照几个基本原则进行分支管理：</p>
 <p>首先，<code>master</code>分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；</p>
 <p>那在哪干活呢？干活都在<code>dev</code>分支上，也就是说，<code>dev</code>分支是不稳定的，到某个时候，比如1.0版本发布时，再把<code>dev</code>分支合并到<code>master</code>上，在``master分支发布1.0版本；</p>
@@ -367,17 +362,17 @@ git commit -m &quot;conflict fixed&quot;
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/21.png" alt=""></p>
 <h3 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a><strong>多人协作</strong></h3><p>当你从远程仓库克隆时，实际上Git自动把本地的<code>master</code>分支和远程的<code>master</code>分支对应起来了，并且，远程仓库的默认名称是<code>origin</code>。</p>
 <p>要查看远程库的信息，用<code>git remote</code>：</p>
-<pre><code>git remote
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/22.png" alt=""></p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git remote</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/22.png" alt=""></p>
 <p>或者，用<code>git remote -v</code>显示更详细的信息</p>
-<pre><code>git remote -v
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/23.png" alt=""></p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git remote -v</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/23.png" alt=""></p>
 <p>上面显示了可以抓取和推送的<code>origin</code>的地址。如果没有推送权限，就看不到push的地址。</p>
 <h4 id="推送分支"><a href="#推送分支" class="headerlink" title="推送分支"></a><strong>推送分支</strong></h4><p>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：</p>
-<pre><code>git push origin master
-</code></pre><p>如果要推送其他分支，比如dev，就改成：</p>
-<pre><code>git push origin dev
-</code></pre><p>但是，并不是一定要把本地分支往远程推送，那么，哪些分支需要推送，哪些不需要呢？</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> master</span><br></pre></td></tr></table></figure>
+<p>如果要推送其他分支，比如dev，就改成：</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> dev</span><br></pre></td></tr></table></figure>
+<p>但是，并不是一定要把本地分支往远程推送，那么，哪些分支需要推送，哪些不需要呢？</p>
 <ul>
 <li><code>master</code>分支是主分支，因此要时刻与远程同步；</li>
 <li><code>dev</code>分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</li>
@@ -385,28 +380,24 @@ git commit -m &quot;conflict fixed&quot;
 <p>总之，就是在Git中，分支完全可以在本地自己藏着玩，是否推送，视你的心情而定！</p>
 <h4 id="抓取分支"><a href="#抓取分支" class="headerlink" title="抓取分支"></a><strong>抓取分支</strong></h4><p>多人协作时，大家都会往<code>master</code>和<code>dev</code>分支上推送各自的修改。</p>
 <p>现在，模拟一个你的小伙伴，可以在另一台电脑（注意要把SSH Key添加到GitHub）或者同一台电脑的另一个目录下克隆：</p>
-<pre><code>git clone https://github.com/Litxiaosa/learnGit.git
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/24.png" alt=""></p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/Litxiaosa/learnGit.git</span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/24.png" alt=""></p>
 <p>当你的小伙伴从远程库clone时，默认情况下，你的小伙伴只能看到本地的<code>master</code>分支。不信可以用<code>git branch</code>命令看看：</p>
-<pre><code>git branch
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/25.png" alt=""></p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git branch</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/25.png" alt=""></p>
 <p>现在，你的小伙伴要在dev分支上开发，就必须创建远程<code>origin</code>的<code>dev</code>分支到本地，于是他用这个命令创建本地<code>dev</code>分支：</p>
-<pre><code>git checkout -b dev origin/dev
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/26.png" alt=""></p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b <span class="built_in">dev</span> origin/<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/26.png" alt=""></p>
 <p>现在，他就可以在<code>dev</code>上继续修改，(我们在里面添加了<code>hello world</code>)然后，时不时地把<code>dev</code>分支push到远程：</p>
-<pre><code>git add demo.txt
-git commit -m &quot;add hello world&quot;
-git push origin dev
-</code></pre><p> 可能让你输入你的GitHub的用户名和密码 </p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> demo.txt</span></span><br><span class="line"><span class="bash">git commit -m <span class="string">"add hello world"</span></span></span><br><span class="line"><span class="bash">git push origin dev</span></span><br></pre></td></tr></table></figure>
+<p>可能让你输入你的GitHub的用户名和密码 </p>
 <p><img src="/2017/11/29/学习Git（四） 之 分支管理/27.png" alt=""></p>
 <p>你的小伙伴已经向<code>origin/dev</code>分支推送了他的提交，而碰巧你也对同样的文件作了修改，并试图推送,我们添加了一句：<code>hello git</code></p>
-<pre><code>git add demo.txt
-git commit -m &quot;add hello git&quot;
-git push origin dev
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/28.png" alt=""></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> demo.txt</span></span><br><span class="line"><span class="bash">git commit -m <span class="string">"add hello git"</span></span></span><br><span class="line"><span class="bash">git push origin dev</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/28.png" alt=""></p>
 <p>推送失败，因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单，Git已经提示我们，先用git pull把最新的提交从<code>origin/dev</code>抓下来，然后，在本地合并，解决冲突，再推送：</p>
-<pre><code>git pull origin dev
-</code></pre><p><img src="/2017/11/29/学习Git（四） 之 分支管理/29.png" alt=""></p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git pull origin dev</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2017/11/29/学习Git（四） 之 分支管理/29.png" alt=""></p>
 <p><code>git pull</code>成功，但是合并有冲突，需要手动解决，解决的方法和分支管理中的解决冲突完全一样。解决后，提交，再push。</p>
 <p>因此，多人协作的工作模式通常是这样：</p>
 <p>首先，可以试图用 <code>git push origin branch-name</code> 推送自己的修改；</p>
@@ -496,7 +487,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     
         <a href="/2017/11/28/学习Git（三） 之 远程仓库/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">学习Git（三）之 远程仓库</div>
+            <div class="article-nav-title">学习Git（三） 之 远程仓库</div>
         </a>
     
 </nav>

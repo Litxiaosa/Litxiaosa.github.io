@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     
-    <title>学习Git（三）之 远程仓库 | 潇洒的博客</title>
+    <title>学习Git（三） 之 远程仓库 | 潇洒的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习Git（三）之 远程仓库">
+<meta property="og:title" content="学习Git（三） 之 远程仓库">
 <meta property="og:url" content="http://litxiaosa.me/2017/11/28/学习Git（三） 之 远程仓库/index.html">
 <meta property="og:site_name" content="潇洒的博客">
 <meta property="og:description" content="Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding。这里我">
@@ -21,9 +21,9 @@
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）%20之%20远程仓库/6.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）%20之%20远程仓库/7.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）%20之%20远程仓库/8.png">
-<meta property="og:updated_time" content="2017-12-04T02:25:16.210Z">
+<meta property="og:updated_time" content="2017-12-04T03:43:30.216Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="学习Git（三）之 远程仓库">
+<meta name="twitter:title" content="学习Git（三） 之 远程仓库">
 <meta name="twitter:description" content="Git本地操作的熟练了后，就可以尝试连接远程仓库了，完全可以自己搭建一台运行Git的服务器，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交，不过现阶段，我们不打算这么搞。目前国内外比较出名的提供Git仓库远程托管的有国外的GitHub，国内的开源中国以及coding。这里我">
 <meta name="twitter:image" content="http://litxiaosa.me/2017/11/28/学习Git（三）%20之%20远程仓库/1.png">
     
@@ -219,7 +219,7 @@ var _hmt = _hmt || [];
                 
     
         <h1 class="article-title" itemprop="name">
-            学习Git（三）之 远程仓库
+            学习Git（三） 之 远程仓库
         </h1>
     
 
@@ -268,21 +268,21 @@ var _hmt = _hmt || [];
 <p> <img src="/2017/11/28/学习Git（三） 之 远程仓库/3.png" alt=""></p>
 </li>
 <li><p>现在，我们根据GitHub的提示，在本地的<code>GitRepository</code>仓库下运行命令：</p>
-<pre><code>git remote add origin git@github.com:Litxiaosa/learnGit.git
-</code></pre><p> <strong>请千万注意，把上面的<code>Litxiaosa</code>替换成你自己的GitHub账户名，否则，你在本地关联的就是我的远程库，关联没有问题，但是你以后推送是推不上去的，因为你的SSH Key公钥不在我的账户列表中</strong>。</p>
+ <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span><span class="bash"> origin git@github.com:Litxiaosa/learnGit.git</span></span><br></pre></td></tr></table></figure>
+<p> <strong>请千万注意，把上面的<code>Litxiaosa</code>替换成你自己的GitHub账户名，否则，你在本地关联的就是我的远程库，关联没有问题，但是你以后推送是推不上去的，因为你的SSH Key公钥不在我的账户列表中</strong></p>
 </li>
 <li><p>添加后，远程库的名字就是<code>origin</code>，这是Git默认的叫法，也可以改成别的，但是<code>origin</code>这个名字一看就知道是远程库。</p>
 </li>
 <li><p>下一步，就可以把本地库的所有内容推送到远程库上</p>
-<pre><code>git push -u origin master
-</code></pre><p>  <img src="/2017/11/28/学习Git（三） 之 远程仓库/4.png" alt=""></p>
-<p>  可以看到，你本地的代码就推送到远程仓库了推送成功后</p>
+ <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> -u <span class="built_in">origin</span> master</span><br></pre></td></tr></table></figure>
+<p> <img src="/2017/11/28/学习Git（三） 之 远程仓库/4.png" alt=""></p>
+<p> 可以看到，你本地的代码就推送到远程仓库了推送成功后</p>
 <p> 由于远程库是空的，我们第一次推送<code>master</code>分支时，加上了<code>-u</code>参数，Git不但会把本地的<code>master</code>分支内容推送的远程新的<code>master</code>分支，还会把本地的<code>master</code>分支和远程的<code>master</code>分支关联起来，在以后的推送或者拉取时就可以简化命令。可以立刻在GitHub页面中看到远程库的内容已经和本地一模一样：</p>
 <p> <img src="/2017/11/28/学习Git（三） 之 远程仓库/5.png" alt=""></p>
 </li>
 <li><p>从现在起，只要本地作了提交，就可以通过命令</p>
-<pre><code>git push origin master
-</code></pre><p>把本地<code>master</code>分支的最新修改推送至GitHub，现在，你就拥有了真正的分布式版本库！</p>
+ <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> master</span><br></pre></td></tr></table></figure>
+<p> 把本地<code>master</code>分支的最新修改推送至GitHub，现在，你就拥有了真正的分布式版本库！</p>
 </li>
 </ol>
 <h2 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a><strong>从远程库克隆</strong></h2><p>我们讲了先有本地库，后有远程库的时候，如何关联远程库。现在，假设我们从零开发，那么最好的方式是先创建远程库，然后，从远程库克隆。</p>
@@ -293,8 +293,8 @@ var _hmt = _hmt || [];
 <p> <img src="/2017/11/28/学习Git（三） 之 远程仓库/7.png" alt=""></p>
 </li>
 <li><p>现在，远程库已经准备好了，下一步是用命令<code>git clone</code>克隆一个本地库</p>
-<pre><code>sudo git clone https://github.com/Litxiaosa/gitskills.git
-</code></pre><p> <img src="/2017/11/28/学习Git（三） 之 远程仓库/8.png" alt=""></p>
+  <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo git <span class="keyword">clone</span> <span class="title">https</span>://github.com/Litxiaosa/gitskills.git</span><br></pre></td></tr></table></figure>
+<p> <img src="/2017/11/28/学习Git（三） 之 远程仓库/8.png" alt=""></p>
 <p><strong>注意把Git库的地址换成你自己的</strong>，然后进入<code>gitskills</code>目录看看，已经有<br><code>README.md</code>文件了。</p>
 <p>如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。</p>
 </li>
