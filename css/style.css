@@ -232,7 +232,7 @@ code {
 .widget-title {
   line-height: 1em;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: none;
 }
 #header,
 #profile .inner,
@@ -820,7 +820,7 @@ code {
   margin-bottom: 14px;
 }
 .article-title {
-  font-size: 2em;
+  font-size: 2.2em;
   color: #009688;
   text-decoration: none;
   line-height: 1.3em;
@@ -886,6 +886,7 @@ a.article-title:hover {
 }
 .article-entry p {
   text-align: justify;
+  font-size: 16px;
 }
 .article-entry p,
 .article-entry table {
