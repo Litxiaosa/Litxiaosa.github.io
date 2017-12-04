@@ -44,7 +44,7 @@ mkdir .ssh
       
         <categories>
             
-            <category> Git </category>
+            <category> 学习Git </category>
             
         </categories>
         
@@ -218,7 +218,7 @@ git push origin dev
       
         <categories>
             
-            <category> Git </category>
+            <category> 学习Git </category>
             
         </categories>
         
@@ -291,7 +291,7 @@ git push origin dev
       
         <categories>
             
-            <category> Git </category>
+            <category> 学习Git </category>
             
         </categories>
         
@@ -345,7 +345,7 @@ git push origin dev
       
         <categories>
             
-            <category> Git </category>
+            <category> 学习Git </category>
             
         </categories>
         
@@ -445,7 +445,7 @@ git commit -m &quot;second commit&quot;
       
         <categories>
             
-            <category> Git </category>
+            <category> 学习Git </category>
             
         </categories>
         
