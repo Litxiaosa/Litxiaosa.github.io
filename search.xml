@@ -14,8 +14,8 @@
 <li>Groovy</li>
 <li>Mustache</li>
 </ul>
-<p>当你使用上述模板引擎中的任何一个，它们默认的模板配置路径为：<code>src/main/resources/templates</code></p>
 <a id="more"></a>
+<p>当你使用上述模板引擎中的任何一个，它们默认的模板配置路径为：<code>src/main/resources/templates</code></p>
 <h3 id="Thymeleaf模版"><a href="#Thymeleaf模版" class="headerlink" title="Thymeleaf模版"></a><strong>Thymeleaf模版</strong></h3><p>Thymeleaf提供了一个用于整合Spring MVC的可选模块，在应用开发中，你可以使用Thymeleaf来完全代替JSP或其他模板引擎，如Velocity、FreeMarker等。Thymeleaf的主要目标在于提供一种可被浏览器正确显示的、格式良好的模板创建方式，因此也可以用作静态建模。你可以使用它创建经过验证的XML与HTML模板。相对于编写逻辑或代码，开发者只需将标签属性添加到模板中即可。</p>
 <p>在Spring Boot中使用Thymeleaf，只需要引入下面依赖，并在默认的模板路径<code>src/main/resources/templates</code>下编写模板文件即可完成。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">true<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">true<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>

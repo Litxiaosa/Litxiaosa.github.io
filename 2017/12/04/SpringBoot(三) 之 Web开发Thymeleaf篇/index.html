@@ -11,14 +11,14 @@
 <meta property="og:title" content="SpringBoot(三) 之 Web开发Thymeleaf篇">
 <meta property="og:url" content="http://litxiaosa.me/2017/12/04/SpringBoot(三) 之 Web开发Thymeleaf篇/index.html">
 <meta property="og:site_name" content="潇洒的博客">
-<meta property="og:description" content="在之前的示例中，我们都是通过@RestController来处理请求，所以返回的内容为json对象。那么如果需要渲染html页面的时候，要如何实现呢？ Spring Boot提供了默认配置的模板引擎主要有以下几种：  Thymeleaf（官方推荐） FreeMarker Velocity Groovy Mustache  当你使用上述模板引擎中的任何一个，它们默认的模板配置路径为：src/main">
+<meta property="og:description" content="在之前的示例中，我们都是通过@RestController来处理请求，所以返回的内容为json对象。那么如果需要渲染html页面的时候，要如何实现呢？ Spring Boot提供了默认配置的模板引擎主要有以下几种：  Thymeleaf（官方推荐） FreeMarker Velocity Groovy Mustache">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://litxiaosa.me/2017/12/04/SpringBoot(三)%20之%20Web开发Thymeleaf篇/SpringBoot(三">
 <meta property="og:image" content="http://litxiaosa.me/2017/12/04/SpringBoot(三)%20之%20Web开发Thymeleaf篇/SpringBoot(三">
-<meta property="og:updated_time" content="2017-12-04T15:24:48.482Z">
+<meta property="og:updated_time" content="2017-12-04T15:31:04.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot(三) 之 Web开发Thymeleaf篇">
-<meta name="twitter:description" content="在之前的示例中，我们都是通过@RestController来处理请求，所以返回的内容为json对象。那么如果需要渲染html页面的时候，要如何实现呢？ Spring Boot提供了默认配置的模板引擎主要有以下几种：  Thymeleaf（官方推荐） FreeMarker Velocity Groovy Mustache  当你使用上述模板引擎中的任何一个，它们默认的模板配置路径为：src/main">
+<meta name="twitter:description" content="在之前的示例中，我们都是通过@RestController来处理请求，所以返回的内容为json对象。那么如果需要渲染html页面的时候，要如何实现呢？ Spring Boot提供了默认配置的模板引擎主要有以下几种：  Thymeleaf（官方推荐） FreeMarker Velocity Groovy Mustache">
 <meta name="twitter:image" content="http://litxiaosa.me/2017/12/04/SpringBoot(三)%20之%20Web开发Thymeleaf篇/SpringBoot(三">
     
 
@@ -259,8 +259,8 @@ var _hmt = _hmt || [];
 <li>Groovy</li>
 <li>Mustache</li>
 </ul>
-<p>当你使用上述模板引擎中的任何一个，它们默认的模板配置路径为：<code>src/main/resources/templates</code></p>
 <a id="more"></a>
+<p>当你使用上述模板引擎中的任何一个，它们默认的模板配置路径为：<code>src/main/resources/templates</code></p>
 <h3 id="Thymeleaf模版"><a href="#Thymeleaf模版" class="headerlink" title="Thymeleaf模版"></a><strong>Thymeleaf模版</strong></h3><p>Thymeleaf提供了一个用于整合Spring MVC的可选模块，在应用开发中，你可以使用Thymeleaf来完全代替JSP或其他模板引擎，如Velocity、FreeMarker等。Thymeleaf的主要目标在于提供一种可被浏览器正确显示的、格式良好的模板创建方式，因此也可以用作静态建模。你可以使用它创建经过验证的XML与HTML模板。相对于编写逻辑或代码，开发者只需将标签属性添加到模板中即可。</p>
 <p>在Spring Boot中使用Thymeleaf，只需要引入下面依赖，并在默认的模板路径<code>src/main/resources/templates</code>下编写模板文件即可完成。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">true<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">true<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
