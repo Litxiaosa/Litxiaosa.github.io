@@ -11,6 +11,7 @@
 <li>由于接口众多，并且细节复杂，高质量地创建这份文档本身就是件非常吃力的事。</li>
 <li>随着时间推移，不断修改接口实现的时候都必须同步修改接口文档，而文档与代码又处于两个不同的媒介，除非有严格的管理机制，不然很容易导致不一致现象。</li>
 </ul>
+<a id="more"></a>
 <p>为了解决上面这样的问题，本文将介绍RESTful API的好伙伴Swagger2，它可以轻松的整合到Spring Boot中，并与Spring MVC程序配合组织出强大RESTful API文档。它既可以减少我们创建文档的工作量，同时说明内容又整合入实现代码中，让维护文档和修改代码整合为一体，可以让我们在修改代码逻辑的同时方便的修改文档说明。另外Swagger2也提供了强大的页面测试功能来调试每个RESTful API</p>
 <p>下面来具体介绍，如果在Spring Boot中使用Swagger2</p>
 <h4 id="添加Swagger2依赖"><a href="#添加Swagger2依赖" class="headerlink" title="添加Swagger2依赖"></a><strong>添加Swagger2依赖</strong></h4><p>在pom.xml中加入Swagger2的依赖</p>
