@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>SpringBoot（六）之 使用Swagger2构建RESTful API | 潇洒的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="由于Spring Boot能够快速开发、便捷部署等特性，相信有很大一部分Spring Boot的用户会用来构建RESTful API。 传统做法我们会创建一份RESTful API文档来记录所有接口细节，然而这样的做法有以下几个问题：  由于接口众多，并且细节复杂，高质量地创建这份文档本身就是件非常吃力的事。 随着时间">
+<meta name="keywords" content="SpringBoot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot（六）之 使用Swagger2构建RESTful API">
+<meta property="og:url" content="http://litxiaosa.me/2017/12/05/SpringBoot（六）之 使用Swagger2构建RESTful API/index.html">
+<meta property="og:site_name" content="潇洒的博客">
+<meta property="og:description" content="由于Spring Boot能够快速开发、便捷部署等特性，相信有很大一部分Spring Boot的用户会用来构建RESTful API。 传统做法我们会创建一份RESTful API文档来记录所有接口细节，然而这样的做法有以下几个问题：  由于接口众多，并且细节复杂，高质量地创建这份文档本身就是件非常吃力的事。 随着时间推移，不断修改接口实现的时候都必须同步修改接口文档，而文档与代码又处于两个不同的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://litxiaosa.me/2017/12/05/SpringBoot（六）之%20使用Swagger2构建RESTful%20API/1.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/12/05/SpringBoot（六）之%20使用Swagger2构建RESTful%20API/2.png">
+<meta property="og:updated_time" content="2017-12-05T08:07:04.567Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringBoot（六）之 使用Swagger2构建RESTful API">
+<meta name="twitter:description" content="由于Spring Boot能够快速开发、便捷部署等特性，相信有很大一部分Spring Boot的用户会用来构建RESTful API。 传统做法我们会创建一份RESTful API文档来记录所有接口细节，然而这样的做法有以下几个问题：  由于接口众多，并且细节复杂，高质量地创建这份文档本身就是件非常吃力的事。 随着时间推移，不断修改接口实现的时候都必须同步修改接口文档，而文档与代码又处于两个不同的">
+<meta name="twitter:image" content="http://litxiaosa.me/2017/12/05/SpringBoot（六）之%20使用Swagger2构建RESTful%20API/1.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="潇洒的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?c519edc830f3af02ec9cc3d4c51a6583";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">潇洒的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives/">归档</a>
+                
+                    <a class="main-nav-link" href="/tags/">标签</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives/">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags/">标签</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">潇洒</h2>
+            <h3 id="title">一个Java码农，喜欢看书，对吉他有点小兴趣。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>杭州, 浙江</span>
+            <a id="follow" target="_blank" href="https://github.com/Litxiaosa">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                21
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                8
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/Litxiaosa" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://weibo.com/2517382891/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-SpringBoot（六）之 使用Swagger2构建RESTful API" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            SpringBoot（六）之 使用Swagger2构建RESTful API
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/12/05/SpringBoot（六）之 使用Swagger2构建RESTful API/">
+            <time datetime="2017-12-05T06:27:18.000Z" itemprop="datePublished">2017-12-05</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/SpringBoot系列/">SpringBoot系列</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/SpringBoot/">SpringBoot</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>由于Spring Boot能够快速开发、便捷部署等特性，相信有很大一部分Spring Boot的用户会用来构建RESTful API。</p>
+<p>传统做法我们会创建一份RESTful API文档来记录所有接口细节，然而这样的做法有以下几个问题：</p>
+<ul>
+<li>由于接口众多，并且细节复杂，高质量地创建这份文档本身就是件非常吃力的事。</li>
+<li>随着时间推移，不断修改接口实现的时候都必须同步修改接口文档，而文档与代码又处于两个不同的媒介，除非有严格的管理机制，不然很容易导致不一致现象。</li>
+</ul>
+<p>为了解决上面这样的问题，本文将介绍RESTful API的好伙伴Swagger2，它可以轻松的整合到Spring Boot中，并与Spring MVC程序配合组织出强大RESTful API文档。它既可以减少我们创建文档的工作量，同时说明内容又整合入实现代码中，让维护文档和修改代码整合为一体，可以让我们在修改代码逻辑的同时方便的修改文档说明。另外Swagger2也提供了强大的页面测试功能来调试每个RESTful API</p>
+<p>下面来具体介绍，如果在Spring Boot中使用Swagger2</p>
+<h4 id="添加Swagger2依赖"><a href="#添加Swagger2依赖" class="headerlink" title="添加Swagger2依赖"></a><strong>添加Swagger2依赖</strong></h4><p>在pom.xml中加入Swagger2的依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">true<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">true<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">true<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">true<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">true<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">true<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="创建Swagger2配置类"><a href="#创建Swagger2配置类" class="headerlink" title="创建Swagger2配置类"></a><strong>创建Swagger2配置类</strong></h4><p>在<code>DemoApplication.java</code>同级创建<code>Swagger2</code>的配置类<code>Swagger</code></p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@Configuration</span></span><br><span class="line"><span class="variable">@EnableSwagger2</span></span><br><span class="line">public class Swagger &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="variable">@Bean</span></span><br><span class="line">    public Docket createRestApi() &#123;</span><br><span class="line">        <span class="selector-tag">return</span> <span class="selector-tag">new</span> <span class="selector-tag">Docket</span>(DocumentationType.SWAGGER_2)</span><br><span class="line">                <span class="selector-class">.apiInfo</span>(apiInfo())</span><br><span class="line">                <span class="selector-class">.select</span>()</span><br><span class="line">                <span class="selector-class">.apis</span>(RequestHandlerSelectors.basePackage(<span class="string">"com.xiaosa.web"</span>))</span><br><span class="line">                <span class="selector-class">.paths</span>(PathSelectors.any())</span><br><span class="line">                <span class="selector-class">.build</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="selector-tag">private</span> <span class="selector-tag">ApiInfo</span> <span class="selector-tag">apiInfo</span>() &#123;</span><br><span class="line">        <span class="selector-tag">return</span> <span class="selector-tag">new</span> <span class="selector-tag">ApiInfoBuilder</span>()</span><br><span class="line">                <span class="selector-class">.title</span>(<span class="string">"Spring Boot中使用Swagger2构建RESTful API"</span>)</span><br><span class="line">                <span class="selector-class">.description</span>(<span class="string">"更多Spring Boot相关文章请关注：http://litxiaosa.me"</span>)</span><br><span class="line">                <span class="selector-class">.termsOfServiceUrl</span>(<span class="string">"http://litxiaosa.me/"</span>)</span><br><span class="line">                <span class="selector-class">.contact</span>(<span class="string">"潇洒"</span>)</span><br><span class="line">                <span class="selector-class">.version</span>(<span class="string">"1.0"</span>)</span><br><span class="line">                <span class="selector-class">.build</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如上代码所示，通过<code>@Configuration</code>注解，让Spring来加载该类配置。再通过<code>@EnableSwagger2</code>注解来启用Swagger2。</p>
+<p>再通过<code>createRestApi</code>函数创建<code>Docket</code>的Bean之后，<code>apiInfo()</code>用来创建该Api的基本信息（这些基本信息会展现在文档页面中）。select()函数返回一个<code>ApiSelectorBuilder</code>实例用来控制哪些接口暴露给Swagger来展现，本例采用指定扫描的包路径来定义，Swagger会扫描该包下所有Controller定义的API，并产生文档内容（除了被<code>@ApiIgnore</code>指定的请求）。</p>
+<h4 id="添加文档内容"><a href="#添加文档内容" class="headerlink" title="添加文档内容"></a><strong>添加文档内容</strong></h4><p>在完成了上述配置后，其实已经可以生产文档内容，但是这样的文档主要针对请求本身，而描述主要来源于函数等命名产生，对用户并不友好，我们通常需要自己增加一些说明来丰富文档内容。如下所示，我们通过<code>@ApiOperation</code>注解来给API增加说明、通过<code>@ApiImplicitParams</code>、<code>@ApiImplicitParam</code>注解来给参数增加说明</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(value=<span class="meta-string">"/users"</span>)</span> <span class="comment">// 通过这里配置使下面的映射都在/users下，可去除</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    static Map&lt;<span class="built_in">Long</span>, User&gt; users = Collections.synchronizedMap(new HashMap&lt;<span class="built_in">Long</span>, User&gt;());</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value=<span class="meta-string">"获取用户列表"</span>, notes=<span class="meta-string">""</span>)</span></span><br><span class="line">    <span class="meta">@PostMapping(value = <span class="meta-string">"getUserList"</span>)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; getUserList() &#123;</span><br><span class="line">        List&lt;User&gt; user = new ArrayList&lt;User&gt;(users.values());</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value=<span class="meta-string">"创建用户"</span>, notes=<span class="meta-string">"根据User对象创建用户"</span>)</span></span><br><span class="line">    <span class="meta">@ApiImplicitParam(name = <span class="meta-string">"user"</span>, value = <span class="meta-string">"用户详细实体user"</span>, required = true, dataType = <span class="meta-string">"User"</span>)</span></span><br><span class="line">    <span class="meta">@PostMapping(value = <span class="meta-string">"createUser"</span>)</span></span><br><span class="line">    <span class="keyword">public</span> String createUser(<span class="meta">@RequestBody</span> User user) &#123;</span><br><span class="line">        users.put(user.getId(), user);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value=<span class="meta-string">"获取用户详细信息"</span>, notes=<span class="meta-string">"根据url的id来获取用户详细信息"</span>)</span></span><br><span class="line">    <span class="meta">@ApiImplicitParam(name = <span class="meta-string">"id"</span>, value = <span class="meta-string">"用户ID"</span>, required = true, dataType = <span class="meta-string">"Long"</span>)</span></span><br><span class="line">    <span class="meta">@PostMapping(value = <span class="meta-string">"getUser"</span>)</span></span><br><span class="line">    <span class="keyword">public</span> User getUser(<span class="meta">@PathVariable</span> <span class="built_in">Long</span> id) &#123;</span><br><span class="line">        <span class="keyword">return</span> users.<span class="keyword">get</span>(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value=<span class="meta-string">"删除用户"</span>, notes=<span class="meta-string">"根据user的id来指定删除对象"</span>)</span></span><br><span class="line">    <span class="meta">@ApiImplicitParam(name = <span class="meta-string">"id"</span>, value = <span class="meta-string">"用户ID"</span>, required = true, dataType = <span class="meta-string">"Long"</span>)</span></span><br><span class="line">    <span class="meta">@DeleteMapping(value = <span class="meta-string">"deleteUser"</span>)</span></span><br><span class="line">    <span class="keyword">public</span> String deleteUser(<span class="meta">@PathVariable</span> <span class="built_in">Long</span> id) &#123;</span><br><span class="line">        users.remove(id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完成上述代码添加上，启动Spring Boot程序，访问：<a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener">http://localhost:8080/swagger-ui.html</a> 就能看到前文所展示的RESTful API的页面。</p>
+<p><img src="/2017/12/05/SpringBoot（六）之 使用Swagger2构建RESTful API/1.png" alt=""></p>
+<p>我们可以再点开具体的API请求，以POST类型的/users请求为例，可找到上述代码中我们配置的Notes信息以及参数user的描述信息，如下图所示。</p>
+<p><img src="/2017/12/05/SpringBoot（六）之 使用Swagger2构建RESTful API/2.png" alt=""></p>
+<h4 id="API文档访问与调试"><a href="#API文档访问与调试" class="headerlink" title="API文档访问与调试"></a><strong>API文档访问与调试</strong></h4><p>在上图请求的页面中，我们看到user的Value是个输入框？是的，Swagger除了查看接口功能外，还提供了调试测试功能，我们可以点击上图中右侧的Model Schema（黄色区域：它指明了User的数据结构），此时Value中就有了user对象的模板，我们只需要稍适修改，点击下方“Try it out！”按钮，即可完成了一次请求调用！</p>
+<p>相比为这些接口编写文档的工作，我们增加的配置内容是非常少而且精简的，对于原有代码的侵入也在忍受范围之内。因此，在构建RESTful API的同时，加入swagger来对API文档进行管理，是个不错的选择。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+</div>
+
+            
+    
+        <a href="http://litxiaosa.me/2017/12/05/SpringBoot（六）之 使用Swagger2构建RESTful API/#comments" id="sourceId::2017/12/05/SpringBoot（六）之 使用Swagger2构建RESTful API/" class="article-comment-link cy_cmt_count">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/12/05/SpringBoot（五）之 统一异常处理/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    SpringBoot（五）之 统一异常处理
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/12/05/SpringBoot（四）之 静态资源和拦截器/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">SpringBoot（四）之 静态资源和拦截器</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="SOHUCS" sid="2017/12/05/SpringBoot（六）之 使用Swagger2构建RESTful API/"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">文章分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot系列/">SpringBoot系列</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/solr/">solr</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/不知所云/">不知所云</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习Git/">学习Git</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境变量/">环境变量</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编码规范插件/">编码规范插件</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/SpringBoot/" style="font-size: 20px;">SpringBoot</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/不知所云/" style="font-size: 13.33px;">不知所云</a> <a href="/tags/环境变量/" style="font-size: 10px;">环境变量</a> <a href="/tags/编码规范插件/" style="font-size: 10px;">编码规范插件</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://www.520code.net/">指尖代码</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 潇洒<br>
+             <a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action;jsessionid=jXXzJfoHmRVnh4Wtlin6joVW_3P2wkKCL0IputNLM-40wznfPW8Z!-179429638" target="_blank">浙ICP备17031501号-1</a>
+        </div>
+    </div>
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+	<span id="busuanzi_container_site_pv">
+	    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+	</span>
+	| 
+	<span id="busuanzi_container_site_uv">
+  		本站访客数<span id="busuanzi_value_site_uv"></span>人次
+	</span>
+
+</footer>
+
+        
+    
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyt89XC6v"></script>
+    <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+    <script type="text/javascript">
+    window.changyan.api.config({
+    appid: 'cyt89XC6v',
+    conf: '05f02c05c1850e9dc85891de397ebfe0'
+    });
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
