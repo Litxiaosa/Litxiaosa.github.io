@@ -137,8 +137,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[SpringBoot(二) 之 配置文件详解]]></title>
-      <url>/2017/12/04/SpringBoot(%E4%BA%8C)%20%E4%B9%8B%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</url>
+      <title><![CDATA[SpringBoot (二) 之 配置文件详解]]></title>
+      <url>/2017/12/04/SpringBoot%20%20(%E4%BA%8C)%20%E4%B9%8B%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<p>相信很多人选择Spring Boot主要是考虑到它既能兼顾Spring的强大功能，还能实现快速开发的便捷。我们在Spring Boot使用过程中，最直观的感受就是没有了原来自己整合Spring应用时繁多的XML配置内容，替代它的是在pom.xml中引入模块化的Starter POMs，其中各个模块都有自己的默认配置，所以如果不是特殊应用场景，就只需要在application.properties中完成一些属性配置就能开启各模块的应用。</p>
 <a id="more"></a>
 <h3 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a><strong>自定义属性</strong></h3><p>application.properties提供自定义属性的支持，这样我们就可以把一些常量配置在这里：</p>
