@@ -3,32 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>SpringBoot（一）之 快速入门 | 潇洒的博客</title>
+    <title>SpringBoot（八）之 整合 MyBatis | 潇洒的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="本系列基于：IDEA、JDK8、SprigBoot1.5.9。通常我们推荐使用JDK8  使用Intellij中的Spring Initializr来快速构建Spring Boot工程初始化Spring Boot项目  点击Create New Project，我们可以看到如下图所示的创建功能窗口。其中Initial ">
+    <meta name="description" content="现在大部分的项目还是整合的mybatis，下边我们就学习SpringBoot整合MyBatis。使用的项目基础是我们之前的教程中一步一步建立起来的。  pom.xml 中引入依赖   1234567891011&amp;lt;dependency&amp;gt;   &amp;lt;groupId&amp;gt;org">
 <meta name="keywords" content="SpringBoot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot（一）之 快速入门">
-<meta property="og:url" content="http://litxiaosa.me/2017/12/01/SpringBoot（一）之 快速入门/index.html">
+<meta property="og:title" content="SpringBoot（八）之 整合 MyBatis">
+<meta property="og:url" content="http://litxiaosa.me/2017/12/13/SpringBoot（八）之 整合 MyBatis/index.html">
 <meta property="og:site_name" content="潇洒的博客">
-<meta property="og:description" content="本系列基于：IDEA、JDK8、SprigBoot1.5.9。通常我们推荐使用JDK8  使用Intellij中的Spring Initializr来快速构建Spring Boot工程初始化Spring Boot项目  点击Create New Project，我们可以看到如下图所示的创建功能窗口。其中Initial Service Url指向的地址就是Spring官方提供的Spring Init">
+<meta property="og:description" content="现在大部分的项目还是整合的mybatis，下边我们就学习SpringBoot整合MyBatis。使用的项目基础是我们之前的教程中一步一步建立起来的。  pom.xml 中引入依赖   1234567891011&amp;lt;dependency&amp;gt;   &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;   &amp;lt;artifactId&amp;gt">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://litxiaosa.me/2017/12/01/SpringBoot（一）之%20快速入门/2.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/12/01/SpringBoot（一）之%20快速入门/3.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/12/01/SpringBoot（一）之%20快速入门/4.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/12/01/SpringBoot（一）之%20快速入门/5.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/12/01/SpringBoot（一）之%20快速入门/6.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/12/01/SpringBoot（一）之%20快速入门/7.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/12/01/SpringBoot（一）之%20快速入门/8.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/12/01/SpringBoot（一）之%20快速入门/9.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/12/01/SpringBoot（一）之%20快速入门/10.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/12/01/SpringBoot（一）之%20快速入门/11.png">
-<meta property="og:image" content="http://litxiaosa.me/2017/12/01/SpringBoot（一）之%20快速入门/12.png">
-<meta property="og:updated_time" content="2017-12-04T06:21:56.909Z">
+<meta property="og:updated_time" content="2017-12-13T10:09:22.039Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringBoot（一）之 快速入门">
-<meta name="twitter:description" content="本系列基于：IDEA、JDK8、SprigBoot1.5.9。通常我们推荐使用JDK8  使用Intellij中的Spring Initializr来快速构建Spring Boot工程初始化Spring Boot项目  点击Create New Project，我们可以看到如下图所示的创建功能窗口。其中Initial Service Url指向的地址就是Spring官方提供的Spring Init">
-<meta name="twitter:image" content="http://litxiaosa.me/2017/12/01/SpringBoot（一）之%20快速入门/2.png">
+<meta name="twitter:title" content="SpringBoot（八）之 整合 MyBatis">
+<meta name="twitter:description" content="现在大部分的项目还是整合的mybatis，下边我们就学习SpringBoot整合MyBatis。使用的项目基础是我们之前的教程中一步一步建立起来的。  pom.xml 中引入依赖   1234567891011&amp;lt;dependency&amp;gt;   &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;   &amp;lt;artifactId&amp;gt">
     
 
     
@@ -216,7 +204,7 @@ var _hmt = _hmt || [];
 </aside>
 
             
-            <section id="main"><article id="post-SpringBoot（一）之 快速入门" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-SpringBoot（八）之 整合 MyBatis" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -224,7 +212,7 @@ var _hmt = _hmt || [];
                 
     
         <h1 class="article-title" itemprop="name">
-            SpringBoot（一）之 快速入门
+            SpringBoot（八）之 整合 MyBatis
         </h1>
     
 
@@ -233,8 +221,8 @@ var _hmt = _hmt || [];
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/12/01/SpringBoot（一）之 快速入门/">
-            <time datetime="2017-12-01T01:54:26.000Z" itemprop="datePublished">2017-12-01</time>
+        <a href="/2017/12/13/SpringBoot（八）之 整合 MyBatis/">
+            <time datetime="2017-12-13T08:27:18.000Z" itemprop="datePublished">2017-12-13</time>
         </a>
     </div>
 
@@ -259,63 +247,37 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p><strong>本系列基于：IDEA、JDK8、SprigBoot1.5.9。通常我们推荐使用JDK8</strong> </p>
-<h2 id="使用Intellij中的Spring-Initializr来快速构建Spring-Boot工程"><a href="#使用Intellij中的Spring-Initializr来快速构建Spring-Boot工程" class="headerlink" title="使用Intellij中的Spring Initializr来快速构建Spring Boot工程"></a>使用Intellij中的Spring Initializr来快速构建Spring Boot工程</h2><p><strong>初始化Spring Boot项目</strong></p>
+            <p>现在大部分的项目还是整合的mybatis，下边我们就学习SpringBoot整合MyBatis。使用的项目基础是我们之前的教程中一步一步建立起来的。</p>
 <ul>
-<li><p>点击Create New Project，我们可以看到如下图所示的创建功能窗口。其中Initial Service Url指向的地址就是Spring官方提供的Spring Initializr工具地址，所以这里创建的工程实际上也是基于它的Web工具来实现的。</p>
+<li><p><code>pom.xml</code> 中引入依赖</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> 这里不引入spring-boot-starter-jdbc依赖，是由于mybatis-spring-boot-starter中已经包含了此依赖</p>
+</li>
+</ul>
 <a id="more"></a>
-<p><img src="/2017/12/01/SpringBoot（一）之 快速入门/2.png" alt=""></p>
-</li>
-</ul>
 <ul>
-<li><p>点击Next，等待片刻后，我们可以看到如下图所示的工程信息窗口，在这里我们可以编辑我们想要创建的工程信息。其中，</p>
-<blockquote>
-<p>Group 一般是公司名字的反写，也可以自己随意<br>Artifact: 你这个项目叫什么<br>Type可以改变我们要构建的工程类型，比如：Maven、Gradle；<br>Language可以选择：Java、Groovy、Kotlin。</p>
-</blockquote>
-<p><img src="/2017/12/01/SpringBoot（一）之 快速入门/3.png" alt=""></p>
+<li><p>同之前介绍的使用spring-data连接数据库一样，在<code>application.properties</code>中配置mysql的连接配置</p>
+  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring<span class="selector-class">.datasource</span><span class="selector-class">.url</span>=jdbc:mysql:<span class="comment">//localhost:3306/demo</span></span><br><span class="line">spring<span class="selector-class">.datasource</span><span class="selector-class">.username</span>=root</span><br><span class="line">spring<span class="selector-class">.datasource</span><span class="selector-class">.password</span>=root</span><br><span class="line">spring<span class="selector-class">.datasource</span><span class="selector-class">.driver-class-name</span>=com<span class="selector-class">.mysql</span><span class="selector-class">.jdbc</span><span class="selector-class">.Driver</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>点击Next，进入选择Spring Boot版本和依赖管理的窗口。在这里值的我们关注的是，它不仅包含了Spring Boot Starter POMs中的各个依赖，还包含了Spring Cloud的各种依赖。 我们还可以选择SpringBoot的版本。</p>
-<p><img src="/2017/12/01/SpringBoot（一）之 快速入门/4.png" alt=""></p>
+<li><p>在Mysql中创建product表，包含id(bigint)、name(varcher)、colour(varcher)字段。同时，创建映射对象Product</p>
+  <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Data <span class="comment">//此注解为lombok</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Product</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>  Long id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">String</span> name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">String</span>  colour;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>这个我们勾选了web，你也可以根据自己的需求勾选。点击Next，进入最后关于工程物理存储的一些细节。最后，点击Finish就能完成工程的构建了。   </p>
-<p><img src="/2017/12/01/SpringBoot（一）之 快速入门/5.png" alt=""></p>
+<li><p>创建Product映射的操作ProductMapper，为了后续单元测试验证，实现插入和查询操作</p>
+  <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@Mapper</span></span><br><span class="line">public interface ProductMapper &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable">@Insert</span>(<span class="string">"insert into product(name, colour) values(#&#123;name&#125;, #&#123;colour&#125;)"</span>)</span><br><span class="line">int insert(<span class="variable">@Param</span>(<span class="string">"name"</span>) String name, <span class="variable">@Param</span>(<span class="string">"colour"</span>) String colour);</span><br><span class="line"></span><br><span class="line"><span class="variable">@Select</span>(<span class="string">"select * from product where name = #&#123;name&#125;"</span>)</span><br><span class="line">Product getProductByName(<span class="variable">@Param</span>(<span class="string">"name"</span>) String name);</span><br><span class="line"></span><br><span class="line"><span class="variable">@Update</span>(<span class="string">"update product set colour = #&#123;colour&#125; where name =#&#123;name&#125;"</span>)</span><br><span class="line">int updateColourByName(<span class="variable">@Param</span>(<span class="string">"name"</span>) String name , <span class="variable">@Param</span>(<span class="string">"colour"</span>) String colour);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  接下来，我们分别来介绍下这个注解方式。</p>
+<p>  Mybatis注解的方式很简单，只要定义一个dao接口，然后sql语句通过注解写在接口方法上。最后给这个接口添加@Mapper注解就行了。如上图。</p>
+<p>  简单的语句只需要使用@Insert、@Update、@Delete、@Select这4个注解即可。</p>
 </li>
-</ul>
-<p><strong>项目结构</strong></p>
-<p><img src="/2017/12/01/SpringBoot（一）之 快速入门/6.png" alt=""></p>
-<p>如你所见，项目里面基本没有代码，除了几个空目录外，还包含如下几样东西。</p>
-<ul>
-<li>pom.xml：Maven构建说明文件。</li>
-<li>DemoApplication：一个带有main()方法的类，用于启动应用程序（关键）。</li>
-<li>DemoApplicationTests：一个空的Junit测试类，它加载了一个使用Spring Boot字典配置功能的Spring应用程序上下文。</li>
-<li>application.properties：一个空的properties文件，你可以根据需要添加配置属性。</li>
-</ul>
-<p><strong>应用入口类</strong></p>
-<p>DemoApplication是一个很关键的启动类，程序的入口就是这里,为了演示简单，我们不再新建控制类，而是直接在这个入口类中编写，添加@RestController以及index方法，如下：</p>
-<p><img src="/2017/12/01/SpringBoot（一）之 快速入门/7.png" alt=""></p>
-<ul>
-<li>@SpringBootApplication是Sprnig Boot项目的核心注解，主要目的是开启自动配置。后续讲解原理的时候再深入介绍。</li>
-<li><p>main方法这是一个标准的Java应用的main的方法，主要作用是作为项目启动的入口。</p>
+<li><p>创建测试</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    	<span class="meta">@Autowired</span></span><br><span class="line">    	<span class="keyword">private</span> ProductMapper productMapper;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    	<span class="meta">@Test</span></span><br><span class="line">    	<span class="function"><span class="keyword">public</span>  <span class="keyword">void</span>  <span class="title">insert</span><span class="params">()</span></span>&#123;</span><br><span class="line">    		productMapper.insert(<span class="string">"红桃A"</span>, <span class="string">"red"</span>);</span><br><span class="line">    	&#125;</span><br><span class="line">    </span><br><span class="line">    	<span class="meta">@Test</span></span><br><span class="line">    	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getProductByName</span><span class="params">()</span></span>&#123;</span><br><span class="line">    		Product  p  = productMapper.getProductByName(<span class="string">"红桃A"</span>);</span><br><span class="line">    	&#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    	<span class="meta">@Test</span></span><br><span class="line">    	<span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span></span>&#123;</span><br><span class="line">    		productMapper.updateColourByName(<span class="string">"红桃A"</span>, <span class="string">"blue"</span>);</span><br><span class="line">    	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>@RestController注解等价于@Controller+@ResponseBody的结合，使用这个注解的类里面的方法都以json格式输出。</p>
+<li><p>分页插件</p>
+<p>  <code>pom.xml</code>中添加依赖</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.pagehelper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>pagehelper-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>  然后你只需在查询list之前使用PageHelper.startPage(int pageNum, int pageSize)方法即可。pageNum是第几页，pageSize是每页多少条。</p>
+<p>  分页插件PageHelper项目地址： <a href="https://github.com/pagehelper/Mybatis-PageHelper" target="_blank" rel="noopener">https://github.com/pagehelper/Mybatis-PageHelper</a></p>
 </li>
 </ul>
-<p>启动这个最简单的Web项目，他有三种方法。</p>
-<ol>
-<li><p>DemoApplication的main方法启动，上边个标红的和下面那个标红的是一样的。</p>
-<p> <img src="/2017/12/01/SpringBoot（一）之 快速入门/8.png" alt=""></p>
-</li>
-<li><p>使用命令 <code>mvn spring-boot:run</code>”在命令行启动该应用，IDEA中该命令在如下位置：</p>
-<p> <img src="/2017/12/01/SpringBoot（一）之 快速入门/9.png" alt=""></p>
-</li>
-<li><p>运行<code>mvn package</code>进行打包时，会打包成一个可以直接运行的 JAR 文件，使用<code>java -jar</code>命令就可以直接运行。</p>
-<p><img src="/2017/12/01/SpringBoot（一）之 快速入门/10.png" alt=""></p>
-</li>
-</ol>
-<p>这里是SpringBoot的启动标志</p>
-<p><img src="/2017/12/01/SpringBoot（一）之 快速入门/11.png" alt=""></p>
-<p>打开浏览器访问<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a>, 你就能看到页面显示Hello Spring Boot效果了，一个简单的Web的项目就是如此简单。</p>
-<p><img src="/2017/12/01/SpringBoot（一）之 快速入门/12.png" alt=""></p>
 
         
         </div>
@@ -362,7 +324,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 
             
     
-        <a href="http://litxiaosa.me/2017/12/01/SpringBoot（一）之 快速入门/#comments" id="sourceId::2017/12/01/SpringBoot（一）之 快速入门/" class="article-comment-link cy_cmt_count">评论</a>
+        <a href="http://litxiaosa.me/2017/12/13/SpringBoot（八）之 整合 MyBatis/#comments" id="sourceId::2017/12/13/SpringBoot（八）之 整合 MyBatis/" class="article-comment-link cy_cmt_count">评论</a>
     
 
         </footer>
@@ -371,19 +333,10 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         
 <nav id="article-nav">
     
-        <a href="/2017/12/04/SpringBoot  (二) 之 配置文件详解/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    SpringBoot (二) 之 配置文件详解
-                
-            </div>
-        </a>
     
-    
-        <a href="/2017/11/29/学习Git（五） 之 搭建Git服务器/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/12/06/SpringBoot（七）之 Spring-data-jpa/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">学习Git（五）之 搭建Git服务器</div>
+            <div class="article-nav-title">SpringBoot（七）之 Spring-data-jpa</div>
         </a>
     
 </nav>
@@ -396,7 +349,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     
     
         <section id="comments">
-    <div id="SOHUCS" sid="2017/12/01/SpringBoot（一）之 快速入门/"></div>
+    <div id="SOHUCS" sid="2017/12/13/SpringBoot（八）之 整合 MyBatis/"></div>
 </section>
     
 
