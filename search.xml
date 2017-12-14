@@ -28,10 +28,9 @@
 <p><img src="/2017/12/14/SpringBoot（十）之 RabbitMQ/1.png" alt=""></p>
 <h3 id="RabbitMQ管理"><a href="#RabbitMQ管理" class="headerlink" title="RabbitMQ管理"></a><strong>RabbitMQ管理</strong></h3><p>我们可以直接通过配置文件的访问进行管理，也可以通过Web的访问进行管理。下面我们将介绍如何通过Web进行管理。</p>
 <ul>
-<li>执行 <code>rabbitmq-plugins enable rabbitmq_management</code> 命令，开启Web管理插件，这样我们就可以通过浏览器来进行管理了。</li>
-</ul>
-<pre><code>![](SpringBoot（十）之 RabbitMQ/2.png)
-</code></pre><ul>
+<li><p>执行 <code>rabbitmq-plugins enable rabbitmq_management</code> 命令，开启Web管理插件，这样我们就可以通过浏览器来进行管理了。</p>
+<p>  <img src="/2017/12/14/SpringBoot（十）之 RabbitMQ/2.png" alt=""></p>
+</li>
 <li><p>打开浏览器并访问：<a href="http://localhost:15672/" target="_blank" rel="noopener">http://localhost:15672/</a>， 并使用默认用户guest登录，密码也为guest。我们可以看到如下图的管理页面：</p>
 <p>  <img src="/2017/12/14/SpringBoot（十）之 RabbitMQ/3.png" alt=""></p>
 </li>
