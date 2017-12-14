@@ -14,6 +14,7 @@
 <li>安装Erlang，执行：<code>brew install erlang</code></li>
 <li>安装RabbitMQ Server，执行：<code>brew install rabbitmq</code></li>
 </ul>
+<a id="more"></a>
 <p>我们这里说一下brew工具，这是他的 <a href="https://brew.sh/index_zh-cn.html" target="_blank" rel="noopener">官网</a> , 它是macOS 缺失的软件包管理器，非常好用，官网有中文，不知道的可以自己研究一下，如果你的电脑没有安装brew, 官网有安装教程，这里也不再赘述。</p>
 <p>BabbitMQ是基于Erlang，安装Erlang时为了避免未知报错。</p>
 <p>通过上面的命令，RabbitMQ Server的命令会被安装到 <code>/usr/local/sbin</code>，并不会自动加到用户的环境变量中去，所以我们需要在<code>.bash_profile</code>文件中增加下面内容：</p>
@@ -22,6 +23,57 @@
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">open</span> .bash_profile</span><br></pre></td></tr></table></figure>
 <p>输入下面的命令使修改生效</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> .bash_profile</span><br></pre></td></tr></table></figure>
+<p>这样，我们就可以通过 <code>rabbitmq-server</code> 命令来启动RabbitMQ的服务端了。</p>
+<p>下图表示启动成功</p>
+<p><img src="/2017/12/14/SpringBoot（十）之 RabbitMQ/1.png" alt=""></p>
+<h3 id="RabbitMQ管理"><a href="#RabbitMQ管理" class="headerlink" title="RabbitMQ管理"></a><strong>RabbitMQ管理</strong></h3><p>我们可以直接通过配置文件的访问进行管理，也可以通过Web的访问进行管理。下面我们将介绍如何通过Web进行管理。</p>
+<ul>
+<li>执行 <code>rabbitmq-plugins enable rabbitmq_management</code> 命令，开启Web管理插件，这样我们就可以通过浏览器来进行管理了。</li>
+</ul>
+<pre><code>![](SpringBoot（十）之 RabbitMQ/2.png)
+</code></pre><ul>
+<li><p>打开浏览器并访问：<a href="http://localhost:15672/" target="_blank" rel="noopener">http://localhost:15672/</a>， 并使用默认用户guest登录，密码也为guest。我们可以看到如下图的管理页面：</p>
+<p>  <img src="/2017/12/14/SpringBoot（十）之 RabbitMQ/3.png" alt=""></p>
+</li>
+</ul>
+<p>点击 <code>Admin</code> 标签，在这里可以进行用户的管理。</p>
+<h3 id="与Spring-Boot整合"><a href="#与Spring-Boot整合" class="headerlink" title="与Spring Boot整合"></a><strong>与Spring Boot整合</strong></h3><p>下面，我们通过在Spring Boot应用中整合RabbitMQ，并实现一个简单的发送、接收消息的例子来对RabbitMQ有一个直观的感受和理解。</p>
+<p>在Spring Boot中整合RabbitMQ是一件非常容易的事，下面我们就来详细说说整合过程：</p>
+<ul>
+<li>这次我们新建一个Spring Boot工程，命名为：“rabbitmq”</li>
+<li><p>在pom.xml中引入如下依赖内容，其中spring-boot-starter-amqp用于支持RabbitMQ</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">true<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">true<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-amqp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>application.properties</code> 中配置关于RabbitMQ的连接和用户信息，用户可以回到上面的安装内容，在管理页面中创建用户,这里我们用默认的账号</p>
+  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spring<span class="selector-class">.application</span><span class="selector-class">.name</span>=rabbitmq</span><br><span class="line"></span><br><span class="line">spring<span class="selector-class">.rabbitmq</span><span class="selector-class">.host</span>=localhost</span><br><span class="line">spring<span class="selector-class">.rabbitmq</span><span class="selector-class">.port</span>=<span class="number">5672</span></span><br><span class="line">spring<span class="selector-class">.rabbitmq</span><span class="selector-class">.username</span>=guest</span><br><span class="line">spring<span class="selector-class">.rabbitmq</span><span class="selector-class">.password</span>=guest</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建消息生产者 <code>Sender</code>。通过注入 <code>AmqpTemplate</code> 接口的实例来实现消息的发送，<code>AmqpTemplate</code> 接口定义了一套针对AMQP协议的基础操作。在Spring Boot中会根据配置来注入其具体实现。在该生产者，我们会产生一个字符串，并发送到名为hello的队列中</p>
+  <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Sender</span> &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    <span class="keyword">private</span>  AmqpTemplate rabbitTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span>  <span class="title">send</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        String context = <span class="string">"RabbitMQ"</span> + <span class="keyword">new</span> Date();</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"Sender : "</span> + context);</span><br><span class="line">        <span class="keyword">this</span>.rabbitTemplate.convertAndSend(<span class="string">"hello"</span>, context);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建消息消费者 <code>Receiver</code>。通过 <code>@RabbitListener</code> 注解定义该类对hello队列的监听，并用 <code>@RabbitHandler</code> 注解来指定对消息的处理方法。所以，该消费者实现了对hello队列的消费，消费操作为输出消息的字符串内容。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RabbitListener</span>(queues = <span class="string">"hello"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Receiver</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RabbitHandler</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span>  <span class="title">process</span><span class="params">(String hello)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Receiver : "</span>+hello);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建RabbitMQ的配置类 <code>RabbitConfig</code>，用来配置队列、交换器、路由等高级信息。这里我们以入门为主，先以最小化的配置来定义，以完成一个基本的生产和消费过程。</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">import</span> <span class="selector-tag">org</span><span class="selector-class">.springframework</span><span class="selector-class">.amqp</span><span class="selector-class">.core</span><span class="selector-class">.Queue</span>;</span><br><span class="line"><span class="selector-tag">import</span> <span class="selector-tag">org</span><span class="selector-class">.springframework</span><span class="selector-class">.context</span><span class="selector-class">.annotation</span><span class="selector-class">.Bean</span>;</span><br><span class="line"><span class="selector-tag">import</span> <span class="selector-tag">org</span><span class="selector-class">.springframework</span><span class="selector-class">.context</span><span class="selector-class">.annotation</span><span class="selector-class">.Configuration</span>;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">Configuration</span></span><br><span class="line"><span class="keyword">public</span> class RabbitConfig &#123;</span><br><span class="line"></span><br><span class="line">    @<span class="keyword">Bean</span></span><br><span class="line">    public Queue helloQueue() &#123;</span><br><span class="line">        <span class="selector-tag">return</span> <span class="selector-tag">new</span> <span class="selector-tag">Queue</span>("<span class="selector-tag">hello</span>");</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建单元测试类，用来调用消息生产：</p>
+  <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="variable">@SpringBootTest</span></span><br><span class="line">public class RabbitmqApplicationTests &#123;</span><br><span class="line"></span><br><span class="line">true<span class="variable">@Autowired</span></span><br><span class="line"></span><br><span class="line">trueprivate  Sender sender;</span><br><span class="line"></span><br><span class="line">true<span class="selector-tag">public</span>  <span class="selector-tag">void</span> <span class="selector-tag">test</span>()&#123;</span><br><span class="line"></span><br><span class="line">truetrue<span class="selector-tag">sender</span><span class="selector-class">.send</span>();</span><br><span class="line">true&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>完成程序编写之后，下面开始尝试运行。首先确保RabbitMQ Server已经开始，然后进行下面的操作：
+</code></pre><ul>
+<li><p>启动应用主类，从控制台中，我们看到如下内容，程序创建了一个访问<code>127.0.0.1:5672</code> 中 <code>springcloud</code> 的连接。</p>
+  <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Created <span class="keyword">new</span> connection: rabbitConnectionFactory<span class="string">#52100</span>cb8:<span class="number">0</span>/SimpleConnection@<span class="number">184</span>db0f4 [<span class="keyword">delegate</span>=amqp:<span class="comment">//guest@127.0.0.1:5672/, localPort= 62685]</span></span><br></pre></td></tr></table></figure>
+<p>  同时，我们通过RabbitMQ的控制面板，可以看到Connection和Channels中包含当前连接的条目。</p>
+</li>
+<li><p>运行单元测试类，我们可以看到控制台中输出下面的内容，消息被发送到了RabbitMQ Server的hello队列中。</p>
+  <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Sender : <span class="type">RabbitMQ</span><span class="comment">----------------------Thu Dec 14 18:44:16 CST 2017</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换到应用主类的控制台，我们可以看到类似如下输出，消费者对hello队列的监听程序执行了，并输出了接受到的消息信息</p>
+  <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Receiver : <span class="type">RabbitMQ</span><span class="comment">----------------------Thu Dec 14 18:44:16 CST 2017</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>通过上面的示例，我们在Spring Boot应用中引入spring-boot-starter-amqp模块，进行简单配置就完成了对RabbitMQ的消息生产和消费的开发内容。然而在实际应用中，我们还有很多内容没有演示，这里不做更多的讲解，读者可以自行查阅RabbitMQ的官方教程，有更全面的了解。</p>
 ]]></content>
       
         <categories>
