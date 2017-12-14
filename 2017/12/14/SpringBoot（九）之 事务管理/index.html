@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>SpringBoot（九）之 事务管理 | 潇洒的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="什么是事务？我们在开发企业应用时，对于业务人员的一个操作实际是对数据读写的多步操作的结合。由于数据操作在顺序执行的过程中，任何一步操作都有可能发生异常，异常会导致后续操作无法完成，此时由于业务逻辑并未正确的完成，之前成功操作数据的并不可靠，需要在这种情况下进行回退。 事务的作用就是为了保证用户的每一个操作都是可靠的，事">
+<meta name="keywords" content="SpringBoot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot（九）之 事务管理">
+<meta property="og:url" content="http://litxiaosa.me/2017/12/14/SpringBoot（九）之 事务管理/index.html">
+<meta property="og:site_name" content="潇洒的博客">
+<meta property="og:description" content="什么是事务？我们在开发企业应用时，对于业务人员的一个操作实际是对数据读写的多步操作的结合。由于数据操作在顺序执行的过程中，任何一步操作都有可能发生异常，异常会导致后续操作无法完成，此时由于业务逻辑并未正确的完成，之前成功操作数据的并不可靠，需要在这种情况下进行回退。 事务的作用就是为了保证用户的每一个操作都是可靠的，事务中的每一步操作都必须成功执行，只要有发生异常就回退到事务开始未进行操作的状态。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-12-14T06:21:03.344Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringBoot（九）之 事务管理">
+<meta name="twitter:description" content="什么是事务？我们在开发企业应用时，对于业务人员的一个操作实际是对数据读写的多步操作的结合。由于数据操作在顺序执行的过程中，任何一步操作都有可能发生异常，异常会导致后续操作无法完成，此时由于业务逻辑并未正确的完成，之前成功操作数据的并不可靠，需要在这种情况下进行回退。 事务的作用就是为了保证用户的每一个操作都是可靠的，事务中的每一步操作都必须成功执行，只要有发生异常就回退到事务开始未进行操作的状态。">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="潇洒的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?c519edc830f3af02ec9cc3d4c51a6583";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">潇洒的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives/">归档</a>
+                
+                    <a class="main-nav-link" href="/tags/">标签</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives/">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags/">标签</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">潇洒</h2>
+            <h3 id="title">一个Java码农，喜欢看书，对吉他有点小兴趣。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>杭州, 浙江</span>
+            <a id="follow" target="_blank" href="https://github.com/Litxiaosa">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                24
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                8
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/Litxiaosa" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://weibo.com/2517382891/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-SpringBoot（九）之 事务管理" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            SpringBoot（九）之 事务管理
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/12/14/SpringBoot（九）之 事务管理/">
+            <time datetime="2017-12-14T05:27:18.000Z" itemprop="datePublished">2017-12-14</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/SpringBoot系列/">SpringBoot系列</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/SpringBoot/">SpringBoot</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="什么是事务？"><a href="#什么是事务？" class="headerlink" title="什么是事务？"></a><strong>什么是事务？</strong></h3><p>我们在开发企业应用时，对于业务人员的一个操作实际是对数据读写的多步操作的结合。由于数据操作在顺序执行的过程中，任何一步操作都有可能发生异常，异常会导致后续操作无法完成，此时由于业务逻辑并未正确的完成，之前成功操作数据的并不可靠，需要在这种情况下进行回退。</p>
+<p>事务的作用就是为了保证用户的每一个操作都是可靠的，事务中的每一步操作都必须成功执行，只要有发生异常就回退到事务开始未进行操作的状态。</p>
+<p>事务管理是Spring框架中最为常用的功能之一，我们在使用Spring Boot开发应用时，大部分情况下也都需要使用事务</p>
+<a id="more"></a>
+<h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a><strong>快速入门</strong></h3><p>在Spring Boot中，当我们使用了spring-boot-starter-jdbc或spring-boot-starter-data-jpa依赖的时候，框架会自动默认分别注入<code>DataSourceTransactionManager</code>或 <code>JpaTransactionManager</code>。所以我们不需要任何额外配置就可以用 <code>@Transactional</code> 注解进行事务的使用。</p>
+<p>我们用之前的项目作为基础模版，我们引入了spring-data-jpa，并创建了User实体以及对User的数据访问对象UserRepository，在ApplicationTest类中实现了使用UserRepository进行数据读写的单元测试用例，如下：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@SpringBootTest</span></span><br><span class="line"><span class="variable">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line">public class DemoApplicationTests &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">true<span class="variable">@Autowired</span></span><br><span class="line">trueUserRepository  userRepository;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">true<span class="variable">@Test</span></span><br><span class="line">truepublic  void  test ()&#123;</span><br><span class="line"></span><br><span class="line">truetrue<span class="comment">//创建5条数据</span></span><br><span class="line">truetrue<span class="selector-tag">userRepository</span><span class="selector-class">.save</span>(new User(<span class="string">"a"</span>,<span class="string">"110"</span>));</span><br><span class="line">truetrue<span class="selector-tag">userRepository</span><span class="selector-class">.save</span>(new User(<span class="string">"b"</span>,<span class="string">"112"</span>));</span><br><span class="line">truetrue<span class="selector-tag">userRepository</span><span class="selector-class">.save</span>(new User(<span class="string">"c"</span>,<span class="string">"114"</span>));</span><br><span class="line">truetrue<span class="selector-tag">userRepository</span><span class="selector-class">.save</span>(new User(<span class="string">"d"</span>,<span class="string">"115"</span>));</span><br><span class="line">truetrue<span class="selector-tag">userRepository</span><span class="selector-class">.save</span>(new User(<span class="string">"e"</span>,<span class="string">"119"</span>));</span><br><span class="line">true&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，在这个单元测试用例中，使用UserRepository对象连续创建了5个User实体到数据库中，下面我们人为的来制造一些异常，看看会发生什么情况。</p>
+<p>通过定义User的userName属性长度为5，这样通过创建时User实体的userName属性超长就可以触发异常产生。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span></span><br><span class="line">    <span class="keyword">private</span>  <span class="built_in">Long</span>  id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(nullable = false, length = 5)</span></span><br><span class="line">    <span class="keyword">private</span>  String userName;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column(nullable = false)</span></span><br><span class="line">    <span class="keyword">private</span>  String passWord;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>  User()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> User(String userName, String passWord) &#123;</span><br><span class="line">        <span class="keyword">this</span>.userName = userName;</span><br><span class="line">        <span class="keyword">this</span>.passWord = passWord;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改测试用例中创建记录的语句，将一条记录的userName长度超过5，如下：userName为AAAAAAAAAAAAAA的User对象将会抛出异常。</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line"><span class="keyword">public</span>  <span class="keyword">void</span>  test ()&#123;</span><br><span class="line"></span><br><span class="line">true<span class="comment">//创建5条数据</span></span><br><span class="line">trueuserRepository.<span class="built_in">save</span>(<span class="keyword">new</span> User(<span class="string">"a"</span>,<span class="string">"110"</span>));</span><br><span class="line">trueuserRepository.<span class="built_in">save</span>(<span class="keyword">new</span> User(<span class="string">"b"</span>,<span class="string">"112"</span>));</span><br><span class="line">trueuserRepository.<span class="built_in">save</span>(<span class="keyword">new</span> User(<span class="string">"c"</span>,<span class="string">"114"</span>));</span><br><span class="line">trueuserRepository.<span class="built_in">save</span>(<span class="keyword">new</span> User(<span class="string">"AAAAAAAAAAAAAA"</span>,<span class="string">"115"</span>));</span><br><span class="line">trueuserRepository.<span class="built_in">save</span>(<span class="keyword">new</span> User(<span class="string">"e"</span>,<span class="string">"119"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行测试用例，可以看到控制台中抛出了如下异常，userName字段超长：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Caused by: com<span class="selector-class">.mysql</span><span class="selector-class">.jdbc</span><span class="selector-class">.MysqlDataTruncation</span>: Data truncation: Data too long <span class="keyword">for</span> column <span class="string">'user_name'</span> at row <span class="number">1</span></span><br><span class="line">trueat com<span class="selector-class">.mysql</span><span class="selector-class">.jdbc</span><span class="selector-class">.MysqlIO</span><span class="selector-class">.checkErrorPacket</span>(MysqlIO<span class="selector-class">.java</span>:<span class="number">3971</span>)</span><br><span class="line">trueat com<span class="selector-class">.mysql</span><span class="selector-class">.jdbc</span><span class="selector-class">.MysqlIO</span><span class="selector-class">.checkErrorPacket</span>(MysqlIO<span class="selector-class">.java</span>:<span class="number">3909</span>)</span><br><span class="line">trueat com<span class="selector-class">.mysql</span><span class="selector-class">.jdbc</span><span class="selector-class">.MysqlIO</span><span class="selector-class">.sendCommand</span>(MysqlIO<span class="selector-class">.java</span>:<span class="number">2527</span>)</span><br><span class="line">trueat com<span class="selector-class">.mysql</span><span class="selector-class">.jdbc</span><span class="selector-class">.MysqlIO</span><span class="selector-class">.sqlQueryDirect</span>(MysqlIO<span class="selector-class">.java</span>:<span class="number">2680</span>)</span><br><span class="line">trueat com<span class="selector-class">.mysql</span><span class="selector-class">.jdbc</span><span class="selector-class">.ConnectionImpl</span><span class="selector-class">.execSQL</span>(ConnectionImpl<span class="selector-class">.java</span>:<span class="number">2487</span>)</span><br></pre></td></tr></table></figure>
+<p>此时查数据库中，创建了userName从a到c的记录，没有AAAAAAAAAAAAAA,e的记录。而若这是一个希望保证完整性操作的情况下，a到c的记录希望能在发生异常的时候被回退，这时候就可以使用事务让它实现回退，做法非常简单，我们只需要在test函数上添加<code>@Transactional</code>注解即可。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@Test</span></span><br><span class="line"><span class="variable">@Transactional</span></span><br><span class="line">public  void  test ()&#123;</span><br><span class="line">    <span class="comment">//创建5条数据</span></span><br><span class="line">    <span class="selector-tag">userRepository</span><span class="selector-class">.save</span>(new User(<span class="string">"a"</span>,<span class="string">"110"</span>));</span><br><span class="line">    <span class="selector-tag">userRepository</span><span class="selector-class">.save</span>(new User(<span class="string">"b"</span>,<span class="string">"112"</span>));</span><br><span class="line">    <span class="selector-tag">userRepository</span><span class="selector-class">.save</span>(new User(<span class="string">"c"</span>,<span class="string">"114"</span>));</span><br><span class="line">    <span class="selector-tag">userRepository</span><span class="selector-class">.save</span>(new User(<span class="string">"AAAAAAAAAAAAAA"</span>,<span class="string">"115"</span>));</span><br><span class="line">    <span class="selector-tag">userRepository</span><span class="selector-class">.save</span>(new User(<span class="string">"e"</span>,<span class="string">"119"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们把刚刚插入的数据删掉，从新执行测试用例。再看数据库中，User表就没有a到c的用户数据了，成功实现了自动回滚。</p>
+<p>这里主要通过单元测试演示了如何使用<code>@Transactional</code>注解来声明一个函数需要被事务管理，通常我们单元测试为了保证每个测试之间的数据独立，会使用<code>@Rollback</code>注解让每个单元测试都能在结束时回滚。而真正在开发业务逻辑时，我们通常在service层接口中使用<code>@Transactional</code>来对各个业务逻辑进行事务管理的配置。</p>
+<h3 id="事务详解"><a href="#事务详解" class="headerlink" title="事务详解"></a><strong>事务详解</strong></h3><p>上面的例子中我们使用了默认的事务配置，可以满足一些基本的事务需求，但是当我们项目较大较复杂时（比如，有多个数据源等），这时候需要在声明事务时，指定不同的事务管理器。在声明事务时，只需要通过value属性指定配置的事务管理器名即可，例如：</p>
+<p><code>@Transactional(value=&quot;transactionManagerPrimary&quot;)。</code></p>
+<p>除了指定不同的事务管理器之后，还能对事务进行隔离级别和传播行为的控制，下面分别详细解释：</p>
+<h4 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a><strong>隔离级别</strong></h4><p>我们可以<code>org.springframework.transaction.annotation.Isolation</code>枚举类中定义了五个表示隔离级别的值：</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">enum</span> <span class="title">Isolation</span> &#123;</span></span><br><span class="line">    DEFAULT(-<span class="number">1</span>),</span><br><span class="line">    READ_UNCOMMITTED(<span class="number">1</span>),</span><br><span class="line">    READ_COMMITTED(<span class="number">2</span>),</span><br><span class="line">    REPEATABLE_READ(<span class="number">4</span>),</span><br><span class="line">    SERIALIZABLE(<span class="number">8</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>DEFAULT：这是默认值，表示使用底层数据库的默认隔离级别。对大部分数据库而言，通常这值就是：READ_COMMITTED。</li>
+<li>READ_UNCOMMITTED：该隔离级别表示一个事务可以读取另一个事务修改但还没有提交的数据。该级别不能防止脏读和不可重复读，因此很少使用该隔离级别。</li>
+<li>READ_COMMITTED：该隔离级别表示一个事务只能读取另一个事务已经提交的数据。该级别可以防止脏读，这也是大多数情况下的推荐值。</li>
+<li>REPEATABLE_READ：该隔离级别表示一个事务在整个过程中可以多次重复执行某个查询，并且每次返回的记录都相同。即使在多次查询之间有新增的数据满足该查询，这些新增的记录也会被忽略。该级别可以防止脏读和不可重复读</li>
+<li>SERIALIZABLE：所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，该级别可以防止脏读、不可重复读以及幻读。但是这将严重影响程序的性能。通常情况下也不会用到该级别。</li>
+</ul>
+<p>指定方法：通过使用isolation属性设置，例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">Transactional</span>(<span class="keyword">isolation</span> = Isolation.READ_COMMITTED)</span><br></pre></td></tr></table></figure>
+<h4 id="传播行为"><a href="#传播行为" class="headerlink" title="传播行为"></a><strong>传播行为</strong></h4><p>所谓事务的传播行为是指，如果在开始当前事务之前，一个事务上下文已经存在，此时有若干选项可以指定一个事务性方法的执行行为。</p>
+<p>我们可以看<code>org.springframework.transaction.annotation.Propagation</code>枚举类中定义了7个表示传播行为的枚举值：</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">enum</span> <span class="title">Propagation</span> &#123;</span></span><br><span class="line">    REQUIRED(<span class="number">0</span>),</span><br><span class="line">    SUPPORTS(<span class="number">1</span>),</span><br><span class="line">    MANDATORY(<span class="number">2</span>),</span><br><span class="line">    REQUIRES_NEW(<span class="number">3</span>),</span><br><span class="line">    NOT_SUPPORTED(<span class="number">4</span>),</span><br><span class="line">    NEVER(<span class="number">5</span>),</span><br><span class="line">    NESTED(<span class="number">6</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>REQUIRED：如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。</li>
+<li>SUPPORTS：如果当前存在事务，则加入该事务；如果当前没有事务，则以非事务的方式继续运行。</li>
+<li>MANDATORY：如果当前存在事务，则加入该事务；如果当前没有事务，则抛出异常。</li>
+<li>REQUIRES_NEW：创建一个新的事务，如果当前存在事务，则把当前事务挂起。</li>
+<li>NOT_SUPPORTED：以非事务方式运行，如果当前存在事务，则把当前事务挂起。</li>
+<li>NEVER：以非事务方式运行，如果当前存在事务，则抛出异常。</li>
+<li>NESTED：如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行；如果当前没有事务，则该取值等价于REQUIRED。</li>
+</ul>
+<p>指定方法：通过使用propagation属性设置，例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">Transactional</span>(<span class="keyword">propagation</span> = Propagation.REQUIRED)</span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+</div>
+
+            
+    
+        <a href="http://litxiaosa.me/2017/12/14/SpringBoot（九）之 事务管理/#comments" id="sourceId::2017/12/14/SpringBoot（九）之 事务管理/" class="article-comment-link cy_cmt_count">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/12/13/SpringBoot（八）之 整合 MyBatis/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">SpringBoot（八）之 整合 MyBatis</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="SOHUCS" sid="2017/12/14/SpringBoot（九）之 事务管理/"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">文章分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot系列/">SpringBoot系列</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/solr/">solr</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/不知所云/">不知所云</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习Git/">学习Git</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境变量/">环境变量</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编码规范插件/">编码规范插件</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/SpringBoot/" style="font-size: 20px;">SpringBoot</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/不知所云/" style="font-size: 13.33px;">不知所云</a> <a href="/tags/环境变量/" style="font-size: 10px;">环境变量</a> <a href="/tags/编码规范插件/" style="font-size: 10px;">编码规范插件</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://www.520code.net/">指尖代码</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 潇洒<br>
+             <a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action;jsessionid=jXXzJfoHmRVnh4Wtlin6joVW_3P2wkKCL0IputNLM-40wznfPW8Z!-179429638" target="_blank">浙ICP备17031501号-1</a>
+        </div>
+    </div>
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+	<span id="busuanzi_container_site_pv">
+	    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+	</span>
+	| 
+	<span id="busuanzi_container_site_uv">
+  		本站访客数<span id="busuanzi_value_site_uv"></span>人次
+	</span>
+
+</footer>
+
+        
+    
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyt89XC6v"></script>
+    <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+    <script type="text/javascript">
+    window.changyan.api.config({
+    appid: 'cyt89XC6v',
+    conf: '05f02c05c1850e9dc85891de397ebfe0'
+    });
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
