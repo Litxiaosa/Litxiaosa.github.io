@@ -9,44 +9,44 @@
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习Git（四）之 分支管理">
-<meta property="og:url" content="https://litxiaosa.me/2017/11/29/学习Git（四） 之 分支管理/index.html">
+<meta property="og:url" content="http://litxiaosa.me/2017/11/29/学习Git（四） 之 分支管理/index.html">
 <meta property="og:site_name" content="潇洒的博客">
 <meta property="og:description" content="分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习Git的时候，另一个你正在另一个平行宇宙里努力学习SVN。 如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果，你既学会了Git又学会了SVN！">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/1.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/2.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/3.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/4.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/5.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/6.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/7.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/8.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/9.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/10.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/11.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/12.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/13.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/14.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/15.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/16.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/17.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/18.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/19.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/20.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/21.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/22.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/23.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/24.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/25.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/26.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/27.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/28.png">
-<meta property="og:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/29.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/1.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/2.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/3.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/4.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/5.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/6.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/7.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/8.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/9.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/10.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/11.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/12.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/13.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/14.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/15.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/16.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/17.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/18.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/19.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/20.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/21.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/22.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/23.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/24.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/25.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/26.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/27.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/28.png">
+<meta property="og:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/29.png">
 <meta property="og:updated_time" content="2017-12-04T03:14:52.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习Git（四）之 分支管理">
 <meta name="twitter:description" content="分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习Git的时候，另一个你正在另一个平行宇宙里努力学习SVN。 如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果，你既学会了Git又学会了SVN！">
-<meta name="twitter:image" content="https://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/1.png">
+<meta name="twitter:image" content="http://litxiaosa.me/2017/11/29/学习Git（四）%20之%20分支管理/1.png">
     
 
     
@@ -474,7 +474,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 
             
     
-        <a href="https://litxiaosa.me/2017/11/29/学习Git（四） 之 分支管理/#comments" id="sourceId::2017/11/29/学习Git（四） 之 分支管理/" class="article-comment-link cy_cmt_count">评论</a>
+        <a href="http://litxiaosa.me/2017/11/29/学习Git（四） 之 分支管理/#comments" id="sourceId::2017/11/29/学习Git（四） 之 分支管理/" class="article-comment-link cy_cmt_count">评论</a>
     
 
         </footer>
