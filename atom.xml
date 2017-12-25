@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://litxiaosa.me/"/>
-  <updated>2017-12-25T10:38:33.178Z</updated>
+  <updated>2017-12-14T11:09:34.077Z</updated>
   <id>http://litxiaosa.me/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>hello</title>
-    <link href="http://litxiaosa.me/2017/12/25/hello/"/>
-    <id>http://litxiaosa.me/2017/12/25/hello/</id>
-    <published>2017-12-25T10:38:14.000Z</published>
-    <updated>2017-12-25T10:38:33.178Z</updated>
-    
-    <content type="html"><![CDATA[<p>sadaf[ojnv;ioh</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;sadaf[ojnv;ioh&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>SpringBoot（十）之 RabbitMQ</title>
@@ -505,6 +483,31 @@
     
     
       <category term="不知所云，摘抄" scheme="http://litxiaosa.me/tags/%E4%B8%8D%E7%9F%A5%E6%89%80%E4%BA%91%EF%BC%8C%E6%91%98%E6%8A%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>风景旧曾谙</title>
+    <link href="http://litxiaosa.me/2017/06/30/%E9%A3%8E%E6%99%AF%E6%97%A7%E6%9B%BE%E8%B0%99/"/>
+    <id>http://litxiaosa.me/2017/06/30/风景旧曾谙/</id>
+    <published>2017-06-30T02:41:15.000Z</published>
+    <updated>2017-12-04T02:19:40.022Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2017/06/30/风景旧曾谙/江南.png" alt=""></p><p>七月将至， 天气慢慢炎热而躁动。来杭州已九月有余。</p><p>初来杭州，怀着美好的憧憬一心想去走走，看许仙和白娘子相遇的断桥，看充满神话色彩的雷峰塔。看济公修行之地灵隐寺等等。</p><p>然而始终未曾迈出一步。一来公司996累成狗，二来无人同行，感觉会少很多乐趣。</p><a id="more"></a><p>上班、吃饭、下班、睡觉的机械日子就这样慢慢过去了。</p><p>人嘛，总会厌烦浑浑噩噩的生活，我开始买了很多书，东野圭吾的，三毛的，韩寒的，余华的等等。开始充实自己，除了代码外，我开始享受这些，不说提高什么，觉得比下班打游戏看电视有意义些。</p><p>说起健身，还是合租的一个姑娘带我去的。她说要去减肥，我说，走，我也去，我要去增肥。她鄙视我说等我真的增肥成功了，想减肥就难了。然而，一个月过去了，我体重一毛没增加。但是胳膊和胸部的肌肉稍微有一丢丢凸显了。这也是成果。不能急，我相信胸肌会有的，腹肌也会有的。</p><p>换了公司，自由时间也多了。慢慢培养起来的爱好和习惯，更有时间和理由去坚持了，决定出去走走，把刚来杭州的憧憬，一点点实现。 不为别的，我只是不想满足于现状。</p><p>和朋友扯淡的时间慢慢少了，有时偶尔聊起天来，他们会说，最近跟灭绝了似的。“哈哈。是的，我在努力提高自己，寻找我的意中人 ”我笑。</p><p>可能是代码写多了，感觉世界的逻辑有时很简单。</p><p>事情无非是let，变化历历</p><p>或者是const，永恒安息</p><p>如果一开始就想清楚，留不住的就随风去，不会变的就钉到骨子里。那你说多轻松。</p><p>打雷了，杭州的天总是这样，大太阳说下雨就下雨，也凉快了不少。</p><p>偌大的杭州，一个人独来独往。不过每一天过的也很充实。江南好， 风景旧曾谙。我喜欢。</p><p><img src="/2017/06/30/风景旧曾谙/鸟.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/2017/06/30/风景旧曾谙/江南.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;七月将至， 天气慢慢炎热而躁动。来杭州已九月有余。&lt;/p&gt;
+&lt;p&gt;初来杭州，怀着美好的憧憬一心想去走走，看许仙和白娘子相遇的断桥，看充满神话色彩的雷峰塔。看济公修行之地灵隐寺等等。&lt;/p&gt;
+&lt;p&gt;然而始终未曾迈出一步。一来公司996累成狗，二来无人同行，感觉会少很多乐趣。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="不知所云" scheme="http://litxiaosa.me/categories/%E4%B8%8D%E7%9F%A5%E6%89%80%E4%BA%91/"/>
+    
+    
+      <category term="不知所云" scheme="http://litxiaosa.me/tags/%E4%B8%8D%E7%9F%A5%E6%89%80%E4%BA%91/"/>
     
   </entry>
   
