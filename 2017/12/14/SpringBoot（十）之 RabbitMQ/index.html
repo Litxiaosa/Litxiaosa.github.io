@@ -11,15 +11,15 @@
 <meta property="og:title" content="SpringBoot（十）之 RabbitMQ">
 <meta property="og:url" content="http://litxiaosa.me/2017/12/14/SpringBoot（十）之 RabbitMQ/index.html">
 <meta property="og:site_name" content="潇洒的博客">
-<meta property="og:description" content="本文要介绍的RabbitMQ是以AMQP协议实现的一种中间件产品，它可以支持多种操作系统，多种编程语言，几乎可以覆盖所有主流的企业级技术平台。 安装在RabbitMQ官网的下载页面 https://www.rabbitmq.com/download.html中，我们可以获取到针对各种不同操作系统的安装包和说明文档。 由于我用的是MAC ，这里介绍怎么在MAC上安装RabbitMQ。 在Mac OS">
+<meta property="og:description" content="本文要介绍的RabbitMQ是以AMQP协议实现的一种中间件产品，它可以支持多种操作系统，多种编程语言，几乎可以覆盖所有主流的企业级技术平台。 安装在RabbitMQ官网的下载页面 https://www.rabbitmq.com/download.html中，我们可以获取到针对各种不同操作系统的安装包和说明文档。 由于我用的是MAC ，这里介绍怎么在MAC上安装RabbitMQ。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://litxiaosa.me/2017/12/14/SpringBoot（十）之%20RabbitMQ/1.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/12/14/SpringBoot（十）之%20RabbitMQ/2.png">
 <meta property="og:image" content="http://litxiaosa.me/2017/12/14/SpringBoot（十）之%20RabbitMQ/3.png">
-<meta property="og:updated_time" content="2017-12-14T11:09:34.077Z">
+<meta property="og:updated_time" content="2017-12-28T09:46:58.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot（十）之 RabbitMQ">
-<meta name="twitter:description" content="本文要介绍的RabbitMQ是以AMQP协议实现的一种中间件产品，它可以支持多种操作系统，多种编程语言，几乎可以覆盖所有主流的企业级技术平台。 安装在RabbitMQ官网的下载页面 https://www.rabbitmq.com/download.html中，我们可以获取到针对各种不同操作系统的安装包和说明文档。 由于我用的是MAC ，这里介绍怎么在MAC上安装RabbitMQ。 在Mac OS">
+<meta name="twitter:description" content="本文要介绍的RabbitMQ是以AMQP协议实现的一种中间件产品，它可以支持多种操作系统，多种编程语言，几乎可以覆盖所有主流的企业级技术平台。 安装在RabbitMQ官网的下载页面 https://www.rabbitmq.com/download.html中，我们可以获取到针对各种不同操作系统的安装包和说明文档。 由于我用的是MAC ，这里介绍怎么在MAC上安装RabbitMQ。">
 <meta name="twitter:image" content="http://litxiaosa.me/2017/12/14/SpringBoot（十）之%20RabbitMQ/1.png">
     
 
@@ -260,13 +260,13 @@ var _hmt = _hmt || [];
             <p>本文要介绍的RabbitMQ是以AMQP协议实现的一种中间件产品，它可以支持多种操作系统，多种编程语言，几乎可以覆盖所有主流的企业级技术平台。</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h3><p>在RabbitMQ官网的下载页面 <a href="https://www.rabbitmq.com/download.html" target="_blank" rel="noopener">https://www.rabbitmq.com/download.html</a>中，我们可以获取到针对各种不同操作系统的安装包和说明文档。</p>
 <p>由于我用的是MAC ，这里介绍怎么在MAC上安装RabbitMQ。</p>
+<a id="more"></a>
 <p>在Mac OS X中使用brew工具，可以很容易的安装RabbitMQ的服务端，只需要按如下命令操作即可：</p>
 <ul>
 <li>brew更新到最新版本，执行：<code>brew update</code></li>
 <li>安装Erlang，执行：<code>brew install erlang</code></li>
 <li>安装RabbitMQ Server，执行：<code>brew install rabbitmq</code></li>
 </ul>
-<a id="more"></a>
 <p>我们这里说一下brew工具，这是他的 <a href="https://brew.sh/index_zh-cn.html" target="_blank" rel="noopener">官网</a> , 它是macOS 缺失的软件包管理器，非常好用，官网有中文，不知道的可以自己研究一下，如果你的电脑没有安装brew, 官网有安装教程，这里也不再赘述。</p>
 <p>BabbitMQ是基于Erlang，安装Erlang时为了避免未知报错。</p>
 <p>通过上面的命令，RabbitMQ Server的命令会被安装到 <code>/usr/local/sbin</code>，并不会自动加到用户的环境变量中去，所以我们需要在<code>.bash_profile</code>文件中增加下面内容：</p>
@@ -404,6 +404,13 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 <aside id="sidebar">
    
         
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">公告</h3>
+    </div>
+
+
+    
+        
     <div class="widget-wrap">
         <h3 class="widget-title">文章分类</h3>
         <div class="widget">
@@ -438,10 +445,6 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
                 
                     <li>
                         <a href="http://www.520code.net/">指尖代码</a>
-                    </li>
-                
-                    <li>
-                        <a href="http://jiaoxiaotu.fun">姣小兔</a>
                     </li>
                 
             </ul>
