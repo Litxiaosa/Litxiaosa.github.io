@@ -283,7 +283,7 @@
 <ul>
 <li><p><strong>Long increment(H key, HK hashKey, long delta);</strong></p>
 <p>通过给定的delta增加散列hashKey的值（整型）</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  使用：System.out.<span class="built_in">println</span>(<span class="keyword">template</span>.opsForHash().<span class="built_in">get</span>(<span class="string">"redisHash"</span>,<span class="string">"age"</span>));</span><br><span class="line">         System.out.<span class="built_in">println</span>(<span class="keyword">template</span>.opsForHash().increment(<span class="string">"redisHash"</span>,<span class="string">"age"</span>,<span class="number">1</span>));</span><br><span class="line">  结果：<span class="number">26</span></span><br><span class="line">         <span class="number">27</span></span><br><span class="line">  ``` </span><br><span class="line">  </span><br><span class="line">- **Double increment(H key, HK hashKey, <span class="keyword">double</span> delta);**</span><br><span class="line">true</span><br><span class="line">  通过给定的delta增加散列hashKey的值（浮点数）</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  使用：System.out.<span class="built_in">println</span>(<span class="keyword">template</span>.opsForHash().<span class="built_in">get</span>(<span class="string">"redisHash"</span>,<span class="string">"age"</span>));</span><br><span class="line">         System.out.<span class="built_in">println</span>(<span class="keyword">template</span>.opsForHash().increment(<span class="string">"redisHash"</span>,<span class="string">"age"</span>,<span class="number">1</span>));</span><br><span class="line">  结果：<span class="number">26</span></span><br><span class="line">       <span class="number">27</span></span><br><span class="line">  ``` </span><br><span class="line">  </span><br><span class="line">- **Double increment(H key, HK hashKey, <span class="keyword">double</span> delta);**</span><br><span class="line">true</span><br><span class="line">  通过给定的delta增加散列hashKey的值（浮点数）</span><br></pre></td></tr></table></figure>
 <p>使用：System.out.println(template.opsForHash().get(“redisHash”,”age”));</p>
 <pre><code>System.out.println(template.opsForHash().increment(&quot;redisHash&quot;,&quot;age&quot;,1.1));
 </code></pre><p>结果：27</p>
@@ -304,7 +304,7 @@
 template.opsForHash().putAll(&quot;redisHash1&quot;,testMap);
 System.out.println(template.opsForHash().entries(&quot;redisHash1&quot;));
 </code></pre><p>结果：{class=1, name=jack, age=27}</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- **<span class="function"><span class="keyword">void</span> <span class="title">put</span>(<span class="params">H key, HK hashKey, HV <span class="keyword">value</span></span>)</span>;**</span><br><span class="line"></span><br><span class="line">  设置散列hashKey的值</span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">- **<span class="function"><span class="keyword">void</span> <span class="title">put</span>(<span class="params">H key, HK hashKey, HV <span class="keyword">value</span></span>)</span>;**</span><br><span class="line"></span><br><span class="line">  设置散列hashKey的值</span><br></pre></td></tr></table></figure>
 <p>使用：template.opsForHash().put(“redisHash”,”name”,”tom”);</p>
 <pre><code>template.opsForHash().put(&quot;redisHash&quot;,&quot;age&quot;,26);
 template.opsForHash().put(&quot;redisHash&quot;,&quot;class&quot;,&quot;6&quot;);
@@ -317,9 +317,9 @@ template.opsForHash().put(&quot;redisHash&quot;,&quot;class&quot;,&quot;6&quot;)
 <pre><code>true
 </code></pre><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">  </span></span><br><span class="line"><span class="bullet">- </span>*<span class="strong">*List&lt;HV&gt; values(H key);*</span>* </span><br><span class="line"></span><br><span class="line"><span class="code">  获取整个哈希存储的值根据密钥</span></span><br></pre></td></tr></table></figure>
 <p>使用：System.out.println(template.opsForHash().values(“redisHash”));<br>结果：[tom, 26, 6]</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>*<span class="strong">*Map&lt;HK, HV&gt; entries(H key);*</span><span class="strong">*</span></span><br><span class="line"><span class="strong"></span></span><br><span class="line"><span class="strong">  获取整个哈希存储根据密钥</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">  </span></span><br><span class="line"><span class="bullet">- </span>*<span class="strong">*Map&lt;HK, HV&gt; entries(H key);*</span><span class="strong">*</span></span><br><span class="line"><span class="strong"></span></span><br><span class="line"><span class="strong">  获取整个哈希存储根据密钥</span></span><br></pre></td></tr></table></figure>
 <p>使用：System.out.println(template.opsForHash().entries(“redisHash”));<br>结果：{age=26, class=6, name=tom}  </p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> **Cursor&lt;Map.Entry&lt;HK, HV<span class="meta">&gt;&gt; </span>scan(H key, ScanOptions options);**  </span></span><br><span class="line"><span class="ruby">  </span></span><br><span class="line"><span class="ruby">  使用Cursor在key的hash中迭代，相当于迭代器。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">-<span class="ruby"> **Cursor&lt;Map.Entry&lt;HK, HV<span class="meta">&gt;&gt; </span>scan(H key, ScanOptions options);**  </span></span><br><span class="line"><span class="ruby">  </span></span><br><span class="line"><span class="ruby">  使用Cursor在key的hash中迭代，相当于迭代器。</span></span><br></pre></td></tr></table></figure>
 <p>使用：Cursor<map.entry<object, object="">&gt; curosr =     template.opsForHash().scan(“redisHash”, ScanOptions.ScanOptions.NONE);</map.entry<object,></p>
 <pre><code> while(curosr.hasNext()){
     Map.Entry&lt;Object, Object&gt; entry = curosr.next();
@@ -442,10 +442,10 @@ unionAndStoreTest2:[ddd, xxx, bbb, aaa, ccc]
 <p> 使用：System.out.println(“setTest:” + template.opsForSet().members(“setTest”));</p>
 <pre><code>System.out.println(&quot;setTest2:&quot; + template.opsForSet().members(&quot;setTest2&quot;));
 System.out.println(template.opsForSet().difference(&quot;setTest&quot;,&quot;setTest2&quot;));
-</code></pre><p>结果：setTest:[ddd, bbb, aaa, ccc]</p>
+</code></pre><p> 结果：setTest:[ddd, bbb, aaa, ccc]</p>
 <pre><code>setTest2:[ccc, aaa]
 [bbb, ddd] 
-</code></pre><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">- **<span class="keyword">Set</span>&lt;V&gt; difference(K <span class="comment">key, Collection&lt;K&gt; otherKeys)</span>;**</span><br><span class="line">  </span><br><span class="line">  key无序集合与多个otherKey无序集合的差集</span><br></pre></td></tr></table></figure>
+</code></pre> <figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">- **<span class="keyword">Set</span>&lt;V&gt; difference(K <span class="comment">key, Collection&lt;K&gt; otherKeys)</span>;**</span><br><span class="line">  </span><br><span class="line">  key无序集合与多个otherKey无序集合的差集</span><br></pre></td></tr></table></figure>
 <p>使用：System.out.println(“setTest:” + template.opsForSet().members(“setTest”));</p>
 <pre><code>System.out.println(&quot;setTest2:&quot; + template.opsForSet().members(&quot;setTest2&quot;));
 System.out.println(&quot;setTest3:&quot; + template.opsForSet().members(&quot;setTest3&quot;));
@@ -723,6 +723,8 @@ value:zset-4score:18.0
 zset-3:3.0
 zset-4:6.0
 </code></pre><p>```</p>
+</li>
+</ul>
 <blockquote>
 <p>注：TimeUnit是java.util.concurrent包下面的一个类，表示给定单元粒度的时间段<br>常用的颗粒度</p>
 <p>TimeUnit.DAYS //天</p>
@@ -731,11 +733,15 @@ zset-4:6.0
 <p>TimeUnit.SECONDS //秒</p>
 <p>TimeUnit.MILLISECONDS //毫秒</p>
 </blockquote>
-</li>
-</ul>
 <p><strong>本文转自简书：<a href="https://www.jianshu.com/p/7bf5dc61ca06" target="_blank" rel="noopener">如何使用RedisTemplate访问Redis数据结构</a></strong></p>
 ]]></content>
       
+        <categories>
+            
+            <category> Redis </category>
+            
+        </categories>
+        
         
         <tags>
             
