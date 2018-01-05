@@ -244,43 +244,7 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
         
             <p><h2 id="Redis-数据结构简介"><a href="#Redis-数据结构简介" class="headerlink" title="Redis 数据结构简介"></a>Redis 数据结构简介</h2><p>Redis 可以存储键与5种不同数据结构类型之间的映射，这5种数据结构类型分别为String（字符串）、List（列表）、Set（集合）、Hash（散列）和 Zset（有序集合）</p>
-<p>下面来对这5种数据结构类型作简单的介绍：</p>
-<table>
-<thead>
-<tr>
-<th>结构类型</th>
-<th style="text-align:center">结构存储的值</th>
-<th style="text-align:right">结构的读写能力</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>String</td>
-<td style="text-align:center">可以是字符串、整数或者浮点数</td>
-<td style="text-align:right">对整个字符串或者字符串的其中一部分执行操作；对象和浮点数执行自增(increment)或者自减(decrement)</td>
-</tr>
-<tr>
-<td>List</td>
-<td style="text-align:center">一个链表，链表上的每个节点都包含了一个字符串</td>
-<td style="text-align:right">从链表的两端推入或者弹出元素；根据偏移量对链表进行修剪(trim)；读取单个或者多个元素；根据值来查找或者移除元素</td>
-</tr>
-<tr>
-<td>Set</td>
-<td style="text-align:center">包含字符串的无序收集器(unorderedcollection)，并且被包含的每个字符串都是独一无二的、各不相同</td>
-<td style="text-align:right">添加、获取、移除单个元素；检查一个元素是否存在于某个集合中；计算交集、并集、差集；从集合里卖弄随机获取元素</td>
-</tr>
-<tr>
-<td>Hash</td>
-<td style="text-align:center">包含键值对的无序散列表</td>
-<td style="text-align:right">添加、获取、移除单个键值对；获取所有键值对</td>
-</tr>
-<tr>
-<td>Zset</td>
-<td style="text-align:center">字符串成员(member)与浮点数分值(score)之间的有序映射，元素的排列顺序由分值的大小决定</td>
-<td style="text-align:right">添加、获取、删除单个元素；根据分值范围(range)或者成员来获取元素</td>
-</tr>
-</tbody>
-</table></p>
+<p>下面来对这5种数据结构类型作简单的介绍：</p></p>
             <p class="article-more-link">
                 <a href="/2018/01/05/如何使用RedisTemplate访问Redis数据结构/#more">阅读全文</a>
             </p>

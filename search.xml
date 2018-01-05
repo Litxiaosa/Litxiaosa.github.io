@@ -7,6 +7,7 @@
       <url>/2018/01/05/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8RedisTemplate%E8%AE%BF%E9%97%AERedis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
       <content type="html"><![CDATA[<h2 id="Redis-数据结构简介"><a href="#Redis-数据结构简介" class="headerlink" title="Redis 数据结构简介"></a>Redis 数据结构简介</h2><p>Redis 可以存储键与5种不同数据结构类型之间的映射，这5种数据结构类型分别为String（字符串）、List（列表）、Set（集合）、Hash（散列）和 Zset（有序集合）</p>
 <p>下面来对这5种数据结构类型作简单的介绍：</p>
+<a id="more"></a>
 <table>
 <thead>
 <tr>
@@ -43,7 +44,6 @@
 </tr>
 </tbody>
 </table>
-<a id="more"></a>
 <p>Redis 5种数据结构的概念大致介绍到这边，下面将结合Spring封装的RedisTemplate来对这5种数据结构的运用进行演示</p>
 <h2 id="RedisTemplate介绍"><a href="#RedisTemplate介绍" class="headerlink" title="RedisTemplate介绍"></a>RedisTemplate介绍</h2><p>spring 封装了 <code>RedisTemplate</code> 对象来进行对redis的各种操作，它支持所有的 redis 原生的 api</p>
 <h3 id="RedisTemplate在spring代码中的结构如下："><a href="#RedisTemplate在spring代码中的结构如下：" class="headerlink" title="RedisTemplate在spring代码中的结构如下："></a>RedisTemplate在spring代码中的结构如下：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.data.redis.core</span><br><span class="line">Class RedisTemplate&lt;K,V&gt;</span><br><span class="line">java.lang.Object</span><br><span class="line">    org.springframework.data.redis.core.RedisAccessor</span><br><span class="line">        org.springframework.data.redis.core.RedisTemplate&lt;K,V&gt;</span><br></pre></td></tr></table></figure>
