@@ -43,6 +43,7 @@
 </tr>
 </tbody>
 </table>
+<a id="more"></a>
 <p>Redis 5种数据结构的概念大致介绍到这边，下面将结合Spring封装的RedisTemplate来对这5种数据结构的运用进行演示</p>
 <h2 id="RedisTemplate介绍"><a href="#RedisTemplate介绍" class="headerlink" title="RedisTemplate介绍"></a>RedisTemplate介绍</h2><p>spring 封装了 <code>RedisTemplate</code> 对象来进行对redis的各种操作，它支持所有的 redis 原生的 api</p>
 <h3 id="RedisTemplate在spring代码中的结构如下："><a href="#RedisTemplate在spring代码中的结构如下：" class="headerlink" title="RedisTemplate在spring代码中的结构如下："></a>RedisTemplate在spring代码中的结构如下：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.data.redis.core</span><br><span class="line">Class RedisTemplate&lt;K,V&gt;</span><br><span class="line">java.lang.Object</span><br><span class="line">    org.springframework.data.redis.core.RedisAccessor</span><br><span class="line">        org.springframework.data.redis.core.RedisTemplate&lt;K,V&gt;</span><br></pre></td></tr></table></figure>
