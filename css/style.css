@@ -2134,97 +2134,59 @@ ol.toc {
   height: 1.6em;
 }
 .highlight {
-  color: background;
+  color: #fff;
+  background: #f7f7f8;
 }
-.highlight : #f7f7f8 .tag,
 .highlight .code .tag,
-.highlight : #f7f7f8 .keyword,
 .highlight .code .keyword,
-.highlight : #f7f7f8 .selector-tag,
 .highlight .code .selector-tag,
-.highlight : #f7f7f8 .literal,
 .highlight .code .literal,
-.highlight : #f7f7f8 .strong,
 .highlight .code .strong,
-.highlight : #f7f7f8 .name,
 .highlight .code .name {
   color: #f92672;
 }
-.highlight : #f7f7f8 .code,
 .highlight .code .code {
   color: #66d9ef;
 }
-.highlight : #f7f7f8 .class .title,
 .highlight .code .class .title {
   color: #fff;
 }
-.highlight : #f7f7f8 .attribute,
 .highlight .code .attribute,
-.highlight : #f7f7f8 .symbol,
 .highlight .code .symbol,
-.highlight : #f7f7f8 .regexp,
 .highlight .code .regexp,
-.highlight : #f7f7f8 .link,
 .highlight .code .link {
   color: #bf79db;
 }
-.highlight : #f7f7f8 .string,
 .highlight .code .string,
-.highlight : #f7f7f8 .bullet,
 .highlight .code .bullet,
-.highlight : #f7f7f8 .subst,
 .highlight .code .subst,
-.highlight : #f7f7f8 .title,
 .highlight .code .title,
-.highlight : #f7f7f8 .section,
 .highlight .code .section,
-.highlight : #f7f7f8 .emphasis,
 .highlight .code .emphasis,
-.highlight : #f7f7f8 .type,
 .highlight .code .type,
-.highlight : #f7f7f8 .built_in,
 .highlight .code .built_in,
-.highlight : #f7f7f8 .builtin-name,
 .highlight .code .builtin-name,
-.highlight : #f7f7f8 .selector-attr,
 .highlight .code .selector-attr,
-.highlight : #f7f7f8 .selector-pseudo,
 .highlight .code .selector-pseudo,
-.highlight : #f7f7f8 .addition,
 .highlight .code .addition,
-.highlight : #f7f7f8 .variable,
 .highlight .code .variable,
-.highlight : #f7f7f8 .template-tag,
 .highlight .code .template-tag,
-.highlight : #f7f7f8 .template-variable,
 .highlight .code .template-variable {
   color: #a6e22e;
 }
-.highlight : #f7f7f8 .comment,
 .highlight .code .comment,
-.highlight : #f7f7f8 .quote,
 .highlight .code .quote,
-.highlight : #f7f7f8 .deletion,
 .highlight .code .deletion,
-.highlight : #f7f7f8 .meta,
 .highlight .code .meta {
   color: #75715e;
 }
-.highlight : #f7f7f8 .keyword,
 .highlight .code .keyword,
-.highlight : #f7f7f8 .selector-tag,
 .highlight .code .selector-tag,
-.highlight : #f7f7f8 .literal,
 .highlight .code .literal,
-.highlight : #f7f7f8 .doctag,
 .highlight .code .doctag,
-.highlight : #f7f7f8 .title,
 .highlight .code .title,
-.highlight : #f7f7f8 .section,
 .highlight .code .section,
-.highlight : #f7f7f8 .type,
 .highlight .code .type,
-.highlight : #f7f7f8 .selector-id,
 .highlight .code .selector-id {
   font-weight: bold;
 }
