@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://litxiaosa.me/2018/01/09/学习Elasticsearch/8.png">
 <meta property="og:image" content="http://litxiaosa.me/2018/01/09/学习Elasticsearch/9.png">
 <meta property="og:image" content="http://litxiaosa.me/2018/01/09/学习Elasticsearch/10.png">
-<meta property="og:updated_time" content="2018-01-09T13:01:09.495Z">
+<meta property="og:updated_time" content="2018-01-09T13:05:14.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习Elasticsearch（一） 之 配置">
 <meta name="twitter:description" content="1. 本文基于Mac 2. 本文的日期应为date, 在插入的时候拼错了，写完了才发现拼错了，写成dat了，本文已经改正，截图没改，注意一下 认识 Elasticsearch 搜索引擎ElasticSearch是一个基于Lucene的搜索服务器。是一个高度可扩展的开源全文搜索和分析引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放">
@@ -403,19 +403,18 @@ var _hmt = _hmt || [];
 <p>number_of_replicas 备份数</p>
 <p>多种格式请用 ||</p>
 </blockquote>
-  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">true<span class="attr">"settings"</span>: &#123;</span><br><span class="line">truetrue<span class="attr">"number_of_shards"</span>: <span class="number">3</span>, </span><br><span class="line">truetrue<span class="attr">"number_of_replicas"</span>: <span class="number">1</span> </span><br><span class="line">true&#125;,</span><br><span class="line">true<span class="attr">"mappings"</span>: &#123;</span><br><span class="line">truetrue<span class="attr">"man"</span>: &#123; </span><br><span class="line">truetruetrue<span class="attr">"properties"</span>: &#123;</span><br><span class="line">truetruetruetrue<span class="attr">"name"</span>: &#123; </span><br><span class="line">truetruetruetruetrue<span class="attr">"type"</span>: <span class="string">"text"</span></span><br><span class="line">truetruetruetrue&#125;,</span><br><span class="line">truetruetruetrue<span class="attr">"country"</span>:&#123;</span><br><span class="line">truetruetruetruetrue<span class="attr">"type"</span>: <span class="string">"keyword"</span></span><br><span class="line">truetruetruetrue&#125;,</span><br><span class="line">truetruetruetrue<span class="attr">"age"</span>:&#123;</span><br><span class="line">truetruetruetruetrue<span class="attr">"type"</span>: <span class="string">"date"</span>,</span><br><span class="line">truetruetruetruetrue<span class="attr">"format"</span>: <span class="string">"yyy-MM-dd HH:mm:ss || yyyy-MM-dd || epoch_millis"</span></span><br><span class="line">truetruetruetrue&#125;</span><br><span class="line">truetruetrue&#125;	</span><br><span class="line">truetrue&#125;</span><br><span class="line">true&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"settings"</span>: &#123;</span><br><span class="line">  		<span class="attr">"number_of_shards"</span>: <span class="number">3</span>, </span><br><span class="line">  		 <span class="attr">"number_of_replicas"</span>: <span class="number">1</span> </span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="attr">"mappings"</span>: &#123;</span><br><span class="line">   		<span class="attr">"man"</span>: &#123; </span><br><span class="line">   			<span class="attr">"properties"</span>: &#123;</span><br><span class="line">   				<span class="attr">"name"</span>: &#123; </span><br><span class="line">   					<span class="attr">"type"</span>: <span class="string">"text"</span></span><br><span class="line">   				&#125;,</span><br><span class="line">   				<span class="attr">"country"</span>:&#123;</span><br><span class="line">   					<span class="attr">"type"</span>: <span class="string">"keyword"</span></span><br><span class="line">   				&#125;,</span><br><span class="line">   				<span class="attr">"age"</span>:&#123;</span><br><span class="line">   					<span class="attr">"type"</span>: <span class="string">"date"</span>,</span><br><span class="line">   					<span class="attr">"format"</span>: <span class="string">"yyy-MM-dd HH:mm:ss || yyyy-MM-dd || epoch_millis"</span></span><br><span class="line">   				&#125;</span><br><span class="line">   			&#125;	</span><br><span class="line">   		&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
-<li><p>点击发送之后，下边会出来，表明创建成功。我们可以刷新一下head插件查看</p>
+<li>点击发送之后，下边会出来，表明创建成功。我们可以刷新一下head插件查看</li>
+</ul>
 <pre><code>{
   &quot;acknowledged&quot;: true,
   &quot;shards_acknowledged&quot;: true,
   &quot;index&quot;: &quot;people&quot;
-}
-</code></pre></li>
-</ul>
-<p>入门就先说到这里，下一节我们说简单的增删改查操作。</p>
+ }
+</code></pre><p>入门就先说到这里，下一节我们说简单的增删改查操作。</p>
 
         
         </div>
