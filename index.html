@@ -253,73 +253,68 @@ var _hmt = _hmt || [];
 <h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>我们同样使用postman 工具，以下操作都是postman </p>
 <ul>
 <li><p>地址栏：localhost:9200/people/man/1 用post方法 这里的1是索引，我们可以自定义，这是唯一的。</p>
- <figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">	</span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">		"name": "潇洒",</span></span><br><span class="line"><span class="template-variable">		"country": "中国",</span></span><br><span class="line"><span class="template-variable">		"age": 18,</span></span><br><span class="line"><span class="template-variable">		"date": "2018-01-01" </span></span><br><span class="line"><span class="template-variable">	&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">	```		</span></span><br><span class="line"><span class="xml">	</span></span><br><span class="line"><span class="xml">- 点击send 发送，会出现,表明插入成功</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"> <span class="comment">&lt;!--more--&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p> {</p>
-<pre><code>&quot;_index&quot;: &quot;people&quot;,
-&quot;_type&quot;: &quot;man&quot;,
-&quot;_id&quot;: &quot;1&quot;,
-&quot;_version&quot;: 1,
-&quot;result&quot;: &quot;created&quot;,
-&quot;_shards&quot;: {
-    &quot;total&quot;: 2,
-    &quot;successful&quot;: 2,
-    &quot;failed&quot;: 0
-},
-&quot;_seq_no&quot;: 0,
-&quot;_primary_term&quot;: 1
-</code></pre><p> }</p>
- <figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">true</span><br><span class="line">- 刷新之前，我们看在people 下边有个 `docs: <span class="number">0</span> (<span class="number">0</span>)`, 刷新以后就变成了 `docs: <span class="number">1</span> (<span class="number">2</span>)`</span><br><span class="line">我们点数据浏览，刚刚插入的数据就出现在里面了。 **注意：这里data拼错了，拼成了dat了。**</span><br><span class="line"></span><br><span class="line"> ![](学习Elasticsearch 之 增删改查/<span class="number">1.</span>jpg)</span><br><span class="line"></span><br><span class="line">- 我们也可以让ES自己生成ID, 地址栏把代表ID的数字去掉，该用POST提交，其他格式不变，就可以了。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 修改</span><br><span class="line"></span><br><span class="line">例如，我们修改ID为<span class="number">1</span>的数据</span><br><span class="line"></span><br><span class="line">- 地址栏输入：localhost:<span class="number">9200</span>/people/man/<span class="number">1</span>/_update 加上 _update 代表是更新操作。指定post方法</span><br></pre></td></tr></table></figure>
-<p>{<br> “doc”:{</p>
-<pre><code>&quot;name&quot;: &quot;隔岸&quot;
-}
-</code></pre><p>}</p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">-<span class="ruby"> 提交以后，刷新head插件就会看到ID为<span class="number">1</span>的数据，被修改了。</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby"><span class="comment">### 删除</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">例如，我们删除ID为<span class="number">1</span>的数据，**删除索引是非常危险的事情，建议不要轻易删除**</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">- 地址栏：<span class="symbol">localhost:</span><span class="number">9200</span>/people/man/<span class="number">1</span> 选择DELETE方法 发送以后，数据就删除了。</span></span><br><span class="line"><span class="ruby">- 我们也可以利用head 插件进行删除，比如我们删除之前创建的book, 点击book下面的动作，选择删除。确认一下即可删除。</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby"><span class="comment">### 条件查询</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">在查询操作之前，我事先插入了几条数据，大家也可以按上述插入方法插入数据。</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">- 根据ID查询。地址栏：localhost：<span class="number">9200</span>/people/man/你插入的id   用get方法，执行以后数据就被查出来了。</span></span><br><span class="line"><span class="ruby">-  我们还可以用 _search 关键字查询, 用post方法， 所有的条件查询都是用 query 关键字。</span></span><br><span class="line"><span class="ruby">	match_all：代表查询全部</span></span><br></pre></td></tr></table></figure>
-<p>  {<br> “query”:{</p>
-<pre><code> &quot;match_all&quot;:{    
-    }
-}
-</code></pre><p> }</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">- 我们也可以增加查询条件, <span class="keyword">from</span>:代表从哪里返回，<span class="keyword">size</span>：代表几条数据</span><br></pre></td></tr></table></figure>
-<p>{<br> “query”:{</p>
-<pre><code>&quot;match_all&quot;:{
-}
-</code></pre><p> },<br>   “from”: 1,<br>   “size”: 5<br> }</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">  </span></span><br><span class="line"><span class="bullet">- </span>关键词查询 ，查询国籍为中国的数据, 数据是根据 <span class="emphasis">_score 倒叙排列的</span></span><br></pre></td></tr></table></figure>
-<p>{<br> “query”:{</p>
-<pre><code> &quot;match&quot;:{
-     &quot;country&quot;: &quot;中国&quot; 
-    }
-}
-</code></pre><p> }</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">- 我们也可以自定义排序, 按出生日期进行降序排列，你会发现 _score 的值变成<span class="literal">null</span> 了，因为我们自定义了排序规则</span><br></pre></td></tr></table></figure>
-<p>{<br> “query”:{</p>
-<pre><code>&quot;match&quot;:{
-    &quot;country&quot;: &quot;中国&quot; 
-}
-</code></pre><p> },<br> “sort”: [</p>
-<pre><code>{&quot;date&quot;: {&quot;order&quot;: &quot;desc&quot;}}
-</code></pre><p> ]<br>}</p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">### 聚合查询</span><br><span class="line"></span><br><span class="line">-  地址栏：localhost:<span class="number">9200</span>/people/man/_search  依然用post请求， _search 是搜索关键字。</span><br><span class="line">   我们根据age 年龄进行聚合查询</span><br><span class="line">   - aggs: 聚合查询关键字</span><br></pre></td></tr></table></figure>
-<p>{<br> “aggs”:{</p>
-<pre><code>&quot;group_by_age&quot;:{
-    &quot;terms&quot;: {
-        &quot;field&quot;: &quot;age&quot;
-    }
-}
-</code></pre><p>   }<br>}</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">  </span></span><br><span class="line"><span class="bullet">- </span>同样的，我们可以多条件聚合查询</span><br></pre></td></tr></table></figure>
-<p>{<br> “aggs”:{</p>
-<pre><code>&quot;group_by_age&quot;:{
-    &quot;terms&quot;: {
-        &quot;field&quot;: &quot;age&quot;
-    }
-},
-&quot;group_by_country&quot;:{
-    &quot;terms&quot;:{
-        &quot;field&quot;:&quot;country&quot;
-    }
-}
-</code></pre><p>  }<br>}<br>```</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">true<span class="attr">"name"</span>: <span class="string">"潇洒"</span>,</span><br><span class="line">true<span class="attr">"country"</span>: <span class="string">"中国"</span>,</span><br><span class="line">true<span class="attr">"age"</span>: <span class="number">18</span>,</span><br><span class="line">true<span class="attr">"date"</span>: <span class="string">"2018-01-01"</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>点击send 发送，会出现,表明插入成功</p>
+  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"_index"</span>: <span class="string">"people"</span>,</span><br><span class="line">    <span class="attr">"_type"</span>: <span class="string">"man"</span>,</span><br><span class="line">    <span class="attr">"_id"</span>: <span class="string">"1"</span>,</span><br><span class="line">    <span class="attr">"_version"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"result"</span>: <span class="string">"created"</span>,</span><br><span class="line">    <span class="attr">"_shards"</span>: &#123;</span><br><span class="line">        <span class="attr">"total"</span>: <span class="number">2</span>,</span><br><span class="line">        <span class="attr">"successful"</span>: <span class="number">2</span>,</span><br><span class="line">        <span class="attr">"failed"</span>: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"_seq_no"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"_primary_term"</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>刷新之前，我们看在people 下边有个 <code>docs: 0 (0)</code>, 刷新以后就变成了 <code>docs: 1 (2)</code><br>我们点数据浏览，刚刚插入的数据就出现在里面了。 <strong>注意：这里data拼错了，拼成了dat了。</strong></p>
+<p><img src="/2018/01/09/学习Elasticsearch 之 增删改查/1.jpg" alt=""></p>
+</li>
+<li><p>我们也可以让ES自己生成ID, 地址栏把代表ID的数字去掉，该用POST提交，其他格式不变，就可以了。</p>
+</li>
+</ul>
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><p>例如，我们修改ID为1的数据</p>
+<ul>
+<li><p>地址栏输入：localhost:9200/people/man/1/_update 加上 _update 代表是更新操作。指定post方法</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line"><span class="attr">"doc"</span>:&#123;</span><br><span class="line">true <span class="attr">"name"</span>: <span class="string">"隔岸"</span></span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>提交以后，刷新head插件就会看到ID为1的数据，被修改了。</li>
+</ul>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>例如，我们删除ID为1的数据，<strong>删除索引是非常危险的事情，建议不要轻易删除</strong></p>
+<ul>
+<li>地址栏：localhost:9200/people/man/1 选择DELETE方法 发送以后，数据就删除了。</li>
+<li>我们也可以利用head 插件进行删除，比如我们删除之前创建的book, 点击book下面的动作，选择删除。确认一下即可删除。</li>
+</ul>
+<h3 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h3><p>在查询操作之前，我事先插入了几条数据，大家也可以按上述插入方法插入数据。</p>
+<ul>
+<li>根据ID查询。地址栏：localhost：9200/people/man/你插入的id   用get方法，执行以后数据就被查出来了。</li>
+<li><p>我们还可以用 _search 关键字查询, 用post方法， 所有的条件查询都是用 query 关键字。<br> match_all：代表查询全部</p>
+  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">true&#123;</span><br><span class="line"><span class="attr">"query"</span>:&#123;</span><br><span class="line">true<span class="attr">"match_all"</span>:&#123;	</span><br><span class="line">true   &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>我们也可以增加查询条件, from:代表从哪里返回，size：代表几条数据</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line"><span class="attr">"query"</span>:&#123;</span><br><span class="line">true<span class="attr">"match_all"</span>:&#123;</span><br><span class="line">true&#125;</span><br><span class="line">&#125;,</span><br><span class="line">  <span class="attr">"from"</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">"size"</span>: <span class="number">5</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>关键词查询 ，查询国籍为中国的数据, 数据是根据 _score 倒叙排列的</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line"><span class="attr">"query"</span>:&#123;</span><br><span class="line">true<span class="attr">"match"</span>:&#123;</span><br><span class="line">truetrue<span class="attr">"country"</span>: <span class="string">"中国"</span> </span><br><span class="line">true   &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>我们也可以自定义排序, 按出生日期进行降序排列，你会发现 _score 的值变成null 了，因为我们自定义了排序规则</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"query"</span>:&#123;</span><br><span class="line">true<span class="attr">"match"</span>:&#123;</span><br><span class="line">truetrue<span class="attr">"country"</span>: <span class="string">"中国"</span> </span><br><span class="line">true&#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">"sort"</span>: [</span><br><span class="line">true&#123;<span class="attr">"date"</span>: &#123;<span class="attr">"order"</span>: <span class="string">"desc"</span>&#125;&#125;</span><br><span class="line">]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="聚合查询"><a href="#聚合查询" class="headerlink" title="聚合查询"></a>聚合查询</h3><ul>
+<li><p>地址栏：localhost:9200/people/man/_search  依然用post请求， _search 是搜索关键字。<br>我们根据age 年龄进行聚合查询</p>
+<ul>
+<li>aggs: 聚合查询关键字</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line"><span class="attr">"aggs"</span>:&#123;</span><br><span class="line">true<span class="attr">"group_by_age"</span>:&#123;</span><br><span class="line">truetrue<span class="attr">"terms"</span>: &#123;</span><br><span class="line">truetruetrue<span class="attr">"field"</span>: <span class="string">"age"</span></span><br><span class="line">truetrue&#125;</span><br><span class="line">true&#125;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>同样的，我们可以多条件聚合查询</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line"><span class="attr">"aggs"</span>:&#123;</span><br><span class="line">true<span class="attr">"group_by_age"</span>:&#123;</span><br><span class="line">truetrue<span class="attr">"terms"</span>: &#123;</span><br><span class="line">truetruetrue<span class="attr">"field"</span>: <span class="string">"age"</span></span><br><span class="line">truetrue&#125;</span><br><span class="line">true&#125;,</span><br><span class="line">true<span class="attr">"group_by_country"</span>:&#123;</span><br><span class="line">truetrue<span class="attr">"terms"</span>:&#123;</span><br><span class="line">truetruetrue<span class="attr">"field"</span>:<span class="string">"country"</span></span><br><span class="line">truetrue&#125;</span><br><span class="line">true&#125;</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>ES简单的增删改查就介绍到这里，下一节我们说一说高级查询。</p>
