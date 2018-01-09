@@ -154,9 +154,9 @@
   &quot;shards_acknowledged&quot;: true,
   &quot;index&quot;: &quot;people&quot;
 }
-</code></pre></li>
+</code></pre><p>入门就先说到这里，下一节我们说简单的增删改查操作。</p>
+</li>
 </ul>
-<p>入门就先说到这里，下一节我们说简单的增删改查操作。</p>
 ]]></content>
       
         <categories>
