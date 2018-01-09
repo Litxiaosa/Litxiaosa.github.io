@@ -23,7 +23,7 @@
 &quot;_seq_no&quot;: 0,
 &quot;_primary_term&quot;: 1
 </code></pre><p> }</p>
- <figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">true</span><br><span class="line">- 刷新之前，我们看在people 下边有个 `docs: <span class="number">0</span> (<span class="number">0</span>)`, 刷新以后就变成了 `docs: <span class="number">1</span> (<span class="number">2</span>)`</span><br><span class="line">我们点数据浏览，刚刚插入的数据就出现在里面了。</span><br><span class="line"></span><br><span class="line"> ![](学习Elasticsearch 之 增删改查/<span class="number">1.</span>jpg)</span><br><span class="line"></span><br><span class="line">- 我们也可以让ES自己生成ID, 地址栏把代表ID的数字去掉，该用POST提交，其他格式不变，就可以了。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 修改</span><br><span class="line"></span><br><span class="line">例如，我们修改ID为<span class="number">1</span>的数据</span><br><span class="line"></span><br><span class="line">- 地址栏输入：localhost:<span class="number">9200</span>/people/man/<span class="number">1</span>/_update 加上 _update 代表是更新操作。指定post方法</span><br></pre></td></tr></table></figure>
+ <figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">true</span><br><span class="line">- 刷新之前，我们看在people 下边有个 `docs: <span class="number">0</span> (<span class="number">0</span>)`, 刷新以后就变成了 `docs: <span class="number">1</span> (<span class="number">2</span>)`</span><br><span class="line">我们点数据浏览，刚刚插入的数据就出现在里面了。 **注意：这里data拼错了，拼成了dat了。**</span><br><span class="line"></span><br><span class="line"> ![](学习Elasticsearch 之 增删改查/<span class="number">1.</span>jpg)</span><br><span class="line"></span><br><span class="line">- 我们也可以让ES自己生成ID, 地址栏把代表ID的数字去掉，该用POST提交，其他格式不变，就可以了。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 修改</span><br><span class="line"></span><br><span class="line">例如，我们修改ID为<span class="number">1</span>的数据</span><br><span class="line"></span><br><span class="line">- 地址栏输入：localhost:<span class="number">9200</span>/people/man/<span class="number">1</span>/_update 加上 _update 代表是更新操作。指定post方法</span><br></pre></td></tr></table></figure>
 <p>{<br> “doc”:{</p>
 <pre><code>&quot;name&quot;: &quot;隔岸&quot;
 }
@@ -53,10 +53,32 @@
 }
 </code></pre><p> },<br> “sort”: [</p>
 <pre><code>{&quot;date&quot;: {&quot;order&quot;: &quot;desc&quot;}}
-</code></pre><p> ]<br>}<br>```</p>
+</code></pre><p> ]<br>}</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">### 聚合查询</span><br><span class="line"></span><br><span class="line">-  地址栏：localhost:<span class="number">9200</span>/people/man/_search  依然用post请求， _search 是搜索关键字。</span><br><span class="line">   我们根据age 年龄进行聚合查询</span><br><span class="line">   - aggs: 聚合查询关键字</span><br></pre></td></tr></table></figure>
+<p>{<br> “aggs”:{</p>
+<pre><code>&quot;group_by_age&quot;:{
+    &quot;terms&quot;: {
+        &quot;field&quot;: &quot;age&quot;
+    }
+}
+</code></pre><p>   }<br>}</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">  </span></span><br><span class="line"><span class="bullet">- </span>同样的，我们可以多条件聚合查询</span><br></pre></td></tr></table></figure>
+<p>{<br> “aggs”:{</p>
+<pre><code>&quot;group_by_age&quot;:{
+    &quot;terms&quot;: {
+        &quot;field&quot;: &quot;age&quot;
+    }
+},
+&quot;group_by_country&quot;:{
+    &quot;terms&quot;:{
+        &quot;field&quot;:&quot;country&quot;
+    }
+}
+</code></pre><p>  }<br>}<br>```</p>
 </li>
 </ul>
-<h3 id="聚合查询"><a href="#聚合查询" class="headerlink" title="聚合查询"></a>聚合查询</h3>]]></content>
+<p>ES简单的增删改查就介绍到这里，下一节我们说一说高级查询。</p>
+]]></content>
       
         <categories>
             
