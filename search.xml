@@ -93,7 +93,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[学习Elasticsearch（一） 之 配置]]></title>
+      <title><![CDATA[学习Elasticsearch 之 配置]]></title>
       <url>/2018/01/09/%E5%AD%A6%E4%B9%A0Elasticsearch/</url>
       <content type="html"><![CDATA[<p><strong>本文基于Mac</strong></p>
 <h2 id="认识-Elasticsearch-搜索引擎"><a href="#认识-Elasticsearch-搜索引擎" class="headerlink" title="认识 Elasticsearch 搜索引擎"></a>认识 Elasticsearch 搜索引擎</h2><p>ElasticSearch是一个基于Lucene的搜索服务器。是一个高度可扩展的开源全文搜索和分析引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便，它使您能够快速，实时地存储，搜索和分析大量数据。</p>
