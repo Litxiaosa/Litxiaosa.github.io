@@ -3,15 +3,15 @@
 <head>
     <meta charset="utf-8">
     
-    <title>学习Elasticsearch 之 配置 | 潇洒的博客</title>
+    <title>学习ElasticSearch 之 配置 | 潇洒的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="本文基于Mac 认识 Elasticsearch 搜索引擎ElasticSearch是一个基于Lucene的搜索服务器。是一个高度可扩展的开源全文搜索和分析引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于">
-<meta name="keywords" content="Elasticsearch">
+    <meta name="description" content="本文基于Mac 认识 ElasticSearch 搜索引擎ElasticSearch是一个基于Lucene的搜索服务器。是一个高度可扩展的开源全文搜索和分析引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于">
+<meta name="keywords" content="ElasticSearch">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习Elasticsearch 之 配置">
+<meta property="og:title" content="学习ElasticSearch 之 配置">
 <meta property="og:url" content="http://litxiaosa.me/2018/01/09/学习Elasticsearch/index.html">
 <meta property="og:site_name" content="潇洒的博客">
-<meta property="og:description" content="本文基于Mac 认识 Elasticsearch 搜索引擎ElasticSearch是一个基于Lucene的搜索服务器。是一个高度可扩展的开源全文搜索和分析引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便，它使您能够快速，实时">
+<meta property="og:description" content="本文基于Mac 认识 ElasticSearch 搜索引擎ElasticSearch是一个基于Lucene的搜索服务器。是一个高度可扩展的开源全文搜索和分析引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便，它使您能够快速，实时">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://litxiaosa.me/2018/01/09/学习Elasticsearch/1.jpg">
 <meta property="og:image" content="http://litxiaosa.me/2018/01/09/学习Elasticsearch/2.jpg">
@@ -23,10 +23,10 @@
 <meta property="og:image" content="http://litxiaosa.me/2018/01/09/学习Elasticsearch/8.png">
 <meta property="og:image" content="http://litxiaosa.me/2018/01/09/学习Elasticsearch/9.png">
 <meta property="og:image" content="http://litxiaosa.me/2018/01/09/学习Elasticsearch/10.png">
-<meta property="og:updated_time" content="2018-01-09T13:45:06.964Z">
+<meta property="og:updated_time" content="2018-01-10T02:13:24.927Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="学习Elasticsearch 之 配置">
-<meta name="twitter:description" content="本文基于Mac 认识 Elasticsearch 搜索引擎ElasticSearch是一个基于Lucene的搜索服务器。是一个高度可扩展的开源全文搜索和分析引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便，它使您能够快速，实时">
+<meta name="twitter:title" content="学习ElasticSearch 之 配置">
+<meta name="twitter:description" content="本文基于Mac 认识 ElasticSearch 搜索引擎ElasticSearch是一个基于Lucene的搜索服务器。是一个高度可扩展的开源全文搜索和分析引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便，它使您能够快速，实时">
 <meta name="twitter:image" content="http://litxiaosa.me/2018/01/09/学习Elasticsearch/1.jpg">
     
 
@@ -175,11 +175,11 @@ var _hmt = _hmt || [];
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                28
+                29
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                11
+                12
                 <span>标签</span>
             </div>
         </div>
@@ -229,7 +229,7 @@ var _hmt = _hmt || [];
                 
     
         <h1 class="article-title" itemprop="name">
-            学习Elasticsearch 之 配置
+            学习ElasticSearch 之 配置
         </h1>
     
 
@@ -253,7 +253,7 @@ var _hmt = _hmt || [];
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Elasticsearch/">Elasticsearch</a>
+        <a class="tag-link" href="/tags/ElasticSearch/">ElasticSearch</a>
     </div>
 
                     </div>
@@ -265,7 +265,7 @@ var _hmt = _hmt || [];
         
             
             <p><strong>本文基于Mac</strong></p>
-<h2 id="认识-Elasticsearch-搜索引擎"><a href="#认识-Elasticsearch-搜索引擎" class="headerlink" title="认识 Elasticsearch 搜索引擎"></a>认识 Elasticsearch 搜索引擎</h2><p>ElasticSearch是一个基于Lucene的搜索服务器。是一个高度可扩展的开源全文搜索和分析引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便，它使您能够快速，实时地存储，搜索和分析大量数据。</p>
+<h2 id="认识-ElasticSearch-搜索引擎"><a href="#认识-ElasticSearch-搜索引擎" class="headerlink" title="认识 ElasticSearch 搜索引擎"></a>认识 ElasticSearch 搜索引擎</h2><p>ElasticSearch是一个基于Lucene的搜索服务器。是一个高度可扩展的开源全文搜索和分析引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便，它使您能够快速，实时地存储，搜索和分析大量数据。</p>
 <a id="more"></a>
 <h2 id="相比于solr"><a href="#相比于solr" class="headerlink" title="相比于solr"></a>相比于solr</h2><ul>
 <li>Solr 利用 Zookeeper 进行分布式管理，而 Elasticsearch 自身带有分布式协调管理功能;</li>
@@ -274,7 +274,7 @@ var _hmt = _hmt || [];
 <li>Solr 在传统的搜索应用中表现好于 Elasticsearch，但在处理实时搜索应用时效率明显低于 Elasticsearch。</li>
 <li>Solr 是传统搜索应用的有力解决方案，但 Elasticsearch 更适用于新兴的实时搜索应用</li>
 </ul>
-<h2 id="Elasticsearch的基本概念"><a href="#Elasticsearch的基本概念" class="headerlink" title="Elasticsearch的基本概念"></a>Elasticsearch的基本概念</h2><ul>
+<h2 id="ElasticSearch的基本概念"><a href="#ElasticSearch的基本概念" class="headerlink" title="ElasticSearch的基本概念"></a>ElasticSearch的基本概念</h2><ul>
 <li><strong>Cluster和Node：</strong> ES可以以单点或者集群方式运行，以一个整体对外提供search服务的所有节点 组成cluster，组成这个cluster的各个节点叫做node。</li>
 <li><strong>shard：</strong> 通常叫分片，这是ES提供分布式搜索的基础，其含义为将一个完整的index分成若干部分存储在相同或不同的节点上，这些组成index的部分就叫做shard。</li>
 <li><strong>Index：</strong> 这是ES存储数据的地方，类似于关系数据库的database。</li>
@@ -284,7 +284,7 @@ var _hmt = _hmt || [];
 <li><strong>Replica：</strong> 和replication通常指的都是一回事，即index的冗余备份，可以用于防止数据丢失，或者用来做负载分担。</li>
 </ul>
 <h2 id="下载和安装"><a href="#下载和安装" class="headerlink" title="下载和安装"></a>下载和安装</h2><p>去<a href="https://www.elastic.co/downloads/elasticsearch" target="_blank" rel="noopener">官网下载</a>，这里我选择的是ZIP,然后解压即可。</p>
-<h3 id="启动Elasticsearch"><a href="#启动Elasticsearch" class="headerlink" title="启动Elasticsearch"></a>启动Elasticsearch</h3><ul>
+<h3 id="启动ElasticSearch"><a href="#启动ElasticSearch" class="headerlink" title="启动ElasticSearch"></a>启动ElasticSearch</h3><ul>
 <li><p>进入到你下载的Elasticsearch文件夹</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh .<span class="regexp">/bin/</span>elasticsearch</span><br></pre></td></tr></table></figure>
 </li>
@@ -477,7 +477,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
             <strong class="article-nav-caption">上一篇</strong>
             <div class="article-nav-title">
                 
-                    学习Elasticsearch 之 简单的增删改查
+                    学习ElasticSearch 之 简单的增删改查
                 
             </div>
         </a>
@@ -518,7 +518,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap">
         <h3 class="widget-title">文章分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot系列/">SpringBoot系列</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/不知所云/">不知所云</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习Git/">学习Git</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/搜索引擎/">搜索引擎</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境变量/">环境变量</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编码规范插件/">编码规范插件</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot系列/">SpringBoot系列</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/不知所云/">不知所云</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习Git/">学习Git</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/搜索引擎/">搜索引擎</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境变量/">环境变量</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编码规范插件/">编码规范插件</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -527,7 +527,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -536,7 +536,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Elasticsearch/" style="font-size: 12.5px;">Elasticsearch</a> <a href="/tags/Git/" style="font-size: 17.5px;">Git</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SpringBoot/" style="font-size: 20px;">SpringBoot</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/不知所云/" style="font-size: 10px;">不知所云</a> <a href="/tags/不知所云，摘抄/" style="font-size: 12.5px;">不知所云，摘抄</a> <a href="/tags/环境变量/" style="font-size: 10px;">环境变量</a> <a href="/tags/编码规范插件/" style="font-size: 10px;">编码规范插件</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+            <a href="/tags/ElasticSearch/" style="font-size: 12.5px;">ElasticSearch</a> <a href="/tags/ElasticsSearch/" style="font-size: 10px;">ElasticsSearch</a> <a href="/tags/Git/" style="font-size: 17.5px;">Git</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SpringBoot/" style="font-size: 20px;">SpringBoot</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/不知所云/" style="font-size: 10px;">不知所云</a> <a href="/tags/不知所云，摘抄/" style="font-size: 12.5px;">不知所云，摘抄</a> <a href="/tags/环境变量/" style="font-size: 10px;">环境变量</a> <a href="/tags/编码规范插件/" style="font-size: 10px;">编码规范插件</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
         </div>
     </div>
 

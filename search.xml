@@ -3,7 +3,92 @@
   
     
     <entry>
-      <title><![CDATA[学习Elasticsearch 之 简单的增删改查]]></title>
+      <title><![CDATA[ElasticsSearch 之 高级查询]]></title>
+      <url>/2018/01/10/ElasticsSearch-%E4%B9%8B-%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2/</url>
+      <content type="html"><![CDATA[<p><strong>工具用的PostMan</strong></p>
+<p>本文我们来介绍ElasticsSearch的高级查询。 在ES中查询分为子条件查询和复合条件查询</p>
+<ul>
+<li><p>子条件查询：特定字段查询所指特定值</p>
+<ul>
+<li>Query context: 在查询过程中，除了判断文档是否满足查询条件外，ES还会计算一个 _score来标示匹配的程度，旨在判断目标文档和查询条件的匹配度。他常用的查询有<pre><code>- 全文本查询：针对文本类型数据
+- 字段级别查询： 针对结构化数据， 如：数字、日期等
+</code></pre></li>
+<li>Filter context: 在查询过程中，只判断该文档是否满足条件，只有Yes 或者 No，没有匹配度。</li>
+</ul>
+</li>
+<li><p>复合条件查询：一一定的逻辑组合子条件查询</p>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="全文本查询"><a href="#全文本查询" class="headerlink" title="全文本查询"></a>全文本查询</h3><p>  它包括：模糊匹配、习语匹配、多个字段的匹配查询、语法的查询。</p>
+<ul>
+<li><p><strong>模糊匹配</strong></p>
+<p>  地址栏：localhost:9200/people/man/_search 用post方法，搜索以后你会看到，美国队长也出现在搜索结果里。他是匹配了美国和大兵，所有name有美国的就会搜索出来。 </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"match"</span>: &#123;</span><br><span class="line">   <span class="attr">"name"</span>: <span class="string">"美国大兵"</span></span><br><span class="line">       &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p><strong>习语匹配</strong></p>
+<p>如果我们想匹配美国大兵整个词语呢？ 用match_phrase即可。这样就只会搜索出来 美国大兵的信息。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> <span class="attr">"query"</span>: &#123;</span><br><span class="line">       <span class="attr">"match_phrase"</span>: &#123;</span><br><span class="line">          <span class="attr">"name"</span>: <span class="string">"美国大兵"</span></span><br><span class="line">        &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>多个字段的匹配查询</strong></p>
+<p>你会看到，name 和 country只要包含美国的都会搜索出来。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"query"</span>: &#123;</span><br><span class="line">      <span class="attr">"multi_match"</span>: &#123;</span><br><span class="line">          <span class="attr">"query"</span>: <span class="string">"美国"</span>,</span><br><span class="line">          <span class="attr">"fields"</span>: [<span class="string">"name"</span>, <span class="string">"country"</span>]</span><br><span class="line">       &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p><strong>语法查询</strong> </p>
+<p>我们查询包含中国和美国的数据， OR：关键词 </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"query"</span>: &#123;</span><br><span class="line">       <span class="attr">"query_string"</span>: &#123;</span><br><span class="line">        <span class="attr">"query"</span>: <span class="string">"美国 OR 中国"</span></span><br><span class="line">       &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>  还可以添加更多条件：查询name 和 country包含美国或者中国的数据</p>
+  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"query"</span>: &#123;</span><br><span class="line">       <span class="attr">"query_string"</span>: &#123;</span><br><span class="line">             <span class="attr">"query"</span>: <span class="string">"美国 OR 中国"</span>,</span><br><span class="line">             <span class="attr">"fields"</span>: [<span class="string">"name"</span>, <span class="string">"country"</span>]</span><br><span class="line">         &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="字段级别查询"><a href="#字段级别查询" class="headerlink" title="字段级别查询"></a>字段级别查询</h3><ul>
+<li><p>查询出生日期在某个范围内的数据。</p>
+<p>gte 和 lte 的意思是包含的意思，如果去掉e 大家可以试一下。我们也可以用 “now” 关键词表示当前时间 </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"query"</span>: &#123;</span><br><span class="line">       <span class="attr">"range"</span>: &#123;</span><br><span class="line">       <span class="attr">"date"</span>: &#123;</span><br><span class="line">           <span class="attr">"gte"</span>: <span class="string">"1487-01-01"</span>,</span><br><span class="line">           <span class="attr">"lte"</span>: <span class="string">"1998-01-01"</span></span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Filter查询"><a href="#Filter查询" class="headerlink" title="Filter查询"></a>Filter查询</h3><p> 我们查询国家为英国的数据，主要作用是条件过滤。</p>
+ <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"query"</span>: &#123;</span><br><span class="line">       <span class="attr">"bool"</span>: &#123;</span><br><span class="line">          <span class="attr">"filter"</span>: &#123;</span><br><span class="line">              <span class="attr">"term"</span>: &#123;</span><br><span class="line">                  <span class="attr">"country"</span>: <span class="string">"英国"</span></span><br><span class="line">               &#125;</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="复合条件查询"><a href="#复合条件查询" class="headerlink" title="复合条件查询"></a>复合条件查询</h2><ul>
+<li><p>固定分数查询</p>
+<p>我们平常的查询，ES都会给我们一个匹配度 _score字段， 并且基本每个都不一样。我们可以看到_score变成了1</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"query"</span>: &#123;</span><br><span class="line">       <span class="attr">"constant_score"</span>: &#123;</span><br><span class="line">            <span class="attr">"filter"</span>: &#123;</span><br><span class="line">                <span class="attr">"match"</span>: &#123;</span><br><span class="line">                   <span class="attr">"name"</span>: <span class="string">"潇洒"</span></span><br><span class="line">                &#125;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>  我们也可以自定义_score ,这里就全部变成2了。</p>
+  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"query"</span>: &#123;</span><br><span class="line">       <span class="attr">"constant_score"</span>: &#123;</span><br><span class="line">            <span class="attr">"filter"</span>: &#123;</span><br><span class="line">                 <span class="attr">"match"</span>: &#123;</span><br><span class="line">                    <span class="attr">"name"</span>: <span class="string">"潇洒"</span></span><br><span class="line">                 &#125;</span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="attr">"boost"</span>: <span class="number">2</span></span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Booble查询</p>
+<p> 满足这两个条件其中一个的都会查询出来。关键词：should, 是OR的逻辑。如果把should换成must 再搜一下看看，must是必须满足的意思，AND的逻辑。</p>
+ <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span>: &#123;</span><br><span class="line">        <span class="attr">"bool"</span>: &#123;</span><br><span class="line">            <span class="attr">"should"</span>: [&#123;</span><br><span class="line">                 <span class="attr">"match"</span>: &#123;</span><br><span class="line">                     <span class="attr">"name"</span>: <span class="string">"潇洒"</span></span><br><span class="line">                   &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                <span class="attr">"match"</span>: &#123;</span><br><span class="line">                   <span class="attr">"country"</span>: <span class="string">"英国"</span></span><br><span class="line">                      &#125;</span><br><span class="line">                 &#125;        </span><br><span class="line">            ]</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>  还有一个关键词：must_not 意思我搜谁都可以，就是不能搜你！哼</p>
+  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">     <span class="attr">"query"</span>: &#123;</span><br><span class="line">         <span class="attr">"bool"</span>: &#123;</span><br><span class="line">             <span class="attr">"must_not"</span>: &#123;</span><br><span class="line">                   <span class="attr">"term"</span>: &#123;</span><br><span class="line">                       <span class="attr">"name"</span>: <span class="string">"袋鼠"</span></span><br><span class="line">                    &#125;</span><br><span class="line">             &#125;</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到ES的查询非常灵活，下一节我们介绍与SpringBoot项目的结合。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 搜索引擎 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ElasticsSearch </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[学习ElasticSearch 之 简单的增删改查]]></title>
       <url>/2018/01/09/%E5%AD%A6%E4%B9%A0Elasticsearch%20%E4%B9%8B%20%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/</url>
       <content type="html"><![CDATA[<p>本文我们介绍ES的简单的增删改查操作。</p>
 <h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>我们同样使用postman 工具，以下操作都是postman </p>
@@ -86,17 +171,17 @@
         
         <tags>
             
-            <tag> Elasticsearch </tag>
+            <tag> ElasticSearch </tag>
             
         </tags>
         
     </entry>
     
     <entry>
-      <title><![CDATA[学习Elasticsearch 之 配置]]></title>
+      <title><![CDATA[学习ElasticSearch 之 配置]]></title>
       <url>/2018/01/09/%E5%AD%A6%E4%B9%A0Elasticsearch/</url>
       <content type="html"><![CDATA[<p><strong>本文基于Mac</strong></p>
-<h2 id="认识-Elasticsearch-搜索引擎"><a href="#认识-Elasticsearch-搜索引擎" class="headerlink" title="认识 Elasticsearch 搜索引擎"></a>认识 Elasticsearch 搜索引擎</h2><p>ElasticSearch是一个基于Lucene的搜索服务器。是一个高度可扩展的开源全文搜索和分析引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便，它使您能够快速，实时地存储，搜索和分析大量数据。</p>
+<h2 id="认识-ElasticSearch-搜索引擎"><a href="#认识-ElasticSearch-搜索引擎" class="headerlink" title="认识 ElasticSearch 搜索引擎"></a>认识 ElasticSearch 搜索引擎</h2><p>ElasticSearch是一个基于Lucene的搜索服务器。是一个高度可扩展的开源全文搜索和分析引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便，它使您能够快速，实时地存储，搜索和分析大量数据。</p>
 <a id="more"></a>
 <h2 id="相比于solr"><a href="#相比于solr" class="headerlink" title="相比于solr"></a>相比于solr</h2><ul>
 <li>Solr 利用 Zookeeper 进行分布式管理，而 Elasticsearch 自身带有分布式协调管理功能;</li>
@@ -105,7 +190,7 @@
 <li>Solr 在传统的搜索应用中表现好于 Elasticsearch，但在处理实时搜索应用时效率明显低于 Elasticsearch。</li>
 <li>Solr 是传统搜索应用的有力解决方案，但 Elasticsearch 更适用于新兴的实时搜索应用</li>
 </ul>
-<h2 id="Elasticsearch的基本概念"><a href="#Elasticsearch的基本概念" class="headerlink" title="Elasticsearch的基本概念"></a>Elasticsearch的基本概念</h2><ul>
+<h2 id="ElasticSearch的基本概念"><a href="#ElasticSearch的基本概念" class="headerlink" title="ElasticSearch的基本概念"></a>ElasticSearch的基本概念</h2><ul>
 <li><strong>Cluster和Node：</strong> ES可以以单点或者集群方式运行，以一个整体对外提供search服务的所有节点 组成cluster，组成这个cluster的各个节点叫做node。</li>
 <li><strong>shard：</strong> 通常叫分片，这是ES提供分布式搜索的基础，其含义为将一个完整的index分成若干部分存储在相同或不同的节点上，这些组成index的部分就叫做shard。</li>
 <li><strong>Index：</strong> 这是ES存储数据的地方，类似于关系数据库的database。</li>
@@ -115,7 +200,7 @@
 <li><strong>Replica：</strong> 和replication通常指的都是一回事，即index的冗余备份，可以用于防止数据丢失，或者用来做负载分担。</li>
 </ul>
 <h2 id="下载和安装"><a href="#下载和安装" class="headerlink" title="下载和安装"></a>下载和安装</h2><p>去<a href="https://www.elastic.co/downloads/elasticsearch" target="_blank" rel="noopener">官网下载</a>，这里我选择的是ZIP,然后解压即可。</p>
-<h3 id="启动Elasticsearch"><a href="#启动Elasticsearch" class="headerlink" title="启动Elasticsearch"></a>启动Elasticsearch</h3><ul>
+<h3 id="启动ElasticSearch"><a href="#启动ElasticSearch" class="headerlink" title="启动ElasticSearch"></a>启动ElasticSearch</h3><ul>
 <li><p>进入到你下载的Elasticsearch文件夹</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh .<span class="regexp">/bin/</span>elasticsearch</span><br></pre></td></tr></table></figure>
 </li>
@@ -260,7 +345,7 @@
         
         <tags>
             
-            <tag> Elasticsearch </tag>
+            <tag> ElasticSearch </tag>
             
         </tags>
         

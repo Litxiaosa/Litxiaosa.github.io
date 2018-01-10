@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>ElasticsSearch 之 高级查询 | 潇洒的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="工具用的PostMan 本文我们来介绍ElasticsSearch的高级查询。 在ES中查询分为子条件查询和复合条件查询  子条件查询：特定字段查询所指特定值  Query context: 在查询过程中，除了判断文档是否满足查询条件外，ES还会计算一个 _score来标示匹配的程度，旨在判断目标文档和查询条件的匹配度">
+<meta name="keywords" content="ElasticsSearch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ElasticsSearch 之 高级查询">
+<meta property="og:url" content="http://litxiaosa.me/2018/01/10/ElasticsSearch-之-高级查询/index.html">
+<meta property="og:site_name" content="潇洒的博客">
+<meta property="og:description" content="工具用的PostMan 本文我们来介绍ElasticsSearch的高级查询。 在ES中查询分为子条件查询和复合条件查询  子条件查询：特定字段查询所指特定值  Query context: 在查询过程中，除了判断文档是否满足查询条件外，ES还会计算一个 _score来标示匹配的程度，旨在判断目标文档和查询条件的匹配度。他常用的查询有- 全文本查询：针对文本类型数据 - 字段级别查询： 针对结构化">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-10T04:53:37.230Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ElasticsSearch 之 高级查询">
+<meta name="twitter:description" content="工具用的PostMan 本文我们来介绍ElasticsSearch的高级查询。 在ES中查询分为子条件查询和复合条件查询  子条件查询：特定字段查询所指特定值  Query context: 在查询过程中，除了判断文档是否满足查询条件外，ES还会计算一个 _score来标示匹配的程度，旨在判断目标文档和查询条件的匹配度。他常用的查询有- 全文本查询：针对文本类型数据 - 字段级别查询： 针对结构化">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="潇洒的博客" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?c519edc830f3af02ec9cc3d4c51a6583";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">潇洒的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives/">归档</a>
+                
+                    <a class="main-nav-link" href="/tags/">标签</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives/">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags/">标签</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">潇洒</h2>
+            <h3 id="title">Java码农，喜欢看书，对吉他有点小兴趣。</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>杭州, 浙江</span>
+            <a id="follow" target="_blank" href="https://github.com/Litxiaosa">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                29
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                12
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/Litxiaosa" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="mailto:416082509@qq.com" target="_blank" title="envelope" class=tooltip>
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://weibo.com/2517382891/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-ElasticsSearch-之-高级查询" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            ElasticsSearch 之 高级查询
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/01/10/ElasticsSearch-之-高级查询/">
+            <time datetime="2018-01-10T02:10:14.000Z" itemprop="datePublished">2018-01-10</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/搜索引擎/">搜索引擎</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/ElasticsSearch/">ElasticsSearch</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><strong>工具用的PostMan</strong></p>
+<p>本文我们来介绍ElasticsSearch的高级查询。 在ES中查询分为子条件查询和复合条件查询</p>
+<ul>
+<li><p>子条件查询：特定字段查询所指特定值</p>
+<ul>
+<li>Query context: 在查询过程中，除了判断文档是否满足查询条件外，ES还会计算一个 _score来标示匹配的程度，旨在判断目标文档和查询条件的匹配度。他常用的查询有<pre><code>- 全文本查询：针对文本类型数据
+- 字段级别查询： 针对结构化数据， 如：数字、日期等
+</code></pre></li>
+<li>Filter context: 在查询过程中，只判断该文档是否满足条件，只有Yes 或者 No，没有匹配度。</li>
+</ul>
+</li>
+<li><p>复合条件查询：一一定的逻辑组合子条件查询</p>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="全文本查询"><a href="#全文本查询" class="headerlink" title="全文本查询"></a>全文本查询</h3><p>  它包括：模糊匹配、习语匹配、多个字段的匹配查询、语法的查询。</p>
+<ul>
+<li><p><strong>模糊匹配</strong></p>
+<p>  地址栏：localhost:9200/people/man/_search 用post方法，搜索以后你会看到，美国队长也出现在搜索结果里。他是匹配了美国和大兵，所有name有美国的就会搜索出来。 </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> <span class="attr">"query"</span>: &#123;</span><br><span class="line">    <span class="attr">"match"</span>: &#123;</span><br><span class="line">   <span class="attr">"name"</span>: <span class="string">"美国大兵"</span></span><br><span class="line">       &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p><strong>习语匹配</strong></p>
+<p>如果我们想匹配美国大兵整个词语呢？ 用match_phrase即可。这样就只会搜索出来 美国大兵的信息。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> <span class="attr">"query"</span>: &#123;</span><br><span class="line">       <span class="attr">"match_phrase"</span>: &#123;</span><br><span class="line">          <span class="attr">"name"</span>: <span class="string">"美国大兵"</span></span><br><span class="line">        &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>多个字段的匹配查询</strong></p>
+<p>你会看到，name 和 country只要包含美国的都会搜索出来。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"query"</span>: &#123;</span><br><span class="line">      <span class="attr">"multi_match"</span>: &#123;</span><br><span class="line">          <span class="attr">"query"</span>: <span class="string">"美国"</span>,</span><br><span class="line">          <span class="attr">"fields"</span>: [<span class="string">"name"</span>, <span class="string">"country"</span>]</span><br><span class="line">       &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p><strong>语法查询</strong> </p>
+<p>我们查询包含中国和美国的数据， OR：关键词 </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"query"</span>: &#123;</span><br><span class="line">       <span class="attr">"query_string"</span>: &#123;</span><br><span class="line">        <span class="attr">"query"</span>: <span class="string">"美国 OR 中国"</span></span><br><span class="line">       &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>  还可以添加更多条件：查询name 和 country包含美国或者中国的数据</p>
+  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"query"</span>: &#123;</span><br><span class="line">       <span class="attr">"query_string"</span>: &#123;</span><br><span class="line">             <span class="attr">"query"</span>: <span class="string">"美国 OR 中国"</span>,</span><br><span class="line">             <span class="attr">"fields"</span>: [<span class="string">"name"</span>, <span class="string">"country"</span>]</span><br><span class="line">         &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="字段级别查询"><a href="#字段级别查询" class="headerlink" title="字段级别查询"></a>字段级别查询</h3><ul>
+<li><p>查询出生日期在某个范围内的数据。</p>
+<p>gte 和 lte 的意思是包含的意思，如果去掉e 大家可以试一下。我们也可以用 “now” 关键词表示当前时间 </p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"query"</span>: &#123;</span><br><span class="line">       <span class="attr">"range"</span>: &#123;</span><br><span class="line">       <span class="attr">"date"</span>: &#123;</span><br><span class="line">           <span class="attr">"gte"</span>: <span class="string">"1487-01-01"</span>,</span><br><span class="line">           <span class="attr">"lte"</span>: <span class="string">"1998-01-01"</span></span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Filter查询"><a href="#Filter查询" class="headerlink" title="Filter查询"></a>Filter查询</h3><p> 我们查询国家为英国的数据，主要作用是条件过滤。</p>
+ <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"query"</span>: &#123;</span><br><span class="line">       <span class="attr">"bool"</span>: &#123;</span><br><span class="line">          <span class="attr">"filter"</span>: &#123;</span><br><span class="line">              <span class="attr">"term"</span>: &#123;</span><br><span class="line">                  <span class="attr">"country"</span>: <span class="string">"英国"</span></span><br><span class="line">               &#125;</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="复合条件查询"><a href="#复合条件查询" class="headerlink" title="复合条件查询"></a>复合条件查询</h2><ul>
+<li><p>固定分数查询</p>
+<p>我们平常的查询，ES都会给我们一个匹配度 _score字段， 并且基本每个都不一样。我们可以看到_score变成了1</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"query"</span>: &#123;</span><br><span class="line">       <span class="attr">"constant_score"</span>: &#123;</span><br><span class="line">            <span class="attr">"filter"</span>: &#123;</span><br><span class="line">                <span class="attr">"match"</span>: &#123;</span><br><span class="line">                   <span class="attr">"name"</span>: <span class="string">"潇洒"</span></span><br><span class="line">                &#125;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>  我们也可以自定义_score ,这里就全部变成2了。</p>
+  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"query"</span>: &#123;</span><br><span class="line">       <span class="attr">"constant_score"</span>: &#123;</span><br><span class="line">            <span class="attr">"filter"</span>: &#123;</span><br><span class="line">                 <span class="attr">"match"</span>: &#123;</span><br><span class="line">                    <span class="attr">"name"</span>: <span class="string">"潇洒"</span></span><br><span class="line">                 &#125;</span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="attr">"boost"</span>: <span class="number">2</span></span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Booble查询</p>
+<p> 满足这两个条件其中一个的都会查询出来。关键词：should, 是OR的逻辑。如果把should换成must 再搜一下看看，must是必须满足的意思，AND的逻辑。</p>
+ <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span>: &#123;</span><br><span class="line">        <span class="attr">"bool"</span>: &#123;</span><br><span class="line">            <span class="attr">"should"</span>: [&#123;</span><br><span class="line">                 <span class="attr">"match"</span>: &#123;</span><br><span class="line">                     <span class="attr">"name"</span>: <span class="string">"潇洒"</span></span><br><span class="line">                   &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                <span class="attr">"match"</span>: &#123;</span><br><span class="line">                   <span class="attr">"country"</span>: <span class="string">"英国"</span></span><br><span class="line">                      &#125;</span><br><span class="line">                 &#125;        </span><br><span class="line">            ]</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>  还有一个关键词：must_not 意思我搜谁都可以，就是不能搜你！哼</p>
+  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">     <span class="attr">"query"</span>: &#123;</span><br><span class="line">         <span class="attr">"bool"</span>: &#123;</span><br><span class="line">             <span class="attr">"must_not"</span>: &#123;</span><br><span class="line">                   <span class="attr">"term"</span>: &#123;</span><br><span class="line">                       <span class="attr">"name"</span>: <span class="string">"袋鼠"</span></span><br><span class="line">                    &#125;</span><br><span class="line">             &#125;</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到ES的查询非常灵活，下一节我们介绍与SpringBoot项目的结合。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+</div>
+
+            
+    
+        <a href="http://litxiaosa.me/2018/01/10/ElasticsSearch-之-高级查询/#comments" id="sourceId::2018/01/10/ElasticsSearch-之-高级查询/" class="article-comment-link cy_cmt_count">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/01/09/学习Elasticsearch 之 增删改查/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">学习ElasticSearch 之 简单的增删改查</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="SOHUCS" sid="2018/01/10/ElasticsSearch-之-高级查询/"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">公告</h3>
+    </div>
+
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">文章分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot系列/">SpringBoot系列</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/不知所云/">不知所云</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习Git/">学习Git</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/搜索引擎/">搜索引擎</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/环境变量/">环境变量</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编码规范插件/">编码规范插件</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ElasticSearch/" style="font-size: 12.5px;">ElasticSearch</a> <a href="/tags/ElasticsSearch/" style="font-size: 10px;">ElasticsSearch</a> <a href="/tags/Git/" style="font-size: 17.5px;">Git</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SpringBoot/" style="font-size: 20px;">SpringBoot</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/solr/" style="font-size: 10px;">solr</a> <a href="/tags/不知所云/" style="font-size: 10px;">不知所云</a> <a href="/tags/不知所云，摘抄/" style="font-size: 12.5px;">不知所云，摘抄</a> <a href="/tags/环境变量/" style="font-size: 10px;">环境变量</a> <a href="/tags/编码规范插件/" style="font-size: 10px;">编码规范插件</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://www.520code.net/">指尖代码</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 潇洒<br>
+             <a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action;jsessionid=jXXzJfoHmRVnh4Wtlin6joVW_3P2wkKCL0IputNLM-40wznfPW8Z!-179429638" target="_blank">浙ICP备17031501号-1</a>
+        </div>
+    </div>
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+	<span id="busuanzi_container_site_pv">
+	    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+	</span>
+	| 
+	<span id="busuanzi_container_site_uv">
+  		本站访客数<span id="busuanzi_value_site_uv"></span>人次
+	</span>
+
+</footer>
+
+        
+    
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyt89XC6v"></script>
+    <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+    <script type="text/javascript">
+    window.changyan.api.config({
+    appid: 'cyt89XC6v',
+    conf: '05f02c05c1850e9dc85891de397ebfe0'
+    });
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
