@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://litxiaosa.me/"/>
-  <updated>2018-01-10T04:53:37.230Z</updated>
+  <updated>2018-01-10T14:06:43.704Z</updated>
   <id>http://litxiaosa.me/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot集成ElasticSearch</title>
+    <link href="http://litxiaosa.me/2018/01/10/SpringBoot%E9%9B%86%E6%88%90ElasticSearch/"/>
+    <id>http://litxiaosa.me/2018/01/10/SpringBoot集成ElasticSearch/</id>
+    <published>2018-01-10T05:34:43.000Z</published>
+    <updated>2018-01-10T14:06:43.704Z</updated>
+    
+    <content type="html"><![CDATA[<p>前面的几篇都是简单的配合和操作，没有在项目中使用，本文我们来介绍 SpringBoot如何集成ElasticSearch，把ElasticSearch应用到实际的项目中去。</p><ul><li>我们新建一个SpringBoot项目，这里SpringBoot的一些知识我就不介绍了。</li><li>引入elasticsearch的依赖</li></ul><a id="more"></a>  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">truetrue<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.elasticsearch.client<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">truetrue<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>transport<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">truetrue<span class="tag">&lt;<span class="name">version</span>&gt;</span>5.6.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">truetrue<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.elasticsearch<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">truetrue<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>elasticsearch<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">truetrue<span class="tag">&lt;<span class="name">version</span>&gt;</span>5.6.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  ```</span><br><span class="line">  </span><br><span class="line">- 创建config类</span><br><span class="line"></span><br><span class="line">  可以利用postman 测试， 输入：localhost:端口号/elasticSearch/方法名</span><br></pre></td></tr></table></figure><p>  /**</p><ul><li>搜索引擎ES的config</li><li><p>@author xiaosa<br>*/<br>@Configuration<br>public class ElasticSearchConfig {</p><p>   @Bean<br>   public TransportClient client() throws UnknownHostException {</p><pre><code>////tcp端口，默认9300//当时我们配置了三个节点，我们可以new 三个InetSocketTransportAddress，然后都addTransportAddress到里面InetSocketTransportAddress node = new InetSocketTransportAddress(InetAddress.getByName(&quot;localhost&quot;),9300);//初始化一个自定义的配置Settings settings = Settings.builder()        //集群名字，当时我配置的叫xiaosa        .put(&quot;cluster.name&quot;, &quot;xiaosa&quot;).build();TransportClient client = new PreBuiltTransportClient(settings);client.addTransportAddress(node);return  client;</code></pre><p>   }<br>}</p><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">  </span></span><br><span class="line"><span class="bullet">- </span>controller层  增删改查</span><br></pre></td></tr></table></figure><p>/**</p></li><li>搜索</li><li><p>@author xiaosa<br>*/<br>@RestController<br>@RequestMapping(“elasticSearch”)<br>public class ElasticSearchController {</p><p>   @Autowired<br>   private TransportClient client;</p><p>   /**</p><pre><code>* 根据ID查询* @param id* @return*/</code></pre><p>   @GetMapping(“/get/people/man”)<br>   @ResponseBody<br>   public ResponseEntity getPeople(@RequestParam(name = “id”, defaultValue = “”) String id){</p><pre><code>if (id.isEmpty()) {    return new ResponseEntity( HttpStatus.NOT_FOUND);}GetResponse response = this.client.prepareGet(&quot;people&quot;, &quot;man&quot;, id).get();if(response.isExists()){    return new ResponseEntity(response.getSource(), HttpStatus.OK);}else {    return new ResponseEntity(response.getSource(), HttpStatus.NOT_FOUND);}</code></pre><p>   }</p></li></ul><pre><code>    /**     * 添加     * @param name     * @param country     * @param age     * @param dat     * @return     */    @PostMapping(&quot;/add/people/man&quot;)    @ResponseBody    public ResponseEntity addPeople(@RequestParam(name = &quot;name&quot;) String name,                                    @RequestParam(name = &quot;country&quot;) String country,                                    @RequestParam(name = &quot;age&quot;) int age,                                    @RequestParam(name = &quot;date&quot;) @DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;) Date date)        try {           XContentBuilder content =  XContentFactory.jsonBuilder()                    .startObject()                    .field(&quot;name&quot;, name)                    .field(&quot;country&quot;, country)                    .field(&quot;age&quot;, age)                    .field(&quot;date&quot;, date.getTime())                    .endObject();            IndexResponse result = this.client.prepareIndex(&quot;people&quot;, &quot;man&quot;).setSource(content).get();            return new ResponseEntity(result.getId(), HttpStatus.OK);        } catch (IOException e) {            e.printStackTrace();            return  new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);        }    }    /**     * 根据ID删除     * @param id     * @return     */    @PostMapping(&quot;/remove/people/man&quot;)    @ResponseBody    public ResponseEntity removePeople(@RequestParam(name = &quot;id&quot;) String id){        DeleteResponse result = this.client.prepareDelete(&quot;people&quot;, &quot;man&quot;, id).get();        return new ResponseEntity(result.toString(), HttpStatus.OK);    }    /**     * 根据ID更新名字     * @param id     * @param name     * @return     */    @PostMapping(&quot;/update/people/man&quot;)    @ResponseBody    public ResponseEntity updatePeople(@RequestParam(name = &quot;id&quot;) String id,                                       @RequestParam(name = &quot;name&quot;) String name){        UpdateRequest update = new UpdateRequest(&quot;people&quot;, &quot;man&quot;, id);        try {            XContentBuilder build =  XContentFactory.jsonBuilder().startObject();                if(name !=null){                    build.field(&quot;name&quot;, name);                }            build.endObject();            update.doc(build);            UpdateResponse result = this.client.update(update).get();            return new ResponseEntity(result.toString(), HttpStatus.OK);         } catch (Exception e) {            e.printStackTrace();            return  new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);        }    }    /**     * 复合查询     * @param name     * @param country     * @param gtDat     * @param ltDat     * @return     *    @PostMapping(&quot;/query/people/man&quot;)    @ResponseBody    public ResponseEntity queryPeople(@RequestParam(name = &quot;name&quot;) String name,                                      @RequestParam(name = &quot;country&quot;) String country,                                      @RequestParam(name = &quot;gtDate&quot;) String gtDate,                                      @RequestParam(name = &quot;ltDate&quot;) String ltDate){        BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();        if(name !=null){            boolQuery.must(QueryBuilders.matchQuery(&quot;name&quot;, name));        }        if(country !=null){            boolQuery.must(QueryBuilders.matchQuery(&quot;country&quot;, country));        }        //范围查询        RangeQueryBuilder rangeQuery = QueryBuilders.rangeQuery(&quot;date&quot;).from(gtDate);        if(ltDate !=null ){            rangeQuery.to(ltDate);        }        boolQuery.filter(rangeQuery);        SearchRequestBuilder builder = this.client.prepareSearch(&quot;people&quot;)                .setTypes(&quot;man&quot;)                .setSearchType(SearchType.QUERY_THEN_FETCH)                .setQuery(boolQuery)                .setFrom(0)                .setSize(10);        System.out.println(builder);        SearchResponse response = builder.get();        List&lt;Map&lt;String, Object&gt;&gt; result = new ArrayList&lt;Map&lt;String, Object&gt;&gt;();        for (SearchHit hit: response.getHits()) {            result.add(hit.getSource());        }        return  new ResponseEntity(result, HttpStatus.OK);    }}</code></pre><p>  ```</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前面的几篇都是简单的配合和操作，没有在项目中使用，本文我们来介绍 SpringBoot如何集成ElasticSearch，把ElasticSearch应用到实际的项目中去。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;我们新建一个SpringBoot项目，这里SpringBoot的一些知识我就不介绍了。&lt;/li&gt;
+&lt;li&gt;引入elasticsearch的依赖&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="搜索引擎" scheme="http://litxiaosa.me/categories/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
+    
+    
+      <category term="ElasticSearch" scheme="http://litxiaosa.me/tags/ElasticSearch/"/>
+    
+  </entry>
   
   <entry>
     <title>ElasticsSearch 之 高级查询</title>
@@ -484,31 +510,6 @@
     
     
       <category term="Git" scheme="http://litxiaosa.me/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>姑苏有钟声</title>
-    <link href="http://litxiaosa.me/2017/10/31/%E5%A7%91%E8%8B%8F%E6%9C%89%E9%92%9F%E5%A3%B0/"/>
-    <id>http://litxiaosa.me/2017/10/31/姑苏有钟声/</id>
-    <published>2017-10-31T03:51:28.000Z</published>
-    <updated>2017-12-21T12:28:17.022Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/2017/10/31/姑苏有钟声/钟.jpg" alt=""></p><blockquote><p>如果你听歌可眼红，何以待她好偏不懂。</p></blockquote><a id="more"></a><p>她不会像白富美那样偶尔流露出一丝惹人厌的高傲，更不会像女屌丝那样做派发指 长相抱歉。</p><p>她在自己生活的圈子里优雅的生活，不会默默无闻。</p><p>她长得不算差，打扮得干干净净，或许不会穿的跟颁奖礼一般，但绝对会扬长避短穿出别有一番韵味。她更绝不会不自量力搭配没品。</p><p>她或许温婉，或许贤良，或许天真，或许任性，但这都不重要，重要的是，她很温暖，很安心。</p><p>可能她是你的同学，又或者是校友，又或者是陌生人，反正就在那个电光火石般的一瞬，你像一朵青春萌动的少年，看见让自己眼前一亮的女生，一种莫名的冲动，发自内心，倚仗着荷尔蒙喷薄而出。</p><p>你像一般电视剧演的那样，像一个侦探一样，调动了一切手段渠道，用此处略去七十八个字儿的方法彻底地认识了她。</p><p>上天会怜悯那些绞尽脑汁的虔诚孩子，他会轻易地突破第四维度，将两条平行线改变了轨迹，交在了一起。</p><p>你只知道在继续省略十万八千个字之后她会叫你傻逼会叫你神经病，会在你让她早点睡觉的时候跟你说嗯。</p><p>在你寂寞的单身的想要恋爱的时候，你会发现她总会匪夷所思地出现在你的脑海。</p><p>她或许不会天天叫你早睡早起不要熬夜，或许也不记得有纪念意义的日子，或许更不会记得你的生日，你的爱好，她也不会认识太多你身边的朋友，或许连相熟也称不上。但你会。</p><p>有时候你也会约她，她大多会欣然答应，但恪守本分，不远不近保持着距离，若即若离。</p><p>你开始期待甚至盼望每天与她的相见，就像陈小春唱的，她像个天仙，她太美了。我那么平凡…… 然后小灯泡一亮，叮得一声：她不讨厌我，肯定喜欢我～</p><p>傻逼了吧。</p><p>也许对于她来说，你只是一个可有可无的存在，多一个不多，少一个不少。这只是她的一种教养，一个习惯，或者一种本能而已。你不能否认就是有这样的姑娘，自带女神光环，她们能让周围的人都如沐春风，让异性为之深深地吸引。</p><p>你跟她身边其余的异性一样，就像女生面对淘宝满屏的东西，你不能说她讨厌你，但确实也挑不到喜欢的。</p><p>每个男生骨子里爆棚的自信心也最容易高估自己，而这些恰恰会让感觉良好的少年们自作多情自不量力自欺欺人自讨苦吃自掘坟墓自食其果自取灭亡自作孽不可活。</p><p>你把这个感觉转嫁到了她身上，开始无可救药地以为爱上了。</p><p>你开始为了她的每句话揣测推断，开始去思考她每一条状态每一个签名，即使像今天我出去玩的好开心如此这般的毫无意义。</p><p>你开始每天守在电脑前，看着她的头像亮起来，然后去跟她闲扯去逗她笑，尽所能地去让你开心，快乐。你每次看到冰冷的屏幕上出现她打出来的哈哈或者嘿嘿，你总是盯着屏幕傻呵呵地咧嘴笑。你会反复在脑海里意淫般地勾画出你们俩个人在一起的情形。</p><p>你会抵挡不住见她的冲动不在乎跑多少公里，看到她的时候你会觉得这几千公里跟孙猴子一个筋斗那样不值一提。你会挖空心思地对她好，好到用语言描述出来都略显单薄但是无用。好到连你们周围的人都感觉到窒息，直到后来你才知道，太把优柔寡断投鼠忌器的磨叽当慎重的人，往往却会栽到自作聪明作茧自缚这几个字上。</p><p>小黄人喜欢的不是apple，而是banana。</p><p>对了，你是不是还会像个护食的汪星人一般，假如别的男生若是和她多聊几句，就在脑子里无数次描绘那男的被爆菊的惨状。</p><p>你看，说你神经病你还不愿意，你这就是神经病。</p><p>你还时常感谢上苍，他把两条平行线交汇在一起。但这只会让你记得交汇那一瞬她蹦蹦跳跳像个小猴子般的身影，和你脑子里那被风吹起的刘海。</p><p>你来到她的城市，走过她来时的路，然后，相交线就会渐行渐远。</p><p>到这里，你心里一定会跟千万只草泥马奔腾而过一样吧，老天爷办事儿，远他妈的不是你想的路数。</p><p>在我收集的剪报里，有大致如下几段话：你那时应该知道，如果一个人真的爱你，她一定会告诉你，至少会表现出来，而不是让你自己胡乱猜测的被感觉左右。和这位姑娘相处，本身就是一件很美好的事。你只是没给自己留一点可进退的余地，后悔莫及。你因为一厢情愿，搭上了自己的一片真心。没人不怪你看不透，只是因为你太需要爱。当你明白你再怎么做也无力回天的时候，还是感觉这东西害了你。这位姑娘对你没感觉，而感觉是个奇妙和淘气的小家伙。</p><p>当你觉得一个人千般好万般好，那也许是迷恋。当你觉得她有时候很呆傻，但却傻的非常可爱，那可能是喜欢。当你看到她的每一面，包括最差的，但还不想离开她，那大概是习惯。爱没法去描述，但你永远不会错认。</p><p>爱就是内心的召唤而已，夜里睡不着想到她时那满心酸楚的悸动，跟她说话聊天字斟句酌的计较，面对她的时候那喷薄而出的欲望，都是爱情的原因。</p><p>那时有一个姑娘，懂你所有，出现在你的生命里。</p><p>只是错误的时间，错误的地点，遇到错误的人，却产生了对的感觉。</p><p>只是她身上的温暖蛊惑了你，让你误以为那就是爱情。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;/2017/10/31/姑苏有钟声/钟.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;如果你听歌可眼红，何以待她好偏不懂。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="不知所云" scheme="http://litxiaosa.me/categories/%E4%B8%8D%E7%9F%A5%E6%89%80%E4%BA%91/"/>
-    
-    
-      <category term="不知所云，摘抄" scheme="http://litxiaosa.me/tags/%E4%B8%8D%E7%9F%A5%E6%89%80%E4%BA%91%EF%BC%8C%E6%91%98%E6%8A%84/"/>
     
   </entry>
   

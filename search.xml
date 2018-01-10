@@ -3,6 +3,187 @@
   
     
     <entry>
+      <title><![CDATA[SpringBoot集成ElasticSearch]]></title>
+      <url>/2018/01/10/SpringBoot%E9%9B%86%E6%88%90ElasticSearch/</url>
+      <content type="html"><![CDATA[<p>前面的几篇都是简单的配合和操作，没有在项目中使用，本文我们来介绍 SpringBoot如何集成ElasticSearch，把ElasticSearch应用到实际的项目中去。</p>
+<ul>
+<li>我们新建一个SpringBoot项目，这里SpringBoot的一些知识我就不介绍了。</li>
+<li>引入elasticsearch的依赖</li>
+</ul>
+<a id="more"></a>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">truetrue<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.elasticsearch.client<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">truetrue<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>transport<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">truetrue<span class="tag">&lt;<span class="name">version</span>&gt;</span>5.6.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">truetrue<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.elasticsearch<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">truetrue<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>elasticsearch<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">truetrue<span class="tag">&lt;<span class="name">version</span>&gt;</span>5.6.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  ```	</span><br><span class="line">  	</span><br><span class="line">- 创建config类</span><br><span class="line"></span><br><span class="line">  可以利用postman 测试， 输入：localhost:端口号/elasticSearch/方法名</span><br></pre></td></tr></table></figure>
+<p>  /**</p>
+<ul>
+<li>搜索引擎ES的config</li>
+<li><p>@author xiaosa<br>*/<br>@Configuration<br>public class ElasticSearchConfig {</p>
+<p>   @Bean<br>   public TransportClient client() throws UnknownHostException {</p>
+<pre><code>////tcp端口，默认9300
+//当时我们配置了三个节点，我们可以new 三个InetSocketTransportAddress，然后都addTransportAddress到里面
+InetSocketTransportAddress node = new InetSocketTransportAddress(InetAddress.getByName(&quot;localhost&quot;),9300);
+
+//初始化一个自定义的配置
+Settings settings = Settings.builder()
+        //集群名字，当时我配置的叫xiaosa
+        .put(&quot;cluster.name&quot;, &quot;xiaosa&quot;).build();
+TransportClient client = new PreBuiltTransportClient(settings);
+client.addTransportAddress(node);
+return  client;
+</code></pre><p>   }<br>}</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">  </span></span><br><span class="line"><span class="bullet">- </span>controller层  增删改查</span><br></pre></td></tr></table></figure>
+<p>/**</p>
+</li>
+<li>搜索</li>
+<li><p>@author xiaosa<br>*/<br>@RestController<br>@RequestMapping(“elasticSearch”)<br>public class ElasticSearchController {</p>
+<p>   @Autowired<br>   private TransportClient client;</p>
+<p>   /**</p>
+<pre><code>* 根据ID查询
+* @param id
+* @return
+*/
+</code></pre><p>   @GetMapping(“/get/people/man”)<br>   @ResponseBody<br>   public ResponseEntity getPeople(@RequestParam(name = “id”, defaultValue = “”) String id){</p>
+<pre><code>if (id.isEmpty()) {
+    return new ResponseEntity( HttpStatus.NOT_FOUND);
+}
+GetResponse response = this.client.prepareGet(&quot;people&quot;, &quot;man&quot;, id).get();
+if(response.isExists()){
+    return new ResponseEntity(response.getSource(), HttpStatus.OK);
+}else {
+    return new ResponseEntity(response.getSource(), HttpStatus.NOT_FOUND);
+}
+</code></pre><p>   }</p>
+</li>
+</ul>
+<pre><code>    /**
+     * 添加
+     * @param name
+     * @param country
+     * @param age
+     * @param dat
+     * @return
+     */
+    @PostMapping(&quot;/add/people/man&quot;)
+    @ResponseBody
+    public ResponseEntity addPeople(@RequestParam(name = &quot;name&quot;) String name,
+                                    @RequestParam(name = &quot;country&quot;) String country,
+                                    @RequestParam(name = &quot;age&quot;) int age,
+                                    @RequestParam(name = &quot;date&quot;) @DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;) Date date)
+        try {
+           XContentBuilder content =  XContentFactory.jsonBuilder()
+                    .startObject()
+                    .field(&quot;name&quot;, name)
+                    .field(&quot;country&quot;, country)
+                    .field(&quot;age&quot;, age)
+                    .field(&quot;date&quot;, date.getTime())
+                    .endObject();
+            IndexResponse result = this.client.prepareIndex(&quot;people&quot;, &quot;man&quot;).setSource(content).get();
+            return new ResponseEntity(result.getId(), HttpStatus.OK);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return  new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    /**
+     * 根据ID删除
+     * @param id
+     * @return
+     */
+    @PostMapping(&quot;/remove/people/man&quot;)
+    @ResponseBody
+    public ResponseEntity removePeople(@RequestParam(name = &quot;id&quot;) String id){
+        DeleteResponse result = this.client.prepareDelete(&quot;people&quot;, &quot;man&quot;, id).get();
+        return new ResponseEntity(result.toString(), HttpStatus.OK);
+    }
+
+
+    /**
+     * 根据ID更新名字
+     * @param id
+     * @param name
+     * @return
+     */
+    @PostMapping(&quot;/update/people/man&quot;)
+    @ResponseBody
+    public ResponseEntity updatePeople(@RequestParam(name = &quot;id&quot;) String id,
+                                       @RequestParam(name = &quot;name&quot;) String name){
+        UpdateRequest update = new UpdateRequest(&quot;people&quot;, &quot;man&quot;, id);
+        try {
+            XContentBuilder build =  XContentFactory.jsonBuilder().startObject();
+                if(name !=null){
+                    build.field(&quot;name&quot;, name);
+                }
+            build.endObject();
+            update.doc(build);
+            UpdateResponse result = this.client.update(update).get();
+            return new ResponseEntity(result.toString(), HttpStatus.OK);
+         } catch (Exception e) {
+            e.printStackTrace();
+            return  new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * 复合查询
+     * @param name
+     * @param country
+     * @param gtDat
+     * @param ltDat
+     * @return
+     *
+    @PostMapping(&quot;/query/people/man&quot;)
+    @ResponseBody
+    public ResponseEntity queryPeople(@RequestParam(name = &quot;name&quot;) String name,
+                                      @RequestParam(name = &quot;country&quot;) String country,
+                                      @RequestParam(name = &quot;gtDate&quot;) String gtDate,
+                                      @RequestParam(name = &quot;ltDate&quot;) String ltDate){
+        BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
+        if(name !=null){
+            boolQuery.must(QueryBuilders.matchQuery(&quot;name&quot;, name));
+        }
+        if(country !=null){
+            boolQuery.must(QueryBuilders.matchQuery(&quot;country&quot;, country));
+        }
+        //范围查询
+        RangeQueryBuilder rangeQuery = QueryBuilders.rangeQuery(&quot;date&quot;).from(gtDate);
+        if(ltDate !=null ){
+            rangeQuery.to(ltDate);
+        }
+        boolQuery.filter(rangeQuery);
+        SearchRequestBuilder builder = this.client.prepareSearch(&quot;people&quot;)
+                .setTypes(&quot;man&quot;)
+                .setSearchType(SearchType.QUERY_THEN_FETCH)
+                .setQuery(boolQuery)
+                .setFrom(0)
+                .setSize(10);
+        System.out.println(builder);
+        SearchResponse response = builder.get();
+        List&lt;Map&lt;String, Object&gt;&gt; result = new ArrayList&lt;Map&lt;String, Object&gt;&gt;();
+        for (SearchHit hit: response.getHits()) {
+            result.add(hit.getSource());
+        }
+        return  new ResponseEntity(result, HttpStatus.OK);
+    }
+}
+</code></pre><p>  ```</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 搜索引擎 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ElasticSearch </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[ElasticsSearch 之 高级查询]]></title>
       <url>/2018/01/10/ElasticsSearch-%E4%B9%8B-%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2/</url>
       <content type="html"><![CDATA[<p><strong>工具用的PostMan</strong></p>
