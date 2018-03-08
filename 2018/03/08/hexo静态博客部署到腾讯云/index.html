@@ -5,20 +5,20 @@
     
     <title>hexo静态博客部署到腾讯云 | 潇洒的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="年后的第一遍博客，又回到了说hexo上，去年申请的阿里云服务器快要到期了，对于我这种赤贫的人来说，买一个感觉老贵了。正好最近腾讯云在搞活动，就买了一年的，虽然是最低配置，对于我个人用足够了。 既然要弃用阿里云，那么我去年部署到阿里云的静态博客就要重新部署到腾讯云了，正好借着这个机会，写一个部署的大致流程，以防自己以后又">
+    <meta name="description" content="年后的第一篇博客，又回到了说hexo上，去年申请的阿里云服务器快要到期了，对于我这种赤贫的人来说，买一个感觉老贵了。正好最近腾讯云在搞活动，就买了一年的，虽然是最低配置，对于我个人用足够了。 既然要弃用阿里云，那么我去年部署到阿里云的静态博客就要重新部署到腾讯云了，正好借着这个机会，写一个部署的大致流程，以防自己以后又">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo静态博客部署到腾讯云">
 <meta property="og:url" content="http://litxiaosa.me/2018/03/08/hexo静态博客部署到腾讯云/index.html">
 <meta property="og:site_name" content="潇洒的博客">
-<meta property="og:description" content="年后的第一遍博客，又回到了说hexo上，去年申请的阿里云服务器快要到期了，对于我这种赤贫的人来说，买一个感觉老贵了。正好最近腾讯云在搞活动，就买了一年的，虽然是最低配置，对于我个人用足够了。 既然要弃用阿里云，那么我去年部署到阿里云的静态博客就要重新部署到腾讯云了，正好借着这个机会，写一个部署的大致流程，以防自己以后又换云服务器的时候忘了怎么部署。哈哈。  这里我们默认你有台云服务器，并能正常使用">
+<meta property="og:description" content="年后的第一篇博客，又回到了说hexo上，去年申请的阿里云服务器快要到期了，对于我这种赤贫的人来说，买一个感觉老贵了。正好最近腾讯云在搞活动，就买了一年的，虽然是最低配置，对于我个人用足够了。 既然要弃用阿里云，那么我去年部署到阿里云的静态博客就要重新部署到腾讯云了，正好借着这个机会，写一个部署的大致流程，以防自己以后又换云服务器的时候忘了怎么部署。哈哈。  这里我们默认你有台云服务器，并能正常使用">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://litxiaosa.me/2018/03/08/hexo静态博客部署到腾讯云/1.png">
 <meta property="og:image" content="http://litxiaosa.me/2018/03/08/hexo静态博客部署到腾讯云/2.png">
-<meta property="og:updated_time" content="2018-03-08T09:53:26.566Z">
+<meta property="og:updated_time" content="2018-03-08T10:00:23.575Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo静态博客部署到腾讯云">
-<meta name="twitter:description" content="年后的第一遍博客，又回到了说hexo上，去年申请的阿里云服务器快要到期了，对于我这种赤贫的人来说，买一个感觉老贵了。正好最近腾讯云在搞活动，就买了一年的，虽然是最低配置，对于我个人用足够了。 既然要弃用阿里云，那么我去年部署到阿里云的静态博客就要重新部署到腾讯云了，正好借着这个机会，写一个部署的大致流程，以防自己以后又换云服务器的时候忘了怎么部署。哈哈。  这里我们默认你有台云服务器，并能正常使用">
+<meta name="twitter:description" content="年后的第一篇博客，又回到了说hexo上，去年申请的阿里云服务器快要到期了，对于我这种赤贫的人来说，买一个感觉老贵了。正好最近腾讯云在搞活动，就买了一年的，虽然是最低配置，对于我个人用足够了。 既然要弃用阿里云，那么我去年部署到阿里云的静态博客就要重新部署到腾讯云了，正好借着这个机会，写一个部署的大致流程，以防自己以后又换云服务器的时候忘了怎么部署。哈哈。  这里我们默认你有台云服务器，并能正常使用">
 <meta name="twitter:image" content="http://litxiaosa.me/2018/03/08/hexo静态博客部署到腾讯云/1.png">
     
 
@@ -256,7 +256,7 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>年后的第一遍博客，又回到了说hexo上，去年申请的阿里云服务器快要到期了，对于我这种赤贫的人来说，买一个感觉老贵了。正好最近腾讯云在搞活动，就买了一年的，虽然是最低配置，对于我个人用足够了。</p>
+            <p>年后的第一篇博客，又回到了说hexo上，去年申请的阿里云服务器快要到期了，对于我这种赤贫的人来说，买一个感觉老贵了。正好最近腾讯云在搞活动，就买了一年的，虽然是最低配置，对于我个人用足够了。</p>
 <p>既然要弃用阿里云，那么我去年部署到阿里云的静态博客就要重新部署到腾讯云了，正好借着这个机会，写一个部署的大致流程，以防自己以后又换云服务器的时候忘了怎么部署。哈哈。</p>
 <p> 这里我们默认你有台云服务器，并能正常使用。</p>
  <a id="more"></a>
