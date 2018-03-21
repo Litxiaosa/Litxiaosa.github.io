@@ -14,7 +14,7 @@
 <meta property="og:description" content="本文我们介绍ES的简单的增删改查操作。 插入我们同样使用postman 工具，以下操作都是postman   地址栏：localhost:9200/people/man/1 用post方法 这里的1是索引，我们可以自定义，这是唯一的。 123456&amp;#123;   &quot;name&quot;: &quot;潇洒&quot;,   &quot;country&quot;: &quot;中国&quot;,   &quot;age&quot;: 18,   &quot;date&quot;: &quot;2018-01-01">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://litxiaosa.cn/2018/01/09/学习Elasticsearch%20之%20增删改查/1.jpg">
-<meta property="og:updated_time" content="2018-01-10T02:12:52.910Z">
+<meta property="og:updated_time" content="2018-03-21T10:26:31.994Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习ElasticSearch 之 简单的增删改查">
 <meta name="twitter:description" content="本文我们介绍ES的简单的增删改查操作。 插入我们同样使用postman 工具，以下操作都是postman   地址栏：localhost:9200/people/man/1 用post方法 这里的1是索引，我们可以自定义，这是唯一的。 123456&amp;#123;   &quot;name&quot;: &quot;潇洒&quot;,   &quot;country&quot;: &quot;中国&quot;,   &quot;age&quot;: 18,   &quot;date&quot;: &quot;2018-01-01">
@@ -272,7 +272,7 @@ var _hmt = _hmt || [];
 <h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><p>例如，我们修改ID为1的数据</p>
 <ul>
 <li><p>地址栏输入：localhost:9200/people/man/1/_update 加上 _update 代表是更新操作。指定post方法</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"doc"</span>:&#123;</span><br><span class="line">true<span class="attr">"name"</span>: <span class="string">"隔岸"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"doc"</span>:&#123;</span><br><span class="line">       <span class="attr">"name"</span>: <span class="string">"隔岸"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
