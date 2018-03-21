@@ -5,9 +5,9 @@
   <subtitle>一个Java码农，喜欢看书，对吉他有点小兴趣。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://litxiaosa.me/"/>
+  <link href="http://litxiaosa.cn/"/>
   <updated>2018-03-09T10:38:53.206Z</updated>
-  <id>http://litxiaosa.me/</id>
+  <id>http://litxiaosa.cn/</id>
   
   <author>
     <name>潇洒</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>hexo静态博客部署到腾讯云</title>
-    <link href="http://litxiaosa.me/2018/03/08/hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/"/>
-    <id>http://litxiaosa.me/2018/03/08/hexo静态博客部署到腾讯云/</id>
+    <link href="http://litxiaosa.cn/2018/03/08/hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0%E8%85%BE%E8%AE%AF%E4%BA%91/"/>
+    <id>http://litxiaosa.cn/2018/03/08/hexo静态博客部署到腾讯云/</id>
     <published>2018-03-08T07:33:34.000Z</published>
     <updated>2018-03-09T10:38:53.206Z</updated>
     
@@ -33,17 +33,17 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://litxiaosa.me/categories/hexo/"/>
+      <category term="hexo" scheme="http://litxiaosa.cn/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://litxiaosa.me/tags/hexo/"/>
+      <category term="hexo" scheme="http://litxiaosa.cn/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot集成ElasticSearch</title>
-    <link href="http://litxiaosa.me/2018/01/10/SpringBoot%E9%9B%86%E6%88%90ElasticSearch/"/>
-    <id>http://litxiaosa.me/2018/01/10/SpringBoot集成ElasticSearch/</id>
+    <link href="http://litxiaosa.cn/2018/01/10/SpringBoot%E9%9B%86%E6%88%90ElasticSearch/"/>
+    <id>http://litxiaosa.cn/2018/01/10/SpringBoot集成ElasticSearch/</id>
     <published>2018-01-10T05:34:43.000Z</published>
     <updated>2018-01-11T01:32:05.401Z</updated>
     
@@ -58,17 +58,17 @@
     
     </summary>
     
-      <category term="搜索引擎" scheme="http://litxiaosa.me/categories/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
+      <category term="搜索引擎" scheme="http://litxiaosa.cn/categories/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
     
     
-      <category term="ElasticSearch" scheme="http://litxiaosa.me/tags/ElasticSearch/"/>
+      <category term="ElasticSearch" scheme="http://litxiaosa.cn/tags/ElasticSearch/"/>
     
   </entry>
   
   <entry>
     <title>ElasticsSearch 之 高级查询</title>
-    <link href="http://litxiaosa.me/2018/01/10/ElasticsSearch-%E4%B9%8B-%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2/"/>
-    <id>http://litxiaosa.me/2018/01/10/ElasticsSearch-之-高级查询/</id>
+    <link href="http://litxiaosa.cn/2018/01/10/ElasticsSearch-%E4%B9%8B-%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2/"/>
+    <id>http://litxiaosa.cn/2018/01/10/ElasticsSearch-之-高级查询/</id>
     <published>2018-01-10T02:10:14.000Z</published>
     <updated>2018-01-10T04:53:37.230Z</updated>
     
@@ -93,17 +93,17 @@
     
     </summary>
     
-      <category term="搜索引擎" scheme="http://litxiaosa.me/categories/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
+      <category term="搜索引擎" scheme="http://litxiaosa.cn/categories/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
     
     
-      <category term="ElasticsSearch" scheme="http://litxiaosa.me/tags/ElasticsSearch/"/>
+      <category term="ElasticsSearch" scheme="http://litxiaosa.cn/tags/ElasticsSearch/"/>
     
   </entry>
   
   <entry>
     <title>学习ElasticSearch 之 简单的增删改查</title>
-    <link href="http://litxiaosa.me/2018/01/09/%E5%AD%A6%E4%B9%A0Elasticsearch%20%E4%B9%8B%20%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/"/>
-    <id>http://litxiaosa.me/2018/01/09/学习Elasticsearch 之 增删改查/</id>
+    <link href="http://litxiaosa.cn/2018/01/09/%E5%AD%A6%E4%B9%A0Elasticsearch%20%E4%B9%8B%20%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/"/>
+    <id>http://litxiaosa.cn/2018/01/09/学习Elasticsearch 之 增删改查/</id>
     <published>2018-01-09T12:36:53.000Z</published>
     <updated>2018-01-10T02:12:52.910Z</updated>
     
@@ -121,17 +121,17 @@
     
     </summary>
     
-      <category term="搜索引擎" scheme="http://litxiaosa.me/categories/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
+      <category term="搜索引擎" scheme="http://litxiaosa.cn/categories/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
     
     
-      <category term="ElasticSearch" scheme="http://litxiaosa.me/tags/ElasticSearch/"/>
+      <category term="ElasticSearch" scheme="http://litxiaosa.cn/tags/ElasticSearch/"/>
     
   </entry>
   
   <entry>
     <title>学习ElasticSearch 之 配置</title>
-    <link href="http://litxiaosa.me/2018/01/09/%E5%AD%A6%E4%B9%A0Elasticsearch/"/>
-    <id>http://litxiaosa.me/2018/01/09/学习Elasticsearch/</id>
+    <link href="http://litxiaosa.cn/2018/01/09/%E5%AD%A6%E4%B9%A0Elasticsearch/"/>
+    <id>http://litxiaosa.cn/2018/01/09/学习Elasticsearch/</id>
     <published>2018-01-09T04:28:39.000Z</published>
     <updated>2018-01-10T02:13:24.927Z</updated>
     
@@ -144,17 +144,17 @@
     
     </summary>
     
-      <category term="搜索引擎" scheme="http://litxiaosa.me/categories/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
+      <category term="搜索引擎" scheme="http://litxiaosa.cn/categories/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
     
     
-      <category term="ElasticSearch" scheme="http://litxiaosa.me/tags/ElasticSearch/"/>
+      <category term="ElasticSearch" scheme="http://litxiaosa.cn/tags/ElasticSearch/"/>
     
   </entry>
   
   <entry>
     <title>如何使用RedisTemplate访问Redis数据结构</title>
-    <link href="http://litxiaosa.me/2018/01/05/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8RedisTemplate%E8%AE%BF%E9%97%AERedis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    <id>http://litxiaosa.me/2018/01/05/如何使用RedisTemplate访问Redis数据结构/</id>
+    <link href="http://litxiaosa.cn/2018/01/05/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8RedisTemplate%E8%AE%BF%E9%97%AERedis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <id>http://litxiaosa.cn/2018/01/05/如何使用RedisTemplate访问Redis数据结构/</id>
     <published>2018-01-05T02:56:31.000Z</published>
     <updated>2018-01-05T12:11:31.206Z</updated>
     
@@ -167,17 +167,17 @@
     
     </summary>
     
-      <category term="Redis" scheme="http://litxiaosa.me/categories/Redis/"/>
+      <category term="Redis" scheme="http://litxiaosa.cn/categories/Redis/"/>
     
     
-      <category term="Redis" scheme="http://litxiaosa.me/tags/Redis/"/>
+      <category term="Redis" scheme="http://litxiaosa.cn/tags/Redis/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot（十）之 RabbitMQ</title>
-    <link href="http://litxiaosa.me/2017/12/14/SpringBoot%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8B%20RabbitMQ/"/>
-    <id>http://litxiaosa.me/2017/12/14/SpringBoot（十）之 RabbitMQ/</id>
+    <link href="http://litxiaosa.cn/2017/12/14/SpringBoot%EF%BC%88%E5%8D%81%EF%BC%89%E4%B9%8B%20RabbitMQ/"/>
+    <id>http://litxiaosa.cn/2017/12/14/SpringBoot（十）之 RabbitMQ/</id>
     <published>2017-12-14T08:27:18.000Z</published>
     <updated>2017-12-28T09:46:58.451Z</updated>
     
@@ -191,17 +191,17 @@
     
     </summary>
     
-      <category term="SpringBoot系列" scheme="http://litxiaosa.me/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
+      <category term="SpringBoot系列" scheme="http://litxiaosa.cn/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
     
     
-      <category term="SpringBoot" scheme="http://litxiaosa.me/tags/SpringBoot/"/>
+      <category term="SpringBoot" scheme="http://litxiaosa.cn/tags/SpringBoot/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot（九）之 事务管理</title>
-    <link href="http://litxiaosa.me/2017/12/14/SpringBoot%EF%BC%88%E4%B9%9D%EF%BC%89%E4%B9%8B%20%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/"/>
-    <id>http://litxiaosa.me/2017/12/14/SpringBoot（九）之 事务管理/</id>
+    <link href="http://litxiaosa.cn/2017/12/14/SpringBoot%EF%BC%88%E4%B9%9D%EF%BC%89%E4%B9%8B%20%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/"/>
+    <id>http://litxiaosa.cn/2017/12/14/SpringBoot（九）之 事务管理/</id>
     <published>2017-12-14T05:27:18.000Z</published>
     <updated>2017-12-28T09:47:22.305Z</updated>
     
@@ -214,17 +214,17 @@
     
     </summary>
     
-      <category term="SpringBoot系列" scheme="http://litxiaosa.me/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
+      <category term="SpringBoot系列" scheme="http://litxiaosa.cn/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
     
     
-      <category term="SpringBoot" scheme="http://litxiaosa.me/tags/SpringBoot/"/>
+      <category term="SpringBoot" scheme="http://litxiaosa.cn/tags/SpringBoot/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot（八）之 整合 MyBatis</title>
-    <link href="http://litxiaosa.me/2017/12/13/SpringBoot%EF%BC%88%E5%85%AB%EF%BC%89%E4%B9%8B%20%E6%95%B4%E5%90%88%20MyBatis/"/>
-    <id>http://litxiaosa.me/2017/12/13/SpringBoot（八）之 整合 MyBatis/</id>
+    <link href="http://litxiaosa.cn/2017/12/13/SpringBoot%EF%BC%88%E5%85%AB%EF%BC%89%E4%B9%8B%20%E6%95%B4%E5%90%88%20MyBatis/"/>
+    <id>http://litxiaosa.cn/2017/12/13/SpringBoot（八）之 整合 MyBatis/</id>
     <published>2017-12-13T08:27:18.000Z</published>
     <updated>2017-12-13T10:09:22.039Z</updated>
     
@@ -242,17 +242,17 @@
     
     </summary>
     
-      <category term="SpringBoot系列" scheme="http://litxiaosa.me/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
+      <category term="SpringBoot系列" scheme="http://litxiaosa.cn/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
     
     
-      <category term="SpringBoot" scheme="http://litxiaosa.me/tags/SpringBoot/"/>
+      <category term="SpringBoot" scheme="http://litxiaosa.cn/tags/SpringBoot/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot（七）之 Spring-data-jpa</title>
-    <link href="http://litxiaosa.me/2017/12/06/SpringBoot%EF%BC%88%E4%B8%83%EF%BC%89%E4%B9%8B%20Spring-data-jpa/"/>
-    <id>http://litxiaosa.me/2017/12/06/SpringBoot（七）之 Spring-data-jpa/</id>
+    <link href="http://litxiaosa.cn/2017/12/06/SpringBoot%EF%BC%88%E4%B8%83%EF%BC%89%E4%B9%8B%20Spring-data-jpa/"/>
+    <id>http://litxiaosa.cn/2017/12/06/SpringBoot（七）之 Spring-data-jpa/</id>
     <published>2017-12-06T01:27:18.000Z</published>
     <updated>2017-12-06T06:57:45.225Z</updated>
     
@@ -264,17 +264,17 @@
     
     </summary>
     
-      <category term="SpringBoot系列" scheme="http://litxiaosa.me/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
+      <category term="SpringBoot系列" scheme="http://litxiaosa.cn/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
     
     
-      <category term="SpringBoot" scheme="http://litxiaosa.me/tags/SpringBoot/"/>
+      <category term="SpringBoot" scheme="http://litxiaosa.cn/tags/SpringBoot/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot（六）之 使用Swagger2构建RESTful API</title>
-    <link href="http://litxiaosa.me/2017/12/05/SpringBoot%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8B%20%E4%BD%BF%E7%94%A8Swagger2%E6%9E%84%E5%BB%BARESTful%20API/"/>
-    <id>http://litxiaosa.me/2017/12/05/SpringBoot（六）之 使用Swagger2构建RESTful API/</id>
+    <link href="http://litxiaosa.cn/2017/12/05/SpringBoot%EF%BC%88%E5%85%AD%EF%BC%89%E4%B9%8B%20%E4%BD%BF%E7%94%A8Swagger2%E6%9E%84%E5%BB%BARESTful%20API/"/>
+    <id>http://litxiaosa.cn/2017/12/05/SpringBoot（六）之 使用Swagger2构建RESTful API/</id>
     <published>2017-12-05T08:27:18.000Z</published>
     <updated>2017-12-05T08:12:43.252Z</updated>
     
@@ -291,17 +291,17 @@
     
     </summary>
     
-      <category term="SpringBoot系列" scheme="http://litxiaosa.me/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
+      <category term="SpringBoot系列" scheme="http://litxiaosa.cn/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
     
     
-      <category term="SpringBoot" scheme="http://litxiaosa.me/tags/SpringBoot/"/>
+      <category term="SpringBoot" scheme="http://litxiaosa.cn/tags/SpringBoot/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot（五）之 统一异常处理</title>
-    <link href="http://litxiaosa.me/2017/12/05/SpringBoot%EF%BC%88%E4%BA%94%EF%BC%89%E4%B9%8B%20%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/"/>
-    <id>http://litxiaosa.me/2017/12/05/SpringBoot（五）之 统一异常处理/</id>
+    <link href="http://litxiaosa.cn/2017/12/05/SpringBoot%EF%BC%88%E4%BA%94%EF%BC%89%E4%B9%8B%20%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/"/>
+    <id>http://litxiaosa.cn/2017/12/05/SpringBoot（五）之 统一异常处理/</id>
     <published>2017-12-05T06:27:18.000Z</published>
     <updated>2017-12-05T07:29:55.473Z</updated>
     
@@ -315,17 +315,17 @@
     
     </summary>
     
-      <category term="SpringBoot系列" scheme="http://litxiaosa.me/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
+      <category term="SpringBoot系列" scheme="http://litxiaosa.cn/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
     
     
-      <category term="SpringBoot" scheme="http://litxiaosa.me/tags/SpringBoot/"/>
+      <category term="SpringBoot" scheme="http://litxiaosa.cn/tags/SpringBoot/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot（四）之 静态资源和拦截器</title>
-    <link href="http://litxiaosa.me/2017/12/05/SpringBoot%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8B%20%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%92%8C%E6%8B%A6%E6%88%AA%E5%99%A8/"/>
-    <id>http://litxiaosa.me/2017/12/05/SpringBoot（四）之 静态资源和拦截器/</id>
+    <link href="http://litxiaosa.cn/2017/12/05/SpringBoot%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8B%20%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%92%8C%E6%8B%A6%E6%88%AA%E5%99%A8/"/>
+    <id>http://litxiaosa.cn/2017/12/05/SpringBoot（四）之 静态资源和拦截器/</id>
     <published>2017-12-05T02:27:18.000Z</published>
     <updated>2017-12-05T06:42:23.274Z</updated>
     
@@ -338,17 +338,17 @@
     
     </summary>
     
-      <category term="SpringBoot系列" scheme="http://litxiaosa.me/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
+      <category term="SpringBoot系列" scheme="http://litxiaosa.cn/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
     
     
-      <category term="SpringBoot" scheme="http://litxiaosa.me/tags/SpringBoot/"/>
+      <category term="SpringBoot" scheme="http://litxiaosa.cn/tags/SpringBoot/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot（三）之 Thymeleaf篇</title>
-    <link href="http://litxiaosa.me/2017/12/04/SpringBoot%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8B%20Thymeleaf%E7%AF%87/"/>
-    <id>http://litxiaosa.me/2017/12/04/SpringBoot（三）之 Thymeleaf篇/</id>
+    <link href="http://litxiaosa.cn/2017/12/04/SpringBoot%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8B%20Thymeleaf%E7%AF%87/"/>
+    <id>http://litxiaosa.cn/2017/12/04/SpringBoot（三）之 Thymeleaf篇/</id>
     <published>2017-12-04T08:07:18.000Z</published>
     <updated>2017-12-05T06:36:26.100Z</updated>
     
@@ -368,17 +368,17 @@
     
     </summary>
     
-      <category term="SpringBoot系列" scheme="http://litxiaosa.me/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
+      <category term="SpringBoot系列" scheme="http://litxiaosa.cn/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
     
     
-      <category term="SpringBoot" scheme="http://litxiaosa.me/tags/SpringBoot/"/>
+      <category term="SpringBoot" scheme="http://litxiaosa.cn/tags/SpringBoot/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot (二) 之 配置文件详解</title>
-    <link href="http://litxiaosa.me/2017/12/04/SpringBoot%20%20(%E4%BA%8C)%20%E4%B9%8B%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://litxiaosa.me/2017/12/04/SpringBoot  (二) 之 配置文件详解/</id>
+    <link href="http://litxiaosa.cn/2017/12/04/SpringBoot%20%20(%E4%BA%8C)%20%E4%B9%8B%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://litxiaosa.cn/2017/12/04/SpringBoot  (二) 之 配置文件详解/</id>
     <published>2017-12-04T06:07:18.000Z</published>
     <updated>2017-12-05T07:34:01.626Z</updated>
     
@@ -390,17 +390,17 @@
     
     </summary>
     
-      <category term="SpringBoot系列" scheme="http://litxiaosa.me/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
+      <category term="SpringBoot系列" scheme="http://litxiaosa.cn/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
     
     
-      <category term="SpringBoot" scheme="http://litxiaosa.me/tags/SpringBoot/"/>
+      <category term="SpringBoot" scheme="http://litxiaosa.cn/tags/SpringBoot/"/>
     
   </entry>
   
   <entry>
     <title>SpringBoot（一）之 快速入门</title>
-    <link href="http://litxiaosa.me/2017/12/01/SpringBoot%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8B%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/"/>
-    <id>http://litxiaosa.me/2017/12/01/SpringBoot（一）之 快速入门/</id>
+    <link href="http://litxiaosa.cn/2017/12/01/SpringBoot%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8B%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/"/>
+    <id>http://litxiaosa.cn/2017/12/01/SpringBoot（一）之 快速入门/</id>
     <published>2017-12-01T01:54:26.000Z</published>
     <updated>2017-12-04T06:21:56.909Z</updated>
     
@@ -415,17 +415,17 @@
     
     </summary>
     
-      <category term="SpringBoot系列" scheme="http://litxiaosa.me/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
+      <category term="SpringBoot系列" scheme="http://litxiaosa.cn/categories/SpringBoot%E7%B3%BB%E5%88%97/"/>
     
     
-      <category term="SpringBoot" scheme="http://litxiaosa.me/tags/SpringBoot/"/>
+      <category term="SpringBoot" scheme="http://litxiaosa.cn/tags/SpringBoot/"/>
     
   </entry>
   
   <entry>
     <title>学习Git（五）之 搭建Git服务器</title>
-    <link href="http://litxiaosa.me/2017/11/29/%E5%AD%A6%E4%B9%A0Git%EF%BC%88%E4%BA%94%EF%BC%89%20%E4%B9%8B%20%E6%90%AD%E5%BB%BAGit%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    <id>http://litxiaosa.me/2017/11/29/学习Git（五） 之 搭建Git服务器/</id>
+    <link href="http://litxiaosa.cn/2017/11/29/%E5%AD%A6%E4%B9%A0Git%EF%BC%88%E4%BA%94%EF%BC%89%20%E4%B9%8B%20%E6%90%AD%E5%BB%BAGit%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>http://litxiaosa.cn/2017/11/29/学习Git（五） 之 搭建Git服务器/</id>
     <published>2017-11-29T08:40:46.000Z</published>
     <updated>2017-12-04T03:06:22.665Z</updated>
     
@@ -438,17 +438,17 @@
     
     </summary>
     
-      <category term="学习Git" scheme="http://litxiaosa.me/categories/%E5%AD%A6%E4%B9%A0Git/"/>
+      <category term="学习Git" scheme="http://litxiaosa.cn/categories/%E5%AD%A6%E4%B9%A0Git/"/>
     
     
-      <category term="Git" scheme="http://litxiaosa.me/tags/Git/"/>
+      <category term="Git" scheme="http://litxiaosa.cn/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>学习Git（四）之 分支管理</title>
-    <link href="http://litxiaosa.me/2017/11/29/%E5%AD%A6%E4%B9%A0Git%EF%BC%88%E5%9B%9B%EF%BC%89%20%E4%B9%8B%20%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/"/>
-    <id>http://litxiaosa.me/2017/11/29/学习Git（四） 之 分支管理/</id>
+    <link href="http://litxiaosa.cn/2017/11/29/%E5%AD%A6%E4%B9%A0Git%EF%BC%88%E5%9B%9B%EF%BC%89%20%E4%B9%8B%20%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/"/>
+    <id>http://litxiaosa.cn/2017/11/29/学习Git（四） 之 分支管理/</id>
     <published>2017-11-29T02:22:33.000Z</published>
     <updated>2017-12-04T03:14:52.371Z</updated>
     
@@ -461,17 +461,17 @@
     
     </summary>
     
-      <category term="学习Git" scheme="http://litxiaosa.me/categories/%E5%AD%A6%E4%B9%A0Git/"/>
+      <category term="学习Git" scheme="http://litxiaosa.cn/categories/%E5%AD%A6%E4%B9%A0Git/"/>
     
     
-      <category term="Git" scheme="http://litxiaosa.me/tags/Git/"/>
+      <category term="Git" scheme="http://litxiaosa.cn/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>学习Git（三） 之 远程仓库</title>
-    <link href="http://litxiaosa.me/2017/11/28/%E5%AD%A6%E4%B9%A0Git%EF%BC%88%E4%B8%89%EF%BC%89%20%E4%B9%8B%20%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/"/>
-    <id>http://litxiaosa.me/2017/11/28/学习Git（三） 之 远程仓库/</id>
+    <link href="http://litxiaosa.cn/2017/11/28/%E5%AD%A6%E4%B9%A0Git%EF%BC%88%E4%B8%89%EF%BC%89%20%E4%B9%8B%20%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/"/>
+    <id>http://litxiaosa.cn/2017/11/28/学习Git（三） 之 远程仓库/</id>
     <published>2017-11-28T09:58:43.000Z</published>
     <updated>2017-12-04T03:43:30.216Z</updated>
     
@@ -483,17 +483,17 @@
     
     </summary>
     
-      <category term="学习Git" scheme="http://litxiaosa.me/categories/%E5%AD%A6%E4%B9%A0Git/"/>
+      <category term="学习Git" scheme="http://litxiaosa.cn/categories/%E5%AD%A6%E4%B9%A0Git/"/>
     
     
-      <category term="Git" scheme="http://litxiaosa.me/tags/Git/"/>
+      <category term="Git" scheme="http://litxiaosa.cn/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>学习Git（二）之 暂存区</title>
-    <link href="http://litxiaosa.me/2017/11/28/%E5%AD%A6%E4%B9%A0Git%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8B%20%E6%9A%82%E5%AD%98%E5%8C%BA/"/>
-    <id>http://litxiaosa.me/2017/11/28/学习Git（二）之 暂存区/</id>
+    <link href="http://litxiaosa.cn/2017/11/28/%E5%AD%A6%E4%B9%A0Git%EF%BC%88%E4%BA%8C%EF%BC%89%E4%B9%8B%20%E6%9A%82%E5%AD%98%E5%8C%BA/"/>
+    <id>http://litxiaosa.cn/2017/11/28/学习Git（二）之 暂存区/</id>
     <published>2017-11-28T08:55:30.000Z</published>
     <updated>2017-12-04T03:49:30.821Z</updated>
     
@@ -506,10 +506,10 @@
     
     </summary>
     
-      <category term="学习Git" scheme="http://litxiaosa.me/categories/%E5%AD%A6%E4%B9%A0Git/"/>
+      <category term="学习Git" scheme="http://litxiaosa.cn/categories/%E5%AD%A6%E4%B9%A0Git/"/>
     
     
-      <category term="Git" scheme="http://litxiaosa.me/tags/Git/"/>
+      <category term="Git" scheme="http://litxiaosa.cn/tags/Git/"/>
     
   </entry>
   
