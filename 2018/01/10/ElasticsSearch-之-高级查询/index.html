@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="潇洒的博客">
 <meta property="og:description" content="工具用的PostMan 本文我们来介绍ElasticsSearch的高级查询。 在ES中查询分为子条件查询和复合条件查询  子条件查询：特定字段查询所指特定值  Query context: 在查询过程中，除了判断文档是否满足查询条件外，ES还会计算一个 _score来标示匹配的程度，旨在判断目标文档和查询条件的匹配度。他常用的查询有- 全文本查询：针对文本类型数据 - 字段级别查询： 针对结构化">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-10T04:53:37.230Z">
+<meta property="og:updated_time" content="2018-04-09T07:29:53.942Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ElasticsSearch 之 高级查询">
 <meta name="twitter:description" content="工具用的PostMan 本文我们来介绍ElasticsSearch的高级查询。 在ES中查询分为子条件查询和复合条件查询  子条件查询：特定字段查询所指特定值  Query context: 在查询过程中，除了判断文档是否满足查询条件外，ES还会计算一个 _score来标示匹配的程度，旨在判断目标文档和查询条件的匹配度。他常用的查询有- 全文本查询：针对文本类型数据 - 字段级别查询： 针对结构化">
@@ -255,13 +255,15 @@ var _hmt = _hmt || [];
 <li>Query context: 在查询过程中，除了判断文档是否满足查询条件外，ES还会计算一个 _score来标示匹配的程度，旨在判断目标文档和查询条件的匹配度。他常用的查询有<pre><code>- 全文本查询：针对文本类型数据
 - 字段级别查询： 针对结构化数据， 如：数字、日期等
 </code></pre></li>
+</ul>
+<a id="more"></a>
+<ul>
 <li>Filter context: 在查询过程中，只判断该文档是否满足条件，只有Yes 或者 No，没有匹配度。</li>
 </ul>
 </li>
 <li><p>复合条件查询：一一定的逻辑组合子条件查询</p>
 </li>
 </ul>
-<a id="more"></a>
 <h3 id="全文本查询"><a href="#全文本查询" class="headerlink" title="全文本查询"></a>全文本查询</h3><p>  它包括：模糊匹配、习语匹配、多个字段的匹配查询、语法的查询。</p>
 <ul>
 <li><p><strong>模糊匹配</strong></p>

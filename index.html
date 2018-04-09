@@ -243,8 +243,7 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
         
             <p><p>年后的第一篇博客，又回到了说hexo上，去年申请的阿里云服务器快要到期了，对于我这种赤贫的人来说，买一个感觉老贵了。正好最近腾讯云在搞活动，就买了一年的，虽然是最低配置，对于我个人用足够了。</p>
-<p>既然要弃用阿里云，那么我去年部署到阿里云的静态博客就要重新部署到腾讯云了，正好借着这个机会，写一个部署的大致流程，以防自己以后又换云服务器的时候忘了怎么部署。哈哈。</p>
-<p> 这里我们默认你有台云服务器，并能正常使用。</p></p>
+<p>既然要弃用阿里云，那么我去年部署到阿里云的静态博客就要重新部署到腾讯云了，正好借着这个机会，写一个部署的大致流程，以防自己以后又换云服务器的时候忘了怎么部署。哈哈。</p></p>
             <p class="article-more-link">
                 <a href="/2018/03/08/hexo静态博客部署到腾讯云/#more">阅读全文</a>
             </p>
@@ -457,12 +456,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 <li>Query context: 在查询过程中，除了判断文档是否满足查询条件外，ES还会计算一个 _score来标示匹配的程度，旨在判断目标文档和查询条件的匹配度。他常用的查询有<pre><code>- 全文本查询：针对文本类型数据
 - 字段级别查询： 针对结构化数据， 如：数字、日期等
 </code></pre></li>
-<li>Filter context: 在查询过程中，只判断该文档是否满足条件，只有Yes 或者 No，没有匹配度。</li>
-</ul>
-</li>
-<li><p>复合条件查询：一一定的逻辑组合子条件查询</p>
-</li>
-</ul></p>
+</ul></li></ul></p>
             <p class="article-more-link">
                 <a href="/2018/01/10/ElasticsSearch-之-高级查询/#more">阅读全文</a>
             </p>
@@ -566,9 +560,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
             <p><p>本文我们介绍ES的简单的增删改查操作。</p>
 <h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>我们同样使用postman 工具，以下操作都是postman </p>
 <ul>
-<li><p>地址栏：localhost:9200/people/man/1 用post方法 这里的1是索引，我们可以自定义，这是唯一的。</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"name"</span>: <span class="string">"潇洒"</span>,</span><br><span class="line">   <span class="attr">"country"</span>: <span class="string">"中国"</span>,</span><br><span class="line">   <span class="attr">"age"</span>: <span class="number">18</span>,</span><br><span class="line">   <span class="attr">"date"</span>: <span class="string">"2018-01-01"</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>地址栏：localhost:9200/people/man/1 用post方法 这里的1是索引，我们可以自定义，这是唯一的。</li>
 </ul></p>
             <p class="article-more-link">
                 <a href="/2018/01/09/学习Elasticsearch 之 增删改查/#more">阅读全文</a>
@@ -977,8 +969,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><h3 id="什么是事务？"><a href="#什么是事务？" class="headerlink" title="什么是事务？"></a><strong>什么是事务？</strong></h3><p>我们在开发企业应用时，对于业务人员的一个操作实际是对数据读写的多步操作的结合。由于数据操作在顺序执行的过程中，任何一步操作都有可能发生异常，异常会导致后续操作无法完成，此时由于业务逻辑并未正确的完成，之前成功操作数据的并不可靠，需要在这种情况下进行回退。</p>
-<p>事务的作用就是为了保证用户的每一个操作都是可靠的，事务中的每一步操作都必须成功执行，只要有发生异常就回退到事务开始未进行操作的状态。</p></p>
+            <p><h3 id="什么是事务？"><a href="#什么是事务？" class="headerlink" title="什么是事务？"></a><strong>什么是事务？</strong></h3><p>我们在开发企业应用时，对于业务人员的一个操作实际是对数据读写的多步操作的结合。由于数据操作在顺序执行的过程中，任何一步操作都有可能发生异常，异常会导致后续操作无法完成，此时由于业务逻辑并未正确的完成，之前成功操作数据的并不可靠，需要在这种情况下进行回退。</p></p>
             <p class="article-more-link">
                 <a href="/2017/12/14/SpringBoot（九）之 事务管理/#more">阅读全文</a>
             </p>
@@ -1081,11 +1072,7 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         
             <p><p>现在大部分的项目还是整合的mybatis，下边我们就学习SpringBoot整合MyBatis。使用的项目基础是我们之前的教程中一步一步建立起来的。</p>
 <ul>
-<li><p><code>pom.xml</code> 中引入依赖</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p> 这里不引入spring-boot-starter-jdbc依赖，是由于mybatis-spring-boot-starter中已经包含了此依赖</p>
-</li>
-</ul></p>
+<li><p><code>pom.xml</code> 中引入依赖</p></li></ul></p>
             <p class="article-more-link">
                 <a href="/2017/12/13/SpringBoot（八）之 整合 MyBatis/#more">阅读全文</a>
             </p>

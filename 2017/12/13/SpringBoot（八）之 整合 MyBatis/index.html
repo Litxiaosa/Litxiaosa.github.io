@@ -5,18 +5,18 @@
     
     <title>SpringBoot（八）之 整合 MyBatis | 潇洒的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="现在大部分的项目还是整合的mybatis，下边我们就学习SpringBoot整合MyBatis。使用的项目基础是我们之前的教程中一步一步建立起来的。  pom.xml 中引入依赖   1234567891011&amp;lt;dependency&amp;gt;   &amp;lt;groupId&amp;gt;org">
+    <meta name="description" content="现在大部分的项目还是整合的mybatis，下边我们就学习SpringBoot整合MyBatis。使用的项目基础是我们之前的教程中一步一步建立起来的。  pom.xml 中引入依赖">
 <meta name="keywords" content="SpringBoot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot（八）之 整合 MyBatis">
 <meta property="og:url" content="http://litxiaosa.cn/2017/12/13/SpringBoot（八）之 整合 MyBatis/index.html">
 <meta property="og:site_name" content="潇洒的博客">
-<meta property="og:description" content="现在大部分的项目还是整合的mybatis，下边我们就学习SpringBoot整合MyBatis。使用的项目基础是我们之前的教程中一步一步建立起来的。  pom.xml 中引入依赖   1234567891011&amp;lt;dependency&amp;gt;   &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;   &amp;lt;artifactId&amp;gt">
+<meta property="og:description" content="现在大部分的项目还是整合的mybatis，下边我们就学习SpringBoot整合MyBatis。使用的项目基础是我们之前的教程中一步一步建立起来的。  pom.xml 中引入依赖">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-13T10:09:22.039Z">
+<meta property="og:updated_time" content="2018-04-09T07:31:17.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot（八）之 整合 MyBatis">
-<meta name="twitter:description" content="现在大部分的项目还是整合的mybatis，下边我们就学习SpringBoot整合MyBatis。使用的项目基础是我们之前的教程中一步一步建立起来的。  pom.xml 中引入依赖   1234567891011&amp;lt;dependency&amp;gt;   &amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;   &amp;lt;artifactId&amp;gt">
+<meta name="twitter:description" content="现在大部分的项目还是整合的mybatis，下边我们就学习SpringBoot整合MyBatis。使用的项目基础是我们之前的教程中一步一步建立起来的。  pom.xml 中引入依赖">
     
 
     
@@ -250,11 +250,11 @@ var _hmt = _hmt || [];
             <p>现在大部分的项目还是整合的mybatis，下边我们就学习SpringBoot整合MyBatis。使用的项目基础是我们之前的教程中一步一步建立起来的。</p>
 <ul>
 <li><p><code>pom.xml</code> 中引入依赖</p>
+<a id="more"></a>
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p> 这里不引入spring-boot-starter-jdbc依赖，是由于mybatis-spring-boot-starter中已经包含了此依赖</p>
 </li>
 </ul>
-<a id="more"></a>
 <ul>
 <li><p>同之前介绍的使用spring-data连接数据库一样，在<code>application.properties</code>中配置mysql的连接配置</p>
   <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring<span class="selector-class">.datasource</span><span class="selector-class">.url</span>=jdbc:mysql:<span class="comment">//localhost:3306/demo</span></span><br><span class="line">spring<span class="selector-class">.datasource</span><span class="selector-class">.username</span>=root</span><br><span class="line">spring<span class="selector-class">.datasource</span><span class="selector-class">.password</span>=root</span><br><span class="line">spring<span class="selector-class">.datasource</span><span class="selector-class">.driver-class-name</span>=com<span class="selector-class">.mysql</span><span class="selector-class">.jdbc</span><span class="selector-class">.Driver</span></span><br></pre></td></tr></table></figure>

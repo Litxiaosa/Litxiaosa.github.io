@@ -5,20 +5,20 @@
     
     <title>SpringBoot（五）之 统一异常处理 | 潇洒的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="我们在做Web应用的时候，请求处理过程中发生错误是非常常见的情况。Spring Boot提供了一个默认的映射：/error，当处理中抛出异常之后，会转到该请求中处理，并且该请求有一个全局的错误页面用来展示异常内容。 我们写一个一段代码： 1234567891011/** * @author xiaosa */@Cont">
+    <meta name="description" content="我们在做Web应用的时候，请求处理过程中发生错误是非常常见的情况。Spring Boot提供了一个默认的映射：/error，当处理中抛出异常之后，会转到该请求中处理，并且该请求有一个全局的错误页面用来展示异常内容。">
 <meta name="keywords" content="SpringBoot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot（五）之 统一异常处理">
 <meta property="og:url" content="http://litxiaosa.cn/2017/12/05/SpringBoot（五）之 统一异常处理/index.html">
 <meta property="og:site_name" content="潇洒的博客">
-<meta property="og:description" content="我们在做Web应用的时候，请求处理过程中发生错误是非常常见的情况。Spring Boot提供了一个默认的映射：/error，当处理中抛出异常之后，会转到该请求中处理，并且该请求有一个全局的错误页面用来展示异常内容。 我们写一个一段代码： 1234567891011/** * @author xiaosa */@Controllerpublic class ErrorController &amp;#123">
+<meta property="og:description" content="我们在做Web应用的时候，请求处理过程中发生错误是非常常见的情况。Spring Boot提供了一个默认的映射：/error，当处理中抛出异常之后，会转到该请求中处理，并且该请求有一个全局的错误页面用来展示异常内容。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://litxiaosa.cn/2017/12/05/SpringBoot（五）之%20统一异常处理/1.png">
 <meta property="og:image" content="http://litxiaosa.cn/2017/12/05/SpringBoot（五）之%20统一异常处理/2.png">
-<meta property="og:updated_time" content="2017-12-05T07:29:55.473Z">
+<meta property="og:updated_time" content="2018-04-09T07:32:01.248Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot（五）之 统一异常处理">
-<meta name="twitter:description" content="我们在做Web应用的时候，请求处理过程中发生错误是非常常见的情况。Spring Boot提供了一个默认的映射：/error，当处理中抛出异常之后，会转到该请求中处理，并且该请求有一个全局的错误页面用来展示异常内容。 我们写一个一段代码： 1234567891011/** * @author xiaosa */@Controllerpublic class ErrorController &amp;#123">
+<meta name="twitter:description" content="我们在做Web应用的时候，请求处理过程中发生错误是非常常见的情况。Spring Boot提供了一个默认的映射：/error，当处理中抛出异常之后，会转到该请求中处理，并且该请求有一个全局的错误页面用来展示异常内容。">
 <meta name="twitter:image" content="http://litxiaosa.cn/2017/12/05/SpringBoot（五）之%20统一异常处理/1.png">
     
 
@@ -251,9 +251,9 @@ var _hmt = _hmt || [];
         
             
             <p>我们在做Web应用的时候，请求处理过程中发生错误是非常常见的情况。Spring Boot提供了一个默认的映射：/error，当处理中抛出异常之后，会转到该请求中处理，并且该请求有一个全局的错误页面用来展示异常内容。</p>
+<a id="more"></a>
 <p>我们写一个一段代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> xiaosa</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ErrorController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span>  String <span class="title">error</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"发生错误！！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 <p>此时，可以看到类似下面的报错页面，该页面就是Spring Boot提供的默认error映射页面。</p>
 <p><img src="/2017/12/05/SpringBoot（五）之 统一异常处理/1.png" alt=""></p>
 <p>虽然，Spring Boot中实现了默认的error映射，但是在实际应用中，上面的错误页面对用户来说并不够友好，我们通常需要去实现我们自己的异常提示。</p>
