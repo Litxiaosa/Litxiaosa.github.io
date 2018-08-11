@@ -3,6 +3,38 @@
   
     
     <entry>
+      <title><![CDATA[慕雯]]></title>
+      <url>/2018/08/11/%E6%85%95%E9%9B%AF/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>伤情最是晚凉天，</p>
+<p>憔悴斯人不堪怜。</p>
+<p>邀酒摧肠三杯醉，</p>
+<p>寻香惊梦五更寒。 </p>
+<p>钗头凤斜卿有泪，</p>
+<p>荼蘼花了我无缘。</p>
+<p>小楼寂寞心宇月，</p>
+<p>也难如钩也难圆。</p>
+</blockquote>
+<pre><code>---- 摘自  马东
+</code></pre><p> <img src="/2018/08/11/慕雯/1.jpg" alt=""></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 不知所云 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 不知所云 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[SpringBoot整合shiro应用]]></title>
       <url>/2018/04/19/SpringBoot%E6%95%B4%E5%90%88shiro%E5%BA%94%E7%94%A8/</url>
       <content type="html"><![CDATA[<p>前段时间面试，被问到shiro框架，很遗憾，在工作中没怎么用（因为领导没让我写过 - -！），毕竟这个安全框架以后一定会用到，回来以后就自己抽空认真学了学，研究了下别人的博客。现在把我学到的记录下来，以防长时间不用，给忘了。</p>
